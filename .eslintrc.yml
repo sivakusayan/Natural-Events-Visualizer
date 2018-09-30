@@ -1,0 +1,4 @@
+extends: airbnb
+rules: 
+  no-trailing-spaces:
+    ignoreComments: true

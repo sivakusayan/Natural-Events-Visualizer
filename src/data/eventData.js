@@ -3,8 +3,7 @@
  * 
  * @module src/data/eventData
  */
-// import axios from 'axios';
-const axios = require('axios');
+import axios from 'axios';
 
 /**
  * Fetches the data from the EONET API.
@@ -15,7 +14,7 @@ const axios = require('axios');
 const fetchEonetData = async () => {
   const eonetURL = 'https://eonet.sci.gsfc.nasa.gov/api/v2.1/events';
   return await axios.get(eonetURL)
-    .then(response => response.data)
+    .then(response => response.data.events)
     .catch((err) => {
       if (err.code = 'ENOTFOUND' || console.log('The URL is incorrect: API data cannot be fetched.')) {
         console.log('The URL is incorrect: API data cannot be fetched.');
@@ -27,15 +26,31 @@ const fetchEonetData = async () => {
 };
 
 /**
- * Converts the JSON from the EONET API into usable GeoJSON.
+ * Converts the data from the EONET API into usable GeoJSON.
  * @function
  * 
- * @param {String} eonetJson The JSON received from the EONET API.
+ * @param {Array} eventArray The array of events received from the EONET API.
  * 
- * @returns {String} A GeoJSON representation of EONET data.
+ * @returns {Array} A GeoJSON array containing EONET data.
  */
 const convertData = (eonetJson) => {
-  console.log(eonetJson);
+  return eonetJson.map((event) => {
+    return {
+      type: 'Feature',
+      id: event.id,
+      sources: event.sources,
+      geometry: {
+        type: event.geometries[0].type, // Taking first element shows initial data (implement event progression later?)
+        coordinates: event.geometries[0].coordinates
+      },
+      properties: {
+        title: event.title,
+        description: event.description,
+        categories: event.categories.map((category) => category.title),
+        date: event.geometries[0].date
+      }
+    }
+  })
 };
 
 /**
@@ -43,6 +58,6 @@ const convertData = (eonetJson) => {
  * @name fetchEvents
  * @function
  * 
- * @returns {string} A GeoJSON list of natural events.
+ * @returns {Array} A GeoJSON array of natural events.
  */
-// export default () => convertData(fetchEonetData());
+export default async () => convertData(await fetchEonetData());

@@ -3,7 +3,8 @@
  * 
  * @module src/data/eventData
  */
-import axios from 'axios';
+// import axios from 'axios';
+const axios = require('axios');
 
 /**
  * Fetches the data from the EONET API.
@@ -11,13 +12,17 @@ import axios from 'axios';
  * 
  * @returns {string} A JSON list of EONET events.
  */
-const fetchEonetData = () => {
+const fetchEonetData = async () => {
   const eonetURL = 'https://eonet.sci.gsfc.nasa.gov/api/v2.1/events';
-  axios.get(eonetURL)
-    .then(response => console.log(response.data.events))
+  return await axios.get(eonetURL)
+    .then(response => response.data)
     .catch((err) => {
-      console.log('Something went wrong :(');
-      console.log(err);
+      if (err.code = 'ENOTFOUND' || console.log('The URL is incorrect: API data cannot be fetched.')) {
+        console.log('The URL is incorrect: API data cannot be fetched.');
+      } else {
+        console.log('Sorry, something seems to have gone wrong.');
+        console.log(err);
+      }
     });
 };
 
@@ -40,4 +45,4 @@ const convertData = (eonetJson) => {
  * 
  * @returns {string} A GeoJSON list of natural events.
  */
-export default () => convertData(fetchEonetData());
+// export default () => convertData(fetchEonetData());

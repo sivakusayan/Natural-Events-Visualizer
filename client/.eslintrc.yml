@@ -1,0 +1,10 @@
+extends: airbnb
+env:
+  browser: true
+rules:
+  no-trailing-spaces: 
+    - warn 
+    - { ignoreComments: true }
+  react/jsx-filename-extension:
+    - warn
+    - { extensions: [".js", ".jsx"]}

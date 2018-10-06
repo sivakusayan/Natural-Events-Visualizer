@@ -1,0 +1,20 @@
+{
+  "name": "natural-event-api",
+  "version": "1.0.0",
+  "description": "API containing geolocation data for the Natural Events Visualizer.",
+  "main": "server.js",
+  "author": "Sayan Sivakumaran",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}

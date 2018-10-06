@@ -55,6 +55,6 @@ const convertData = eventArray => eventArray.map(event => ({
  * @name fetchEvents
  * @function
  * 
- * @returns {Array} An immutable GeoJSON array of natural events.
+ * @returns {Array} A GeoJSON array of natural events.
  */
-export default async () => Object.freeze(convertData(await fetchEonetData()));
+export default async () => convertData(await fetchEonetData());

@@ -12,4 +12,5 @@ const app = express();
 // Bodyparser Middleware
 app.use(bodyParser.json());
 
-// Connect to Mongo
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Server started on port ${port}!`));

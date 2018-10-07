@@ -13,7 +13,8 @@
  /**
  * @typedef {Object} EventGeoJSON
  * A GeoJSON implementation of EONET event data.
- * @property {String} id ID for each event
+ * @property {String} _id ID for each event
+ * @property {String} type GeoJSON feature type 
  * @property {Array.<{ date: String, type: String, coordinates: [Number]}>} geometries Array of geometries containing spacetime data
  * @property {EventGeoJSONProperty} properties nonspacial properties of the event
  */

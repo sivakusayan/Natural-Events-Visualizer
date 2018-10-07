@@ -31,8 +31,8 @@ const fetchEonetData = async () => {
  * A GeoJSON array containing EONET data.
  */
 const convertData = eventArray => eventArray.map(event => ({
+  _id: event.id,
   type: 'Feature',
-  id: event.id,
   geometry: event.geometries,
   properties: {
     title: event.title,

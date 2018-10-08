@@ -8,4 +8,4 @@ mongoose.connect('mongodb://path-to-database', { useNewUrlParser: true })
   .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err));
 
-module.exports = { mongoose };
+module.exports = mongoose;

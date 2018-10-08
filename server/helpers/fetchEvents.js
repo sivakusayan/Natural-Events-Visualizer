@@ -50,4 +50,4 @@ const convertData = eventArray => eventArray.map(event => ({
  */
 const fetchEvents = async () => convertData(await fetchEonetData());
 
-module.exports.fetchEvents = fetchEvents;
+module.exports = fetchEvents;

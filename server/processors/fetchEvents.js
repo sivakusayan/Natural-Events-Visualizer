@@ -1,5 +1,8 @@
 /**
  * @fileoverview Fetches the list of recent events for the database to use. 
+ * After this data is received and converted into GeoJSON, it will need further processing
+ * at 'utils/reverseGeocode.js', where the coordinates will be reverse geocoded to give each
+ * event a named location.
  */
 const fetch = require('node-fetch');
 
@@ -33,7 +36,7 @@ const fetchEonetData = async () => {
 const convertData = eventArray => eventArray.map(event => ({
   _id: event.id,
   type: 'Feature',
-  geometry: event.geometries,
+  geometries: event.geometries,
   properties: {
     title: event.title,
     description: event.description,

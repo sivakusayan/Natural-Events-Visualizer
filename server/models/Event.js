@@ -56,10 +56,14 @@ const EventProperties = new Schema({
 });
 
 const EventSchema = new Schema({
-  type: 'Feature',
   _id: {
+    type: Number,
+    required: true,
+  },
+  type: {
     type: String,
     required: true,
+    match: /Feature/,
   },
   geometry: EventGeometry,
   properties: EventProperties,

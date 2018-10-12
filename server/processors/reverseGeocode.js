@@ -13,15 +13,17 @@ const reverseGeocode = ([longitude, latitude]) => {
   // if (ocean) console.log({ main: ocean });
 
   // If not in ocean, do typical lookup
+  let location;
   geocoder.lookUp({ latitude, longitude }, (err, res) => {
     const data = res[0][0];
     console.log([latitude, longitude]);
-    console.log({
+    location = {
       city: data.name,
-      province: data.admin1Code !== null ? data.admin1Code.name : null,
+      province: data.admin1Code ? data.admin1Code.name : null,
       country: getCountryName(data.countryCode),
-    });
+    };
   });
+  return location;
 };
 
 const pointMean = (points) => {
@@ -33,7 +35,7 @@ const pointMean = (points) => {
   return [xSum / points.length, ySum / points.length];
 };
 
-const attachReverseGeocode = async (geoJSON) => {
+const attachReverseGeocode = (geoJSON) => {
   geocoder.init({
     load: {
       admin2: false,
@@ -41,15 +43,18 @@ const attachReverseGeocode = async (geoJSON) => {
       alternateNames: false,
     },
     dumpDirectory: path.join(__dirname, '../geonames'),
-  }, () => {
-    geoJSON.forEach((event) => {
+  }, async () => {
+    const processedJSON = await geoJSON.map( async (event) => {
       const coordinates = event.geometries[0].coordinates;
+      const processedEvent = JSON.parse(JSON.stringify(event));
       if (coordinates[0].constructor === Array) {
-        reverseGeocode(pointMean(coordinates[0]));
+        processedEvent.geometries[0].location = await reverseGeocode(pointMean(coordinates[0]));
       } else {
-        reverseGeocode(coordinates);
+        processedEvent.geometries[0].location = await reverseGeocode(coordinates);
       }
+      return processedEvent.geometries[0].location;
     });
+    console.log(processedJSON);
   });
 };
 
@@ -57,4 +62,4 @@ const attachReverseGeocode = async (geoJSON) => {
   attachReverseGeocode(await fetchEvents());
 })();
 
-// module.exports.attachReverseGeocode = attachReverseGeocode;
+module.exports.attachReverseGeocode = attachReverseGeocode;

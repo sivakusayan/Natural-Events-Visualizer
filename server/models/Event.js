@@ -16,10 +16,8 @@ const EventGeometry = new Schema({
     default: 'Feature',
   },
   coordinates: {
-    type: [Number],
     required: true,
-    minItems: 2,
-    maxItems: 2,
+    type: [],
   },
 });
 
@@ -34,17 +32,6 @@ const EventSource = new Schema({
   },
 });
 
-const EventCategories = new Schema({
-  id: {
-    type: Number,
-    required: true,
-  },
-  title: {
-    type: String,
-    required: true,
-  },
-});
-
 const EventProperties = new Schema({
   title: {
     type: String,
@@ -52,7 +39,7 @@ const EventProperties = new Schema({
   },
   description: String,
   sources: [EventSource],
-  categories: [EventCategories],
+  categories: [Number],
 });
 
 const EventSchema = new Schema({

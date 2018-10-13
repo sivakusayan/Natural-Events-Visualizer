@@ -41,7 +41,7 @@ const convertData = eventArray => eventArray.map(event => ({
     title: event.title,
     description: event.description,
     sources: event.sources,
-    categories: event.categories,
+    categories: event.categories.map(category => category.id),
   },
 }));
 

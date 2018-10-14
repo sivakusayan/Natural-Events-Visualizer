@@ -28,5 +28,4 @@
   * @property {String} description Description of the event
   * @property {Array.<{ id: Number, title: String}>} categories Array of categories that the event falls under.
   * @property {Array.<{ id: String, title: String}>} sources Array of official sources with information on the event
-
   */

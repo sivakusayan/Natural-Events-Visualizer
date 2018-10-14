@@ -15,6 +15,11 @@ const EventGeometry = new Schema({
     required: true,
     default: 'Feature',
   },
+  index: {
+    type: String,
+    required: true,
+    default: '2dsphere',
+  },
   coordinates: {
     required: true,
     type: [],
@@ -52,7 +57,7 @@ const EventSchema = new Schema({
     required: true,
     match: /Feature/,
   },
-  geometry: EventGeometry,
+  geometries: [EventGeometry],
   properties: EventProperties,
 });
 

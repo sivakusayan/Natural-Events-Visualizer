@@ -20,24 +20,34 @@ const router = express.Router();
  * @param radius The radius of the search. Defaults      || ~~ defined.
  *               to 100 miles.                
  * 
- * @param category Filters for events of this category
+ * @param categoryID Filters for events of this category
  * 
- * @param after Filters for events after this date.
- * @param before Filters for events before this date.
+ * @param startDate Filters for events after this ISO 8601 formatted date.
+ * @param endDate Filters for events before this ISO 8601 formatted date.
  */
 router.get('/', (req, res) => {
   const query = {};
 
   // Build query object
   if (req.query.title) query['properties.title'] = new RegExp(req.query.title, 'i');
-  // if (req.query.lat && req.query.long) {
-  //   query.lat = req.query.lat;
-  //   query.long = req.query.long;
-  //   query.radius = req.query.radius || 100;
-  // }
-  // if (req.query.category) query.category = req.query.category;
-  // if (req.query.after) query.after = req.query.after;
-  // if (req.query.before) query.before = req.query.before;
+  if (req.query.lat && req.query.long) {
+    query.geometries = {
+      $near: {
+        $geometry: {
+          type: 'Point',
+          coordinates: [req.query.long, req.query.lat],
+        },
+        $maxDistance: 1000000,
+      }
+    };
+  }
+  if (req.query.categoryID) query['properties.categories'] = req.query.categoryID;
+  if (req.query.startDate) {
+    query['geometries.date'] = { $gte: req.query.startDate };
+  }
+  if (req.query.endDate) {
+    query['geometries.date'] = { $lte: req.query.endDate };
+  }
 
   Event.find(query)
     .then(events => res.json(events));
@@ -65,7 +75,11 @@ router.post('/', (req, res) => {
   const newEvent = new Event({
     _id: req.body._id,
     type: 'Feature',
-    geometries: req.body.geometries,
+    geometries: req.body.geometries.map(geometry => ({
+      type: geometry.type,
+      coordinates: geometry.coordinates,
+      date: geometry.date,
+    })),
     properties: req.body.properties,
   });
 

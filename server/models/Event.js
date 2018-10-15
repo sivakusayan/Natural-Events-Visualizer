@@ -7,18 +7,13 @@ const { Schema } = mongoose;
 
 const EventGeometry = new Schema({
   date: {
-    type: Date,
+    type: [Date],
     required: true,
   },
   type: {
     type: String,
     required: true,
-    default: 'Feature',
-  },
-  index: {
-    type: String,
-    required: true,
-    default: '2dsphere',
+    enum: ['Point', 'LineString', 'Polygon']
   },
   coordinates: {
     required: true,
@@ -27,7 +22,7 @@ const EventGeometry = new Schema({
 });
 
 const EventSource = new Schema({
-  id: {
+  _id: {
     type: String,
     required: true,
   },
@@ -57,8 +52,10 @@ const EventSchema = new Schema({
     required: true,
     match: /Feature/,
   },
-  geometries: [EventGeometry],
+  geometry: EventGeometry,
   properties: EventProperties,
 });
+
+EventSchema.index({ geometry: '2dsphere' });
 
 module.exports = mongoose.model('event', EventSchema);

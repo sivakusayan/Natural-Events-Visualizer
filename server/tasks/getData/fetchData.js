@@ -24,7 +24,6 @@ const fetchEonetData = async () => {
       } else {
         console.log('Sorry, something seems to have gone wrong.');
       }
-      // IMPLEMENT DATABASE BACKUP LATER
     });
 };
 
@@ -41,13 +40,11 @@ const fetchEonetData = async () => {
  * each point on the line.
  *  
  */
-const convertGeometry = (geometries) => {
-  return {
-    type: geometries.length === 1 ? geometries[0].type : 'LineString',
-    date: geometries.map(geometry => geometry.date),
-    coordinates: geometries.map(geometry => geometry.coordinates),
-  }
-};
+const convertGeometry = geometries => ({
+  type: geometries.length === 1 ? geometries[0].type : 'LineString',
+  date: geometries.map(geometry => geometry.date),
+  coordinates: geometries.map(geometry => geometry.coordinates),
+});
 
 /**
  * Converts the data from the EONET API into usable GeoJSON.

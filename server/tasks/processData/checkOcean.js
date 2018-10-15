@@ -9,9 +9,9 @@
  * modified to have holes, in order to not overshadow any populous islands that 
  * local-reverse-geocoder can check for. 
  * 
- * The bounding box for Antarctica is taken from https://www.naturalearthdata.com/
  */
 const inside = require('point-in-polygon');
+
 const polygon = [
   [-76, -80],
   [-84,-150],

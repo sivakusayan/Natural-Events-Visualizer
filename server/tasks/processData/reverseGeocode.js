@@ -4,8 +4,26 @@
 const geocoder = require('local-reverse-geocoder');
 const path = require('path');
 
-const fetchEvents = require('./fetchEvents');
 const getCountryName = require('./countryName');
+
+/**
+ * Takes an array of points and returns the point that has
+ * averaged coordinates.
+ * 
+ * @param {Number[][]} points 
+ * An array of points in two dimensional space.
+ * 
+ * @returns
+ * The average of the points
+ */
+const pointMean = (points) => {
+  let [xSum, ySum] = [0, 0];
+  points.forEach((point) => {
+    xSum += point[0];
+    ySum += point[1];
+  });
+  return [xSum / points.length, ySum / points.length];
+};
 
 const reverseGeocode = ([longitude, latitude]) => {
   // Check if coordinate is in ocean
@@ -26,15 +44,6 @@ const reverseGeocode = ([longitude, latitude]) => {
   return location;
 };
 
-const pointMean = (points) => {
-  let [xSum, ySum] = [0, 0];
-  points.forEach((point) => {
-    xSum += point[0];
-    ySum += point[1];
-  });
-  return [xSum / points.length, ySum / points.length];
-};
-
 const attachReverseGeocode = (geoJSON) => {
   geocoder.init({
     load: {
@@ -44,7 +53,7 @@ const attachReverseGeocode = (geoJSON) => {
     },
     dumpDirectory: path.join(__dirname, '../geonames'),
   }, async () => {
-    const processedJSON = await geoJSON.map( async (event) => {
+    const processedJSON = await geoJSON.map(async (event) => {
       const coordinates = event.geometries[0].coordinates;
       const processedEvent = JSON.parse(JSON.stringify(event));
       if (coordinates[0].constructor === Array) {
@@ -58,8 +67,4 @@ const attachReverseGeocode = (geoJSON) => {
   });
 };
 
-(async () => {
-  attachReverseGeocode(await fetchEvents());
-})();
-
-module.exports.attachReverseGeocode = attachReverseGeocode;
+module.exports = attachReverseGeocode;

@@ -1,3 +1,5 @@
+// Code From https://gist.github.com/maephisto/9228207
+
 const isoCountries = {
   AF: 'Afghanistan',
   AX: 'Aland Islands',
@@ -248,7 +250,7 @@ const isoCountries = {
 
 const getCountryName = (countryCode) => {
   if (isoCountries.hasOwnProperty(countryCode)) {
-      return isoCountries[countryCode];
+    return isoCountries[countryCode];
   } 
   return countryCode;  
 }

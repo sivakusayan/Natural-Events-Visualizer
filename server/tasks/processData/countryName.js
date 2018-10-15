@@ -1,3 +1,6 @@
+/**
+ * @fileoverview Takes a country code and returns the country name.
+ */
 // Code From https://gist.github.com/maephisto/9228207
 
 const isoCountries = {

@@ -2,9 +2,10 @@
  * @fileoverview Runs a function daily to check for any new events from the Eonet API. If there are,
  * insert them into the database.
  */
-const fetchEvents = require('./getData/fetchData');
+const fetchData = require('./getData/fetchData');
+const toGeoJSON = require('./processData/toGeoJSON');
 const attachReverseGeocode = require('./processData/reverseGeocode');
 
 (async () => {
-  attachReverseGeocode(await fetchEvents());
+  console.log(toGeoJSON(await fetchData()));
 })();

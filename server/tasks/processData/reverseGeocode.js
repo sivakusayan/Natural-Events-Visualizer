@@ -1,5 +1,5 @@
 /**
- * @fileoverview Handles batch reverse geocoding for EONET events.
+ * @fileoverview Handles batch reverse geocoding for GeoJSON EONET events.
  */
 const geocoder = require('local-reverse-geocoder');
 const path = require('path');

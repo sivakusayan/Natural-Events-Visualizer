@@ -14,9 +14,15 @@
  *  
  */
 const toGeoJSONGeometry = geometries => ({
-  type: geometries.length === 1 ? geometries[0].type : 'LineString',
+  // Check if event type needs to be converted to LineString
+  type: geometries.length === 1
+    ? geometries[0].type
+    : 'LineString',
   date: geometries.map(geometry => geometry.date),
-  coordinates: geometries.map(geometry => geometry.coordinates),
+  // Check if coordinates need to be converted to LineString Format
+  coordinates: geometries.length === 1
+    ? geometries[0].coordinates
+    : geometries.map(geometry => geometry.coordinates),
 });
 
 /**

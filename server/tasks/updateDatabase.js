@@ -4,8 +4,8 @@
  */
 const fetchData = require('./getData/fetchData');
 const toGeoJSON = require('./processData/toGeoJSON');
-const attachReverseGeocode = require('./processData/reverseGeocode');
+const reverseGeocode = require('./processData/reverseGeocode');
 
 (async () => {
-  console.log(toGeoJSON(await fetchData()));
+  reverseGeocode(toGeoJSON(await fetchData()));
 })();

@@ -15,38 +15,38 @@ const router = express.Router();
  * 
  * @param title Filters for events that contain <code>name</code> in their title.
  * 
- * @param lat The latitude of the search center          || ~~ If searching by location,
- * @param long The longitude of the search center        || ~~ both lat and long need to be
+ * @param long The longitude of the search center          || ~~ If searching by location,
+ * @param lat The latitude of the search center        || ~~ both lat and long need to be
  * @param radius The radius of the search. Defaults      || ~~ defined.
  *               to 100 miles.                
  * 
  * @param categoryID Filters for events of this category
  * 
- * @param startDate Filters for events after this ISO 8601 formatted date.
- * @param endDate Filters for events before this ISO 8601 formatted date.
+ * @param startDate Filters for events weakly after this timestamp in milliseconds.
+ * @param endDate Filters for events strictly before this timestamp in milliseconds.
  */
 router.get('/', (req, res) => {
   const query = {};
 
   // Build query object
   if (req.query.title) query['properties.title'] = new RegExp(req.query.title, 'i');
-  if (req.query.lat && req.query.long) {
-    query.geometries = {
+  if (req.query.long && req.query.lat) {
+    query.geometry = {
       $near: {
         $geometry: {
           type: 'Point',
           coordinates: [req.query.long, req.query.lat],
         },
         $maxDistance: 1000000,
-      }
+      },
     };
   }
   if (req.query.categoryID) query['properties.categories'] = req.query.categoryID;
   if (req.query.startDate) {
-    query['geometries.date'] = { $gte: req.query.startDate };
+    query['geometry.date'] = { $gte: req.query.startDate };
   }
   if (req.query.endDate) {
-    query['geometries.date'] = { $lte: req.query.endDate };
+    query['geometry.date[geometry.date.length - 1]'] = { $lt: req.query.endDate };
   }
 
   Event.find(query)
@@ -75,11 +75,7 @@ router.post('/', (req, res) => {
   const newEvent = new Event({
     _id: req.body._id,
     type: 'Feature',
-    geometries: req.body.geometries.map(geometry => ({
-      type: geometry.type,
-      coordinates: geometry.coordinates,
-      date: geometry.date,
-    })),
+    geometry: req.body.geometry,
     properties: req.body.properties,
   });
 

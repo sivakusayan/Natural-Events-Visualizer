@@ -5,6 +5,7 @@ const geocoder = require('local-reverse-geocoder');
 const path = require('path');
 
 const getCountryName = require('./countryName');
+const checkOcean = require('./checkOcean');
 
 /**
  * Takes an array of points and returns the point that has
@@ -35,12 +36,11 @@ const pointMean = (points) => {
  * The reverse geocoded location of the point
  */
 const reverseGeocodePoint = ([longitude, latitude]) => {
-  let location;
-  // Check if coordinate is in ocean
-  // const ocean = checkOcean(geometry.coordinates);
-  // if (ocean) console.log({ main: ocean });
+  const ocean = checkOcean([latitude, longitude]);
+  if (ocean) return ocean;
 
   // If not in ocean, do typical lookup
+  let location;
   geocoder.lookUp({ latitude, longitude }, (err, res) => {
     if (err) console.log(err);
 

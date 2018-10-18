@@ -7,7 +7,7 @@ const { Schema } = mongoose;
 
 const EventGeometry = new Schema({
   date: {
-    type: [Date],
+    type: Number || [Number],
     required: true,
   },
   type: {

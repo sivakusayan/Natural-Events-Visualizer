@@ -9,21 +9,26 @@
  * @returns {{type: String, date: [String], coordinates: []}}
  * A GeoJSON-compliant geometry. EONET geometries that take place at a single point
  * in time are essentially preserved. Geometries that represent an evolution over
- * time are now represented by GeoJSON LineStrings, with a date array corresponding to 
- * each point on the line.
+ * time are now represented by GeoJSON LineStrings, with a date array associating 
+ * a time stamp to each point on the LineString.
  *  
  */
-const toGeoJSONGeometry = geometries => ({
-  // Check if event type needs to be converted to LineString
-  type: geometries.length === 1
-    ? geometries[0].type
-    : 'LineString',
-  date: geometries.map(geometry => geometry.date),
-  // Check if coordinates need to be converted to LineString Format
-  coordinates: geometries.length === 1
-    ? geometries[0].coordinates
-    : geometries.map(geometry => geometry.coordinates),
-});
+const toGeoJSONGeometry = (geometries) => {
+  // Check if event type is a Polygon or Point
+  if (geometries.length === 1) {
+    return {
+      type: geometries[0].type,
+      date: Date.parse(geometries[0].date),
+      coordinates: geometries[0].coordinates,
+    };
+  }
+  // Else event type is LineString
+  return {
+    type: 'LineString',
+    date: geometries.map(geometry => Date.parse(geometry.date)),
+    coordinates: geometries.map(geometry => geometry.coordinates),
+  };
+};
 
 /**
  * Converts the data from the EONET API into usable GeoJSON.

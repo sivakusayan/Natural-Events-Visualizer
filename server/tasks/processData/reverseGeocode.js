@@ -64,7 +64,7 @@ const reverseGeocodePoint = ([longitude, latitude]) => {
 const reverseGeocode = (geoJSON) => {
   geocoder.init({
     // Disable download of geographical data we don't need
-    load: { 
+    load: {
       admin2: false,
       admin3and4: false,
       alternateNames: false,
@@ -72,25 +72,25 @@ const reverseGeocode = (geoJSON) => {
     // Path of geographical data used to reverse geocode
     dumpDirectory: path.join(__dirname, '../geonames'),
   }, async () => {
-    geoJSON.forEach(async (event) => {
+    for (let i = 0; i < geoJSON.length; i += 1) {
+      const event = geoJSON[i];
       let location;
       if (event.geometry.type === 'Point') {
-        // If Point, reverse geocode the single point and attach location to event
-        location = await reverseGeocodePoint(event.geometry.coordinates);
+        // If Point, reverse geocode the point and attach location to event
+        location = reverseGeocodePoint(event.geometry.coordinates);
         event.geometry.location = location;
       } else if (event.geometry.type === 'Polygon') {
         // If Polygon, reverse geocode the average of the points and attach location to event
-        location = await reverseGeocodePoint(pointMean(event.geometry.coordinates));
+        location = reverseGeocodePoint(pointMean(event.geometry.coordinates));
         event.geometry.location = location;
       } else if (event.geometry.type === 'LineString') {
-        // If LineString, reverse geocode the point and attach location to event for each 
-        // geometry in the timeline.
+        // If LineString, reverse geocode each point and attach location to event
         event.geometry.forEach(async (geometry) => {
-          location = await reverseGeocodePoint(geometry.coordinates);
+          location = reverseGeocodePoint(geometry.coordinates);
           event.geometry.location = location;
         });
       }
-    });
+    }
   });
 };
 

@@ -3,20 +3,10 @@
  * only provides accurate reverse geooding for locations that are near human settlements,
  * this function aids accuracy by checking if a location is near the oceans or the poles.
  * 
- * We use the bounding boxes defined by the NOAA at
- * https://www.nodc.noaa.gov/woce/woce_v3/wocedata_1/woce-uot/summary/bound.htm
- * to create the boundaries of our oceans. The polygons representing each ocean are slightly 
- * modified to have holes, in order to not overshadow any populous islands that 
- * local-reverse-geocoder can check for. 
- * 
+ * We use the bounding boxes created by Natural Earth Data to create the boundaries of our oceans. 
+ * The data can be inspected at geojson.xyz under the dataset "geography marine polys".
  */
-const inside = require('point-in-polygon');
+const inside = require('@turf/boolean-point-in-polygon');
 
-const polygon = [
-  [-76, -80],
-  [-84,-150],
-  [-84, 147],
-  [-70, 150]
-];
+const oceans = require('../../../geoOcean/oceans.json').features;
 
-console.log(inside([-80, 0], polygon));

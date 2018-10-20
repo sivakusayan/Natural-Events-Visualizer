@@ -5,7 +5,7 @@ const geocoder = require('local-reverse-geocoder');
 const path = require('path');
 
 const getCountryName = require('./countryName');
-const checkOcean = require('./checkOcean');
+const getWaterBody = require('./getWaterBody');
 
 /**
  * Takes an array of points and returns the point that has
@@ -30,7 +30,7 @@ const pointMean = (points) => {
  * Takes a single point and returns the reverse geocoded location.
  * 
  * @param {[Number[]]} point
- * A point on the globe. Array is of the form [Longitude, Latitude]
+ * A point on the globe. Point is of the form [Longitude, Latitude].
  * 
  * @returns
  * The reverse geocoded location of the point

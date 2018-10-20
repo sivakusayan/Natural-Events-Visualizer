@@ -3,7 +3,7 @@
  */
 
 /**
- * Converts the geometries given by the EONET API into a GeoJSON-compliant geometry
+ * Converts the data given by the EONET API into a GeoJSON-compliant Feature.
  * @param {Array.<{ date: String, type: String, coordinates: []}>} geometries 
  * Array of geometries containing spacetime data
  * @returns {{type: String, date: [String], coordinates: []}}
@@ -11,7 +11,6 @@
  * in time are essentially preserved. Geometries that represent an evolution over
  * time are now represented by GeoJSON LineStrings, with a date array associating 
  * a time stamp to each point on the LineString.
- *  
  */
 const toGeoJSONGeometry = (geometries) => {
   // Check if event type is a Polygon or Point

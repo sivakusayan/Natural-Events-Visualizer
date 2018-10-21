@@ -10,7 +10,8 @@
  * A GeoJSON-compliant geometry. EONET geometries that take place at a single point
  * in time are essentially preserved. Geometries that represent an evolution over
  * time are now represented by GeoJSON LineStrings, with a date array associating 
- * a time stamp to each point on the LineString.
+ * a time stamp to each point on the LineString. Locations are calculated later
+ * in the conversion process.
  */
 const toGeoJSONGeometry = (geometries) => {
   // Check if event type is a Polygon or Point

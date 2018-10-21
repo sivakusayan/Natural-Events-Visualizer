@@ -10,6 +10,9 @@ const fetchData = require('./getData/fetchData');
 const toGeoJSON = require('./processData/toGeoJSON');
 const reverseGeocode = require('./processData/reverseGeocode');
 
+const mongoose = require('../db/mongoose');
+const Event = require('../models/Event');
+
 geocoder.init({
   // Disable download of geographical data we don't need
   load: {
@@ -20,12 +23,17 @@ geocoder.init({
   // Path of geographical data used to reverse geocode
   dumpDirectory: path.join(__dirname, 'geoLand'),
 }, async () => {
-  const startTime = performance.now();
-  console.log("Starting reverse geocoding....")
-  reverseGeocode(toGeoJSON(await fetchData()))
-    .then(res => {
-      console.log(JSON.stringify(res, null, 2))
-      const time = performance.now() - startTime;
-      console.log("\nTime of execution: " + time / 100 + " seconds");
-    });
+  // Find id of Events already in Database
+  const eventsInDB = await Event.find({},'_id').then(ids => ids.map(id => id._id));
+  console.log("Events already in Database: " + eventsInDB.length);
+  // Fetch events from EONET API
+  const events = await fetchData();
+  console.log("Events from API: " + events.length);
+  // Filter for events not in the database
+  const newEvents = events.filter(event => !eventsInDB.includes(event.id));
+  console.log("Number of new events: " + newEvents.length);
+  // Converts the new events into a usable form
+  const convertedEvents = await reverseGeocode(toGeoJSON(newEvents));
 });
+
+

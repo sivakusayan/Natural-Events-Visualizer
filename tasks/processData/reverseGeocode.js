@@ -21,7 +21,12 @@ const getWaterBody = require('./getWaterBody');
 const reverseGeocodePoint = async ([longitude, latitude]) => {
   // Check if point is on water
   const waterBody = getWaterBody([latitude, longitude]);
-  if (waterBody) return waterBody;
+  if (waterBody) return {
+    city: "",
+    province: "",
+    country: "",
+    waters: waterBody,
+  };
 
   // If not on water, get location on land
   let location;
@@ -31,8 +36,9 @@ const reverseGeocodePoint = async ([longitude, latitude]) => {
     const data = res[0][0];
     location = {
       city: data.name,
-      province: data.admin1Code ? data.admin1Code.name : null,
+      province: data.admin1Code ? data.admin1Code.name : "",
       country: getCountryName(data.countryCode),
+      waters: "",
     };
   });
   return location;
@@ -74,9 +80,9 @@ const reverseGeocodeArray = (eventArray) => {
     } else if (event.geometry.type === 'LineString') {
       // If LineString, reverse geocode each point and attach location to event
       locationArray = [];
-      event.geometry.coordinates.forEach((coordinates) => {
-        locationArray.push(reverseGeocodePoint(coordinates));
-      });
+      for (let i = 0; i < event.geometry.coordinates; i++) {
+        locationArray.push(reverseGeocodePoint(event.geometry.coordinates[i]));
+      }
       newEventArray.push(
         Promise.all(locationArray)
           .then(locations => {

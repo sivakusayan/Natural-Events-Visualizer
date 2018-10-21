@@ -12,7 +12,7 @@ const fetch = require('node-fetch');
  * @returns {Array.<EventEonetJSON>} 
  * An array of EONET events.
  */
-const fetchData = async () => {
+const fetchData = () => {
   const eonetURL = 'https://eonet.sci.gsfc.nasa.gov/api/v2.1/events';
   return fetch(eonetURL)
     .then(response => response.json())

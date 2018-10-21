@@ -9,7 +9,7 @@
  */
 const inside = require('@turf/boolean-point-in-polygon').default;
 
-const waterBodies = require('../geoWater/oceans.json').features;
+const waterBodies = require('../../geoWater/oceans.json').features;
 
 /**
  * Takes in a point, and returns the body of water the point is in.

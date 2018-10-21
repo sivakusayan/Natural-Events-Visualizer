@@ -20,6 +20,7 @@ const toGeoJSONGeometry = (geometries) => {
       type: geometries[0].type,
       date: Date.parse(geometries[0].date),
       coordinates: geometries[0].coordinates,
+      location: '',
     };
   }
   // Else event type is LineString
@@ -27,6 +28,7 @@ const toGeoJSONGeometry = (geometries) => {
     type: 'LineString',
     date: geometries.map(geometry => Date.parse(geometry.date)),
     coordinates: geometries.map(geometry => geometry.coordinates),
+    location: '',
   };
 };
 

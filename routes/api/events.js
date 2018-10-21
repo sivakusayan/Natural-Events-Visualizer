@@ -67,21 +67,4 @@ router.get('/:id', (req, res) => {
     });
 });
 
-/**
- * Add new events into the database. 
- * @name POST api/items
- */
-router.post('/', (req, res) => {
-  const newEvent = new Event({
-    _id: req.body._id,
-    type: 'Feature',
-    geometry: req.body.geometry,
-    properties: req.body.properties,
-  });
-
-  newEvent.save()
-    .then(event => res.json(event))
-    .catch(err => res.json(err));
-});
-
 module.exports = router;

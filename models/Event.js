@@ -21,28 +21,28 @@ const EventLocation = new Schema({
   waters: {
     type: String,
     required: true,
-  }
-}, { _id : false })
+  },
+}, { _id: false });
 
 const EventGeometry = new Schema({
   date: {
-    type: Schema.Types.Mixed,
+    type: Schema.Types.Mixed, // Either Number or Number[]
     required: true,
   },
   type: {
     type: String,
     required: true,
-    enum: ['Point', 'LineString', 'Polygon']
+    enum: ['Point', 'LineString', 'Polygon'],
   },
   coordinates: {
     required: true,
     type: [],
   },
   location: {
-    type: Schema.Types.Mixed,
+    type: Schema.Types.Mixed, // Either EventLocation or EventLocation[]
     required: true,
-  }
-}, { _id : false });
+  },
+}, { _id: false });
 
 const EventSource = new Schema({
   id: {
@@ -53,7 +53,7 @@ const EventSource = new Schema({
     type: String,
     required: true,
   },
-}, { _id : false });
+}, { _id: false });
 
 const EventProperties = new Schema({
   title: {
@@ -63,7 +63,7 @@ const EventProperties = new Schema({
   description: String,
   sources: [EventSource],
   categories: [Number],
-}, { _id : false });
+}, { _id: false });
 
 const EventSchema = new Schema({
   _id: {

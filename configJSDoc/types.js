@@ -17,7 +17,7 @@
  * Array of geometries containing spacetime data
  */
 
- /**
+/**
  * @typedef {Object} EventGeoJSON
  * A GeoJSON implementation of EONET event data.
  * @property {String} _id 
@@ -27,12 +27,12 @@
  * @property {EventGeoJSONProperty} properties 
  * nonspacial properties of the event
  * @property {{ type: String, date: Number | Number[], coordinates: [], location: String | String[]}} geometry
- * A GeoJSON compatible geometry of event. Can be a Point, LineString, or Polygon. If type is Point or Polygon,
- * then the date and location are just singletons. If type is a LineString, then the date and location become
- * arrays.
+ * A GeoJSON compatible geometry of event. Can be a Point, LineString, or Polygon. 
+ * If type is Point or Polygon, then the date and location are just singletons. If type 
+ * is a LineString, then the date and location become arrays.
  */
 
- /**
+/**
   * @typedef {Object} EventGeoJSONProperty
   * An object contianing nonspacial properties of the event.
   * @property {String} title 

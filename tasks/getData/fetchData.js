@@ -8,9 +8,8 @@ const fetch = require('node-fetch');
 
 /**
  * Fetches the data from the EONET API.
- * @async
- * @returns {Array.<EventEonetJSON>} 
- * An array of EONET events.
+ * @returns {Promise<EventEonetJSON[]>} 
+ * A promise that resolves to an array of EONET events.
  */
 const fetchData = () => {
   const eonetURL = 'https://eonet.sci.gsfc.nasa.gov/api/v2.1/events';

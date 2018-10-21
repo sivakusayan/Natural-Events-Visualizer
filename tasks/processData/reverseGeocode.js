@@ -21,12 +21,14 @@ const getWaterBody = require('./getWaterBody');
 const reverseGeocodePoint = async ([longitude, latitude]) => {
   // Check if point is on water
   const waterBody = getWaterBody([latitude, longitude]);
-  if (waterBody) return {
-    city: "",
-    province: "",
-    country: "",
-    waters: waterBody,
-  };
+  if (waterBody) {
+    return {
+      city: '',
+      province: '',
+      country: '',
+      waters: waterBody,
+    };
+  }
 
   // If not on water, get location on land
   let location;
@@ -36,9 +38,9 @@ const reverseGeocodePoint = async ([longitude, latitude]) => {
     const data = res[0][0];
     location = {
       city: data.name,
-      province: data.admin1Code ? data.admin1Code.name : "",
+      province: data.admin1Code ? data.admin1Code.name : '',
       country: getCountryName(data.countryCode),
-      waters: "",
+      waters: '',
     };
   });
   return location;
@@ -63,33 +65,33 @@ const reverseGeocodeArray = (eventArray) => {
       // If Point, reverse geocode the point and attach location to event
       newEventArray.push(
         reverseGeocodePoint(event.geometry.coordinates)
-          .then(location => {
+          .then((location) => {
             event.geometry.location = location;
             return event;
-          })
+          }),
       );
     } else if (event.geometry.type === 'Polygon') {
       // If Polygon, reverse geocode the average of the points and attach location to event
       newEventArray.push(
         reverseGeocodePoint(pointMean(event.geometry.coordinates))
-        .then(location => {
-          event.geometry.location = location;
-          return event;
-        })
-      )
+          .then((location) => {
+            event.geometry.location = location;
+            return event;
+          }),
+      );
     } else if (event.geometry.type === 'LineString') {
       // If LineString, reverse geocode each point and attach location to event
-      locationArray = [];
-      for (let i = 0; i < event.geometry.coordinates; i++) {
+      const locationArray = [];
+      for (let j = 0; j < event.geometry.coordinates; j += 1) {
         locationArray.push(reverseGeocodePoint(event.geometry.coordinates[i]));
       }
       newEventArray.push(
         Promise.all(locationArray)
-          .then(locations => {
+          .then((locations) => {
             event.geometry.location = locations;
             return event;
-          })
-      )
+          }),
+      );
     }
   }
   return Promise.all(newEventArray);

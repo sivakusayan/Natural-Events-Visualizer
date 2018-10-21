@@ -3,27 +3,11 @@
  */
 const geocoder = require('local-reverse-geocoder');
 
+const pointMean = require('../../utils/pointMean');
 const getCountryName = require('./countryName');
 const getWaterBody = require('./getWaterBody');
 
-/**
- * Takes an array of points and returns the point that has
- * averaged coordinates.
- * 
- * @param {Number[][]} points 
- * An array of points in two dimensional space.
- * 
- * @returns
- * The average of the points
- */
-const pointMean = (points) => {
-  let [xSum, ySum] = [0, 0];
-  points.forEach((point) => {
-    xSum += point[0];
-    ySum += point[1];
-  });
-  return [xSum / points.length, ySum / points.length];
-};
+// ADJUST JS DOCS FOR CHANGED TYPE
 
 /**
  * Takes a single point and returns the reverse geocoded location.
@@ -35,10 +19,11 @@ const pointMean = (points) => {
  * The reverse geocoded location of the point
  */
 const reverseGeocodePoint = async ([longitude, latitude]) => {
+  // Check if point is on water
   const waterBody = getWaterBody([latitude, longitude]);
   if (waterBody) return waterBody;
 
-  // If not in ocean, do typical lookup
+  // If not on water, get location on land
   let location;
   geocoder.lookUp({ latitude, longitude }, (err, res) => {
     if (err) console.log(err);
@@ -57,38 +42,51 @@ const reverseGeocodePoint = async ([longitude, latitude]) => {
  * Takes an array of EONET GeoJSON objects, and attaches the reverse-geocoded 
  * location to every geometry of each object. 
  * 
- * @param {Array.<EventGeoJSON>} geoJSON
+ * @param {Array.<EventGeoJSON>} eventArray
  * An array of EONET GeoJSON objects. 
+ * 
+ * @return {Array.<Promise>}
+ * An array of promises resolving to the modified EONET GeoJSON objects with a 
+ * new location attribute in their geometry.
  */
-const reverseGeocode = async (geoJSON) => {
-  for (let i = 0; i < geoJSON.length; i += 1) {
-    const event = geoJSON[i];
+const reverseGeocodeArray = (eventArray) => {
+  const newEventArray = [];
+  for (let i = 0; i < eventArray.length; i += 1) {
+    const event = JSON.parse(JSON.stringify(eventArray[i]));
     if (event.geometry.type === 'Point') {
       // If Point, reverse geocode the point and attach location to event
-      reverseGeocodePoint(event.geometry.coordinates)
-        .then((location) => {
-          event.geometry.location = location;
-          console.log(event);
-        });
+      newEventArray.push(
+        reverseGeocodePoint(event.geometry.coordinates)
+          .then(location => {
+            event.geometry.location = location;
+            return event;
+          })
+      );
     } else if (event.geometry.type === 'Polygon') {
       // If Polygon, reverse geocode the average of the points and attach location to event
-      reverseGeocodePoint(pointMean(event.geometry.coordinates))
-        .then((location) => {
+      newEventArray.push(
+        reverseGeocodePoint(pointMean(event.geometry.coordinates))
+        .then(location => {
           event.geometry.location = location;
-          console.log(event.geometry);
-        });
+          return event;
+        })
+      )
     } else if (event.geometry.type === 'LineString') {
       // If LineString, reverse geocode each point and attach location to event
-      event.geometry.location = [];
+      locationArray = [];
       event.geometry.coordinates.forEach((coordinates) => {
-        reverseGeocodePoint(coordinates)
-          .then((location) => {
-            event.geometry.location.push(location);
-            console.log(event.geometry);
-          });
+        locationArray.push(reverseGeocodePoint(coordinates));
       });
+      newEventArray.push(
+        Promise.all(locationArray)
+          .then(locations => {
+            event.geometry.location = locations;
+            return event;
+          })
+      )
     }
   }
+  return Promise.all(newEventArray);
 };
 
-module.exports = reverseGeocode;
+module.exports = reverseGeocodeArray;

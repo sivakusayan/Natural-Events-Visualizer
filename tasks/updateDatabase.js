@@ -4,6 +4,7 @@
  */
 const geocoder = require('local-reverse-geocoder');
 const path = require('path');
+const { performance } = require('perf_hooks');
 
 const fetchData = require('./getData/fetchData');
 const toGeoJSON = require('./processData/toGeoJSON');
@@ -19,5 +20,12 @@ geocoder.init({
   // Path of geographical data used to reverse geocode
   dumpDirectory: path.join(__dirname, 'geoLand'),
 }, async () => {
-  reverseGeocode(toGeoJSON(await fetchData()));
+  const startTime = performance.now();
+  console.log("Starting reverse geocoding....")
+  reverseGeocode(toGeoJSON(await fetchData()))
+    .then(res => {
+      console.log(JSON.stringify(res, null, 2))
+      const time = performance.now() - startTime;
+      console.log("\nTime of execution: " + time / 100 + " seconds");
+    });
 });

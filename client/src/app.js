@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import EventMap from './components/EventMap';
+import EventMap from './components/Map/EventMap';
+import Search from './components/Search/index'
 import './styles/styles.scss';
 
-ReactDOM.render(<EventMap />, document.getElementById('app'));
+ReactDOM.render(<Search />, document.getElementById('app'));

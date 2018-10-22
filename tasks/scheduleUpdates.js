@@ -34,7 +34,7 @@ const updateDatabase = async () => {
  * Starts the reverse geocoding machinery, and then schedules the 
  * updateDatabase function to everyday at midnight.
  */
-const startUpdates = () => {
+const scheduleUpdates = () => {
   geocoder.init({
     // Disable download of geographical data we don't need
     load: {
@@ -49,4 +49,4 @@ const startUpdates = () => {
   });
 };
 
-module.exports = startUpdates;
+module.exports = scheduleUpdates;

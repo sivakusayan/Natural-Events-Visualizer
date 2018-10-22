@@ -6,6 +6,7 @@ const express = require('express');
 
 const mongoose = require('./db/mongoose');
 const events = require('./routes/api/events');
+const scheduleUpdates = require('./tasks/scheduleUpdates');
 
 const app = express();
 
@@ -17,3 +18,5 @@ app.use('/api/events', events);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server started on port ${port}!`));
+
+scheduleUpdates();

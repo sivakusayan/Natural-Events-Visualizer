@@ -27,7 +27,7 @@ const roundNumber = (number, precision) => {
  * @param {Number[]} points 
  * A point in two dimensional space.
  * @param {Number} precision
- * THe number of decimal points to round to.
+ * The number of decimal points to round to.
  * 
  * @returns
  * The rounded point

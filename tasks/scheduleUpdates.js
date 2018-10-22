@@ -1,14 +1,15 @@
 /**
  * @fileoverview Runs a function daily to check for any new events from the Eonet API. If there are,
- * insert them into the database.
+ * process and insert them into the database.
  */
 const geocoder = require('local-reverse-geocoder');
 const path = require('path');
 const schedule = require('node-schedule');
 
 const fetchData = require('./getData/fetchData');
-const toGeoJSON = require('./processData/toGeoJSON');
-const reverseGeocode = require('./processData/reverseGeocode');
+const roundEvents = require('./processData/roundEvents')
+const toGeoJSONEvents = require('./processData/toGeoJSONEvents');
+const reverseGeocodeEvents = require('./processData/reverseGeocodeEvents');
 
 const mongoose = require('../db/mongoose');
 const Event = require('../models/Event');
@@ -25,9 +26,14 @@ const updateDatabase = async () => {
   const events = await fetchData();
   // Filter for events not in the database
   const newEvents = events.filter(event => !eventsInDB.includes(event.id));
-  // Converts the new events into a usable form
-  const convertedEvents = await reverseGeocode(toGeoJSON(newEvents));
-  Event.insertMany(convertedEvents);
+  // Round GeoJSON coordinates to optimize MapBox performance
+  const roundedEvents = roundEvents(newEvents);
+  // Converts the new events into valid GeoJSON
+  const geoJSONEvents = toGeoJSONEvents(roundedEvents);
+  // Attach the reverse geocoded location to each event's geometry
+  const reverseGeocodedEvents = await reverseGeocodeEvents(geoJSONEvents);
+  // Insert processed events into database
+  Event.insertMany(reverseGeocodedEvents);
 };
 
 /**

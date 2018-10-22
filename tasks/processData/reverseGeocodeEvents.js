@@ -57,13 +57,13 @@ const reverseGeocodePoint = async ([longitude, latitude]) => {
  * An array of promises resolving to the modified EONET GeoJSON objects with a 
  * new location attribute in their geometry.
  */
-const reverseGeocodeArray = (eventArray) => {
-  const newEventArray = [];
+const reverseGeocodeEvents = (eventArray) => {
+  const reverseGeocodedEvents = [];
   for (let i = 0; i < eventArray.length; i += 1) {
     const event = JSON.parse(JSON.stringify(eventArray[i]));
     if (event.geometry.type === 'Point') {
       // If Point, reverse geocode the point and attach location to event
-      newEventArray.push(
+      reverseGeocodedEvents.push(
         reverseGeocodePoint(event.geometry.coordinates)
           .then((location) => {
             event.geometry.location = location;
@@ -72,7 +72,7 @@ const reverseGeocodeArray = (eventArray) => {
       );
     } else if (event.geometry.type === 'Polygon') {
       // If Polygon, reverse geocode the average of the points and attach location to event
-      newEventArray.push(
+      reverseGeocodedEvents.push(
         reverseGeocodePoint(pointMean(event.geometry.coordinates))
           .then((location) => {
             event.geometry.location = location;
@@ -85,7 +85,7 @@ const reverseGeocodeArray = (eventArray) => {
       for (let j = 0; j < event.geometry.coordinates; j += 1) {
         locationArray.push(reverseGeocodePoint(event.geometry.coordinates[i]));
       }
-      newEventArray.push(
+      reverseGeocodedEvents.push(
         Promise.all(locationArray)
           .then((locations) => {
             event.geometry.location = locations;
@@ -94,7 +94,7 @@ const reverseGeocodeArray = (eventArray) => {
       );
     }
   }
-  return Promise.all(newEventArray);
+  return Promise.all(reverseGeocodedEvents);
 };
 
-module.exports = reverseGeocodeArray;
+module.exports = reverseGeocodeEvents;

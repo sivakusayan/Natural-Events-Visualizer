@@ -39,7 +39,7 @@ const toGeoJSONGeometry = (geometries) => {
  * @returns {Array.<EventGeoJSON>} 
  * A GeoJSON array containing EONET data.
  */
-const toGeoJSON = eventArray => eventArray.map(event => ({
+const toGeoJSONEvents = eventArray => eventArray.map(event => ({
   _id: event.id,
   type: 'Feature',
   geometry: toGeoJSONGeometry(event.geometries),
@@ -51,4 +51,4 @@ const toGeoJSON = eventArray => eventArray.map(event => ({
   },
 }));
 
-module.exports = toGeoJSON;
+module.exports = toGeoJSONEvents;

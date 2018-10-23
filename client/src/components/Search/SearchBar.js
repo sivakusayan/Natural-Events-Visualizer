@@ -50,10 +50,6 @@ export default class SearchBar extends React.Component {
           value={searchValue}
           onChange={this.onSearchChange}
         />
-        <h1>
-          Current query:
-          {searchQuery}
-        </h1>
       </form>
     );
   }

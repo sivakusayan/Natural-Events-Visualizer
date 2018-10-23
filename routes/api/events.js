@@ -18,7 +18,7 @@ const router = express.Router();
  * @param long The longitude of the search center          || ~~ If searching by location,
  * @param lat The latitude of the search center        || ~~ both lat and long need to be
  * @param radius The radius of the search. Defaults      || ~~ defined.
- *               to 100 miles.                
+ *               to 100 kilometers.            
  * 
  * @param categoryID Filters for events of this category
  * 
@@ -37,7 +37,7 @@ router.get('/', (req, res) => {
           type: 'Point',
           coordinates: [req.query.long, req.query.lat],
         },
-        $maxDistance: 1000000,
+        $maxDistance: req.query.radius || 1000000,
       },
     };
   }

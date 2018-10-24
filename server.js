@@ -3,6 +3,7 @@
  */
 
 const express = require('express');
+const cors = require('cors');
 
 const mongoose = require('./db/mongoose');
 const events = require('./routes/api/events');
@@ -10,8 +11,14 @@ const scheduleUpdates = require('./tasks/scheduleUpdates');
 
 const app = express();
 
-// Bodyparser Middleware
+// Middleware
 app.use(express.json());
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Temporarily enable for testing REMOVE IN PRODUCTION
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+app.use(cors());
 
 // Use Routes
 app.use('/api/events', events);

@@ -13,7 +13,7 @@ const router = express.Router();
  * search using the filters listed below.
  * @name GET api/items
  * 
- * @param title Filters for events that contain <code>name</code> in their title.
+ * @param title Filters for events that contain this parameter in their title.
  * 
  * @param long The longitude of the search center          || ~~ If searching by location,
  * @param lat The latitude of the search center        || ~~ both lat and long need to be

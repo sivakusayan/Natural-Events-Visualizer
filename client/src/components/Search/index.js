@@ -1,11 +1,11 @@
 import React from 'react';
 
-import SearchBar from './SearchBar';
+import SearchBarContainer from '../../containers/Search/SearchBarContainer';
 import SearchResults from './SearchResults';
 
 export default () => (
   <div>
-    <SearchBar />
+    <SearchBarContainer />
     <SearchResults />
   </div>
 );

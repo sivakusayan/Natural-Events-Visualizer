@@ -8,7 +8,7 @@
  * @param {EventGeoJSON[]} events 
  * An array of EventGeoJSON events
  */
-export const setEvents = (events) => ({
+export default events => ({
   type: 'SET_EVENTS',
   events,
 });

@@ -1,5 +1,5 @@
 /**
- * @fileoverview The reducer for the state's loading field.
+ * @fileoverview The reducer for the state's error tag. 
  */
 
 const loadingReducerDefaultState = false;
@@ -7,16 +7,16 @@ const loadingReducerDefaultState = false;
 export default (state = loadingReducerDefaultState, action) => {
   switch (action.type) {
     /**
-     * Set the loading tag to true.
+     * Set the error tag to true.
      */
-    case 'START_LOADING':
+    case 'SET_ERROR':
       return true;
     /**
-     * Set the loading tag to false.
+     * Set the error tag to false.
      */
-    case 'DONE_LOADING':
+    case 'REMOVE_ERROR':
       return false;
     default:
       return state;
   }
-};
+}

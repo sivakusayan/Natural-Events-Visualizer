@@ -15,4 +15,4 @@ export default (state = eventsReducerDefaultState, action) => {
     default:
       return state;
   }
-}
+};

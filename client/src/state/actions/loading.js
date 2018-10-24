@@ -1,6 +1,5 @@
 /**
- * @fileoverview Controls the loading tag for the application, making it possible
- * for the app to use spinners for user feedback.
+ * @fileoverview Controls the loading tag for the application.
  */
 
 /**

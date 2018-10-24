@@ -40,7 +40,7 @@ const toGeoJSONGeometry = (geometries) => {
  * A GeoJSON array containing EONET data.
  */
 const toGeoJSONEvents = eventArray => eventArray.map(event => ({
-  _id: event.id,
+  _id: event.id.split('_')[1], // Splits EONET_2912 into 2912 to eliminate redundancy
   type: 'Feature',
   geometry: toGeoJSONGeometry(event.geometries),
   properties: {

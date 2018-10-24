@@ -1,7 +1,7 @@
 /** 
  * @typedef {Object} EventEonetJSON
  * The EONET API model for event data.
- * @property {String} id 
+ * @property {Number} id 
  * ID of the event
  * @property {String} title 
  * Name of the event

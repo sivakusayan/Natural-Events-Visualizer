@@ -1,3 +1,8 @@
+/**
+ * @fileoverview This component controls how a list of search results is
+ * rendered.
+ */
+
 import React from 'react';
 
 import SearchResult from './SearchResult';

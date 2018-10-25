@@ -1,3 +1,8 @@
+/**
+ * @fileoverview This component implements the event rendering logic for our application. 
+ * It allows the SearchResults component to have access to the events in the state.
+ */
+
 import React from 'react';
 import { connect } from 'react-redux';
 

@@ -2,6 +2,8 @@
  * @fileoverview The reducer for the state's loading field.
  */
 
+import { START_LOADING, DONE_LOADING } from '../actionTypes/loadingActionTypes';
+
 const loadingReducerDefaultState = false;
 
 export default (state = loadingReducerDefaultState, action) => {
@@ -9,12 +11,12 @@ export default (state = loadingReducerDefaultState, action) => {
     /**
      * Set the loading tag to true.
      */
-    case 'START_LOADING':
+    case START_LOADING:
       return true;
     /**
      * Set the loading tag to false.
      */
-    case 'DONE_LOADING':
+    case DONE_LOADING:
       return false;
     default:
       return state;

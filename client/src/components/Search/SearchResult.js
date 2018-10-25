@@ -1,3 +1,8 @@
+/**
+ * @fileoverview This component controls how a single search result
+ * is rendered.
+ */
+
 import React from 'react';
 
 export default ({ event }) => (

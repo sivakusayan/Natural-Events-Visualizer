@@ -1,3 +1,9 @@
+/**
+ * @fileoverview This component implements the searchbar logic for our application. It sends 
+ * queries from a debounced input to make sure the server isn't flooded
+ * with unnecessary requests.
+ */
+
 import React from 'react';
 import { debounce } from 'throttle-debounce';
 import { connect } from 'react-redux';
@@ -7,12 +13,6 @@ import { startLoading, doneLoading } from '../../state/actions/loading';
 import { setError, removeError } from '../../state/actions/error';
 
 import SearchBar from '../../components/Search/SearchBar';
-
-/**
- * This component implements the searchbar logic for our application. It sends 
- * queries from a debounced input to make sure the server isn't flooded
- * with unnecessary requests.
- */
 
 const mapDispatchToProps = dispatch => ({
   /**

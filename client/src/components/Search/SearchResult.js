@@ -5,14 +5,16 @@
 
 import React from 'react';
 
-export default ({ event }) => (
+import Event from '../../propTypes/Event';
+
+const SearchResult = ({ event }) => (
   <li>
     <div className='id'>
       Event ID:
       {event._id}
     </div>
     <div className='title'>
-      Title: 
+      Title:
       {event.properties.title}
     </div>
     <div className='category'>
@@ -25,3 +27,12 @@ export default ({ event }) => (
     </div>
   </li>
 );
+
+SearchResult.propTypes = {
+  /**
+   * The event data to render with.
+   */
+  event: Event.isRequired,
+};
+
+export default SearchResult;

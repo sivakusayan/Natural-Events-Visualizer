@@ -3,14 +3,26 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { debounce } from 'throttle-debounce';
 
-export default ({ debouncedSendTitleQuery }) => (
+const Searchbar = ({ debouncedSendQuery }) => (
   <form>
     <input
       type='search'
       placeholder='Search here'
-      onChange={e => debouncedSendTitleQuery(e.target.value)}
+      onChange={e => debouncedSendQuery(e.target.value)}
     />
   </form>
 );
+
+Searchbar.propTypes = {
+  /**
+   * A debounced function that makes a request
+   * to the API. 
+   * @see SearchBarContainer in ../../containers/Search/SearchBarContainer
+   */
+  debouncedSendQuery: PropTypes.func.isRequired,
+};
+
+export default Searchbar;

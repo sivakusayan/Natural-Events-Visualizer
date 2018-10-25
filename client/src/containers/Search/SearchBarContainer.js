@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
    * Sends a search query by title from the input. The search is
    * debounced by 0.5 seconds.
    */
-  debouncedSendTitleQuery: debounce(500, (title) => {
+  debouncedSendQuery: debounce(500, (title) => {
     // Remove any lingering error tags
     dispatch(removeError());
     // Set the loading tag to true

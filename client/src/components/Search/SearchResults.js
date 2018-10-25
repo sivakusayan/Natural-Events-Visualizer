@@ -4,11 +4,26 @@
  */
 
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import SearchResult from './SearchResult';
 
-export default ({ events }) => (
+import Event from '../../propTypes/Event';
+
+const SearchResults = ({ events = [] }) => (
   <div>
     {events.map(event => <SearchResult key={event._id} event={event} />)}
   </div>
 );
+
+SearchResults.propTypes = {
+  /**
+   * The list of events to render.
+   */
+  events: PropTypes.arrayOf(Event),
+};
+
+SearchResults.defaultProps = {
+  events: [],
+};
+
+export default SearchResults;

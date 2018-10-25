@@ -20,7 +20,7 @@
 /**
  * @typedef {Object} EventGeoJSON
  * A GeoJSON implementation of EONET event data.
- * @property {String} _id 
+ * @property {Number} _id 
  * ID for each event
  * @property {String} type 
  * GeoJSON feature type

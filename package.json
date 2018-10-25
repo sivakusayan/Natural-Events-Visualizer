@@ -10,7 +10,7 @@
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "yarn --cwd client serve",
-    "dev": "concurrently \"yarn server\" \"yarn client\""
+    "dev": "concurrently \"yarn start\" \"yarn client\""
   },
   "dependencies": {
     "@turf/boolean-point-in-polygon": "^6.0.1",

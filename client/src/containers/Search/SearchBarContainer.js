@@ -30,7 +30,7 @@ const mapDispatchToProps = dispatch => ({
       .then(events => dispatch(setEvents(events)))
       // Catch in fetch only handles 'network errors'. Handling of errors
       // will be done in the above codeblock
-      .catch(err => console.log(err))
+      .catch(err => dispatch(setError()))
       .finally(dispatch(doneLoading()));
   }),
 });

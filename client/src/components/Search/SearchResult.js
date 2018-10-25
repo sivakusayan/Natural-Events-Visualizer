@@ -16,7 +16,7 @@ export default ({ event }) => (
     </div>
     <div className='location'>
       Location:
-      {event.geometry.location}
+      {event.geometry.location.city}
     </div>
   </li>
 );

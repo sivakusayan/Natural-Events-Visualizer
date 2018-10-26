@@ -1,6 +1,5 @@
 /**
- * @fileoverview The reducer for the state's event field. Will handle
- * parsing of actions related to events.
+ * @fileoverview The reducer for the state's event field. 
  */
 import { SET_EVENTS } from '../actionTypes/eventActionTypes';
 

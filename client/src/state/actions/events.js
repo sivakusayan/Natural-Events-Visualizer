@@ -1,5 +1,5 @@
 /**
- * @fileoverview Generates the actions for manipulating events in the application.
+ * @fileoverview Generates the action to set what events are shown.
  */
 
 import { SET_EVENTS } from '../actionTypes/eventActionTypes';

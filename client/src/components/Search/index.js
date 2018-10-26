@@ -10,9 +10,12 @@ import React from 'react';
 import SearchBarContainer from '../../containers/Search/SearchBarContainer';
 import SearchResultsContainer from '../../containers/Search/SearchResultsContainer';
 
-export default () => (
+const Search = () => (
   <div>
     <SearchBarContainer />
+    <Filters />
     <SearchResultsContainer />
   </div>
 );
+
+export default Search;

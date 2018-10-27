@@ -41,7 +41,7 @@ router.get('/', (req, res) => {
       },
     };
   }
-  if (req.query.categoryID) query['properties.categories'] = req.query.categoryID;
+  if (req.query.categoryID) query['properties.categories'] = { $in: req.query.categoryID };
   if (req.query.startDate) {
     query['geometry.date'] = { $gte: req.query.startDate };
   }

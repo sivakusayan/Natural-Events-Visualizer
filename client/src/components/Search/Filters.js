@@ -4,7 +4,7 @@
 
 import React from 'react';
 
-const Filters = () => (
+const Filters = ({ filters }) => (
   <h>Hi</h1>
 );
 

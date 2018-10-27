@@ -5,7 +5,7 @@
 const schedule = require('node-schedule');
 
 const fetchData = require('./getData/fetchData');
-const roundEvents = require('./processData/roundEvents')
+const roundEvents = require('./processData/roundEvents');
 const toGeoJSONEvents = require('./processData/toGeoJSONEvents');
 const reverseGeocodeEvents = require('./processData/reverseGeocodeEvents');
 
@@ -39,8 +39,15 @@ const updateDatabase = async () => {
  * updateDatabase function to everyday at midnight.
  */
 const scheduleUpdates = () => {
-  // schedule.scheduleJob('0 0 * * *', updateDatabase);
-  updateDatabase();
+  schedule.scheduleJob('0 0 * * *', () => {
+    try {
+      // Try to update database
+      updateDatabase();
+    } catch (err) {
+      // If any errors are found (API Connections, etc.)
+      // give up and try the next day.
+    }
+  });
 };
 
 module.exports = scheduleUpdates;

@@ -2,12 +2,12 @@
  * @fileoverview Handles batch reverse geocoding for GeoJSON EONET events.
  */
 // const geocoder = require('local-reverse-geocoder');
-const fetch = require('node-fetch');
-
+const fetchRetry = require('../../utils/fetchRetry');
 const pointMean = require('../../utils/pointMean');
 const getWaterBody = require('./getWaterBody');
 
 const key = require('../../config/apiKey');
+
 /**
  * Takes a single point and returns the reverse geocoded location. If the
  * reverse geocoding API finds a location, we return that value. Otherwise, 
@@ -21,21 +21,19 @@ const key = require('../../config/apiKey');
  */
 const reverseGeocodePoint = ([longitude, latitude]) => {
   const apiURL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${key}`;
-  return fetch(apiURL)
+  const assert = data => data.status === 'OK' || data.status === 'ZERO_RESULTS';
+  return fetchRetry(apiURL, assert)
     .then(response => response.json())
     .then((data) => {
       if (data.status === 'ZERO_RESULTS') {
         // If location isn't on land, get the water body
         return getWaterBody([longitude, latitude]);
       }
-      if (data.status === 'UNKNOWN_ERROR') {
-        // According to documentation at https://developers.google.com/maps/documentation/geocoding/intro#reverse-status,
-        // this is due to a server error, and may work if we try again.
-      }
       return parseLocation(data.results[0].addressComponents);
     })
     .catch((err) => {
-      
+      // Give up and try updating the next day
+      throw err;
     });
 };
 

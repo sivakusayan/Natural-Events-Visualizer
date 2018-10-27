@@ -4,7 +4,7 @@
  * at 'utils/reverseGeocode.js', where the coordinates will be reverse geocoded to give each
  * event a named location.
  */
-const fetch = require('node-fetch');
+const fetchRetry = require('../../utils/fetchRetry');
 
 /**
  * Fetches the data from the EONET API.
@@ -13,14 +13,12 @@ const fetch = require('node-fetch');
  */
 const fetchData = () => {
   const eonetURL = 'https://eonet.sci.gsfc.nasa.gov/api/v2.1/events';
-  return fetch(eonetURL)
+  return fetchRetry(eonetURL)
     .then(response => response.json())
     .then(data => data.events)
     .catch((err) => {
-      console.log('We seem to have trouble connecting to the API.');
+      throw err;
     });
 };
-
-fetchData();
 
 module.exports = fetchData;

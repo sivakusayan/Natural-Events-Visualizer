@@ -17,12 +17,10 @@ const fetchData = () => {
     .then(response => response.json())
     .then(data => data.events)
     .catch((err) => {
-      if (err.code === 'ENOTFOUND') {
-        console.log('The URL is incorrect: API data cannot be fetched.');
-      } else {
-        console.log('Sorry, something seems to have gone wrong.');
-      }
+      console.log('We seem to have trouble connecting to the API.');
     });
 };
+
+fetchData();
 
 module.exports = fetchData;

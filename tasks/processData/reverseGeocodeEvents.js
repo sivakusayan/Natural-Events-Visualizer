@@ -1,16 +1,17 @@
 /**
  * @fileoverview Handles batch reverse geocoding for GeoJSON EONET events.
  */
-const geocoder = require('local-reverse-geocoder');
+// const geocoder = require('local-reverse-geocoder');
+const fetch = require('node-fetch');
 
 const pointMean = require('../../utils/pointMean');
-const getCountryName = require('./countryName');
 const getWaterBody = require('./getWaterBody');
 
-// ADJUST JS DOCS FOR CHANGED TYPE
-
+const key = require('../../config/apiKey');
 /**
- * Takes a single point and returns the reverse geocoded location.
+ * Takes a single point and returns the reverse geocoded location. If the
+ * reverse geocoding API finds a location, we return that value. Otherwise, 
+ * the point is on water, and so we return its water body instead.
  * 
  * @param {[Number[]]} point
  * A point on the globe. Point is of the form [Longitude, Latitude].
@@ -18,32 +19,24 @@ const getWaterBody = require('./getWaterBody');
  * @returns
  * The reverse geocoded location of the point
  */
-const reverseGeocodePoint = async ([longitude, latitude]) => {
-  // Check if point is on water
-  const waterBody = getWaterBody([latitude, longitude]);
-  if (waterBody) {
-    return {
-      city: '',
-      province: '',
-      country: '',
-      waters: waterBody,
-    };
-  }
-
-  // If not on water, get location on land
-  let location;
-  geocoder.lookUp({ latitude, longitude }, (err, res) => {
-    if (err) console.log(err);
-
-    const data = res[0][0];
-    location = {
-      city: data.name,
-      province: data.admin1Code ? data.admin1Code.name : '',
-      country: getCountryName(data.countryCode),
-      waters: '',
-    };
-  });
-  return location;
+const reverseGeocodePoint = ([longitude, latitude]) => {
+  const apiURL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${key}`;
+  return fetch(apiURL)
+    .then(response => response.json())
+    .then((data) => {
+      if (data.status === 'ZERO_RESULTS') {
+        // If location isn't on land, get the water body
+        return getWaterBody([longitude, latitude]);
+      }
+      if (data.status === 'UNKNOWN_ERROR') {
+        // According to documentation at https://developers.google.com/maps/documentation/geocoding/intro#reverse-status,
+        // this is due to a server error, and may work if we try again.
+      }
+      return parseLocation(data.results[0].addressComponents);
+    })
+    .catch((err) => {
+      
+    });
 };
 
 /**
@@ -82,8 +75,8 @@ const reverseGeocodeEvents = (eventArray) => {
     } else if (event.geometry.type === 'LineString') {
       // If LineString, reverse geocode each point and attach location to event
       const locationArray = [];
-      for (let j = 0; j < event.geometry.coordinates; j += 1) {
-        locationArray.push(reverseGeocodePoint(event.geometry.coordinates[i]));
+      for (let j = 0; j < event.geometry.coordinates.length; j += 1) {
+        locationArray.push(reverseGeocodePoint(event.geometry.coordinates[j]));
       }
       reverseGeocodedEvents.push(
         Promise.all(locationArray)

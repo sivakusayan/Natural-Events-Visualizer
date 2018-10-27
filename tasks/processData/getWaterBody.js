@@ -1,5 +1,5 @@
 /**
- * @fileoverview Provides support for local-reverse-geocoder. As the library
+ * @fileoverview Provides support for reverse geocoding API. As the API
  * only provides accurate reverse geooding for locations that are on land,
  * this function aids accuracy by checking if a location is on water.
  * 
@@ -9,7 +9,7 @@
  */
 const inside = require('@turf/boolean-point-in-polygon').default;
 
-const waterBodies = require('../../geoWater/oceans.json').features;
+const waterBodies = require('../../geoDataSets/waters.json').features;
 
 /**
  * Takes in a point, and returns the body of water the point is in.
@@ -36,5 +36,7 @@ const getWaterBody = (point) => {
   // Else return null
   return null;
 };
+
+console.log(getWaterBody([-73.323, 41.0114]));
 
 module.exports = getWaterBody;

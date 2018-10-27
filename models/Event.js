@@ -6,22 +6,23 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const EventLocation = new Schema({
+  // The first three properties are used if event is on significant land.
   city: {
     type: String,
-    required: true,
   },
   province: {
     type: String,
-    required: true,
   },
   country: {
     type: String,
-    required: true,
   },
+  // Else these two properties if event is on water/minor island.
   waters: {
     type: String,
-    required: true,
   },
+  onIsland: {
+    type: Boolean,
+  }
 }, { _id: false });
 
 const EventGeometry = new Schema({

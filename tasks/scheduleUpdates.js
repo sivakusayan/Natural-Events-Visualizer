@@ -2,8 +2,6 @@
  * @fileoverview Runs a function daily to check for any new events from the Eonet API. If there are,
  * process and insert them into the database.
  */
-const geocoder = require('local-reverse-geocoder');
-const path = require('path');
 const schedule = require('node-schedule');
 
 const fetchData = require('./getData/fetchData');
@@ -41,18 +39,8 @@ const updateDatabase = async () => {
  * updateDatabase function to everyday at midnight.
  */
 const scheduleUpdates = () => {
-  geocoder.init({
-    // Disable download of geographical data we don't need
-    load: {
-      admin2: false,
-      admin3and4: false,
-      alternateNames: false,
-    },
-    // Path of geographical data used to reverse geocode
-    dumpDirectory: path.join(__dirname, '../geoLand'),
-  }, () => {
-    schedule.scheduleJob('0 0 * * *', updateDatabase);
-  });
+  // schedule.scheduleJob('0 0 * * *', updateDatabase);
+  updateDatabase();
 };
 
 module.exports = scheduleUpdates;

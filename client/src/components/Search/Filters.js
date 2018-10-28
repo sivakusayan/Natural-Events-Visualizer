@@ -4,8 +4,12 @@
 
 import React from 'react';
 
-const Filters = ({ filters }) => (
-  <h>Hi</h1>
+const Filters = () => (
+  <form>
+    <input type='number' id='latitude' />
+    <input type='number' id='longitude' />
+    <input type='number' id='radius' />
+  </form>
 );
 
 export default Filters;

@@ -4,10 +4,10 @@
  * rendered to the user. The results can be filtered if the user wishes.
  */
 
-
 import React from 'react';
 
 import SearchBarContainer from '../../containers/Search/SearchBarContainer';
+import Filters from './Filters';
 import SearchResultsContainer from '../../containers/Search/SearchResultsContainer';
 
 const Search = () => (

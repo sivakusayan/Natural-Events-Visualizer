@@ -3,12 +3,15 @@
  */
 
 import {
-  SET_LOCATION, SET_RADIUS, SET_CATEGORIES, SET_START_DATE, SET_END_DATE,
+  SET_LATITUDE, SET_LONGITUDE, SET_RADIUS, SET_CATEGORIES, SET_START_DATE, SET_END_DATE,
 } from '../actionTypes/filtersActionTypes';
 
 // If any properties are not undefined, build new query accordingly
 const filtersDefaultState = {
-  location: undefined,
+  location: {
+    latitude: undefined,
+    longitude: undefined,
+  },
   radius: undefined,
   categories: undefined,
   startDate: undefined,
@@ -17,10 +20,21 @@ const filtersDefaultState = {
 
 export default (state = filtersDefaultState, action) => {
   switch (action.type) {
-    case SET_LOCATION:
+    case SET_LATITUDE:
       return {
         ...state,
-        location: action.location,
+        location: {
+          ...state.location,
+          latitude: action.latitude,
+        },
+      };
+    case SET_LONGITUDE:
+      return {
+        ...state,
+        location: {
+          ...state.location,
+          longitude: action.longitude,
+        },
       };
     case SET_RADIUS:
       return {

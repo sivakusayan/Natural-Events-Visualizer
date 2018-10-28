@@ -3,7 +3,6 @@
  * It allows the SearchResults component to have access to the events in the state.
  */
 
-import React from 'react';
 import { connect } from 'react-redux';
 
 import SearchResults from '../../components/Search/SearchResults';

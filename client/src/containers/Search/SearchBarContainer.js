@@ -4,7 +4,6 @@
  * with unnecessary requests.
  */
 
-import React from 'react';
 import { debounce } from 'throttle-debounce';
 import { connect } from 'react-redux';
 
@@ -30,7 +29,7 @@ const mapDispatchToProps = dispatch => ({
       .then(events => dispatch(setEvents(events)))
       // Catch in fetch only handles 'network errors'. Handling of errors
       // will be done in the above codeblock
-      .catch(err => dispatch(setError()))
+      .catch(() => dispatch(setError()))
       .finally(dispatch(doneLoading()));
   }),
 });

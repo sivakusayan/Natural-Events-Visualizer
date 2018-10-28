@@ -3,21 +3,31 @@
  */
 
 import {
-  SET_LOCATION, SET_RADIUS, SET_CATEGORIES, SET_START_DATE, SET_END_DATE,
+  SET_LATITUDE, SET_LONGITUDE, SET_RADIUS, SET_CATEGORIES, SET_START_DATE, SET_END_DATE,
 } from '../actionTypes/filtersActionTypes';
 
 /**
- * Adds the location filter to the search query
- * @param {Number[]} location 
- *  The location to filter for
+ * Specifies the longitude for the location filter.
+ * @param {Number[]} longitude
+ *  The desired longitude
  */
-export const setLocation = location => ({
-  type: SET_LOCATION,
-  location,
+export const setLongitude = longitude => ({
+  type: SET_LONGITUDE,
+  longitude,
 });
 
 /**
- * Specifies the radius for location filtering
+ * Specifies the latitude for the location filter
+ * @param {Number[]} latitude
+ *  The desired latitude
+ */
+export const setLatitude = latitude => ({
+  type: SET_LATITUDE,
+  latitude,
+});
+
+/**
+ * Specifies the radius for the location filter
  * @param {Number} radius
  *  The radius to search within
  */

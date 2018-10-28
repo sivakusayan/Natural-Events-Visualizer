@@ -1,9 +1,12 @@
 /**
- * @fileoverview Handles batch reverse geocoding for GeoJSON EONET events.
+ * @fileoverview Handles reverse geocoding for GeoJSON EONET events.
  */
-// const geocoder = require('local-reverse-geocoder');
+const sleep = require('util').promisify(setTimeout);
+
 const fetchRetry = require('../../utils/fetchRetry');
 const pointMean = require('../../utils/pointMean');
+
+const parseLocation = require('./parseLocation');
 const getWaterBody = require('./getWaterBody');
 
 const key = require('../../config/apiKey');
@@ -19,22 +22,18 @@ const key = require('../../config/apiKey');
  * @returns
  * The reverse geocoded location of the point
  */
-const reverseGeocodePoint = ([longitude, latitude]) => {
+const reverseGeocodePoint = async ([longitude, latitude]) => {
   const apiURL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${key}`;
   const assert = data => data.status === 'OK' || data.status === 'ZERO_RESULTS';
-  return fetchRetry(apiURL, assert)
-    .then(response => response.json())
-    .then((data) => {
-      if (data.status === 'ZERO_RESULTS') {
-        // If location isn't on land, get the water body
-        return getWaterBody([longitude, latitude]);
-      }
-      return parseLocation(data.results[0].addressComponents);
-    })
-    .catch((err) => {
-      // Give up and try updating the next day
-      throw err;
-    });
+  const data = await fetchRetry(apiURL, assert);
+  if (data.status === 'ZERO_RESULTS') {
+    // If location isn't on land, get the water body
+    return {
+      waters: getWaterBody([longitude, latitude]),
+    };
+  }
+  // Else, parse location of closest (first) result
+  return parseLocation(data.results[0].address_components);
 };
 
 /**
@@ -48,9 +47,11 @@ const reverseGeocodePoint = ([longitude, latitude]) => {
  * An array of promises resolving to the modified EONET GeoJSON objects with a 
  * new location attribute in their geometry.
  */
-const reverseGeocodeEvents = (eventArray) => {
+const reverseGeocodeEvents = async (eventArray) => {
   const reverseGeocodedEvents = [];
   for (let i = 0; i < eventArray.length; i += 1) {
+    // Wait 1 second between requests to avoid 'OVER_QUERY_LIMIT'
+    await sleep(1000);
     const event = JSON.parse(JSON.stringify(eventArray[i]));
     if (event.geometry.type === 'Point') {
       // If Point, reverse geocode the point and attach location to event
@@ -64,7 +65,7 @@ const reverseGeocodeEvents = (eventArray) => {
     } else if (event.geometry.type === 'Polygon') {
       // If Polygon, reverse geocode the average of the points and attach location to event
       reverseGeocodedEvents.push(
-        reverseGeocodePoint(pointMean(event.geometry.coordinates))
+        reverseGeocodePoint(pointMean(event.geometry.coordinates[0]))
           .then((location) => {
             event.geometry.location = location;
             return event;
@@ -74,6 +75,8 @@ const reverseGeocodeEvents = (eventArray) => {
       // If LineString, reverse geocode each point and attach location to event
       const locationArray = [];
       for (let j = 0; j < event.geometry.coordinates.length; j += 1) {
+        // Wait 1 second between requests to avoid 'OVER_QUERY_LIMIT'
+        await sleep(1000);
         locationArray.push(reverseGeocodePoint(event.geometry.coordinates[j]));
       }
       reverseGeocodedEvents.push(

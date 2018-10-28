@@ -37,6 +37,4 @@ const getWaterBody = (point) => {
   return null;
 };
 
-console.log(getWaterBody([-73.323, 41.0114]));
-
 module.exports = getWaterBody;

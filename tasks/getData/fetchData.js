@@ -14,7 +14,6 @@ const fetchRetry = require('../../utils/fetchRetry');
 const fetchData = () => {
   const eonetURL = 'https://eonet.sci.gsfc.nasa.gov/api/v2.1/events';
   return fetchRetry(eonetURL)
-    .then(response => response.json())
     .then(data => data.events)
     .catch((err) => {
       throw err;

@@ -33,13 +33,12 @@ const Event = PropTypes.shape({
       PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
     ]).isRequired,
     location: PropTypes.shape({
-      // The first three properties are used if event is on significant land.
+      // The first three properties are used if event is on land.
       city: PropTypes.string,
       province: PropTypes.string,
       country: PropTypes.string,
-      // Else these two properties if event is on water/minor island.
+      // Else this property is used to get the point's water body.
       waters: PropTypes.string,
-      onIsland: PropTypes.boolean,
     }).isRequired,
   }).isRequired,
   /**

@@ -34,8 +34,7 @@ const DateFilter = ({ filterValues, setFilter }) => (
 DateFilter.propTypes = {
   /**
    * A collection of values that describe the
-   * current filters being used for the respective
-   * field.
+   * current filters being used.
    */
   filterValues: PropTypes.shape({
     startDate: PropTypes.number,

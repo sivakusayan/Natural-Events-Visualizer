@@ -12,14 +12,14 @@ const sleep = require('util').promisify(setTimeout);
  * 
  * @param {String} url
  *  The url to fetch data from
- * @param {Number} tryCount 
- *  The number of times to retry before throwing an error
- * @param {Number} delay
- *  The number of milliseconds to wait between tries
  * @param {Function} assert
  *  Assert something about the response. If assertions are false,
  *  the fetch function is retried. Use to circumvent fetch only
  *  throwing 'network errors'
+ * @param {Number} tryCount 
+ *  The number of times to retry before throwing an error
+ * @param {Number} delay
+ *  The number of milliseconds to wait between tries
  * 
  * @return {Promise}
  *  The response from the url.
@@ -30,10 +30,8 @@ const fetchRetry = async (url, assert = () => true, tryCount = 5, delay = 2000) 
     const promise = await fetch(url).then(response => response.json());
     // Assert statement about fetched data
     if (!assert(promise)) {
-      console.log(JSON.stringify(promise, null, 2));
       throw Error('Response does not satisfy assertions.');
     }
-
     return promise;
   } catch (err) {
     // Throw error if all tries are used

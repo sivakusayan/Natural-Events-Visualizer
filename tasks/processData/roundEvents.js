@@ -1,15 +1,10 @@
 /**
- * @fileoverview Rounds the coordinates of events to a precision of four decimal places. 
+ * @fileoverview Rounds the coordinates of events to the specified precision. 
  * This has the benefit of making our GeoJSON more performant when rendered on Mapbox.
- * According to the Wikipedia page at: https://en.wikipedia.org/wiki/Decimal_degrees and 
- * the discussion at https://gis.stackexchange.com/questions/8650/measuring-accuracy-of-latitude-and-longitude,
- * this should be sufficient to distinguish two different parcels of land, which is more 
- * than enough for our needs.
  */
 
-const roundPoint = require('../../utils/rountPoint');
-
-const PRECISION = 4;
+const roundPoint = require('../../utils/roundPoint');
+const PRECISION = require('../../constants/coordinatePrecision');
 
 /**
  * Takes in a GeoJSON geometry and rounds its coordinates to make it more

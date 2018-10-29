@@ -14,9 +14,6 @@
  * The rounded number
  */
 const roundNumber = (number, precision) => {
-  if (number === 0) {
-    return 0;
-  }
   return parseFloat(number.toFixed(precision));
 };
 
@@ -35,5 +32,7 @@ const roundNumber = (number, precision) => {
 const roundPoint = (point, precision) => [
   roundNumber(point[0], precision), roundNumber(point[1], precision),
 ];
+
+console.log(roundNumber(0));
 
 module.exports = roundPoint;

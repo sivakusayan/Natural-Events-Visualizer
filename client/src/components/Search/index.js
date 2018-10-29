@@ -7,13 +7,13 @@
 import React from 'react';
 
 import SearchBarContainer from '../../containers/Search/SearchBarContainer';
-import Filters from './Filters';
+import Filters from './Filters/Filters';
 import SearchResultsContainer from '../../containers/Search/SearchResultsContainer';
 
-const Search = () => (
+const Search = ({ setFilters, queryBuilder }) => (
   <div>
-    <SearchBarContainer />
-    <Filters />
+    <SearchBarContainer queryBuilder={queryBuilder} />
+    <Filters setFilters={setFilters} />
     <SearchResultsContainer />
   </div>
 );

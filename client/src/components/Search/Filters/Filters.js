@@ -4,9 +4,9 @@
 
 import React from 'react';
 
-const Filters = () => (
+const Filters = ({ setFilters }) => (
   <form>
-    <input type='number' id='latitude' />
+    <input type='text' id='latitude' onChange={e => setFilters.latitude(e.target.value)} />
     <input type='number' id='longitude' />
     <input type='number' id='radius' />
   </form>

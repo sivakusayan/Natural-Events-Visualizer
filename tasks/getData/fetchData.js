@@ -5,19 +5,17 @@
  * event a named location.
  */
 const fetchRetry = require('../../utils/fetchRetry');
+const { eonetEventsURL } = require('../../constants/urlStrings');
 
 /**
  * Fetches the data from the EONET API.
  * @returns {Promise<EventEonetJSON[]>} 
  * A promise that resolves to an array of EONET events.
  */
-const fetchData = () => {
-  const eonetURL = 'https://eonet.sci.gsfc.nasa.gov/api/v2.1/events';
-  return fetchRetry(eonetURL)
-    .then(data => data.events)
-    .catch((err) => {
-      throw err;
-    });
-};
+const fetchData = () => fetchRetry(eonetEventsURL)
+  .then(data => data.events)
+  .catch((err) => {
+    throw err;
+  });
 
 module.exports = fetchData;

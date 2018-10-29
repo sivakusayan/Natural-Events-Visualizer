@@ -18,12 +18,10 @@ const Event = PropTypes.shape({
    */
   geometry: PropTypes.shape({
     type: PropTypes.oneOf(['Point', 'Polygon', 'LineString']).isRequired,
-    date: PropTypes.oneOfType([
-      // Will have only one date if Point or Polygon
-      PropTypes.number.isRequired,
-      // Will have multiple dates if LineString, associated with multiple locations
-      PropTypes.arrayOf(PropTypes.number).isRequired,
-    ]).isRequired,
+    /**
+     * Only one element if geometry is point or polygon, will have many elements if LineString
+     */
+    date: PropTypes.arrayOf(PropTypes.number).isRequired,
     coordinates: PropTypes.oneOfType([
       // If geometry is a Point
       PropTypes.arrayOf(PropTypes.number),
@@ -32,14 +30,17 @@ const Event = PropTypes.shape({
       // If geometry is a LineString
       PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
     ]).isRequired,
-    location: PropTypes.shape({
+    /**
+     * Only one location if geometry is point or polygon, will have many locations if LineString
+     */
+    location: PropTypes.arrayOf(PropTypes.shape({
       // The first three properties are used if event is on land.
       city: PropTypes.string,
       province: PropTypes.string,
       country: PropTypes.string,
       // Else this property is used to get the point's water body.
       waters: PropTypes.string,
-    }).isRequired,
+    })).isRequired,
   }).isRequired,
   /**
    * Contains non-spacial data about the event.

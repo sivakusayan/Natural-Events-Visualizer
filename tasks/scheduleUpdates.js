@@ -19,7 +19,7 @@ const Event = require('../models/Event');
  */
 const updateDatabase = async () => {
   // Find id of Events already in Database
-  const eventsInDB = await Event.find({}, '_id').then(ids => ids.map(id => id._id));
+  const eventsInDB = await Event.find({}, '_id').then(ids => ids.map(id => `EONET_${id._id}`));
   // Fetch events from EONET API
   const events = await fetchData();
   // Filter for events not in the database

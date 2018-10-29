@@ -43,10 +43,10 @@ router.get('/', (req, res) => {
   }
   if (req.query.categoryID) query['properties.categories'] = { $in: req.query.categoryID };
   if (req.query.startDate) {
-    query['geometry.date'] = { $gte: req.query.startDate };
+    query['geometry.date'] = { $elemMatch: { $gte: req.query.startDate } };
   }
   if (req.query.endDate) {
-    query['geometry.date[geometry.date.length - 1]'] = { $lt: req.query.endDate };
+    query['geometry.date'] = { $elemMatch: { $lt: req.query.endDate } };
   }
 
   Event.find(query)

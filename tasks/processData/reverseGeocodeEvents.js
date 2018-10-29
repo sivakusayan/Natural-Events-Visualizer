@@ -58,7 +58,7 @@ const reverseGeocodeEvents = async (eventArray) => {
       reverseGeocodedEvents.push(
         reverseGeocodePoint(event.geometry.coordinates)
           .then((location) => {
-            event.geometry.location = location;
+            event.geometry.location = [location];
             return event;
           }),
       );
@@ -67,7 +67,7 @@ const reverseGeocodeEvents = async (eventArray) => {
       reverseGeocodedEvents.push(
         reverseGeocodePoint(pointMean(event.geometry.coordinates[0]))
           .then((location) => {
-            event.geometry.location = location;
+            event.geometry.location = [location];
             return event;
           }),
       );

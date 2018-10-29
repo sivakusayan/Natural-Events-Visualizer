@@ -1,5 +1,5 @@
 /**
- * This file lets the Search Component keep track of whats
+ * @fileoverview This file lets the Search Component keep track of whats
  * being filtered. The source of this data is from the Filters Component,
  * where it will then be sent to the SearchBarContainer for 
  * query building and the SearchResultsContainer to show what 
@@ -7,19 +7,25 @@
  */
 
 import React from 'react';
+import moment from 'moment';
 
 import Search from '../../components/Search/index';
 
 export default class SearchContainer extends React.Component {
   state = {
+    // Filter for events within the circle specified
+    // by these values
     locationFilter: {
       latitude: '',
       longitude: '',
       radius: 1000000,
     },
-    categoriesFilter: undefined,
-    startDateFilter: undefined,
-    endDateFilter: undefined,
+    // Filter for events of the following categories
+    categoriesFilter: [6, 7, 16, 9, 14, 19, 15, 10, 17, 18, 12, 13, 8],
+    // Filter for events after this date
+    startDateFilter: 1325463472000,
+    // Filter for events before this date
+    endDateFilter: moment().valueOf(),
   }
 
   // SETTERS FOR STATE FIELDS
@@ -58,15 +64,19 @@ export default class SearchContainer extends React.Component {
   }
 
   setStartDate = (startDate) => {
-    this.setState({
-      startDateFilter: startDate,
-    });
+    if (moment(startDate).isValid()) {
+      this.setState({
+        startDateFilter: moment(startDate).valueOf(),
+      });
+    }
   }
 
   setEndDate = (endDate) => {
-    this.setState({
-      endDateFilter: endDate,
-    });
+    if (moment(endDate).isValid()) {
+      this.setState({
+        startDateFilter: moment(endDate).valueOf(),
+      });
+    }
   }
 
   /**

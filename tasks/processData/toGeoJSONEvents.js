@@ -2,6 +2,8 @@
  * @fileoverview Handles conversion of API data into usable GeoJSON.
  */
 
+const moment = require('moment');
+
 /**
  * Converts the data given by the EONET API into a GeoJSON-compliant Feature.
  * @param {Array.<{ date: String, type: String, coordinates: []}>} geometries 
@@ -18,17 +20,17 @@ const toGeoJSONGeometry = (geometries) => {
   if (geometries.length === 1) {
     return {
       type: geometries[0].type,
-      date: Date.parse(geometries[0].date),
+      date: [Date.parse(geometries[0].date)],
       coordinates: geometries[0].coordinates,
-      location: '',
+      location: {},
     };
   }
   // Else event type is LineString
   return {
     type: 'LineString',
-    date: geometries.map(geometry => Date.parse(geometry.date)),
+    date: geometries.map(geometry => moment(geometry.date).valueOf()),
     coordinates: geometries.map(geometry => geometry.coordinates),
-    location: '',
+    location: {},
   };
 };
 

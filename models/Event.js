@@ -24,7 +24,7 @@ const EventLocation = new Schema({
 
 const EventGeometry = new Schema({
   date: {
-    type: Schema.Types.Mixed, // Either Number or Number[]
+    type: [Number],
     required: true,
   },
   type: {
@@ -37,7 +37,7 @@ const EventGeometry = new Schema({
     type: [],
   },
   location: {
-    type: Schema.Types.Mixed, // Either EventLocation or EventLocation[]
+    type: [EventLocation],
     required: true,
   },
 }, { _id: false });

@@ -11,18 +11,30 @@ import CategoryFilter from './CategoryFilter';
 import DateFilter from './DateFilter';
 
 const Filters = ({ setFilters, filtersState }) => (
-  <LocationFilter
-    filterValues={{
-      latitude: filtersState.locationFilter.latitude,
-      longitude: filtersState.locationFilter.longitude,
-      radius: filtersState.locationFilter.radius,
-    }}
-    setFilter={{
-      latitude: setFilters.latitude,
-      longitude: setFilters.longitude,
-      radius: setFilters.radius,
-    }}
-  />
+  <div>
+    <LocationFilter
+      filterValues={{
+        latitude: filtersState.locationFilter.latitude,
+        longitude: filtersState.locationFilter.longitude,
+        radius: filtersState.locationFilter.radius,
+      }}
+      setFilter={{
+        latitude: setFilters.latitude,
+        longitude: setFilters.longitude,
+        radius: setFilters.radius,
+      }}
+    />
+    <DateFilter
+      filterValues={{
+        startDate: filtersState.startDateFilter,
+        endDate: filtersState.endDateFilter,
+      }}
+      setFilter={{
+        startDate: setFilters.startDate,
+        endDate: setFilters.endDate,
+      }}
+    />
+  </div>
 );
 
 export default Filters;

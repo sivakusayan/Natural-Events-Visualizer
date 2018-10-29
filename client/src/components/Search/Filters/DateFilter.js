@@ -4,28 +4,28 @@
  */
 
 import React from 'react';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+
+import 'react-datepicker/dist/react-datepicker.css';
 
 export default ({ filterValues, setFilter }) => (
   <div>
-    <h1>Location Filters</h1>
+    <h1>Date Filters</h1>
     <form>
-      <input
-        type='text'
-        name='latitude'
-        value={filterValues.latitude}
-        onChange={e => setFilter.latitude(e.target.value)}
+      <DatePicker 
+        selected={moment(filterValues.startDate)}
+        selectsStart
+        startDate={moment(filterValues.startDate)}
+        endDate={moment(filterValues.endDate)}
+        onChangeRaw={e => setFilter.startDate(e.target.value)}
       />
-      <input
-        type='text'
-        name='longitude'
-        value={filterValues.longitude}
-        onChange={e => setFilter.longitude(e.target.value)}
-      />
-      <input
-        type='text'
-        name='radius'
-        value={filterValues.radius}
-        onChange={e => setFilter.radius(e.target.value)}
+      <DatePicker 
+        selected={moment(filterValues.endDate)}
+        selectsEnd
+        startDate={moment(filterValues.startDate)}
+        endDate={moment(filterValues.endDate)}
+        onChangeRaw={e => setFilter.endDate(e.target.value)}
       />
     </form>
   </div>

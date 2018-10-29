@@ -64,19 +64,15 @@ export default class SearchContainer extends React.Component {
   }
 
   setStartDate = (startDate) => {
-    if (moment(startDate).isValid()) {
-      this.setState({
-        startDateFilter: moment(startDate).valueOf(),
-      });
-    }
+    this.setState({
+      startDateFilter: moment(startDate).valueOf(),
+    });
   }
 
   setEndDate = (endDate) => {
-    if (moment(endDate).isValid()) {
-      this.setState({
-        startDateFilter: moment(endDate).valueOf(),
-      });
-    }
+    this.setState({
+      endDateFilter: moment(endDate).valueOf(),
+    });
   }
 
   /**

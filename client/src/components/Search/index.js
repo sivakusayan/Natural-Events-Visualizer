@@ -46,6 +46,11 @@ Search.propTypes = {
     startDateFilter: PropTypes.number.isRequired,
     endDateFilter: PropTypes.number.isRequired,
   }).isRequired,
+  /**
+   * A function that builds a query string depending
+   * on the current filters.
+   */
+  addFilterQuery: PropTypes.func.isRequired,
 };
 
 export default Search;

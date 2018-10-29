@@ -39,15 +39,16 @@ const updateDatabase = async () => {
  * updateDatabase function to everyday at midnight.
  */
 const scheduleUpdates = () => {
-  schedule.scheduleJob('0 0 * * *', () => {
-    try {
-      // Try to update database
-      updateDatabase();
-    } catch (err) {
-      // If any errors are found (API Connections, etc.)
-      // give up and try the next day.
-    }
-  });
+  // schedule.scheduleJob('0 0 * * *', () => {
+  //   try {
+  //     // Try to update database
+  //     updateDatabase();
+  //   } catch (err) {
+  //     // If any errors are found (API Connections, etc.)
+  //     // give up and try the next day.
+  //   }
+  // });
+  updateDatabase();
 };
 
 module.exports = scheduleUpdates;

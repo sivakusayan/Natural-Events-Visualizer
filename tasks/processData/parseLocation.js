@@ -16,9 +16,9 @@ const parseLocation = (addressComponents) => {
     if (component.types.includes('country')) {
       location.country = component.long_name;
     } else if (component.types.includes('administrative_area_level_1')) {
-      location.province = component.long_name;
-    } else if (component.types.includes('locality')) {
-      location.city = component.long_name;
+      location.admin1 = component.long_name;
+    } else if (component.types.includes('administrative_area_level_2')) {
+      location.admin2 = component.long_name;
     }
   }
   return location;

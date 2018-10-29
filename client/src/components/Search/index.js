@@ -10,10 +10,10 @@ import SearchBarContainer from '../../containers/Search/SearchBarContainer';
 import Filters from './Filters/Filters';
 import SearchResultsContainer from '../../containers/Search/SearchResultsContainer';
 
-const Search = ({ setFilters, queryBuilder }) => (
+const Search = ({ setFilters, filtersState, addFilterQuery }) => (
   <div>
-    <SearchBarContainer queryBuilder={queryBuilder} />
-    <Filters setFilters={setFilters} />
+    <SearchBarContainer queryBuilder={addFilterQuery} />
+    <Filters filtersState={filtersState} setFilters={setFilters} />
     <SearchResultsContainer />
   </div>
 );

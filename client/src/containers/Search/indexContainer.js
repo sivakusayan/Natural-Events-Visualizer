@@ -13,8 +13,8 @@ import Search from '../../components/Search/index';
 export default class SearchContainer extends React.Component {
   state = {
     locationFilter: {
-      latitude: undefined,
-      longitude: undefined,
+      latitude: '',
+      longitude: '',
       radius: 1000000,
     },
     categoriesFilter: undefined,
@@ -73,7 +73,7 @@ export default class SearchContainer extends React.Component {
    * @returns 
    *  A query string built from the filter parameters.
    */
-  queryBuilder = () => {
+  addFilterQuery = () => {
     const queryArray = [];
     const {
       locationFilter,
@@ -83,17 +83,17 @@ export default class SearchContainer extends React.Component {
     } = this.state;
     // We want all three to be defined to filter by location
     if (locationFilter.latitude && locationFilter.longitude && locationFilter.radius) {
-      queryArray.push(`latitude=${locationFilter.latitude}`);
-      queryArray.push(`longitude=${locationFilter.longitude}`);
+      queryArray.push(`lat=${locationFilter.latitude}`);
+      queryArray.push(`long=${locationFilter.longitude}`);
       queryArray.push(`radius=${locationFilter.radius}`);
     }
-    if (locationFilter.categories) {
+    if (categoriesFilter) {
       queryArray.push(`categories=${categoriesFilter.join(',')}`);
     }
-    if (locationFilter.startDate) {
+    if (startDateFilter) {
       queryArray.push(`startDate=${startDateFilter}`);
     }
-    if (locationFilter.endDate) {
+    if (endDateFilter) {
       queryArray.push(`endDate=${endDateFilter}`);
     }
     return queryArray.join('&');
@@ -110,13 +110,8 @@ export default class SearchContainer extends React.Component {
           startDate: this.setStartDate,
           endDate: this.setEndDate,
         }}
-        // setLatitude={this.setLatitude}
-        // setLongitude={this.setLongitude}
-        // setRadius={this.setRadius}
-        // setCategories={this.setCategories}
-        // setStartDate={this.setStartDate}
-        // setEndDate={this.setEndDate}
-        queryBuilder={this.queryBuilder}
+        filtersState={this.state}
+        addFilterQuery={this.addFilterQuery}
       />
     );
   }

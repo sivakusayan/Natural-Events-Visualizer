@@ -13,7 +13,7 @@ import { setError, removeError } from '../../state/actions/error';
 
 import SearchBar from '../../components/Search/SearchBar';
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
   /**
    * Sends a search query by title from the input. The search is
    * debounced by 0.5 seconds.
@@ -24,7 +24,8 @@ const mapDispatchToProps = dispatch => ({
     // Set the loading tag to true
     dispatch(startLoading());
     // Fetch events from the API
-    fetch(`http://localhost:3000/api/events?title=${title}`)
+    console.log(`http://localhost:3000/api/events?title=${title}&${ownProps.addFilterQuery()}`);
+    fetch(`http://localhost:3000/api/events?title=${title}&${ownProps.addFilterQuery()}`)
       .then(res => res.json())
       .then(events => dispatch(setEvents(events)))
       // Catch in fetch only handles 'network errors'. Handling of errors

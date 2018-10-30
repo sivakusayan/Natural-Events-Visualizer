@@ -15,7 +15,7 @@ class App extends React.Component {
     isLoading: true,
     error: false,
   }
-
+  
   setEvents = (events) => {
     this.setState(prevState => ({
       ...prevState,

@@ -3,8 +3,16 @@
  * can, upon an error, retry for a specified amount of times. The response
  * is also automatically converted to JSON.
  */
-const fetch = require('node-fetch');
-const sleep = require('util').promisify(setTimeout);
+const fetch = require('cross-fetch');
+
+/**
+ * Function that resolves a promise after the specified
+ * amount of seconds. If awaited, can act as a delay.
+ * 
+ * @param {Number} delay 
+ *  The length of time to delay for
+ */
+const sleep = delay => new Promise(resolve => setTimeout(resolve, delay));
 
 /**
  * A modified version of fetch. Response is automatically
@@ -24,7 +32,7 @@ const sleep = require('util').promisify(setTimeout);
  * @return {Promise}
  *  The response from the url.
  */
-const fetchRetry = async (url, assert = () => true, tryCount = 5, delay = 2000) => {
+const fetchRetry = async (url, assert = () => true, tryCount = 3, delay = 1000) => {
   try {
     // Try fetching data
     const promise = await fetch(url).then(response => response.json());

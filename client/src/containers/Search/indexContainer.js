@@ -15,67 +15,113 @@ import Search from '../../components/Search/index';
 
 export default class SearchContainer extends React.Component {
   state = {
-    // Filter for events within the circle specified
-    // by these values
-    locationFilter: {
-      latitude: '',
-      longitude: '',
-      radius: 1000000,
+    filters: {
+      // Filter for events within the circle specified
+      // by these values
+      locationFilter: {
+        latitude: '',
+        longitude: '',
+        radius: 1000000,
+      },
+      // Filter for events of the following categories
+      // Will hydr
+      categoriesFilter: Object.keys(CATEGORIES),
+      // Filter for events after this date
+      startDateFilter: 1325463472000,
+      // Filter for events before this date
+      endDateFilter: moment().valueOf(),
     },
-    // Filter for events of the following categories
-    // Will hydr
-    categoriesFilter: Object.keys(CATEGORIES),
-    // Filter for events after this date
-    startDateFilter: 1325463472000,
-    // Filter for events before this date
-    endDateFilter: moment().valueOf(),
+    isLoading: false,
+    error: false,
   }
 
   // SETTERS FOR STATE FIELDS
 
   setLatitude = (latitude) => {
     this.setState(prevState => ({
-      locationFilter: {
-        ...prevState.locationFilter,
-        latitude,
+      filters: {
+        ...prevState.filters,
+        locationFilter: {
+          ...prevState.locationFilter,
+          latitude,
+        },
       },
     }));
   }
 
   setLongitude = (longitude) => {
     this.setState(prevState => ({
-      locationFilter: {
-        ...prevState.locationFilter,
-        longitude,
+      filters: {
+        ...prevState.filters,
+        locationFilter: {
+          ...prevState.locationFilter,
+          longitude,
+        },
       },
     }));
   }
 
   setRadius = (radius) => {
     this.setState(prevState => ({
-      locationFilter: {
-        ...prevState.locationFilter,
-        radius,
+      filters: {
+        ...prevState.filters,
+        locationFilter: {
+          ...prevState.locationFilter,
+          radius,
+        },
       },
     }));
   }
 
   setCategories = (categories) => {
-    this.setState({
-      categoriesFilter: categories,
-    });
+    this.setState(prevState => ({
+      filters: {
+        ...prevState.filters,
+        categoriesFilter: categories,
+      },
+    }));
   }
 
   setStartDate = (startDate) => {
-    this.setState({
-      startDateFilter: moment(startDate).valueOf(),
-    });
+    this.setState(prevState => ({
+      filters: {
+        ...prevState.filters,
+        startDateFilter: startDate,
+      },
+    }));
   }
 
   setEndDate = (endDate) => {
-    this.setState({
-      endDateFilter: moment(endDate).valueOf(),
-    });
+    this.setState(prevState => ({
+      filters: {
+        ...prevState.filters,
+        endDateFilter: endDate,
+      },
+    }));
+  }
+
+  startLoading = () => {
+    this.setState(({
+      isLoading: true,
+    }));
+  }
+
+  stopLoading = () => {
+    this.setState(({
+      isLoading: false,
+    }));
+  }
+
+  setError = () => {
+    this.setState(({
+      error: true,
+    }));
+  }
+
+  removeError = () => {
+    this.setState(({
+      error: false,
+    }));
   }
 
   /**
@@ -108,9 +154,12 @@ export default class SearchContainer extends React.Component {
     return queryArray.join('&');
   }
 
-  render() {
+  render({ events, setEvents }) {
+    const { filters, isLoading, error } = this.state;
     return (
       <Search
+        setEvents={setEvents}
+        events={events}
         setFilters={{
           latitude: this.setLatitude,
           longitude: this.setLongitude,
@@ -119,8 +168,14 @@ export default class SearchContainer extends React.Component {
           startDate: this.setStartDate,
           endDate: this.setEndDate,
         }}
-        filtersState={this.state}
+        filters={filters}
         addFilterQuery={this.addFilterQuery}
+        isLoading={isLoading}
+        startLoading={this.startLoading}
+        stopLoading={this.stopLoading}
+        error={error}
+        setError={this.setError}
+        removeError={this.removeError}
       />
     );
   }

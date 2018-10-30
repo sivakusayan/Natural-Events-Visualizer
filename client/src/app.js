@@ -20,6 +20,13 @@ class App extends React.Component {
     error: false,
   }
 
+  setEvents = (events) => {
+    this.setState(prevState => ({
+      ...prevState,
+      events,
+    }));
+  }
+
   componentDidMount = () => {
     Promise.all([fetchRetry('http://localhost:3000/api/events'), loadCategories])
       .then((res) => {
@@ -32,16 +39,23 @@ class App extends React.Component {
   }
 
   render() {
-    const { isLoading } = this.state;
+    const { events, isLoading } = this.state;
     return (
       <Provider store={store}>
         <div>
-          {!isLoading && <SearchContainer />}
+          {!isLoading
+            && (
+              <SearchContainer
+                setEvents={this.setEvents}
+                events={events}
+              />
+            )
+          }
           {isLoading && <h1>Loading! Please hold...</h1>}
         </div>
       </Provider>
     );
   }
-};
+}
 
 ReactDOM.render(<App />, document.getElementById('app'));

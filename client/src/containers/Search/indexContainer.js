@@ -9,6 +9,8 @@
 import React from 'react';
 import moment from 'moment';
 
+import { CATEGORIES } from '../../constants/categories';
+
 import Search from '../../components/Search/index';
 
 export default class SearchContainer extends React.Component {
@@ -21,7 +23,8 @@ export default class SearchContainer extends React.Component {
       radius: 1000000,
     },
     // Filter for events of the following categories
-    categoriesFilter: [6, 7, 16, 9, 14, 19, 15, 10, 17, 18, 12, 13, 8],
+    // Will hydr
+    categoriesFilter: Object.keys(CATEGORIES),
     // Filter for events after this date
     startDateFilter: 1325463472000,
     // Filter for events before this date

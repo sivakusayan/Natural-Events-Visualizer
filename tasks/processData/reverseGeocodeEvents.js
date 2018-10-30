@@ -9,7 +9,7 @@ const pointMean = require('../../utils/pointMean');
 const parseLocation = require('./parseLocation');
 const getWaterBody = require('./getWaterBody');
 
-const key = require('../../config/apiKey');
+const key = require('../../constants/apiKey');
 
 /**
  * Takes a single point and returns the reverse geocoded location. If the

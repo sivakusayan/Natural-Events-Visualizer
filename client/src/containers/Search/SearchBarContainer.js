@@ -7,6 +7,8 @@
 import { debounce } from 'throttle-debounce';
 import { connect } from 'react-redux';
 
+import fetchRetry from '../../../../utils/fetchRetry';
+
 import { setEvents } from '../../state/actions/events';
 import { startLoading, doneLoading } from '../../state/actions/loading';
 import { setError, removeError } from '../../state/actions/error';
@@ -24,9 +26,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     // Set the loading tag to true
     dispatch(startLoading());
     // Fetch events from the API
-    console.log(`http://localhost:3000/api/events?title=${title}&${ownProps.addFilterQuery()}`);
-    fetch(`http://localhost:3000/api/events?title=${title}&${ownProps.addFilterQuery()}`)
-      .then(res => res.json())
+    fetchRetry(`http://localhost:3000/api/events?title=${title}&${ownProps.addFilterQuery()}`)
       .then(events => dispatch(setEvents(events)))
       // Catch in fetch only handles 'network errors'. Handling of errors
       // will be done in the above codeblock

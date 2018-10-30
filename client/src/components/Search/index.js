@@ -9,29 +9,23 @@ import PropTypes from 'prop-types';
 
 import Event from '../../propTypes/Event';
 
-import SearchBarContainer from '../../containers/Search/SearchBarContainer';
+import SearchBar from './SearchBar';
 import Filters from './Filters/Filters';
-import SearchResultsContainer from '../../containers/Search/SearchResultsContainer';
+import SearchResults from './SearchResults';
 
 const Search = ({
-  setEvents, events, setFilters, filters, addFilterQuery,
-  isLoading, startLoading, stopLoading,
-  error, setError, removeError,
+  events, setFilters, filters,
+  debouncedSendQuery, isLoading, error,
 }) => (
   <div>
-    <SearchBarContainer
-      setEvents={setEvents}
-      addFilterQuery={addFilterQuery}
-      startLoading={startLoading}
-      stopLoading={stopLoading}
-      setError={setError}
-      removeError={removeError}
+    <SearchBar
+      debouncedSendQuery={debouncedSendQuery}
     />
     <Filters
       filters={filters}
       setFilters={setFilters}
     />
-    <SearchResultsContainer
+    <SearchResults
       events={events}
       isLoading={isLoading}
       error={error}
@@ -40,11 +34,6 @@ const Search = ({
 );
 
 Search.propTypes = {
-  /**
-   * Function that sets that new events for the
-   * application to use.
-   */
-  setEvents: PropTypes.func.isRequired,
   /**
    * Array of EventGeoJSON. The current events being
    * used in the application.
@@ -77,35 +66,20 @@ Search.propTypes = {
     endDateFilter: PropTypes.number.isRequired,
   }).isRequired,
   /**
-   * A function that builds a query string depending
-   * on the current filters.
+   * A debounced function that sends a search query after a 
+   * specified delay. The results are then used to update
+   * the events.
    */
-  addFilterQuery: PropTypes.func.isRequired,
+  debouncedSendQuery: PropTypes.func.isRequired,
   /**
    * True if the search results are loading, false otherwise.
    */
   isLoading: PropTypes.bool.isRequired,
   /**
-   * Set isLoading to true.
-   */
-  startLoading: PropTypes.func.isRequired,
-  /**
-   * Set isLoading to false.
-   */
-  stopLoading: PropTypes.func.isRequired,
-  /**
    * True if the most recent search request gave back an 
    * error, false otherwise.
    */
   error: PropTypes.bool.isRequired,
-  /**
-   * Set error to true.
-   */
-  setError: PropTypes.func.isRequired,
-  /**
-   * Set error to false.
-   */
-  removeError: PropTypes.func.isRequired,
 };
 
 export default Search;

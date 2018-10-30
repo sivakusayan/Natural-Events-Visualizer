@@ -13,6 +13,7 @@ import DateFilter from './DateFilter';
 
 const Filters = ({ setFilters, filters }) => (
   <div>
+    <CategoryFilter />
     <LocationFilter
       filterValues={{
         latitude: filters.locationFilter.latitude,

@@ -11,13 +11,13 @@ import LocationFilter from './LocationFilter';
 import CategoryFilter from './CategoryFilter';
 import DateFilter from './DateFilter';
 
-const Filters = ({ setFilters, filtersState }) => (
+const Filters = ({ setFilters, filters }) => (
   <div>
     <LocationFilter
       filterValues={{
-        latitude: filtersState.locationFilter.latitude,
-        longitude: filtersState.locationFilter.longitude,
-        radius: filtersState.locationFilter.radius,
+        latitude: filters.locationFilter.latitude,
+        longitude: filters.locationFilter.longitude,
+        radius: filters.locationFilter.radius,
       }}
       setFilter={{
         latitude: setFilters.latitude,
@@ -27,8 +27,8 @@ const Filters = ({ setFilters, filtersState }) => (
     />
     <DateFilter
       filterValues={{
-        startDate: filtersState.startDateFilter,
-        endDate: filtersState.endDateFilter,
+        startDate: filters.startDateFilter,
+        endDate: filters.endDateFilter,
       }}
       setFilter={{
         startDate: setFilters.startDate,
@@ -55,7 +55,7 @@ Filters.propTypes = {
    * A collection of values that describe the current
    * filters used in the application.
    */
-  filtersState: PropTypes.shape({
+  filters: PropTypes.shape({
     locationFilter: PropTypes.shape({
       latitude: PropTypes.number.isRequired,
       longitude: PropTypes.number.isRequired,

@@ -35,8 +35,8 @@ const Event = PropTypes.shape({
      */
     location: PropTypes.arrayOf(PropTypes.shape({
       // The first three properties are used if event is on land.
-      city: PropTypes.string,
-      province: PropTypes.string,
+      admin2: PropTypes.string,
+      admin1: PropTypes.string,
       country: PropTypes.string,
       // Else this property is used to get the point's water body.
       waters: PropTypes.string,

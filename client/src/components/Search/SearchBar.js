@@ -12,6 +12,7 @@ const Searchbar = ({ debouncedSendQuery }) => (
       type='search'
       placeholder='Search here'
       onChange={e => debouncedSendQuery(e.target.value)}
+      value={search}
     />
   </form>
 );

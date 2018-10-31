@@ -4,7 +4,7 @@
  */
 
 const roundPoint = require('../../utils/roundPoint');
-const PRECISION = require('../../constants/coordinatePrecision');
+const PRECISION = require('../../constants/PRECISION');
 
 /**
  * Takes in a GeoJSON geometry and rounds its coordinates to make it more

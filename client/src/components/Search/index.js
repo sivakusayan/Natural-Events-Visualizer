@@ -9,23 +9,28 @@ import PropTypes from 'prop-types';
 
 import Event from '../../propTypes/Event';
 
-import SearchBar from './SearchBar';
+import SearchBarContainer from '../../containers/Search/SearchBarContainer';
 import Filters from './Filters/Filters';
-import SearchResults from './SearchResults';
+import SearchResultsContainer from '../../containers/Search/SearchResultsContainer';
 
 const Search = ({
   events, setFilters, filters,
-  debouncedSendQuery, isLoading, error,
+  isLoading, startLoading, doneLoading,
+  error, setError, removeError,
 }) => (
   <div>
-    <SearchBar
-      debouncedSendQuery={debouncedSendQuery}
+    <SearchBarContainer
+      filters={filters}
+      startLoading={startLoading}
+      doneLoading={doneLoading}
+      setError={setError}
+      removeError={removeError}
     />
     <Filters
       filters={filters}
       setFilters={setFilters}
     />
-    <SearchResults
+    <SearchResultsContainer
       events={events}
       isLoading={isLoading}
       error={error}
@@ -66,20 +71,30 @@ Search.propTypes = {
     endDateFilter: PropTypes.number.isRequired,
   }).isRequired,
   /**
-   * A debounced function that sends a search query after a 
-   * specified delay. The results are then used to update
-   * the events.
-   */
-  debouncedSendQuery: PropTypes.func.isRequired,
-  /**
    * True if the search results are loading, false otherwise.
    */
   isLoading: PropTypes.bool.isRequired,
+  /**
+   * Sets isLoading to true
+   */
+  startLoading: PropTypes.func.isRequired,
+  /**
+   * Sets isLoading to false
+   */
+  doneLoading: PropTypes.func.isRequired,
   /**
    * True if the most recent search request gave back an 
    * error, false otherwise.
    */
   error: PropTypes.bool.isRequired,
+  /**
+   * Sets error to true
+   */
+  setError: PropTypes.bool.isRequired,
+  /**
+   * Sets error to false
+   */
+  removeError: PropTypes.bool.isRequired,
 };
 
 export default Search;

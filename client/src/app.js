@@ -1,55 +1,93 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
+import { Provider, connect } from 'react-redux';
 
-import { loadCategories } from './constants/categories';
+import { EVENTS_URL, EONET_CATEGORIES_URL } from '../../constants/URL_STRINGS';
 import fetchRetry from '../../utils/fetchRetry';
 
+import { setEvents } from './state/actions/events';
+import { startLoading, doneLoading } from './state/actions/loading';
+import { setError, removeError } from './state/actions/error';
+
+import configureStore from './state/store/configureStore';
 // import EventMap from './components/Map/EventMap';
 import SearchContainer from './containers/Search/indexContainer';
 import './styles/styles.scss';
 
+const store = configureStore();
+
 class App extends React.Component {
   state = {
-    events: [],
-    selectedEvent: null,
-    isLoading: true,
+    isLoading: false,
     error: false,
   }
-  
-  setEvents = (events) => {
-    this.setState(prevState => ({
-      ...prevState,
-      events,
-    }));
-  }
 
-  componentDidMount = () => {
-    Promise.all([fetchRetry('http://localhost:3000/api/events'), loadCategories])
+  /**
+   * Initializes the data of the application.
+   * Events and event categories will be hydrated in 
+   * this step.
+   */
+  hydrateData = () => {
+    const { initEvents, loadStart, loadEnd } = this.props;
+    loadStart();
+    Promise.all([fetchRetry(EVENTS_URL), fetchRetry(EONET_CATEGORIES_URL)])
       .then((res) => {
-        this.setState(prevState => ({
-          ...prevState,
-          events: res[0],
-          isLoading: false,
-        }));
+        // Update state with events
+        initEvents(res[0]);
+        // Update state with categories
+        loadEnd();
       });
   }
 
+  componentDidMount = () => {
+    this.hydrateData();
+  }
+
   render() {
-    const { events, isLoading } = this.state;
+    const { isLoading } = this.props;
     return (
-      <div>
-        {!isLoading
-          && (
-            <SearchContainer
-              setEvents={this.setEvents}
-              events={events}
-            />
-          )
-        }
-        {isLoading && <h1>Loading! Please hold...</h1>}
-      </div>
+      <Provider store={store}>
+        <div>
+          {!isLoading && <SearchContainer />}
+          {isLoading && <h1>Loading! Please hold...</h1>}
+        </div>
+      </Provider>
     );
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+const mapStateToProps = state => ({
+  isLoading: state.isLoading,
+});
+
+const mapDispatchToProps = dispatch => ({
+  initEvents: events => dispatch(setEvents(events)),
+  loadStart: () => dispatch(startLoading()),
+  loadEnd: () => dispatch(doneLoading()),
+});
+
+App.propTypes = {
+  /**
+   * Sets the events that the application will use.
+   */
+  initEvents: PropTypes.func.isRequired,
+  /**
+   * True if the application is hydrating data, false otherwise.
+   */
+  isLoading: PropTypes.bool.isRequired,
+  /**
+   * Sets the application's loading tag to true.
+   */
+  loadStart: PropTypes.func.isRequired,
+  /**
+   * Sets the application's loading tag to be false.
+   */
+  loadEnd: PropTypes.func.isRequired,
+};
+
+const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
+
+// Pass store to bypass unnecessary 'middle' component to determine what
+// component to load.
+ReactDOM.render(<AppContainer store={store} />, document.getElementById('app'));

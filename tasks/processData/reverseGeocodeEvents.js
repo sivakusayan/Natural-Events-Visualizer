@@ -9,7 +9,8 @@ const pointMean = require('../../utils/pointMean');
 const parseLocation = require('./parseLocation');
 const getWaterBody = require('./getWaterBody');
 
-const key = require('../../constants/apiKey');
+const KEY = require('../../constants/API_KEY');
+const { GOOGLE_REVERSE_GEOCODE_URL } = require('../../constants/URL_STRINGS');
 
 /**
  * Takes a single point and returns the reverse geocoded location. If the
@@ -23,7 +24,7 @@ const key = require('../../constants/apiKey');
  * The reverse geocoded location of the point
  */
 const reverseGeocodePoint = async ([longitude, latitude]) => {
-  const apiURL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${key}`;
+  const apiURL = `${GOOGLE_REVERSE_GEOCODE_URL}?latlng=${latitude},${longitude}&key=${KEY}`;
   const assert = data => data.status === 'OK' || data.status === 'ZERO_RESULTS';
   const data = await fetchRetry(apiURL, assert);
   if (data.status === 'ZERO_RESULTS') {

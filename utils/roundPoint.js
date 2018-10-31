@@ -33,6 +33,4 @@ const roundPoint = (point, precision) => [
   roundNumber(point[0], precision), roundNumber(point[1], precision),
 ];
 
-console.log(roundNumber(0));
-
 module.exports = roundPoint;

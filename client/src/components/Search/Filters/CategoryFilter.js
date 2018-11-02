@@ -5,13 +5,12 @@
 
 import React from 'react';
 
-import { CATEGORIES } from '../../../constants/categories';
+import CATEGORIES from '../../../constants/CATEGORIES';
 
 const CategoryFilter = () => (
   <div>
     <h1>Category Filters</h1>
     <form>
-      {Object.keys(CATEGORIES)}
       {Object.keys(CATEGORIES).map(categoryID => (
         <label htmlFor={categoryID}>
           <input

@@ -9,22 +9,17 @@ import PropTypes from 'prop-types';
 
 import Event from '../../propTypes/Event';
 
-import SearchBarContainer from '../../containers/Search/SearchBarContainer';
+import SearchBar from './SearchBar';
 import Filters from './Filters/Filters';
 import SearchResultsContainer from '../../containers/Search/SearchResultsContainer';
 
 const Search = ({
-  events, setFilters, filters,
-  isLoading, startLoading, doneLoading,
-  error, setError, removeError,
+  events, setFilters, filters, debouncedSearch,
+  isLoading, error,
 }) => (
   <div>
-    <SearchBarContainer
-      filters={filters}
-      startLoading={startLoading}
-      doneLoading={doneLoading}
-      setError={setError}
-      removeError={removeError}
+    <SearchBar
+      debouncedSearch={debouncedSearch}
     />
     <Filters
       filters={filters}
@@ -39,6 +34,11 @@ const Search = ({
 );
 
 Search.propTypes = {
+  /**
+   * A debounced function to search for events specifying
+   * the query and filters.
+   */
+  debouncedSearch: PropTypes.func.isRequired,
   /**
    * Array of EventGeoJSON. The current events being
    * used in the application.
@@ -75,26 +75,10 @@ Search.propTypes = {
    */
   isLoading: PropTypes.bool.isRequired,
   /**
-   * Sets isLoading to true
-   */
-  startLoading: PropTypes.func.isRequired,
-  /**
-   * Sets isLoading to false
-   */
-  doneLoading: PropTypes.func.isRequired,
-  /**
    * True if the most recent search request gave back an 
    * error, false otherwise.
    */
   error: PropTypes.bool.isRequired,
-  /**
-   * Sets error to true
-   */
-  setError: PropTypes.bool.isRequired,
-  /**
-   * Sets error to false
-   */
-  removeError: PropTypes.bool.isRequired,
 };
 
 export default Search;

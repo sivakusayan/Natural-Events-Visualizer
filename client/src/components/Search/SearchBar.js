@@ -5,22 +5,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Searchbar = ({ debouncedFetchData }) => (
-  <form>
-    <input
-      type='search'
-      placeholder='Search here'
-      onChange={e => debouncedFetchData(e.target.value)}
-    />
-  </form>
-);
+class Searchbar extends React.Component {
+  state = {
+    searchQuery: '',
+  }
+  
+  render() {
+    const { searchQuery } = this.state;
+    const { debouncedSearch } = this.props;
+    return (
+      <form>
+        <input
+          type='search'
+          placeholder='Search here'
+          onChange={e => debouncedSearch(e.target.value)}
+          value={searchQuery}
+        />
+      </form>
+    );
+  }
+};
 
 Searchbar.propTypes = {
   /**
-   * A debounced function that makes a request
-   * to the API. 
+   * A debounced function to search for events specifying
+   * the query and filters.
    */
-  debouncedFetchData: PropTypes.func.isRequired,
+  debouncedSearch: PropTypes.func.isRequired,
 };
 
 export default Searchbar;

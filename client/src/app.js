@@ -6,11 +6,13 @@ import { Provider, connect } from 'react-redux';
 import { EVENTS_URL, EONET_CATEGORIES_URL } from '../../constants/URL_STRINGS';
 import fetchRetry from '../../utils/fetchRetry';
 
+import Event from './propTypes/Event';
+
 import { setEvents } from './state/actions/events';
 import { startLoading, doneLoading } from './state/actions/loading';
 import { setError, removeError } from './state/actions/error';
-
 import configureStore from './state/store/configureStore';
+
 // import EventMap from './components/Map/EventMap';
 import SearchContainer from './containers/Search/indexContainer';
 import './styles/styles.scss';
@@ -18,11 +20,6 @@ import './styles/styles.scss';
 const store = configureStore();
 
 class App extends React.Component {
-  state = {
-    isLoading: false,
-    error: false,
-  }
-
   /**
    * Initializes the data of the application.
    * Events and event categories will be hydrated in 
@@ -31,10 +28,10 @@ class App extends React.Component {
   hydrateData = () => {
     const { initEvents, loadStart, loadEnd } = this.props;
     loadStart();
-    Promise.all([fetchRetry(EVENTS_URL), fetchRetry(EONET_CATEGORIES_URL)])
-      .then((res) => {
+    fetchRetry(EVENTS_URL)
+      .then((data) => {
         // Update state with events
-        initEvents(res[0]);
+        initEvents(data);
         // Update state with categories
         loadEnd();
       });
@@ -45,11 +42,11 @@ class App extends React.Component {
   }
 
   render() {
-    const { isLoading } = this.props;
+    const { events, isLoading } = this.props;
     return (
       <Provider store={store}>
         <div>
-          {!isLoading && <SearchContainer />}
+          {!isLoading && <SearchContainer events={events} />}
           {isLoading && <h1>Loading! Please hold...</h1>}
         </div>
       </Provider>
@@ -58,6 +55,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  events: state.loading,
   isLoading: state.isLoading,
 });
 
@@ -68,6 +66,12 @@ const mapDispatchToProps = dispatch => ({
 });
 
 App.propTypes = {
+  /**
+   * The total list of events from the database. Used to
+   * load the events onto the map and initialize search
+   * results.
+   */
+  events: PropTypes.arrayOf(Event).isRequired,
   /**
    * Sets the events that the application will use.
    */

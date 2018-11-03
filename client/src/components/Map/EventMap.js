@@ -1,32 +1,16 @@
 import React from 'react';
 import ReactMapboxGl, { GeoJSONLayer } from 'react-mapbox-gl';
-import * as MapboxGL from 'mapbox-gl';
 
 import KEY from '../../../../constants/MAPBOX_API_KEY';
 import STYLE from '../../../../constants/MAPBOX_STYLE';
 
-import { getDroughtGeoJSON, droughtSymbolLayout, droughtSymbolPaint, droughtCircleLayout, droughtCirclePaint } from '../../mapConfig/droughtLayer';
+import { getDroughtGeoJSON, droughtCircleLayout, droughtCirclePaint } from '../../mapConfig/droughtLayer';
 
 const Map = ReactMapboxGl({
   accessToken: KEY,
   minZoom: 2,
   maxZoom: 12,
 });
-
-const lineLayout = {
-  'line-cap': 'round',
-  'line-join': 'round',
-};
-
-const linePaint = {
-  'line-color': '#000',
-  'line-width': 12,
-};
-
-const polygonPaint = {
-  'fill-color': '#6F788A',
-  'fill-opacity': 0.7,
-};
 
 class EventMap extends React.Component {
   state = {
@@ -48,8 +32,6 @@ class EventMap extends React.Component {
           data={droughtGeoJSON}
           circleLayout={droughtCircleLayout}
           circlePaint={droughtCirclePaint}
-          symbolLayout={droughtSymbolLayout}
-          symbolPaint={droughtSymbolPaint}
         />
       </Map>
     );

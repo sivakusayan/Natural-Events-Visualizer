@@ -9,7 +9,7 @@ const pointMean = require('../../utils/pointMean');
 const parseLocation = require('./parseLocation');
 const getWaterBody = require('./getWaterBody');
 
-const KEY = require('../../constants/API_KEY');
+const KEY = require('../../constants/GOOGLE_API_KEY');
 const { GOOGLE_REVERSE_GEOCODE_URL } = require('../../constants/URL_STRINGS');
 
 /**

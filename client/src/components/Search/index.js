@@ -11,7 +11,7 @@ import Event from '../../propTypes/Event';
 
 import SearchBar from './SearchBar';
 import Filters from './Filters/Filters';
-import SearchResultsContainer from '../../containers/Search/SearchResultsContainer';
+import SearchResults from './SearchResults';
 
 const Search = ({
   events, setFilters, filters, debouncedSearch,
@@ -25,7 +25,7 @@ const Search = ({
       filters={filters}
       setFilters={setFilters}
     />
-    <SearchResultsContainer
+    <SearchResults
       events={events}
       isLoading={isLoading}
       error={error}

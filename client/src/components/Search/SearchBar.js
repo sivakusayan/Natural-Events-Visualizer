@@ -9,22 +9,32 @@ class Searchbar extends React.Component {
   state = {
     searchQuery: '',
   }
-  
+
+  setSearchQuery = (query) => {
+    this.setState({
+      searchQuery: query,
+    });
+  }
+
+  handleChange = (e) => {
+    this.setSearchQuery(e.target.value);
+    this.props.debouncedSearch(e.target.value);
+  }
+
   render() {
     const { searchQuery } = this.state;
-    const { debouncedSearch } = this.props;
     return (
       <form>
         <input
           type='search'
           placeholder='Search here'
-          onChange={e => debouncedSearch(e.target.value)}
+          onChange={this.handleChange}
           value={searchQuery}
         />
       </form>
     );
   }
-};
+}
 
 Searchbar.propTypes = {
   /**

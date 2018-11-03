@@ -13,7 +13,7 @@ import { debounce } from 'throttle-debounce';
 
 import fetchRetry from '../../../../utils/fetchRetry';
 
-import CATEGORIES from '../../constants/CATEGORIES';
+import CATEGORIES from '../../../../constants/CATEGORIES';
 
 import Event from '../../propTypes/Event';
 import Search from '../../components/Search/index';
@@ -145,7 +145,8 @@ export default class SearchContainer extends React.Component {
    *  The ID of the desired category to add
    */
   addToCategories = (categoryID) => {
-    this.setCategories(this.state.filters.categoriesFilter.concat([categoryID]));
+    const { categoriesFilter } = this.state.filters;
+    this.setCategories(categoriesFilter.concat([categoryID]));
   }
 
   /**
@@ -155,7 +156,8 @@ export default class SearchContainer extends React.Component {
    *  The ID of the desired category to remove
    */
   removeFromCategories = (categoryID) => {
-    this.setCategories(this.state.filters.categoriesFilter.filter(id => id !== categoryID));
+    const { categoriesFilter } = this.state.filters;
+    this.setCategories(categoriesFilter.filter(id => id !== categoryID));
   }
 
   /**
@@ -238,7 +240,7 @@ export default class SearchContainer extends React.Component {
         error={error}
         setError={this.setError}
         removeError={this.removeError}
-        search={this.search}
+        debouncedSearch={this.debouncedSearch}
       />
     );
   }

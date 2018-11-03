@@ -5,6 +5,7 @@ import KEY from '../../../../constants/MAPBOX_API_KEY';
 import STYLE from '../../../../constants/MAPBOX_STYLE';
 
 import DroughtLayerContainer from '../../containers/Map/DroughtLayerContainer';
+import DustAndHazeLayerContainer from '../../containers/Map/DustAndHazeLayerContainer';
 
 const Map = ReactMapboxGl({
   accessToken: KEY,
@@ -28,6 +29,7 @@ class EventMap extends React.Component {
         zoom={[2]}
       >
         <DroughtLayerContainer />
+        <DustAndHazeLayerContainer />
       </Map>
     );
   }

@@ -7,13 +7,10 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'prop-types';
 import moment from 'moment';
 
 import CATEGORIES from '../../../../constants/CATEGORIES';
 
-import Event from '../../propTypes/Event';
 import Search from '../../components/Search/index';
 
 export default class SearchContainer extends React.Component {

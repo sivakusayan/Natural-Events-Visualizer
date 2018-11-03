@@ -139,6 +139,26 @@ export default class SearchContainer extends React.Component {
   }
 
   /**
+   * Adds the specified categoryID to the categories filter.
+   * 
+   * @param categoryID 
+   *  The ID of the desired category to add
+   */
+  addToCategories = (categoryID) => {
+    this.setCategories(this.state.filters.categoriesFilter.concat([categoryID]));
+  }
+
+  /**
+   * Removes the specified categoryID from the categories filter.
+   * 
+   * @param categoryID 
+   *  The ID of the desired category to remove
+   */
+  removeFromCategories = (categoryID) => {
+    this.setCategories(this.state.filters.categoriesFilter.filter(id => id !== categoryID));
+  }
+
+  /**
    * A function that sends a search request using the specified parameters.
    * @async
    */
@@ -206,7 +226,8 @@ export default class SearchContainer extends React.Component {
           latitude: this.setLatitude,
           longitude: this.setLongitude,
           radius: this.setRadius,
-          categories: this.setCategories,
+          addToCategories: this.addToCategories,
+          removeFromCategories: this.removeFromCategories,
           startDate: this.setStartDate,
           endDate: this.setEndDate,
         }}

@@ -49,12 +49,13 @@ Search.propTypes = {
    * of their respective fields for searching.  
    */
   setFilters: PropTypes.shape({
-    latitude: PropTypes.func,
-    longitude: PropTypes.func,
-    radius: PropTypes.func,
-    categories: PropTypes.func,
-    startDate: PropTypes.func,
-    endDate: PropTypes.func,
+    latitude: PropTypes.func.isRequired,
+    longitude: PropTypes.func.isRequired,
+    radius: PropTypes.func.isRequired,
+    addToCategories: PropTypes.func.isRequired,
+    removeFromCategories: PropTypes.func.isRequired,
+    startDate: PropTypes.func.isRequired,
+    endDate: PropTypes.func.isRequired,
   }).isRequired,
   /**
    * A collection of values that describe the current

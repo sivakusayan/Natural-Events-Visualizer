@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { Provider, connect } from 'react-redux';
 
-import { EVENTS_URL, EONET_CATEGORIES_URL } from '../../constants/URL_STRINGS';
+import { EVENTS_URL } from '../../constants/URL_STRINGS';
 import fetchRetry from '../../utils/fetchRetry';
 
 import Event from './propTypes/Event';

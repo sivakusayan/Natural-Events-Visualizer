@@ -9,17 +9,16 @@ import { GeoJSONLayer } from 'react-mapbox-gl';
 import Event from '../../../propTypes/Event';
 
 class SeaAndLakeIceLayer extends React.Component {
-  circleLayout = { visibility: 'visible' };
-
-  circlePaint = { 'circle-color': 'green' };
+  linePaint = {
+    'line-color': 'blue',
+  }
 
   render() {
     const { geoJSON } = this.props;
     return (
       <GeoJSONLayer
         data={geoJSON}
-        circleLayout={this.circleLayout}
-        circlePaint={this.circlePaint}
+        linePaint={this.linePaint}
       />
     );
   }

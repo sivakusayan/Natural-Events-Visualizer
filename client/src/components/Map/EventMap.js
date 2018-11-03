@@ -6,6 +6,9 @@ import STYLE from '../../../../constants/MAPBOX_STYLE';
 
 import DroughtLayerContainer from '../../containers/Map/DroughtLayerContainer';
 import DustAndHazeLayerContainer from '../../containers/Map/DustAndHazeLayerContainer';
+import EarthquakesLayerContainer from '../../containers/Map/EarthquakesLayerContainer';
+import FloodsLayerContainer from '../../containers/Map/FloodsLayerContainer';
+import LandslidesLayerContainer from '../../containers/Map/LandslidesLayerContainer';
 
 const Map = ReactMapboxGl({
   accessToken: KEY,
@@ -30,6 +33,9 @@ class EventMap extends React.Component {
       >
         <DroughtLayerContainer />
         <DustAndHazeLayerContainer />
+        <EarthquakesLayerContainer />
+        <FloodsLayerContainer />
+        <LandslidesLayerContainer />
       </Map>
     );
   }

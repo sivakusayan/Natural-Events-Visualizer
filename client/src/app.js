@@ -13,8 +13,8 @@ import { startLoading, doneLoading } from './state/actions/loading';
 import { setError, removeError } from './state/actions/error';
 import configureStore from './state/store/configureStore';
 
-// import EventMap from './components/Map/EventMap';
-import SearchContainer from './containers/Search/indexContainer';
+import EventVisualizer from './components/EventVisualizer';
+import LoadingScreen from './components/LoadingScreen';
 import './styles/styles.scss';
 
 const store = configureStore();
@@ -46,8 +46,8 @@ class App extends React.Component {
     return (
       <Provider store={store}>
         <div>
-          {!isLoading && <SearchContainer events={events} />}
-          {isLoading && <h1>Loading! Please hold...</h1>}
+          {!isLoading && <EventVisualizer events={events} />}
+          {isLoading && <LoadingScreen />}
         </div>
       </Provider>
     );
@@ -92,6 +92,6 @@ App.propTypes = {
 
 const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
 
-// Pass store to bypass unnecessary 'middle' component to determine what
-// component to load.
+// Pass store to bypass unnecessary middle component to determine what
+// component to render while loading.
 ReactDOM.render(<AppContainer store={store} />, document.getElementById('app'));

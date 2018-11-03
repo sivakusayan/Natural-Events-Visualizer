@@ -11,7 +11,7 @@ import Event from '../../../propTypes/Event';
 class SevereStormsLayer extends React.Component {
   circleLayout = { visibility: 'visible' };
 
-  circlePaint = { 'circle-color': 'green' };
+  circlePaint = { 'circle-color': 'red' };
 
   render() {
     const { geoJSON } = this.props;

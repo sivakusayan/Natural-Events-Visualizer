@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactMapboxGl from 'react-mapbox-gl';
+import ReactMapboxGl, { ZoomControl, ScaleControl, RotationControl } from 'react-mapbox-gl';
 
 import KEY from '../../../../constants/MAPBOX_API_KEY';
 import STYLE from '../../../../constants/MAPBOX_STYLE';
@@ -24,37 +24,34 @@ const Map = ReactMapboxGl({
   maxZoom: 12,
 });
 
-class EventMap extends React.Component {
-  state = {
-    selectedEvent: null,
-  }
-
-  render() {
-    return (
-      <Map
-        style={STYLE}
-        containerStyle={{
-          height: '100vh',
-          width: '100vw',
-        }}
-        zoom={[2]}
-      >
-        <DroughtLayerContainer />
-        <DustAndHazeLayerContainer />
-        <EarthquakesLayerContainer />
-        <FloodsLayerContainer />
-        <LandslidesLayerContainer />
-        <ManmadeLayerContainer />
-        <SeaAndLakeIceLayerContainer />
-        <SevereStormsLayerContainer />
-        <SnowLayerContainer />
-        <TemperatureExtremesLayerContainer />
-        <VolcanoesLayerContainer />
-        <WaterColorLayerContainer />
-        <WildfiresLayerContainer />
-      </Map>
-    );
-  }
-}
+const EventMap = () => (
+  <Map
+    style={STYLE}
+    containerStyle={{
+      height: '100vh',
+      width: '100vw',
+    }}
+    zoom={[2]}
+  >
+    <ZoomControl
+      zoomDiff={1}
+    />
+    <ScaleControl />
+    <RotationControl />
+    <DroughtLayerContainer />
+    <DustAndHazeLayerContainer />
+    <EarthquakesLayerContainer />
+    <FloodsLayerContainer />
+    <LandslidesLayerContainer />
+    <ManmadeLayerContainer />
+    <SeaAndLakeIceLayerContainer />
+    <SevereStormsLayerContainer />
+    <SnowLayerContainer />
+    <TemperatureExtremesLayerContainer />
+    <VolcanoesLayerContainer />
+    <WaterColorLayerContainer />
+    <WildfiresLayerContainer />
+  </Map>
+);
 
 export default EventMap;

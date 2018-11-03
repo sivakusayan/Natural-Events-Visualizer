@@ -6,8 +6,6 @@ import { Provider, connect } from 'react-redux';
 import { EVENTS_URL } from '../../constants/URL_STRINGS';
 import fetchRetry from '../../utils/fetchRetry';
 
-import Event from './propTypes/Event';
-
 import { setEvents } from './state/actions/events';
 import { startLoading, doneLoading } from './state/actions/loading';
 import { setError, removeError } from './state/actions/error';
@@ -45,7 +43,7 @@ class App extends React.Component {
     const { events, isLoading } = this.props;
     return (
       <Provider store={store}>
-        {isLoading ? <LoadingScreen /> : <EventVisualizer events={events} />}
+        {isLoading ? <LoadingScreen /> : <EventVisualizer />}
       </Provider>
     );
   }
@@ -63,12 +61,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 App.propTypes = {
-  /**
-   * The total list of events from the database. Used to
-   * load the events onto the map and initialize search
-   * results.
-   */
-  events: PropTypes.arrayOf(Event).isRequired,
   /**
    * Sets the events that the application will use.
    */

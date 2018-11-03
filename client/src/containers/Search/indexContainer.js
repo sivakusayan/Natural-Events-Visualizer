@@ -8,6 +8,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'prop-types';
 import moment from 'moment';
 
 import CATEGORIES from '../../../../constants/CATEGORIES';
@@ -33,7 +34,7 @@ export default class SearchContainer extends React.Component {
       endDateFilter: moment().valueOf(),
     },
     // Events that are listed in search results
-    events: this.props.events,
+    events: [],
     // True if search results are loading, false otherwise
     isLoading: false,
     // True if latest search returned an error, false otherwise
@@ -188,7 +189,3 @@ export default class SearchContainer extends React.Component {
     );
   }
 }
-
-SearchContainer.propTypes = {
-  events: PropTypes.arrayOf(Event).isRequired,
-};

@@ -4,7 +4,7 @@ import ReactMapboxGl, { GeoJSONLayer } from 'react-mapbox-gl';
 import KEY from '../../../../constants/MAPBOX_API_KEY';
 import STYLE from '../../../../constants/MAPBOX_STYLE';
 
-import { getDroughtGeoJSON, droughtCircleLayout, droughtCirclePaint } from '../../mapConfig/droughtLayer';
+import DroughtLayerContainer from '../../containers/Map/DroughtLayerContainer';
 
 const Map = ReactMapboxGl({
   accessToken: KEY,
@@ -14,11 +14,10 @@ const Map = ReactMapboxGl({
 
 class EventMap extends React.Component {
   state = {
-    droughtGeoJSON: getDroughtGeoJSON(this.props.events),
+    selectedEvent: null,
   }
 
   render() {
-    const { droughtGeoJSON } = this.state;
     return (
       <Map
         style={STYLE}
@@ -28,11 +27,7 @@ class EventMap extends React.Component {
         }}
         zoom={[2]}
       >
-        <GeoJSONLayer
-          data={droughtGeoJSON}
-          circleLayout={droughtCircleLayout}
-          circlePaint={droughtCirclePaint}
-        />
+        <DroughtLayerContainer />
       </Map>
     );
   }

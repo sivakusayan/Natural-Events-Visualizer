@@ -13,7 +13,7 @@ import FloodsLayer from '../../components/Map/Layers/FloodsLayer';
 class FloodsLayerContainer extends React.Component {
   geoJSON = {
     type: 'FeatureCollection',
-    // Filter for events with a categoryID of 7 (Dust and Haze)
+    // Filter for events with a categoryID of 9 (Floods)
     features: this.props.events.filter(event => event.properties.categories.includes(9)),
   }
 

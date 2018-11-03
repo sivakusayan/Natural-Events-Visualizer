@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactMapboxGl, { GeoJSONLayer } from 'react-mapbox-gl';
+import ReactMapboxGl from 'react-mapbox-gl';
 
 import KEY from '../../../../constants/MAPBOX_API_KEY';
 import STYLE from '../../../../constants/MAPBOX_STYLE';
@@ -13,6 +13,10 @@ import ManmadeLayerContainer from '../../containers/Map/ManmadeLayerContainer';
 import SeaAndLakeIceLayerContainer from '../../containers/Map/SeaAndLakeIceLayerContainer';
 import SevereStormsLayerContainer from '../../containers/Map/SevereStormsLayerContainer';
 import SnowLayerContainer from '../../containers/Map/SnowLayerContainer';
+import TemperatureExtremesLayerContainer from '../../containers/Map/TemperatureExtremesLayerContainer';
+import VolcanoesLayerContainer from '../../containers/Map/VolcanoesLayerContainer';
+import WaterColorLayerContainer from '../../containers/Map/WaterColorLayerContainer';
+import WildfiresLayerContainer from '../../containers/Map/WildfiresLayerContainer';
 
 const Map = ReactMapboxGl({
   accessToken: KEY,
@@ -44,6 +48,10 @@ class EventMap extends React.Component {
         <SeaAndLakeIceLayerContainer />
         <SevereStormsLayerContainer />
         <SnowLayerContainer />
+        <TemperatureExtremesLayerContainer />
+        <VolcanoesLayerContainer />
+        <WaterColorLayerContainer />
+        <WildfiresLayerContainer />
       </Map>
     );
   }

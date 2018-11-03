@@ -11,12 +11,13 @@ import Event from '../../../propTypes/Event';
 class DustAndHazeLayer extends React.Component {
   circleLayout = { visibility: 'visible' };
 
-  circlePaint = { 'circle-color': 'brown' };
+  circlePaint = { 'circle-color': 'grey' };
 
   render() {
+    const { geoJSON } = this.props;
     return (
       <GeoJSONLayer
-        data={this.props.geoJSON}
+        data={geoJSON}
         circleLayout={this.circleLayout}
         circlePaint={this.circlePaint}
       />

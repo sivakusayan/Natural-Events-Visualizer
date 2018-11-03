@@ -45,17 +45,14 @@ class App extends React.Component {
     const { events, isLoading } = this.props;
     return (
       <Provider store={store}>
-        <div>
-          {!isLoading && <EventVisualizer events={events} />}
-          {isLoading && <LoadingScreen />}
-        </div>
+        {isLoading ? <LoadingScreen /> : <EventVisualizer events={events} />}
       </Provider>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  events: state.loading,
+  events: state.events,
   isLoading: state.isLoading,
 });
 

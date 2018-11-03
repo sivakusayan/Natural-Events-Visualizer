@@ -57,7 +57,7 @@ CategoryFilter.propTypes = {
    * remove functions respectively add and remove one category
    * from the filter using the category ID.
    */
-  setFilter: PropTypes.shapeOf({
+  setFilter: PropTypes.shape({
     add: PropTypes.func.isRequired,
     remove: PropTypes.func.isRequired,
   }).isRequired,

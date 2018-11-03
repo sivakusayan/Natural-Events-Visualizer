@@ -13,7 +13,7 @@ import LandslidesLayer from '../../components/Map/Layers/LandslidesLayer';
 class LandslidesLayerContainer extends React.Component {
   geoJSON = {
     type: 'FeatureCollection',
-    // Filter for events with a categoryID of 7 (Dust and Haze)
+    // Filter for events with a categoryID of 14 (Landslides)
     features: this.props.events.filter(event => event.properties.categories.includes(14)),
   }
 

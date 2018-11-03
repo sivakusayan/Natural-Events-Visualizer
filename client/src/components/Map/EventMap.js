@@ -9,6 +9,10 @@ import DustAndHazeLayerContainer from '../../containers/Map/DustAndHazeLayerCont
 import EarthquakesLayerContainer from '../../containers/Map/EarthquakesLayerContainer';
 import FloodsLayerContainer from '../../containers/Map/FloodsLayerContainer';
 import LandslidesLayerContainer from '../../containers/Map/LandslidesLayerContainer';
+import ManmadeLayerContainer from '../../containers/Map/ManmadeLayerContainer';
+import SeaAndLakeIceLayerContainer from '../../containers/Map/SeaAndLakeIceLayerContainer';
+import SevereStormsLayerContainer from '../../containers/Map/SevereStormsLayerContainer';
+import SnowLayerContainer from '../../containers/Map/SnowLayerContainer';
 
 const Map = ReactMapboxGl({
   accessToken: KEY,
@@ -36,6 +40,10 @@ class EventMap extends React.Component {
         <EarthquakesLayerContainer />
         <FloodsLayerContainer />
         <LandslidesLayerContainer />
+        <ManmadeLayerContainer />
+        <SeaAndLakeIceLayerContainer />
+        <SevereStormsLayerContainer />
+        <SnowLayerContainer />
       </Map>
     );
   }

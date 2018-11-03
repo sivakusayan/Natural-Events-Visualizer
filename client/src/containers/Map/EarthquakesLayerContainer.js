@@ -13,8 +13,8 @@ import EarthquakesLayer from '../../components/Map/Layers/EarthquakesLayer';
 class EarthquakesLayerContainer extends React.Component {
   geoJSON = {
     type: 'FeatureCollection',
-    // Filter for events with a categoryID of 7 (Dust and Haze)
-    features: this.props.events.filter(event => event.properties.categories.includes(8)),
+    // Filter for events with a categoryID of 16 (Earthquakes)
+    features: this.props.events.filter(event => event.properties.categories.includes(16)),
   }
 
   render() {

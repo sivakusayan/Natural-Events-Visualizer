@@ -8,19 +8,11 @@ import Event from '../propTypes/Event';
 import SearchContainer from '../containers/Search/indexContainer';
 import EventMap from './Map/EventMap';
 
-const EventVisualizer = ({ events }) => (
+const EventVisualizer = () => (
   <div>
-    {/* <SearchContainer events={events} /> */}
-    <EventMap events={events} />
+    {/* <SearchContainer events={events} />  */}
+    <EventMap />
   </div>
 );
-
-EventVisualizer.propTypes = {
-  /**
-   * Array of events used to initialize the EventMap
-   * and Search results.
-   */
-  events: PropTypes.arrayOf(Event).isRequired,
-};
 
 export default EventVisualizer;

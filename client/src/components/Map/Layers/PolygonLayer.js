@@ -1,39 +1,36 @@
 /**
  * @fileoverview Handles rendering of the map layer concerned
- * with landslide events.
+ * with polygon events.
  */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { GeoJSONLayer } from 'react-mapbox-gl';
 
-import CATEGORIES from '../../../../../constants/CATEGORIES';
+import CATEGORIES from '../../../constants/CATEGORIES';
 import MAP_POLYGON_CONFIG from '../../../constants/MAP_POLYGON_CONFIG';
-import MAP_LINE_CONFIG from '../../../constants/MAP_LINE_CONFIG';
 
 import Event from '../../../propTypes/Event';
 
-class LandslidesLayer extends React.Component {
-  circleLayout = { visibility: 'visible' };
+class PolygonLayer extends React.Component {
 
-  circlePaint = { 'circle-color': 'green' };
+  fillPaint = MAP_POLYGON_CONFIG.paint
 
   render() {
     const { geoJSON } = this.props;
     return (
       <GeoJSONLayer
         data={geoJSON}
-        circleLayout={this.circleLayout}
-        circlePaint={this.circlePaint}
+        fillPaint={this.fillPaint}
       />
     );
   }
 }
 
-LandslidesLayer.propTypes = {
+PolygonLayer.propTypes = {
   /**
    * The geoJSON data used to render this layer.
    */
   geoJSON: PropTypes.arrayOf(Event).isRequired,
 };
 
-export default LandslidesLayer;
+export default PolygonLayer;

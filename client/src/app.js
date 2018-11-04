@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { Provider, connect } from 'react-redux';
 
-import { EVENTS_URL } from '../../constants/URL_STRINGS';
+import { LOCAL_API_URL } from './constants/URL_STRINGS';
 import fetchRetry from '../../utils/fetchRetry';
 
 import { setEvents } from './state/actions/events';
@@ -26,7 +26,8 @@ class App extends React.Component {
   hydrateData = () => {
     const { initEvents, loadStart, loadEnd } = this.props;
     loadStart();
-    fetchRetry(EVENTS_URL)
+    console.log(LOCAL_API_URL);
+    fetchRetry(LOCAL_API_URL)
       .then((data) => {
         // Update state with events
         initEvents(data);

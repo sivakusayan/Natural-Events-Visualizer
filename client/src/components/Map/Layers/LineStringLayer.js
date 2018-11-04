@@ -1,48 +1,42 @@
 /**
  * @fileoverview Handles rendering of the map layer concerned
- * with drought events.
+ * with LineString events.
  */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { GeoJSONLayer } from 'react-mapbox-gl';
 
 import CATEGORIES from '../../../constants/CATEGORIES';
-import MAP_POLYGON_CONFIG from '../../../constants/MAP_POLYGON_CONFIG';
 import MAP_LINE_CONFIG from '../../../constants/MAP_LINE_CONFIG';
 
 import Event from '../../../propTypes/Event';
 
-class DroughtLayer extends React.Component {
-  circlePaint = { 
-    'circle-color': CATEGORIES[6].color.
-  };
+class LineStringLayer extends React.Component {
+
+  lineLayout = MAP_LINE_CONFIG.layout;
 
   linePaint = {
-    ...MAP_LINE_CONFIG.paint,
-    'line-color': CATEGORIES[6].color,
+    ...MAP_LINE_CONFIG.pain,
+    'line-color': 'red',
   }
 
-  fillPaint = {
-    ...MAP_POLYGON_CONFIG.paint,
-    'fill-color': CATEGORIES[6].color,
-  }
-  
   render() {
     const { geoJSON } = this.props;
     return (
       <GeoJSONLayer
         data={geoJSON}
-        circlePaint={this.circlePaint}
+        lineLayout={this.lineLayout}
+        linePaint={this.linePaint}
       />
     );
   }
 }
 
-DroughtLayer.propTypes = {
+LineStringLayer.propTypes = {
   /**
    * The geoJSON data used to render this layer.
    */
   geoJSON: PropTypes.arrayOf(Event).isRequired,
 };
 
-export default DroughtLayer;
+export default LineStringLayer;

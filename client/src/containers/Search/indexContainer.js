@@ -9,7 +9,7 @@
 import React from 'react';
 import moment from 'moment';
 
-import CATEGORIES from '../../../../constants/CATEGORIES';
+import CATEGORIES from '../../constants/CATEGORIES';
 
 import Search from '../../components/Search/index';
 

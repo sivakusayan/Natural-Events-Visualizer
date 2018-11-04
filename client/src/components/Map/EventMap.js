@@ -4,19 +4,9 @@ import ReactMapboxGl, { ZoomControl, ScaleControl, RotationControl } from 'react
 import KEY from '../../constants/MAPBOX_API_KEY';
 import STYLE from '../../constants/MAPBOX_STYLE';
 
-import DroughtLayerContainer from '../../containers/Map/DroughtLayerContainer';
-import DustAndHazeLayerContainer from '../../containers/Map/DustAndHazeLayerContainer';
-import EarthquakesLayerContainer from '../../containers/Map/EarthquakesLayerContainer';
-import FloodsLayerContainer from '../../containers/Map/FloodsLayerContainer';
-import LandslidesLayerContainer from '../../containers/Map/LandslidesLayerContainer';
-import ManmadeLayerContainer from '../../containers/Map/ManmadeLayerContainer';
-import SeaAndLakeIceLayerContainer from '../../containers/Map/SeaAndLakeIceLayerContainer';
-import SevereStormsLayerContainer from '../../containers/Map/SevereStormsLayerContainer';
-import SnowLayerContainer from '../../containers/Map/SnowLayerContainer';
-import TemperatureExtremesLayerContainer from '../../containers/Map/TemperatureExtremesLayerContainer';
-import VolcanoesLayerContainer from '../../containers/Map/VolcanoesLayerContainer';
-import WaterColorLayerContainer from '../../containers/Map/WaterColorLayerContainer';
-import WildfiresLayerContainer from '../../containers/Map/WildfiresLayerContainer';
+import PointLayerContainer from '../../containers/Map/PointLayerContainer';
+import LineStringLayerContainer from '../../containers/Map/LineStringLayerContainer';
+import PolygonLayerContainer from '../../containers/Map/PolygonLayerContainer';
 
 const Map = ReactMapboxGl({
   accessToken: KEY,
@@ -38,19 +28,9 @@ const EventMap = () => (
     />
     <ScaleControl />
     <RotationControl />
-    <DroughtLayerContainer />
-    <DustAndHazeLayerContainer />
-    <EarthquakesLayerContainer />
-    <FloodsLayerContainer />
-    <LandslidesLayerContainer />
-    <ManmadeLayerContainer />
-    <SeaAndLakeIceLayerContainer />
-    <SevereStormsLayerContainer />
-    <SnowLayerContainer />
-    <TemperatureExtremesLayerContainer />
-    <VolcanoesLayerContainer />
-    <WaterColorLayerContainer />
-    <WildfiresLayerContainer />
+    <PointLayerContainer />
+    <LineStringLayerContainer />
+    <PolygonLayerContainer />
   </Map>
 );
 

@@ -6,7 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CATEGORIES from '../../../../../constants/CATEGORIES';
+import CATEGORIES from '../../../constants/CATEGORIES';
 
 class CategoryFilter extends React.Component {
   /**

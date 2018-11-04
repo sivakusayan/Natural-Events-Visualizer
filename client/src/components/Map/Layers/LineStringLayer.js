@@ -12,12 +12,15 @@ import MAP_LINE_CONFIG from '../../../constants/MAP_LINE_CONFIG';
 import Event from '../../../propTypes/Event';
 
 class LineStringLayer extends React.Component {
-
   lineLayout = MAP_LINE_CONFIG.layout;
 
   linePaint = {
-    ...MAP_LINE_CONFIG.pain,
-    'line-color': 'red',
+    ...MAP_LINE_CONFIG.paint,
+    'line-color': {
+      property: 'category',
+      type: 'categorical',
+      stops: Object.keys(CATEGORIES).map(key => [parseInt(key), CATEGORIES[key].color]),
+    },
   }
 
   render() {

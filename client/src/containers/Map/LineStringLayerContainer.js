@@ -13,8 +13,9 @@ import LineStringLayer from '../../components/Map/Layers/LineStringLayer';
 class LineStringLayerContainer extends React.Component {
   geoJSON = {
     type: 'FeatureCollection',
-    // Filter for LineString events
-    features: this.props.events.filter(event => event.geometry.type === 'LineString'),
+    // Concatenate line string events with their generated endpoints
+    features: this.props.lineStringEvents,
+
   }
 
   render() {
@@ -25,14 +26,14 @@ class LineStringLayerContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  events: state.events,
+  lineStringEvents: state.events.filter(event => event.geometry.type === 'LineString'),
 });
 
 LineStringLayerContainer.propTypes = {
   /**
-   * The list of all events in the database.
+   * The list of all LineString events in the database.
    */
-  events: PropTypes.arrayOf(Event).isRequired,
+  lineStringEvents: PropTypes.arrayOf(Event).isRequired,
 };
 
 export default connect(mapStateToProps)(LineStringLayerContainer);

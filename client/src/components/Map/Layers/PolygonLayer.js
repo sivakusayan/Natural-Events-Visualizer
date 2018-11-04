@@ -12,8 +12,14 @@ import MAP_POLYGON_CONFIG from '../../../constants/MAP_POLYGON_CONFIG';
 import Event from '../../../propTypes/Event';
 
 class PolygonLayer extends React.Component {
-
-  fillPaint = MAP_POLYGON_CONFIG.paint
+  fillPaint = {
+    ...MAP_POLYGON_CONFIG.paint,
+    'fill-color': {
+      property: 'category',
+      type: 'categorical',
+      stops: Object.keys(CATEGORIES).map(key => [parseInt(key), CATEGORIES[key].color]),
+    },
+  }
 
   render() {
     const { geoJSON } = this.props;

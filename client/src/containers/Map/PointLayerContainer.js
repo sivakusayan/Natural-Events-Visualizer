@@ -10,11 +10,12 @@ import Event from '../../propTypes/Event';
 
 import PointLayer from '../../components/Map/Layers/PointLayer';
 
+
 class PointLayerContainer extends React.Component {
   geoJSON = {
     type: 'FeatureCollection',
     // Filter for Point events
-    features: this.props.events.filter(event => event.geometry.type === 'Point'),
+    features: this.props.pointEvents,
   }
 
   render() {
@@ -25,14 +26,14 @@ class PointLayerContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  events: state.events,
+  pointEvents: state.events.filter(event => event.geometry.type === 'Point'),
 });
 
 PointLayerContainer.propTypes = {
   /**
-   * The list of all events in the database.
+   * The list of all point events in the database.
    */
-  events: PropTypes.arrayOf(Event).isRequired,
+  pointEvents: PropTypes.arrayOf(Event).isRequired,
 };
 
 export default connect(mapStateToProps)(PointLayerContainer);

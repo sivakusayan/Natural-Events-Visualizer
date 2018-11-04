@@ -14,7 +14,7 @@ class PolygonLayerContainer extends React.Component {
   geoJSON = {
     type: 'FeatureCollection',
     // Filter for Polygon events
-    features: this.props.events.filter(event => event.geometry.type === 'Polygon'),
+    features: this.props.polygonEvents,
   }
 
   render() {
@@ -25,14 +25,14 @@ class PolygonLayerContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  events: state.events,
+  polygonEvents: state.events.filter(event => event.geometry.type === 'Polygon'),
 });
 
 PolygonLayerContainer.propTypes = {
   /**
-   * The list of all events in the database.
+   * The list of all polygon events in the database.
    */
-  events: PropTypes.arrayOf(Event).isRequired,
+  polygonEvents: PropTypes.arrayOf(Event).isRequired,
 };
 
 export default connect(mapStateToProps)(PolygonLayerContainer);

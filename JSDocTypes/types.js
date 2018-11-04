@@ -22,11 +22,11 @@
  * A GeoJSON implementation of EONET event data.
  * @property {Number} _id 
  * ID for each event
- * @property {String} type 
+ * @property {'Feature'} type 
  * GeoJSON feature type
  * @property {EventGeoJSONProperty} properties 
  * nonspacial properties of the event
- * @property {{ type: String, date: Number | Number[], coordinates: [], location: String | String[]}} geometry
+ * @property {{ type: 'Point' | 'LineString' | 'Polygon', date: Number[], coordinates: [], location: String | String[]}} geometry
  * A GeoJSON compatible geometry of event. Can be a Point, LineString, or Polygon. 
  * If type is Point or Polygon, then the date and location are just singletons. If type 
  * is a LineString, then the date and location become arrays.
@@ -39,8 +39,19 @@
   * Name of the event
   * @property {String} description 
   * Description of the event
-  * @property {Array.<{ _id: Number }>} categories 
-  * Array of IDs that specify the categories the event falls under.
+  * @property {Number} category
+  * ID that specifies the category the event falls under.
   * @property {Array.<{ _id: String, title: String}>} sources 
   * Array of official sources with information on the event
   */
+
+/**
+ * @typedef {Object} EventGeoJSONEndpoint
+ * A GeoJSON endpoint of a line string.
+ * @property {'Feature'} type
+ * GeoJSON feature type
+ * @property {{type: 'Point' coordinates: Number[]}} geometry
+ * The geometry of the point
+ * @property {{ endPointTo: Number }} properties
+ * Contains the event ID of the lineString it is the endpoint of. 
+ */

@@ -60,7 +60,7 @@ const EventProperties = new Schema({
   },
   description: String,
   sources: [EventSource],
-  categories: [Number],
+  category: Number,
 }, { _id: false });
 
 const EventSchema = new Schema({

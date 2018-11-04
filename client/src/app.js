@@ -26,7 +26,6 @@ class App extends React.Component {
   hydrateData = () => {
     const { initEvents, loadStart, loadEnd } = this.props;
     loadStart();
-    console.log(LOCAL_API_URL);
     fetchRetry(LOCAL_API_URL)
       .then((data) => {
         // Update state with events

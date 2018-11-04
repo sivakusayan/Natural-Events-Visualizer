@@ -47,6 +47,7 @@ const Event = PropTypes.shape({
    */
   properties: PropTypes.shape({
     title: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
     category: PropTypes.number.isRequired,
     sources: PropTypes.arrayOf(PropTypes.shape({

@@ -7,11 +7,13 @@ import PropTypes from 'prop-types';
 import { GeoJSONLayer } from 'react-mapbox-gl';
 
 import CATEGORIES from '../../../constants/CATEGORIES';
+import MAP_CIRCLE_CONFIG from '../../../constants/MAP_CIRCLE_CONFIG';
 
 import Event from '../../../propTypes/Event';
 
 class PointLayer extends React.Component {
   circlePaint = {
+    ...MAP_CIRCLE_CONFIG.paint,
     'circle-color': {
       property: 'category',
       type: 'categorical',

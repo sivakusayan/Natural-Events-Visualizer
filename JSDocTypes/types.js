@@ -37,6 +37,8 @@
   * An object contianing nonspacial properties of the event.
   * @property {String} title 
   * Name of the event
+  * @property {Number} id 
+  * ID for each event
   * @property {String} description 
   * Description of the event
   * @property {Number} category

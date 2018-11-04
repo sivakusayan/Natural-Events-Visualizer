@@ -15,27 +15,64 @@ const Map = ReactMapboxGl({
   maxZoom: 12,
 });
 
-const EventMap = () => (
-  <Map
-    style={STYLE}
-    containerStyle={{
-      height: '100vh',
-      width: '100vw',
-    }}
-    zoom={[2]}
-  >
-    <ZoomControl
-      zoomDiff={1}
-    />
-    <ScaleControl />
-    <RotationControl />
+class EventMap extends React.Component {
+  onMapClick = (map, e) => {
+    // console.log('Map clicked!', evt.lngLat.lat, evt.lngLat.lng);
+    const features = map.queryRenderedFeatures(e.point);
+    console.log(features);
+    if (features[0].source.includes('geojson')) {
+      console.log('Clicked the point :)');
+    }
+  };
 
-    <PointLayerContainer />
-    <LineStringLayerContainer />
-    <LineStringEndpointsLayerContainer />
-    <PolygonLayerContainer />
+  render() {
+    return (
+      <Map
+        style={STYLE}
+        containerStyle={{
+          height: '100vh',
+          width: '100vw',
+        }}
+        zoom={[2]}
+        onClick={this.onMapClick}
+      >
+        <ZoomControl
+          zoomDiff={1}
+        />
+        <ScaleControl />
+        <RotationControl />
 
-  </Map>
-);
+        <PointLayerContainer />
+        <LineStringLayerContainer />
+        <LineStringEndpointsLayerContainer />
+        <PolygonLayerContainer />
+
+      </Map>
+    );
+  }
+}
+
+// const EventMap = () => (
+//   <Map
+//     style={STYLE}
+//     containerStyle={{
+//       height: '100vh',
+//       width: '100vw',
+//     }}
+//     zoom={[2]}
+//   >
+//     <ZoomControl
+//       zoomDiff={1}
+//     />
+//     <ScaleControl />
+//     <RotationControl />
+
+//     <PointLayerContainer />
+//     <LineStringLayerContainer />
+//     <LineStringEndpointsLayerContainer />
+//     <PolygonLayerContainer />
+
+//   </Map>
+// );
 
 export default EventMap;

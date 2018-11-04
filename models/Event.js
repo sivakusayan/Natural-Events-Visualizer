@@ -59,6 +59,7 @@ const EventProperties = new Schema({
     required: true,
   },
   description: String,
+  id: Number,
   sources: [EventSource],
   category: Number,
 }, { _id: false });

@@ -1,1 +1,0 @@
-module.exports = 'sayancoding:79vfS9T$X&!i@ds119853.mlab.com:19853/geodata';

@@ -77,6 +77,9 @@ const EventSchema = new Schema({
   properties: EventProperties,
 });
 
+// Define index for geospatial querying
 EventSchema.index({ geometry: '2dsphere' });
+// Define index for quick sorting
+EventSchema.index({ 'geometry.date': -1 });
 
 module.exports = mongoose.model('event', EventSchema);

@@ -49,7 +49,7 @@ router.get('/', (req, res) => {
     query['geometry.date'] = { $elemMatch: { $lt: req.query.endDate } };
   }
 
-  Event.find(query)
+  Event.find(query).sort({ 'geometry.date': -1 })
     .then(events => res.json(events));
 });
 /**

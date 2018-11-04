@@ -6,12 +6,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { GeoJSONLayer } from 'react-mapbox-gl';
 
+import CATEGORIES from '../../../../../constants/CATEGORIES';
+
 import Event from '../../../propTypes/Event';
 
 class DroughtLayer extends React.Component {
   circleLayout = { visibility: 'visible' };
 
-  circlePaint = { 'circle-color': 'red' };
+  circlePaint = { 'circle-color': CATEGORIES[6].color };
 
   render() {
     const { geoJSON } = this.props;

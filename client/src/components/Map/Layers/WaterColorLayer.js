@@ -6,6 +6,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { GeoJSONLayer } from 'react-mapbox-gl';
 
+import CATEGORIES from '../../../../../constants/CATEGORIES';
+
 import Event from '../../../propTypes/Event';
 
 class WaterColorLayer extends React.Component {

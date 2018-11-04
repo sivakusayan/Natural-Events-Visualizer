@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactMapboxGl, { ZoomControl, ScaleControl, RotationControl } from 'react-mapbox-gl';
 
-import KEY from '../../../../constants/MAPBOX_API_KEY';
-import STYLE from '../../../../constants/MAPBOX_STYLE';
+import KEY from '../../constants/MAPBOX_API_KEY';
+import STYLE from '../../constants/MAPBOX_STYLE';
 
 import DroughtLayerContainer from '../../containers/Map/DroughtLayerContainer';
 import DustAndHazeLayerContainer from '../../containers/Map/DustAndHazeLayerContainer';

@@ -7,6 +7,8 @@ import PropTypes from 'prop-types';
 import { GeoJSONLayer } from 'react-mapbox-gl';
 
 import CATEGORIES from '../../../../../constants/CATEGORIES';
+import MAP_POLYGON_CONFIG from '../../../constants/MAP_POLYGON_CONFIG';
+import MAP_LINE_CONFIG from '../../../constants/MAP_LINE_CONFIG';
 
 import Event from '../../../propTypes/Event';
 

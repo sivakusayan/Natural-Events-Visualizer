@@ -16,9 +16,11 @@ class LineStringLayer extends React.Component {
 
   linePaint = {
     ...MAP_LINE_CONFIG.paint,
+    // Generate stops using colors already defined in CATEGORIES object
     'line-color': {
       property: 'category',
       type: 'categorical',
+      // Parse int to prevent type coercion to string
       stops: Object.keys(CATEGORIES).map(key => [parseInt(key), CATEGORIES[key].color]),
     },
   }

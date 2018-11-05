@@ -14,9 +14,11 @@ import Event from '../../../propTypes/Event';
 class PointLayer extends React.Component {
   circlePaint = {
     ...MAP_CIRCLE_CONFIG.paint,
+    // Generate stops using colors already defined in CATEGORIES object
     'circle-color': {
       property: 'category',
       type: 'categorical',
+      // Parse int to prevent type coercion to string
       stops: Object.keys(CATEGORIES).map(key => [parseInt(key), CATEGORIES[key].color]),
     },
   };

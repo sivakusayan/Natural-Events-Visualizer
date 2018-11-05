@@ -4,12 +4,12 @@
 import React from 'react';
 
 import SearchContainer from '../containers/Search/indexContainer';
-import EventMap from './Map/EventMap';
+import EventMapContainer from '../containers/Map/EventMapContainer';
 
 const EventVisualizer = () => (
   <div>
     {/* <SearchContainer />  */}
-    <EventMap />
+    <EventMapContainer />
   </div>
 );
 

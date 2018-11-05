@@ -6,9 +6,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Event from '../../propTypes/Event';
+import Event from '../../../propTypes/Event';
 
-import LineStringEndpointsLayer from '../../components/Map/Layers/LineStringEndpointsLayer';
+import LineStringEndpointsLayer from '../../../components/Map/Layers/LineStringEndpointsLayer';
 
 /**
  * Given a lineString EventGeoJSON object, return a GeoJSON point

@@ -43,12 +43,12 @@ const toGeoJSONGeometry = (geometries) => {
  */
 const toGeoJSONEvents = eventArray => eventArray.map(event => ({
   // Splits EONET_2912 into 2912 to eliminate redundancy
-  _id: event.id.split('_')[1], 
+  _id: event.id.split('_')[1],
   type: 'Feature',
   geometry: toGeoJSONGeometry(event.geometries),
   properties: {
     // Copy ID into properties to be able to retrieve ID on mapbox click
-    id: event.id.split('_')[1]
+    id: event.id.split('_')[1],
     title: event.title,
     description: event.description,
     sources: event.sources,

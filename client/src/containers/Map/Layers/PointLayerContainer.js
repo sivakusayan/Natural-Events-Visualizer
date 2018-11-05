@@ -6,11 +6,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { selectEvent } from '../../state/actions/selectedEvent';
+import { selectEvent } from '../../../state/actions/selectedEvent';
 
-import Event from '../../propTypes/Event';
+import Event from '../../../propTypes/Event';
 
-import PointLayer from '../../components/Map/Layers/PointLayer';
+import PointLayer from '../../../components/Map/Layers/PointLayer';
 
 
 class PointLayerContainer extends React.Component {

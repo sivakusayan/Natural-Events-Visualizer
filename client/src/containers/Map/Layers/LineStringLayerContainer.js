@@ -6,16 +6,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Event from '../../propTypes/Event';
+import Event from '../../../propTypes/Event';
 
-import LineStringLayer from '../../components/Map/Layers/LineStringLayer';
+import LineStringLayer from '../../../components/Map/Layers/LineStringLayer';
 
 class LineStringLayerContainer extends React.Component {
   geoJSON = {
     type: 'FeatureCollection',
-    // Concatenate line string events with their generated endpoints
     features: this.props.lineStringEvents,
-
   }
 
   render() {

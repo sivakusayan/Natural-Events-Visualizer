@@ -17,6 +17,7 @@ class PolygonLayer extends React.Component {
     'fill-color': {
       property: 'category',
       type: 'categorical',
+      // Generate stops using colors already defined in CATEGORIES object
       stops: Object.keys(CATEGORIES).map(key => [parseInt(key), CATEGORIES[key].color]),
     },
   }

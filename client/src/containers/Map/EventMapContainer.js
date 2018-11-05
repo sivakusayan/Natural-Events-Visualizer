@@ -8,6 +8,11 @@ import getBoundingBox from '../../../../utils/getBoundingBox';
 import { selectEvent } from '../../state/actions/selectedEvent';
 import EventMap from '../../components/Map/EventMap';
 
+const mapStateToProps = state => ({
+  // Filter events list for matching event
+  selectedEvent: state.events.filter(event => event._id === state.selectedEvent)[0],
+});
+
 const mapDispatchToProps = dispatch => ({
   onMapClick: (map, e) => {
     // Expand bounding box to enlarge query range
@@ -21,4 +26,4 @@ const mapDispatchToProps = dispatch => ({
   onDragStart: () => dispatch(selectEvent(null)),
 });
 
-export default connect(null, mapDispatchToProps)(EventMap);
+export default connect(mapStateToProps, mapDispatchToProps)(EventMap);

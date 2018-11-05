@@ -27,7 +27,7 @@ const getEndPointGeoJSON = lineString => ({
   },
   properties: {
     // Prevent coercion to string
-    id: parseInt(lineString._id),
+    id: lineString._id,
     category: lineString.properties.category,
   },
 });

@@ -66,7 +66,7 @@ const EventProperties = new Schema({
 
 const EventSchema = new Schema({
   _id: {
-    type: String,
+    type: Number,
     required: true,
   },
   type: {

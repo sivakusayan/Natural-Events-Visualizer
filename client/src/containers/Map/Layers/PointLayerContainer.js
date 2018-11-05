@@ -7,9 +7,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { selectEvent } from '../../../state/actions/selectedEvent';
-
 import Event from '../../../propTypes/Event';
-
 import PointLayer from '../../../components/Map/Layers/PointLayer';
 
 

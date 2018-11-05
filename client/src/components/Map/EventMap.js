@@ -34,7 +34,7 @@ const Map = ReactMapboxGl({
   maxZoom: 12,
 });
 
-const EventMap = ({ onMapClick }) => (
+const EventMap = ({ onMapClick, onDragStart }) => (
   <Map
     style={STYLE}
     containerStyle={{
@@ -43,6 +43,7 @@ const EventMap = ({ onMapClick }) => (
     }}
     zoom={[2]}
     onClick={onMapClick}
+    onDragStart={onDragStart}
   >
     <ZoomControl
       zoomDiff={1}
@@ -66,6 +67,13 @@ EventMap.propTypes = {
    * application's selected event.
    */
   onMapClick: PropTypes.func.isRequired,
+  /**
+   * Sets the selected event to null. This makes sure
+   * that the previous selected event is no longer
+   * active if the user tries to move away by dragging
+   * the map.
+   */
+  onDragStart: PropTypes.func.isRequired,
 };
 
 export default EventMap;

@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Event from '../../../propTypes/Event';
-
 import PolygonLayer from '../../../components/Map/Layers/PolygonLayer';
 
 class PolygonLayerContainer extends React.Component {

@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Event from '../../../propTypes/Event';
-
 import LineStringLayer from '../../../components/Map/Layers/LineStringLayer';
 
 class LineStringLayerContainer extends React.Component {

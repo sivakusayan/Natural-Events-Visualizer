@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Event from '../../../propTypes/Event';
-
 import LineStringEndpointsLayer from '../../../components/Map/Layers/LineStringEndpointsLayer';
 
 /**
@@ -27,7 +26,8 @@ const getEndPointGeoJSON = lineString => ({
     coordinates: lineString.geometry.coordinates[lineString.geometry.coordinates.length - 1],
   },
   properties: {
-    endPointTo: lineString._id,
+    // Prevent coercion to string
+    id: parseInt(lineString._id),
     category: lineString.properties.category,
   },
 });
@@ -37,7 +37,6 @@ class LineStringEndpointsLayerContainer extends React.Component {
     type: 'FeatureCollection',
     // Concatenate line string events with their generated endpoints
     features: this.props.lineStringEvents.map(event => getEndPointGeoJSON(event)),
-
   }
 
   render() {

@@ -34,16 +34,22 @@ const Map = ReactMapboxGl({
   maxZoom: 12,
 });
 
-const EventMap = ({ onMapClick, onDragStart }) => (
+const EventMap = ({
+  onMapClick, onMouseDown, updateCenter, updateZoom, center, zoom,
+}) => (
   <Map
+
     style={STYLE}
     containerStyle={{
       height: '100vh',
       width: '100vw',
     }}
-    zoom={[2]}
+    zoom={[zoom]}
+    center={center}
     onClick={onMapClick}
-    onDragStart={onDragStart}
+    onMouseDown={onMouseDown}
+    onDragEnd={updateCenter}
+    onZoomEnd={updateZoom}
   >
     <ZoomControl
       zoomDiff={1}
@@ -61,6 +67,16 @@ const EventMap = ({ onMapClick, onDragStart }) => (
 
 EventMap.propTypes = {
   /**
+   * Center of the map view being shown to the user.
+   * Updated at the end of a drag event.
+   */
+  center: PropTypes.arrayOf(PropTypes.number).isRequired,
+  /**
+   * Zoom level that the user is on. Updated at the
+   * end of a zoom event.
+   */
+  zoom: PropTypes.number.isRequired,
+  /**
    * Checks the nearest rendered features around
    * the click location. If the closest one is an
    * event on the map, set that event to be the 
@@ -70,10 +86,19 @@ EventMap.propTypes = {
   /**
    * Sets the selected event to null. This makes sure
    * that the previous selected event is no longer
-   * active if the user tries to move away by dragging
-   * the map.
+   * active if the user tries to move away.
    */
-  onDragStart: PropTypes.func.isRequired,
+  onMouseDown: PropTypes.func.isRequired,
+  /**
+   * Updates the center state with the current
+   * center of the map.
+   */
+  updateCenter: PropTypes.func.isRequired,
+  /**
+   * Updates the center state with the current
+   * zoom of the map.
+   */
+  updateZoom: PropTypes.func.isRequired,
 };
 
 export default EventMap;

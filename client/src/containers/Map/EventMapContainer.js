@@ -19,6 +19,18 @@ class EventMapContainer extends React.Component {
     zoom: 2,
   }
 
+  componentDidUpdate = (prevProps) => {
+    const { selectedEvent } = this.props;
+    // 1. Check if selected Event is not null
+    // 2. Check if prevProps is null OR selected event changed (short circuit evaluation)
+    if (selectedEvent && (!prevProps.selectedEvent || (prevProps.selectedEvent._id !== selectedEvent._id))) {
+      // Zoom into map
+      this.zoomIn();
+      // Update map display
+      this.goToEvent();
+    }
+  }
+
   /**
    * Takes in an event, and returns a suitable point
    * for the map to show the user for that event.
@@ -79,37 +91,6 @@ class EventMapContainer extends React.Component {
   }
 
   /**
-   * Fires when the user clicks on the map. Checks if they
-   * clicked on an event, and if they did, zooms in onto
-   * that event. Otherwise, does nothing.
-   * 
-   * @param map
-   *  The map instance that was clicked on. Automatically
-   *  supplied by MapBox.
-   * @param e
-   *  A React event. Automatically supplied by MapBox
-   */
-  onMapClick = (map, e) => {
-    const { setSelectedEvent } = this.props;
-    // Set any events to be selected, if there are any 
-    setSelectedEvent(map, e);
-    // Zoom into map
-    this.zoomIn();
-    // Update map display
-    this.goToEvent();
-  }
-
-  /**
-   * Resets the selected event field if the user
-   * attempts to click away.
-   */
-  onMouseDown = () => {
-    const { resetSelectedEvent } = this.props;
-    // Remove any lingering selected events
-    resetSelectedEvent();
-  }
-
-  /**
    * Updates the center state with the current
    * center of the map.
    * 
@@ -142,12 +123,16 @@ class EventMapContainer extends React.Component {
       center,
       zoom,
     } = this.state;
+    const {
+      setSelectedEvent,
+      resetSelectedEvent,
+    } = this.props;
     return (
       <EventMap
         center={center}
         zoom={[zoom]}
-        onMapClick={this.onMapClick}
-        onMouseDown={this.onMouseDown}
+        setSelectedEvent={setSelectedEvent}
+        resetSelectedEvent={resetSelectedEvent}
         updateCenter={this.updateCenter}
         updateZoom={this.updateZoom}
       />

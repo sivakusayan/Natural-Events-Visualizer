@@ -35,10 +35,9 @@ const Map = ReactMapboxGl({
 });
 
 const EventMap = ({
-  onMapClick, onMouseDown, updateCenter, updateZoom, center, zoom,
+  setSelectedEvent, resetSelectedEvent, updateCenter, updateZoom, center, zoom,
 }) => (
   <Map
-
     style={STYLE}
     containerStyle={{
       height: '100vh',
@@ -46,8 +45,8 @@ const EventMap = ({
     }}
     zoom={zoom}
     center={center}
-    onClick={onMapClick}
-    onMouseDown={onMouseDown}
+    onClick={setSelectedEvent}
+    onMouseDown={resetSelectedEvent}
     onDragEnd={updateCenter}
     onZoomEnd={updateZoom}
   >
@@ -82,13 +81,13 @@ EventMap.propTypes = {
    * event on the map, set that event to be the 
    * application's selected event.
    */
-  onMapClick: PropTypes.func.isRequired,
+  setSelectedEvent: PropTypes.func.isRequired,
   /**
    * Sets the selected event to null. This makes sure
    * that the previous selected event is no longer
    * active if the user tries to move away.
    */
-  onMouseDown: PropTypes.func.isRequired,
+  resetSelectedEvent: PropTypes.func.isRequired,
   /**
    * Updates the center state with the current
    * center of the map.

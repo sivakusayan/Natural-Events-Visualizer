@@ -14,7 +14,7 @@ import EventMap from '../../components/Map/EventMap';
 class EventMapContainer extends React.Component {
   state = {
     // Center of the map view being shown to the user
-    center: [0, 0],
+    center: [0, 5],
     // Zoom level that the user is on
     zoom: 2,
   }
@@ -57,9 +57,9 @@ class EventMapContainer extends React.Component {
    */
   zoomIn = () => {
     const { zoom } = this.state;
-    if (zoom < 6) {
+    if (zoom < 4) {
       this.setState({
-        zoom: 6,
+        zoom: 4,
       });
     }
   }
@@ -145,7 +145,7 @@ class EventMapContainer extends React.Component {
     return (
       <EventMap
         center={center}
-        zoom={zoom}
+        zoom={[zoom]}
         onMapClick={this.onMapClick}
         onMouseDown={this.onMouseDown}
         updateCenter={this.updateCenter}

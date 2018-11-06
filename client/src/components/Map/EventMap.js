@@ -44,7 +44,7 @@ const EventMap = ({
       height: '100vh',
       width: '100vw',
     }}
-    zoom={[zoom]}
+    zoom={zoom}
     center={center}
     onClick={onMapClick}
     onMouseDown={onMouseDown}

@@ -19,6 +19,7 @@ import PointLayerContainer from '../../containers/Map/Layers/PointLayerContainer
 import LineStringLayerContainer from '../../containers/Map/Layers/LineStringLayerContainer';
 import LineStringEndpointsLayerContainer from '../../containers/Map/Layers/LineStringEndpointsLayerContainer';
 import PolygonLayerContainer from '../../containers/Map/Layers/PolygonLayerContainer';
+import EventPopup from '../../containers/Map/EventPopupContainer';
 
 /**
  * Limiting the maxZoom of the map increases performance,although
@@ -35,7 +36,7 @@ const Map = ReactMapboxGl({
 });
 
 const EventMap = ({
-  setSelectedEvent, resetSelectedEvent, updateCenter, updateZoom, center, zoom,
+  setSelectedEvent, resetSelectedEvent, updateCenter, updateZoom, renderPopup, center, zoom,
 }) => (
   <Map
     style={STYLE}
@@ -61,6 +62,7 @@ const EventMap = ({
     <LineStringEndpointsLayerContainer />
     <PolygonLayerContainer />
 
+    {renderPopup && <EventPopup />}
   </Map>
 );
 
@@ -98,6 +100,10 @@ EventMap.propTypes = {
    * zoom of the map.
    */
   updateZoom: PropTypes.func.isRequired,
+  /**
+   * True if there is a selected event, false otherwise.
+   */
+  renderPopup: PropTypes.bool.isRequired,
 };
 
 export default EventMap;

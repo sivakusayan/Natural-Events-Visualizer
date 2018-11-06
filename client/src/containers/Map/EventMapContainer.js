@@ -5,8 +5,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import pointMean from '../../../../utils/pointMean';
-import getBoundingBox from '../../../../utils/getBoundingBox';
+import getFlyToPoint from '../../utils/getFlyToPoint';
+import getBoundingBox from '../../utils/getBoundingBox';
 import Event from '../../propTypes/Event';
 import { selectEvent } from '../../state/actions/selectedEvent';
 import EventMap from '../../components/Map/EventMap';
@@ -23,43 +23,13 @@ class EventMapContainer extends React.Component {
     const { selectedEvent } = this.props;
     // 1. Check if selected Event is not null
     // 2. Check if prevProps is null OR selected event changed (short circuit evaluation)
-    if (selectedEvent && (!prevProps.selectedEvent || (prevProps.selectedEvent._id !== selectedEvent._id))) {
+    if (selectedEvent
+      && (!prevProps.selectedEvent || (prevProps.selectedEvent._id !== selectedEvent._id))) {
       // Zoom into map
       this.zoomIn();
       // Update map display
       this.goToEvent();
     }
-  }
-
-  /**
-   * Takes in an event, and returns a suitable point
-   * for the map to show the user for that event.
-   * 
-   * @param {EventGeoJSON} event 
-   *  The event to find the flyTo point for
-   * 
-   * @returns
-   *  A suitable flyTo point
-   */
-  getFlyToPoint = (event) => {
-    const { geometry } = event;
-    let point = null;
-    // If Point, just return that point itself
-    if (geometry.type === 'Point') {
-      point = geometry.coordinates;
-    }
-    // If LineString, return the most recent (last) point
-    if (geometry.type === 'LineString') {
-      point = geometry.coordinates[geometry.coordinates.length - 1];
-    }
-    // If Polygon, return the average of its vertices
-    if (geometry.type === 'Polygon') {
-      point = pointMean(geometry.coordinates[0]);
-    }
-    return {
-      lng: point[0],
-      lat: point[1],
-    };
   }
 
   /**
@@ -85,7 +55,7 @@ class EventMapContainer extends React.Component {
     // If there is a selected event, fly and zoom to it
     if (selectedEvent) {
       this.setState({
-        center: this.getFlyToPoint(selectedEvent),
+        center: getFlyToPoint(selectedEvent),
       });
     }
   }
@@ -124,6 +94,7 @@ class EventMapContainer extends React.Component {
       zoom,
     } = this.state;
     const {
+      selectedEvent,
       setSelectedEvent,
       resetSelectedEvent,
     } = this.props;
@@ -133,6 +104,7 @@ class EventMapContainer extends React.Component {
         zoom={[zoom]}
         setSelectedEvent={setSelectedEvent}
         resetSelectedEvent={resetSelectedEvent}
+        renderPopup={!!selectedEvent}
         updateCenter={this.updateCenter}
         updateZoom={this.updateZoom}
       />

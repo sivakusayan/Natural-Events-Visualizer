@@ -37,6 +37,8 @@ class Search extends React.Component {
     const {
       setEvents,
       events,
+      activeFilters,
+      toggleFilters,
       setFilters,
       filterValues,
       isLoading,
@@ -53,6 +55,8 @@ class Search extends React.Component {
         <Filters
           hide={hideFilters}
           toggleHide={this.toggleHideFilters}
+          activeFilters={activeFilters}
+          toggleFilters={toggleFilters}
           filterValues={filterValues}
           setFilters={setFilters}
         />
@@ -64,6 +68,7 @@ class Search extends React.Component {
               doneLoading={doneLoading}
               setError={setError}
               removeError={removeError}
+              activeFilters={activeFilters}
               filterValues={filterValues}
             />
             <SearchResults

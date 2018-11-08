@@ -1,6 +1,7 @@
 import { createStore, combineReducers } from 'redux';
 
 import eventsReducer from '../reducers/events';
+import filtersReducer from '../reducers/filters';
 import loadingReducer from '../reducers/loading';
 import errorReducer from '../reducers/error';
 import selectedEventReducer from '../reducers/selectedEvent';
@@ -12,6 +13,10 @@ export default () => {
       // Will typically be all the events in the database.
       // May change as data gets larger.
       events: eventsReducer,
+      // The filters that will be added to search queries.
+      // Fow now, the filters are only applied to the
+      // search results, and not the actual map.
+      filters: filtersReducer,
       // The loading state of the application. Set to true 
       // while data is hydrating.
       isLoading: loadingReducer,

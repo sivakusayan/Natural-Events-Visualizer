@@ -201,6 +201,7 @@ export default class SearchContainer extends React.Component {
 
   render() {
     const {
+      activeFilters,
       filterValues,
       events,
       isLoading,
@@ -216,6 +217,7 @@ export default class SearchContainer extends React.Component {
           startDate: this.toggleStartDate,
           endDate: this.toggleEndDate,
         }}
+        activeFilters={activeFilters}
         setFilters={{
           latitude: this.setLatitude,
           longitude: this.setLongitude,

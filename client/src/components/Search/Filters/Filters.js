@@ -7,12 +7,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import FilterValues from '../../../propTypes/FilterValues';
+import SetFilters from '../../../propTypes/SetFilters';
 import LocationFilter from './LocationFilter';
 import CategoryFilter from './CategoryFilter';
 import DateFilter from './DateFilter';
 
 const Filters = ({
-  hide, toggleHide, setFilters, filters,
+  hide, toggleHide, setFilters, filterValues,
 }) => (
   <div>
     <div
@@ -27,7 +29,7 @@ const Filters = ({
     {!hide && (
     <React.Fragment>
       <CategoryFilter
-        filterValues={filters.categoriesFilter}
+        filterValues={filterValues.categories}
         setFilter={{
           add: setFilters.addToCategories,
           remove: setFilters.removeFromCategories,
@@ -35,9 +37,9 @@ const Filters = ({
       />
       <LocationFilter
         filterValues={{
-          latitude: filters.locationFilter.latitude,
-          longitude: filters.locationFilter.longitude,
-          radius: filters.locationFilter.radius,
+          latitude: filterValues.location.latitude,
+          longitude: filterValues.location.longitude,
+          radius: filterValues.location.radius,
         }}
         setFilter={{
           latitude: setFilters.latitude,
@@ -47,8 +49,8 @@ const Filters = ({
       />
       <DateFilter
         filterValues={{
-          startDate: filters.startDateFilter,
-          endDate: filters.endDateFilter,
+          startDate: filterValues.startDate,
+          endDate: filterValues.endDate,
         }}
         setFilter={{
           startDate: setFilters.startDate,
@@ -65,28 +67,12 @@ Filters.propTypes = {
    * A collection of functions that can set the filters
    * of their respective fields for searching.  
    */
-  setFilters: PropTypes.shape({
-    latitude: PropTypes.func,
-    longitude: PropTypes.func,
-    radius: PropTypes.func,
-    categories: PropTypes.func,
-    startDate: PropTypes.func,
-    endDate: PropTypes.func,
-  }).isRequired,
+  setFilters: SetFilters.isRequired,
   /**
    * A collection of values that describe the current
    * filters used in the application.
    */
-  filters: PropTypes.shape({
-    locationFilter: PropTypes.shape({
-      latitude: PropTypes.number.isRequired,
-      longitude: PropTypes.number.isRequired,
-      radius: PropTypes.number.isRequired,
-    }).isRequired,
-    categoriesFilter: PropTypes.arrayOf(PropTypes.number).isRequired,
-    startDateFilter: PropTypes.number.isRequired,
-    endDateFilter: PropTypes.number.isRequired,
-  }).isRequired,
+  filterValues: FilterValues.isRequired,
 };
 
 export default Filters;

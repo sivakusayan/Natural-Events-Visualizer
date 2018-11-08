@@ -9,6 +9,10 @@ import PropTypes from 'prop-types';
 import CATEGORIES from '../../../constants/CATEGORIES';
 
 class CategoryFilter extends React.Component {
+  state = {
+    disabled: true,
+  }
+  
   /**
    * Fired whenever a category checkbox is clicked. Adds
    * the categoryID to the category filters if checked,
@@ -23,10 +27,18 @@ class CategoryFilter extends React.Component {
     }
   };
 
+  toggleFilter = () => {
+
+  }
+
   render() {
+    const { disabled } = this.state;
+    const { filterValues } = this.props; 
     return (
       <div>
-        <h1>Category Filters</h1>
+        <div>
+          <h1>Category Filters</h1>
+        </div>
         <form>
           {Object.keys(CATEGORIES).map(categoryID => (
             <label htmlFor={categoryID}>
@@ -35,7 +47,8 @@ class CategoryFilter extends React.Component {
                 name='categories'
                 value={categoryID}
                 onClick={this.updateCategories}
-                checked={this.props.filterValues.includes(categoryID)}
+                checked={filterValues.includes(categoryID)}
+                disabled={disabled}
               />
               {CATEGORIES[categoryID].title}
             </label>

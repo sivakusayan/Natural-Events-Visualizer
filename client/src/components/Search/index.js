@@ -9,6 +9,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import Event from '../../propTypes/Event';
+import FilterValues from '../../propTypes/FilterValues';
+import SetFilters from '../../propTypes/SetFilters';
 
 import SearchBarContainer from '../../containers/Search/SearchBarContainer';
 import Filters from './Filters/Filters';
@@ -36,7 +38,7 @@ class Search extends React.Component {
       setEvents,
       events,
       setFilters,
-      filters,
+      filterValues,
       isLoading,
       startLoading,
       doneLoading,
@@ -51,7 +53,7 @@ class Search extends React.Component {
         <Filters
           hide={hideFilters}
           toggleHide={this.toggleHideFilters}
-          filters={filters}
+          filterValues={filterValues}
           setFilters={setFilters}
         />
         {hideFilters && (
@@ -62,7 +64,7 @@ class Search extends React.Component {
               doneLoading={doneLoading}
               setError={setError}
               removeError={removeError}
-              filters={filters}
+              filterValues={filterValues}
             />
             <SearchResults
               events={events}
@@ -91,29 +93,12 @@ Search.propTypes = {
    * A collection of functions that can set the filters
    * of their respective fields for searching.  
    */
-  setFilters: PropTypes.shape({
-    latitude: PropTypes.func.isRequired,
-    longitude: PropTypes.func.isRequired,
-    radius: PropTypes.func.isRequired,
-    addToCategories: PropTypes.func.isRequired,
-    removeFromCategories: PropTypes.func.isRequired,
-    startDate: PropTypes.func.isRequired,
-    endDate: PropTypes.func.isRequired,
-  }).isRequired,
+  setFilters: SetFilters.isRequired,
   /**
    * A collection of values that describe the current
    * filters used in the application.
    */
-  filters: PropTypes.shape({
-    locationFilter: PropTypes.shape({
-      latitude: PropTypes.number.isRequired,
-      longitude: PropTypes.number.isRequired,
-      radius: PropTypes.number.isRequired,
-    }).isRequired,
-    categoriesFilter: PropTypes.arrayOf(PropTypes.number).isRequired,
-    startDateFilter: PropTypes.number.isRequired,
-    endDateFilter: PropTypes.number.isRequired,
-  }).isRequired,
+  filterValues: FilterValues.isRequired,
   /**
    * True if the search results are loading, false otherwise.
    */

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { debounce } from 'throttle-debounce';
 
+import FilterValues from '../../propTypes/FilterValues';
 import fetchRetry from '../../../../utils/fetchRetry';
-
 import SearchBar from '../../components/Search/SearchBar';
 
 
@@ -46,25 +46,25 @@ class SearchBarContainer extends React.Component {
   addFilterQuery = () => {
     const queryArray = [];
     const {
-      locationFilter,
-      categoriesFilter,
-      startDateFilter,
-      endDateFilter,
-    } = this.props.filters;
+      location,
+      categories,
+      startDate,
+      endDate,
+    } = this.props.filterValues;
     // We want all three to be defined to filter by location
-    if (locationFilter.latitude && locationFilter.longitude && locationFilter.radius) {
-      queryArray.push(`lat=${locationFilter.latitude}`);
-      queryArray.push(`long=${locationFilter.longitude}`);
-      queryArray.push(`radius=${locationFilter.radius}`);
+    if (location.latitude && location.longitude && location.radius) {
+      queryArray.push(`lat=${location.latitude}`);
+      queryArray.push(`long=${location.longitude}`);
+      queryArray.push(`radius=${location.radius}`);
     }
-    if (categoriesFilter) {
-      queryArray.push(`categories=${categoriesFilter.join(',')}`);
+    if (categories) {
+      queryArray.push(`categories=${categories.join(',')}`);
     }
-    if (startDateFilter) {
-      queryArray.push(`startDate=${startDateFilter}`);
+    if (startDate) {
+      queryArray.push(`startDate=${startDate}`);
     }
-    if (endDateFilter) {
-      queryArray.push(`endDate=${endDateFilter}`);
+    if (endDate) {
+      queryArray.push(`endDate=${endDate}`);
     }
     return queryArray.join('&');
   }
@@ -86,16 +86,7 @@ SearchBarContainer.propTypes = {
    * A collection of values that describe the current
    * filters used in the application.
    */
-  filters: PropTypes.shape({
-    locationFilter: PropTypes.shape({
-      latitude: PropTypes.number.isRequired,
-      longitude: PropTypes.number.isRequired,
-      radius: PropTypes.number.isRequired,
-    }).isRequired,
-    categoriesFilter: PropTypes.arrayOf(PropTypes.number).isRequired,
-    startDateFilter: PropTypes.number.isRequired,
-    endDateFilter: PropTypes.number.isRequired,
-  }).isRequired,
+  filterValues: FilterValues.isRequired,
   /**
    * Sets the loading tag to true.
    */

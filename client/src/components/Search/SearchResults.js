@@ -5,13 +5,13 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import SearchResult from './SearchResult';
+import SearchResultContainer from '../../containers/Search/SearchResultContainer';
 
 import Event from '../../propTypes/Event';
 
 const SearchResults = ({ events = [] }) => (
   <div>
-    {events.map(event => <SearchResult key={event._id} event={event} />)}
+    {events.map(event => <SearchResultContainer key={event._id} event={event} />)}
   </div>
 );
 

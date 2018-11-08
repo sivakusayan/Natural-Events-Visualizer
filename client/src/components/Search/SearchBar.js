@@ -21,10 +21,16 @@ class Searchbar extends React.Component {
     this.props.debouncedSearch(e.target.value);
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+  }
+
   render() {
     const { searchQuery } = this.state;
     return (
-      <form>
+      <form
+        onSubmit={this.handleSubmit}
+      >
         <input
           type='search'
           placeholder='Search here'

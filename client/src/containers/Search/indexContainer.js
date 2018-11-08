@@ -2,8 +2,7 @@
  * @fileoverview This file lets the Search Component keep track of whats
  * being filtered. The source of this data is from the Filters Component,
  * where it will then be sent to the SearchBarContainer for 
- * query building and the SearchResultsContainer to show what 
- * is being filtered.
+ * query building.
  */
 
 import React from 'react';

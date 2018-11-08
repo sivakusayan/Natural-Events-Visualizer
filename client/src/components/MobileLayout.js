@@ -18,8 +18,8 @@ class MobileLayout extends React.Component {
     if (hideMap) mapClassName += 'hide';
     return (
       <React.Fragment>
-        <EventMapMobile className={mapClassName} />
         <Route path='/search' component={SearchContainer} />
+        <EventMapMobile className={mapClassName} />
       </React.Fragment>
     );
   }

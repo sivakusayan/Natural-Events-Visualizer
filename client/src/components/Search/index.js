@@ -6,6 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import Event from '../../propTypes/Event';
 
@@ -19,6 +20,7 @@ const Search = ({
   error, setError, removeError,
 }) => (
   <div>
+    <Link to='/'>Go to Map</Link>
     <SearchBarContainer
       setEvents={setEvents}
       startLoading={startLoading}

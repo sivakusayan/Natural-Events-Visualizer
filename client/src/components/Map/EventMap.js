@@ -48,6 +48,7 @@ const EventMap = ({
     center={center}
     onClick={setSelectedEvent}
     onMouseDown={resetSelectedEvent}
+    onTouchStart={resetSelectedEvent}
     onDragEnd={updateCenter}
     onZoomEnd={updateZoom}
   >

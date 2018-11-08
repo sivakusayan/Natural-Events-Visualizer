@@ -40,7 +40,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { events, isLoading } = this.props;
+    const { isLoading } = this.props;
     return (
       <Provider store={store}>
         {isLoading ? <LoadingScreen /> : <EventVisualizer />}
@@ -50,7 +50,6 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  events: state.events,
   isLoading: state.isLoading,
 });
 

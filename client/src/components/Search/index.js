@@ -14,32 +14,67 @@ import SearchBarContainer from '../../containers/Search/SearchBarContainer';
 import Filters from './Filters/Filters';
 import SearchResults from './SearchResults';
 
-const Search = ({
-  setEvents, events, setFilters, filters,
-  isLoading, startLoading, doneLoading,
-  error, setError, removeError,
-}) => (
-  <div>
-    <Link to='/'>Go to Map</Link>
-    <SearchBarContainer
-      setEvents={setEvents}
-      startLoading={startLoading}
-      doneLoading={doneLoading}
-      setError={setError}
-      removeError={removeError}
-      filters={filters}
-    />
-    <Filters
-      filters={filters}
-      setFilters={setFilters}
-    />
-    <SearchResults
-      events={events}
-      isLoading={isLoading}
-      error={error}
-    />
-  </div>
-);
+class Search extends React.Component {
+  state = {
+    // If this is true, filters component will appear
+    // and search bar and results will be hidden. If false,
+    // the opposite will be true.
+    hideFilters: true,
+  }
+
+  /**
+   * Toggles the hideFilters value.
+   */
+  toggleHideFilters = () => {
+    this.setState(prevState => ({
+      hideFilters: !prevState.hideFilters,
+    }));
+  }
+
+  render() {
+    const {
+      setEvents,
+      events,
+      setFilters,
+      filters,
+      isLoading,
+      startLoading,
+      doneLoading,
+      error,
+      setError,
+      removeError,
+    } = this.props;
+    const { hideFilters } = this.state;
+    return (
+      <div>
+        <Link to='/'>Go to Map</Link>
+        <Filters
+          hide={hideFilters}
+          toggleHide={this.toggleHideFilters}
+          filters={filters}
+          setFilters={setFilters}
+        />
+        {hideFilters && (
+          <React.Fragment>
+            <SearchBarContainer
+              setEvents={setEvents}
+              startLoading={startLoading}
+              doneLoading={doneLoading}
+              setError={setError}
+              removeError={removeError}
+              filters={filters}
+            />
+            <SearchResults
+              events={events}
+              isLoading={isLoading}
+              error={error}
+            />
+          </React.Fragment>
+        )}
+      </div>
+    );
+  }
+}
 
 Search.propTypes = {
   /**

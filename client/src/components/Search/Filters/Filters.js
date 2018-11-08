@@ -11,37 +11,52 @@ import LocationFilter from './LocationFilter';
 import CategoryFilter from './CategoryFilter';
 import DateFilter from './DateFilter';
 
-const Filters = ({ setFilters, filters }) => (
+const Filters = ({
+  hide, toggleHide, setFilters, filters,
+}) => (
   <div>
-    <CategoryFilter
-      filterValues={filters.categoriesFilter}
-      setFilter={{
-        add: setFilters.addToCategories,
-        remove: setFilters.removeFromCategories,
-      }}
-    />
-    <LocationFilter
-      filterValues={{
-        latitude: filters.locationFilter.latitude,
-        longitude: filters.locationFilter.longitude,
-        radius: filters.locationFilter.radius,
-      }}
-      setFilter={{
-        latitude: setFilters.latitude,
-        longitude: setFilters.longitude,
-        radius: setFilters.radius,
-      }}
-    />
-    <DateFilter
-      filterValues={{
-        startDate: filters.startDateFilter,
-        endDate: filters.endDateFilter,
-      }}
-      setFilter={{
-        startDate: setFilters.startDate,
-        endDate: setFilters.endDate,
-      }}
-    />
+    <div
+      tabIndex={0}
+      onClick={toggleHide}
+      onKeyPress={toggleHide}
+      role='option'
+      aria-selected='false'
+    >
+      <h1>Filters</h1>
+    </div>
+    {!hide && (
+    <React.Fragment>
+      <CategoryFilter
+        filterValues={filters.categoriesFilter}
+        setFilter={{
+          add: setFilters.addToCategories,
+          remove: setFilters.removeFromCategories,
+        }}
+      />
+      <LocationFilter
+        filterValues={{
+          latitude: filters.locationFilter.latitude,
+          longitude: filters.locationFilter.longitude,
+          radius: filters.locationFilter.radius,
+        }}
+        setFilter={{
+          latitude: setFilters.latitude,
+          longitude: setFilters.longitude,
+          radius: setFilters.radius,
+        }}
+      />
+      <DateFilter
+        filterValues={{
+          startDate: filters.startDateFilter,
+          endDate: filters.endDateFilter,
+        }}
+        setFilter={{
+          startDate: setFilters.startDate,
+          endDate: setFilters.endDate,
+        }}
+      />
+    </React.Fragment>
+    )}
   </div>
 );
 

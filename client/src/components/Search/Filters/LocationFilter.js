@@ -6,27 +6,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const LocationFilter = ({ filters, setLatitude, setLongitude, setRadius }) => (
+const LocationFilter = ({ filters, setLatitude, setLongitude, setRadius, isActive, toggle }) => (
   <div>
-    <h1>Location Filters</h1>
+    <div
+      tabIndex={0}
+      onClick={toggle}
+      onKeyPress={toggle}
+      role='menuItem'
+    >
+      <h1>Location Filter</h1>
+    </div>
     <form>
       <input
         type='text'
         name='latitude'
         value={filters.latitude}
         onChange={e => setLatitude(e.target.value)}
+        disabled={!isActive}
       />
       <input
         type='text'
         name='longitude'
         value={filters.longitude}
         onChange={e => setLongitude(e.target.value)}
+        disabled={!isActive}
       />
       <input
         type='text'
         name='radius'
         value={filters.radius}
         onChange={e => setRadius(e.target.value)}
+        disabled={!isActive}
       />
     </form>
   </div>
@@ -54,6 +64,15 @@ LocationFilter.propTypes = {
    * Sets the radius to use in the location filter.
    */
   setRadius: PropTypes.func.isRequired,
+  /**
+   * True if the location filter is applied to the search query.
+   * False otherwise.
+   */
+  isActive: PropTypes.bool.isRequired,
+  /**
+   * Toggles the isActive prop value.
+   */
+  toggle: PropTypes.bool.isRequired,
 };
 
 export default LocationFilter;

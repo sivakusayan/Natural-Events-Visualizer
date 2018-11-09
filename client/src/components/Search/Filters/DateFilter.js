@@ -10,23 +10,43 @@ import moment from 'moment';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-const DateFilter = ({ filters, setStartDate, setEndDate }) => (
+const DateFilter = ({
+  filters, setStartDate, setEndDate, toggleStartDate, startDateIsActive, toggleEndDate, endDateIsActive,
+}) => (
   <div>
     <h1>Date Filters</h1>
     <form>
-      <DatePicker 
+      <div
+        tabIndex={0}
+        onClick={toggleStartDate}
+        onKeyPress={toggleStartDate}
+        role='menuItem'
+      >
+        <h1>Start Date</h1>
+      </div>
+      <DatePicker
         selected={moment(filters.startDate)}
         selectsStart
         startDate={moment(filters.startDate)}
         endDate={moment(filters.endDate)}
         onChange={date => setStartDate(moment(date).valueOf())}
+        disabled={!startDateIsActive}
       />
-      <DatePicker 
+      <div
+        tabIndex={0}
+        onClick={toggleEndDate}
+        onKeyPress={toggleEndDate}
+        role='menuItem'
+      >
+        <h1>Start Date</h1>
+      </div>
+      <DatePicker
         selected={moment(filters.endDate)}
         selectsEnd
         startDate={moment(filters.startDate)}
         endDate={moment(filters.endDate)}
         onChange={date => setEndDate(moment(date).valueOf())}
+        disabled={!endDateIsActive}
       />
     </form>
   </div>
@@ -51,6 +71,24 @@ DateFilter.propTypes = {
    * Input is in time stamp format (milliseconds).
    */
   setEndDate: PropTypes.func.isRequired,
+  /**
+   * True if the start date filter is applied to the search query.
+   * False otherwise.
+   */
+  startDateIsActive: PropTypes.bool.isRequired,
+  /**
+   * Toggles the StartDateIsActive prop value.
+   */
+  toggleStartDate: PropTypes.bool.isRequired,
+  /**
+   * True if the end date filter is applied to the search query.
+   * False otherwise.
+   */
+  endDateIsActive: PropTypes.bool.isRequired,
+  /**
+   * Toggles the StartDateIsActive prop value.
+   */
+  toggleEndDate: PropTypes.bool.isRequired,
 };
 
 export default DateFilter;

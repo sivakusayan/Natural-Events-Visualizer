@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 import CATEGORIES from '../../../constants/CATEGORIES';
 
-const CategoryFilter = ({ filters, add, remove }) => {
+const CategoryFilter = ({ filters, add, remove, isActive, toggle }) => {
   /**
    * Fired whenever a category checkbox is clicked. Adds
    * the categoryID to the category filters if checked,
@@ -24,7 +24,12 @@ const CategoryFilter = ({ filters, add, remove }) => {
 
   return (
     <div>
-      <div>
+      <div
+        tabIndex={0}
+        onClick={toggle}
+        onKeyPress={toggle}
+        role='menuItem'
+      >
         <h1>Category Filters</h1>
       </div>
       <form>
@@ -36,6 +41,7 @@ const CategoryFilter = ({ filters, add, remove }) => {
               value={categoryID}
               onClick={updateCategories}
               checked={filters.includes(categoryID)}
+              disabled={!isActive}
             />
             {CATEGORIES[categoryID].title}
           </label>
@@ -59,6 +65,15 @@ CategoryFilter.propTypes = {
    * Removes the specified category ID from the categories filter.
    */
   remove: PropTypes.func.isRequired,
+  /**
+   * True if the categories filter is applied to the search query.
+   * False otherwise.
+   */
+  isActive: PropTypes.bool.isRequired,
+  /**
+   * Toggles the isActive prop value.
+   */
+  toggle: PropTypes.bool.isRequired,
 };
 
 export default CategoryFilter;

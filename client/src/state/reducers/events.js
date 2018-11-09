@@ -3,9 +3,9 @@
  */
 import { SET_EVENTS } from '../actionTypes/eventActionTypes';
 
-const eventsReducerDefaultState = [];
+const eventsDefaultState = [];
 
-export default (state = eventsReducerDefaultState, action) => {
+export default (state = eventsDefaultState, action) => {
   switch (action.type) {
     /**
      * Set the state's current events.

@@ -4,9 +4,9 @@
 
 import { SET_ERROR, REMOVE_ERROR } from '../actionTypes/errorActionTypes';
 
-const loadingReducerDefaultState = false;
+const loadingDefaultState = false;
 
-export default (state = loadingReducerDefaultState, action) => {
+export default (state = loadingDefaultState, action) => {
   switch (action.type) {
     /**
      * Set the error tag to true.

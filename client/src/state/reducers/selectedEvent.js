@@ -4,9 +4,9 @@
 
 import { SELECT_EVENT } from '../actionTypes/selectedEventActionTypes';
 
-const selectedEventDefaultState = null;
+const selectedEventState = null;
 
-export default (state = selectedEventDefaultState, action) => {
+export default (state = selectedEventState, action) => {
   switch (action.type) {
     case SELECT_EVENT:
       return action.eventID;

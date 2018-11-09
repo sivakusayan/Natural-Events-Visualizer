@@ -4,9 +4,9 @@
 
 import { START_LOADING, DONE_LOADING } from '../actionTypes/loadingActionTypes';
 
-const loadingReducerDefaultState = true;
+const loadingDefaultState = true;
 
-export default (state = loadingReducerDefaultState, action) => {
+export default (state = loadingDefaultState, action) => {
   switch (action.type) {
     /**
      * Set the loading tag to true.

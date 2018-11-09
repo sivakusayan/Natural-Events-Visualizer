@@ -14,7 +14,7 @@ import {
   SET_END_DATE,
 } from '../actionTypes/filterActionTypes';
 
-const filtersReducerDefaultState = {
+const filtersDefaultState = {
   // Filter for events within the circle specified
   // by these values
   location: {
@@ -30,7 +30,7 @@ const filtersReducerDefaultState = {
   endDate: moment().valueOf(),
 };
 
-export default (state = filtersReducerDefaultState, action) => {
+export default (state = filtersDefaultState, action) => {
   switch (action.type) {
     case SET_LATITUDE:
       return {

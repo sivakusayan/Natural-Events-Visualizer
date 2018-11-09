@@ -1,5 +1,6 @@
 /**
- * @fileoverview Generates actions to change the applied filters.
+ * @fileoverview Generates actions to change the values used
+ * in the filters.
  */
 
 import {

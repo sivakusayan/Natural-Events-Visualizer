@@ -11,7 +11,7 @@ import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const DateFilter = ({
-  startDateFilter, endDateFilter, setStartDate, setEndDate, 
+  startDateFilter, endDateFilter, setStartDate, setEndDate,
   toggleStartDate, startDateIsActive, toggleEndDate, endDateIsActive,
 }) => (
   <div>

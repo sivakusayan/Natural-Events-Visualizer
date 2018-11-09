@@ -51,7 +51,6 @@ export default class SearchContainer extends React.Component {
 
   render() {
     const {
-      activeFilters,
       events,
       isLoading,
       error,

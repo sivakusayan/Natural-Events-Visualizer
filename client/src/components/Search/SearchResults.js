@@ -9,9 +9,11 @@ import SearchResultContainer from '../../containers/Search/SearchResultContainer
 
 import Event from '../../propTypes/Event';
 
-const SearchResults = ({ events = [] }) => (
+const SearchResults = ({ events = [], isLoading, error }) => (
   <div>
-    {events.map(event => <SearchResultContainer key={event._id} event={event} />)}
+    {isLoading && <h1>Hold on, we are loading your data...</h1>}
+    {!isLoading && events.map(event => <SearchResultContainer key={event._id} event={event} />)}
+    {error && <h1>Sorry, something went wrong.</h1>}
   </div>
 );
 

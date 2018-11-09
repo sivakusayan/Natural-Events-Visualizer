@@ -5,9 +5,9 @@
 
 import { connect } from 'react-redux';
 
-import { setLatitude, setLongitude, setRadius } from '../../../state/actions/filters';
-import { toggleLocation } from '../../../state/actions/filtersAreActive';
-import LocationFilter from '../../../components/Search/Filters/LocationFilter';
+import { setLatitude, setLongitude, setRadius } from '../../state/actions/filters';
+import { toggleLocation } from '../../state/actions/filtersAreActive';
+import LocationFilter from '../../components/Filters/LocationFilter';
 
 const mapStateToProps = state => ({
   filter: state.filters.location,

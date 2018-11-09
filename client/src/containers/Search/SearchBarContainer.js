@@ -36,7 +36,7 @@ const SearchBarContainer = ({
       queryArray.push(`radius=${location.radius}`);
     }
     if (categoriesIsActive && categories) {
-      queryArray.push(`categoryID=${categories.join(',')}`);
+      queryArray.push(`categories=${categories.join(',')}`);
     }
     if (startDateIsActive && startDate) {
       queryArray.push(`startDate=${startDate}`);

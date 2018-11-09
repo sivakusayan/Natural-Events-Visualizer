@@ -5,9 +5,9 @@
 
 import { connect } from 'react-redux';
 
-import { addCategory, removeCategory } from '../../../state/actions/filters';
-import { toggleCategories } from '../../../state/actions/filtersAreActive';
-import CategoryFilter from '../../../components/Search/Filters/CategoryFilter';
+import { addCategory, removeCategory } from '../../state/actions/filters';
+import { toggleCategories } from '../../state/actions/filtersAreActive';
+import CategoryFilter from '../../components/Filters/CategoryFilter';
 
 const mapStateToProps = state => ({
   filter: state.filters.categories,

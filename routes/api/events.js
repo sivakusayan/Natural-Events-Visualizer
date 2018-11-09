@@ -20,7 +20,7 @@ const router = express.Router();
  * @param radius The radius of the search. Defaults      || ~~ defined.
  *               to 100 kilometers.            
  * 
- * @param categoryID Filters for events of this category
+ * @param categories Filters for events of this category
  * 
  * @param startDate Filters for events weakly after this timestamp in milliseconds.
  * @param endDate Filters for events strictly before this timestamp in milliseconds.
@@ -41,7 +41,7 @@ router.get('/', (req, res) => {
       },
     };
   }
-  if (req.query.categoryID) query['properties.category'] = { $in: req.query.categoryID };
+  if (req.query.categoryID) query['properties.category'] = { $in: req.query.categories };
   if (req.query.startDate) {
     query['geometry.date'] = { $elemMatch: { $gte: req.query.startDate } };
   }

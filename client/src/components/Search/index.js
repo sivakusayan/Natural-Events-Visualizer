@@ -9,8 +9,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import Event from '../../propTypes/Event';
-import FilterValues from '../../propTypes/FilterValues';
-import SetFilters from '../../propTypes/SetFilters';
 
 import SearchBarContainer from '../../containers/Search/SearchBarContainer';
 import Filters from './Filters/Filters';
@@ -39,8 +37,6 @@ class Search extends React.Component {
       events,
       activeFilters,
       toggleFilters,
-      setFilters,
-      filterValues,
       isLoading,
       startLoading,
       doneLoading,
@@ -57,8 +53,6 @@ class Search extends React.Component {
           toggleHide={this.toggleHideFilters}
           activeFilters={activeFilters}
           toggleFilters={toggleFilters}
-          filterValues={filterValues}
-          setFilters={setFilters}
         />
         {hideFilters && (
           <React.Fragment>
@@ -69,7 +63,6 @@ class Search extends React.Component {
               setError={setError}
               removeError={removeError}
               activeFilters={activeFilters}
-              filterValues={filterValues}
             />
             <SearchResults
               events={events}
@@ -95,16 +88,6 @@ Search.propTypes = {
    */
   events: PropTypes.arrayOf(Event).isRequired,
   /**
-   * A collection of functions that can set the filters
-   * of their respective fields for searching.  
-   */
-  setFilters: SetFilters.isRequired,
-  /**
-   * A collection of values that describe the current
-   * filters used in the application.
-   */
-  filterValues: FilterValues.isRequired,
-  /**
    * True if the search results are loading, false otherwise.
    */
   isLoading: PropTypes.bool.isRequired,
@@ -129,6 +112,29 @@ Search.propTypes = {
    * Sets the error tag to false.
    */
   removeError: PropTypes.func.isRequired,
+  /**
+   * Object that contains information about which
+   * filters are active or not. A disabled filter
+   * will not be added to the query, even if the 
+   * filter has a value in the state.
+   */
+  activeFilters: PropTypes.shape({
+    location: PropTypes.bool.isRequired,
+    categories: PropTypes.bool.isRequired,
+    startDate: PropTypes.bool.isRequired,
+    endDate: PropTypes.bool.isRequired,
+  }).isRequired,
+  /**
+   * Object with functions that toggle the truth
+   * value of their corresponding field in 
+   * activeFilters.
+   */
+  toggleFilters: PropTypes.shape({
+    location: PropTypes.func.isRequired,
+    categories: PropTypes.func.isRequired,
+    startDate: PropTypes.func.isRequired,
+    endDate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default Search;

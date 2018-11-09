@@ -6,9 +6,6 @@
  */
 
 import React from 'react';
-import moment from 'moment';
-
-import CATEGORIES from '../../constants/CATEGORIES';
 
 import Search from '../../components/Search/index';
 
@@ -20,21 +17,6 @@ export default class SearchContainer extends React.Component {
       categories: false,
       startDate: false,
       endDate: false,
-    },
-    filterValues: {
-      // Filter for events within the circle specified
-      // by these values
-      location: {
-        latitude: '',
-        longitude: '',
-        radius: 1000000,
-      },
-      // Filter for events of the following categories
-      categories: Object.keys(CATEGORIES),
-      // Filter for events after this date
-      startDate: 1325463472000,
-      // Filter for events before this date
-      endDate: moment().valueOf(),
     },
     // Events that are listed in search results
     events: [],
@@ -82,71 +64,6 @@ export default class SearchContainer extends React.Component {
     }));
   }
 
-  // SETTERS FOR FILTER FIELDS
-
-  setLatitude = (latitude) => {
-    this.setState(prevState => ({
-      filterValues: {
-        ...prevState.filterValues,
-        location: {
-          ...prevState.location,
-          latitude,
-        },
-      },
-    }));
-  }
-
-  setLongitude = (longitude) => {
-    this.setState(prevState => ({
-      filterValues: {
-        ...prevState.filterValues,
-        location: {
-          ...prevState.location,
-          longitude,
-        },
-      },
-    }));
-  }
-
-  setRadius = (radius) => {
-    this.setState(prevState => ({
-      filterValues: {
-        ...prevState.filterValues,
-        location: {
-          ...prevState.location,
-          radius,
-        },
-      },
-    }));
-  }
-
-  setCategories = (categories) => {
-    this.setState(prevState => ({
-      filterValues: {
-        ...prevState.filterValues,
-        categories: categories,
-      },
-    }));
-  }
-
-  setStartDate = (startDate) => {
-    this.setState(prevState => ({
-      filterValues: {
-        ...prevState.filterValues,
-        startDate: moment(startDate).valueOf(),
-      },
-    }));
-  }
-
-  setEndDate = (endDate) => {
-    this.setState(prevState => ({
-      filterValues: {
-        ...prevState.filterValues,
-        endDate: moment(endDate).valueOf(),
-      },
-    }));
-  }
-
   startLoading = () => {
     this.setState({
       isLoading: true,
@@ -177,32 +94,9 @@ export default class SearchContainer extends React.Component {
     });
   }
 
-  /**
-   * Adds the specified categoryID to the categories filter.
-   * 
-   * @param categoryID 
-   *  The ID of the desired category to add
-   */
-  addToCategories = (categoryID) => {
-    const { categories } = this.state.filterValues;
-    this.setCategories(categories.concat([categoryID]));
-  }
-
-  /**
-   * Removes the specified categoryID from the categories filter.
-   * 
-   * @param categoryID 
-   *  The ID of the desired category to remove
-   */
-  removeFromCategories = (categoryID) => {
-    const { categories } = this.state.filterValues;
-    this.setCategories(categories.filter(id => id !== categoryID));
-  }
-
   render() {
     const {
       activeFilters,
-      filterValues,
       events,
       isLoading,
       error,
@@ -218,16 +112,6 @@ export default class SearchContainer extends React.Component {
           endDate: this.toggleEndDate,
         }}
         activeFilters={activeFilters}
-        setFilters={{
-          latitude: this.setLatitude,
-          longitude: this.setLongitude,
-          radius: this.setRadius,
-          addToCategories: this.addToCategories,
-          removeFromCategories: this.removeFromCategories,
-          startDate: this.setStartDate,
-          endDate: this.setEndDate,
-        }}
-        filterValues={filterValues}
         isLoading={isLoading}
         startLoading={this.startLoading}
         doneLoading={this.doneLoading}

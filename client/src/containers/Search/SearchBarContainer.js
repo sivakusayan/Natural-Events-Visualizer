@@ -1,56 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { debounce } from 'throttle-debounce';
+import { connect } from 'react-redux';
 
 import FilterValues from '../../propTypes/FilterValues';
 import fetchRetry from '../../../../utils/fetchRetry';
 import SearchBar from '../../components/Search/SearchBar';
 
 
-class SearchBarContainer extends React.Component {
-/**
-   * A function that sends a search request using the specified parameters.
-   * @async
-   */
-  search = (title) => {
-    const {
-      setEvents,
-      startLoading,
-      doneLoading,
-      setError,
-      removeError,
-    } = this.props;
-    // Remove any lingering error tags
-    removeError();
-    // Set the loading tag to true
-    startLoading();
-    // Fetch events from the API
-    fetchRetry(`http://localhost:3000/api/events?title=${title}&${this.addFilterQuery()}`)
-      .then(events => setEvents(events))
-      // Catch in fetch only handles 'network errors'. Handling of errors
-      // will be done in the above codeblock
-      .catch(() => setError())
-      .finally(doneLoading());
-  }
-
-  /**
-   * The debounced version of the search function. 
-   * @async
-   */
-  debouncedSearch = debounce(500, this.search);
-
+const SearchBarContainer = ({
+  setEvents, startLoading, doneLoading, setError, removeError, filters,
+}) => {
   /**
    * @returns 
    *  A query string built from the filter parameters.
    */
-  addFilterQuery = () => {
+  const addFilterQuery = () => {
     const queryArray = [];
     const {
       location,
       categories,
       startDate,
       endDate,
-    } = this.props.filterValues;
+    } = filters;
     // We want all three to be defined to filter by location
     if (location.latitude && location.longitude && location.radius) {
       queryArray.push(`lat=${location.latitude}`);
@@ -58,7 +30,7 @@ class SearchBarContainer extends React.Component {
       queryArray.push(`radius=${location.radius}`);
     }
     if (categories) {
-      queryArray.push(`categories=${categories.join(',')}`);
+      queryArray.push(`categoryID=${categories.join(',')}`);
     }
     if (startDate) {
       queryArray.push(`startDate=${startDate}`);
@@ -66,15 +38,43 @@ class SearchBarContainer extends React.Component {
     if (endDate) {
       queryArray.push(`endDate=${endDate}`);
     }
+    // Separate parameters by & and join
     return queryArray.join('&');
-  }
+  };
 
-  render() {
-    return (
-      <SearchBar debouncedSearch={this.debouncedSearch} />
-    );
-  }
-}
+  /**
+   * A function that sends a search request using the specified parameters.
+   * @async
+   */
+  const search = (title) => {
+    // Remove any lingering error tags
+    removeError();
+    // Set the loading tag to true
+    startLoading();
+    // Fetch events from the API
+    console.log(`http://localhost:3000/api/events?title=${title}&${addFilterQuery()}`);
+    fetchRetry(`http://localhost:3000/api/events?title=${title}&${addFilterQuery()}`)
+      .then(events => setEvents(events))
+      // Catch in fetch only handles 'network errors'. Handling of errors
+      // will be done in the above codeblock
+      .catch(() => setError())
+      .finally(doneLoading());
+  };
+
+  /**
+   * The debounced version of the search function. 
+   * @async
+   */
+  const debouncedSearch = debounce(500, search);
+
+  return (
+    <SearchBar debouncedSearch={debouncedSearch} />
+  );
+};
+
+const mapStateToProps = state => ({
+  filters: state.filters,
+});
 
 SearchBarContainer.propTypes = {
   /**
@@ -86,7 +86,7 @@ SearchBarContainer.propTypes = {
    * A collection of values that describe the current
    * filters used in the application.
    */
-  filterValues: FilterValues.isRequired,
+  filters: FilterValues.isRequired,
   /**
    * Sets the loading tag to true.
    */
@@ -105,4 +105,4 @@ SearchBarContainer.propTypes = {
   removeError: PropTypes.func.isRequired,
 };
 
-export default SearchBarContainer;
+export default connect(mapStateToProps)(SearchBarContainer);

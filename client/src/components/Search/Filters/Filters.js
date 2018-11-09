@@ -7,14 +7,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import FilterValues from '../../../propTypes/FilterValues';
-import SetFilters from '../../../propTypes/SetFilters';
-import LocationFilter from './LocationFilter';
-import CategoryFilter from './CategoryFilter';
-import DateFilter from './DateFilter';
+import LocationFilterContainer from '../../../containers/Search/Filters/LocationFilterContainer';
+import CategoryFilterContainer from '../../../containers/Search/Filters/CategoryFilterContainer';
+import DateFilterContainer from '../../../containers/Search/Filters/DateFilterContainer';
 
 const Filters = ({
-  hide, toggleHide, setFilters, filterValues,
+  hide, toggleHide, activeFilters, toggleFilters,
 }) => (
   <div>
     <div
@@ -28,35 +26,14 @@ const Filters = ({
     </div>
     {!hide && (
     <React.Fragment>
-      <CategoryFilter
-        filterValues={filterValues.categories}
-        setFilter={{
-          add: setFilters.addToCategories,
-          remove: setFilters.removeFromCategories,
-        }}
+      <CategoryFilterContainer 
+        isActive={activeFilters.categories}
+        toggle={toggleFilters.categories}
       />
-      <LocationFilter
-        filterValues={{
-          latitude: filterValues.location.latitude,
-          longitude: filterValues.location.longitude,
-          radius: filterValues.location.radius,
-        }}
-        setFilter={{
-          latitude: setFilters.latitude,
-          longitude: setFilters.longitude,
-          radius: setFilters.radius,
-        }}
+      <LocationFilterContainer 
+        isActive
       />
-      <DateFilter
-        filterValues={{
-          startDate: filterValues.startDate,
-          endDate: filterValues.endDate,
-        }}
-        setFilter={{
-          startDate: setFilters.startDate,
-          endDate: setFilters.endDate,
-        }}
-      />
+      <DateFilterContainer />
     </React.Fragment>
     )}
   </div>
@@ -64,15 +41,14 @@ const Filters = ({
 
 Filters.propTypes = {
   /**
-   * A collection of functions that can set the filters
-   * of their respective fields for searching.  
+   * True if filters are to be hidden. False
+   * otherwise.
    */
-  setFilters: SetFilters.isRequired,
+  hide: PropTypes.bool.isRequired,
   /**
-   * A collection of values that describe the current
-   * filters used in the application.
+   * Toggles the values of hide.
    */
-  filterValues: FilterValues.isRequired,
+  toggleHide: PropTypes.func.isRequired,
 };
 
 export default Filters;

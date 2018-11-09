@@ -3,6 +3,7 @@
  */
 import moment from 'moment';
 
+import CATEGORIES from '../../constants/CATEGORIES';
 import {
   SET_LATITUDE,
   SET_LONGITUDE,

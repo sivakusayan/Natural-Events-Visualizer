@@ -6,7 +6,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const LocationFilter = ({ filters, setLatitude, setLongitude, setRadius, isActive, toggle }) => (
+const LocationFilter = ({
+ filter, setLatitude, setLongitude, setRadius, isActive, toggle,
+}) => (
   <div>
     <div
       tabIndex={0}
@@ -20,21 +22,21 @@ const LocationFilter = ({ filters, setLatitude, setLongitude, setRadius, isActiv
       <input
         type='text'
         name='latitude'
-        value={filters.latitude}
+        value={filter.latitude}
         onChange={e => setLatitude(e.target.value)}
         disabled={!isActive}
       />
       <input
         type='text'
         name='longitude'
-        value={filters.longitude}
+        value={filter.longitude}
         onChange={e => setLongitude(e.target.value)}
         disabled={!isActive}
       />
       <input
         type='text'
         name='radius'
-        value={filters.radius}
+        value={filter.radius}
         onChange={e => setRadius(e.target.value)}
         disabled={!isActive}
       />
@@ -45,9 +47,9 @@ const LocationFilter = ({ filters, setLatitude, setLongitude, setRadius, isActiv
 LocationFilter.propTypes = {
   /**
    * A collection of values that describe the
-   * current filters being used.
+   * current filter being used.
    */
-  filters: PropTypes.shape({
+  filter: PropTypes.shape({
     latitude: PropTypes.number,
     longitude: PropTypes.number,
     radius: PropTypes.number,

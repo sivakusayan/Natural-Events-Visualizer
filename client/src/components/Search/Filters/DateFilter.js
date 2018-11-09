@@ -11,7 +11,8 @@ import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const DateFilter = ({
-  filters, setStartDate, setEndDate, toggleStartDate, startDateIsActive, toggleEndDate, endDateIsActive,
+  startDateFilter, endDateFilter, setStartDate, setEndDate, 
+  toggleStartDate, startDateIsActive, toggleEndDate, endDateIsActive,
 }) => (
   <div>
     <h1>Date Filters</h1>
@@ -25,10 +26,10 @@ const DateFilter = ({
         <h1>Start Date</h1>
       </div>
       <DatePicker
-        selected={moment(filters.startDate)}
+        selected={moment(startDateFilter)}
         selectsStart
-        startDate={moment(filters.startDate)}
-        endDate={moment(filters.endDate)}
+        startDate={moment(startDateFilter)}
+        endDate={moment(endDateFilter)}
         onChange={date => setStartDate(moment(date).valueOf())}
         disabled={!startDateIsActive}
       />
@@ -41,10 +42,10 @@ const DateFilter = ({
         <h1>Start Date</h1>
       </div>
       <DatePicker
-        selected={moment(filters.endDate)}
+        selected={moment(endDateFilter)}
         selectsEnd
-        startDate={moment(filters.startDate)}
-        endDate={moment(filters.endDate)}
+        startDate={moment(startDateFilter)}
+        endDate={moment(endDateFilter)}
         onChange={date => setEndDate(moment(date).valueOf())}
         disabled={!endDateIsActive}
       />
@@ -54,13 +55,15 @@ const DateFilter = ({
 
 DateFilter.propTypes = {
   /**
-   * A collection of values that describe the
-   * current filters being used.
+   * The unix time stamp date in milliseconds used
+   * for the start date filter.
    */
-  filters: PropTypes.shape({
-    startDate: PropTypes.number,
-    endDate: PropTypes.number,
-  }).isRequired,
+  startDateFilter: PropTypes.number.isRequired,
+  /**
+   * The unix time stamp date in milliseconds used
+   * for the start end filter.
+   */
+  endDateFilter: PropTypes.number.isRequired,
   /**
    * Sets the date to use in the start date filter.
    * Input is in time stamp format (milliseconds).

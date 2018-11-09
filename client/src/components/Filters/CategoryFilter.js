@@ -9,7 +9,11 @@ import PropTypes from 'prop-types';
 import CATEGORIES from '../../constants/CATEGORIES';
 
 const CategoryFilter = ({
- filter, add, remove, isActive, toggle,
+  filter,
+  add,
+  remove,
+  isActive = false,
+  toggle,
 }) => {
   /**
    * Fired whenever a category checkbox is clicked. Adds
@@ -71,11 +75,15 @@ CategoryFilter.propTypes = {
    * True if the categories filter is applied to the search query.
    * False otherwise.
    */
-  isActive: PropTypes.bool.isRequired,
+  isActive: PropTypes.bool,
   /**
    * Toggles the isActive prop value.
    */
   toggle: PropTypes.bool.isRequired,
+};
+
+CategoryFilter.defaultProps = {
+  isActive: false,
 };
 
 export default CategoryFilter;

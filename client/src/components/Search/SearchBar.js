@@ -10,6 +10,10 @@ class Searchbar extends React.Component {
     searchQuery: '',
   }
 
+  componentDidMount = () => {
+    this.props.debouncedSearch(this.state.searchQuery);
+  }
+
   setSearchQuery = (query) => {
     this.setState({
       searchQuery: query,
@@ -18,7 +22,7 @@ class Searchbar extends React.Component {
 
   handleChange = (e) => {
     this.setSearchQuery(e.target.value);
-    this.props.debouncedSearch(e.target.value);
+    this.props.debouncedSearch(this.state.searchQuery);
   }
 
   handleSubmit = (e) => {

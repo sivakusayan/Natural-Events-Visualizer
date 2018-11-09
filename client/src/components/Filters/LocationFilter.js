@@ -7,7 +7,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const LocationFilter = ({
- filter, setLatitude, setLongitude, setRadius, isActive, toggle,
+  filter,
+  setLatitude,
+  setLongitude,
+  setRadius,
+  isActive = false,
+  toggle,
 }) => (
   <div>
     <div
@@ -70,11 +75,15 @@ LocationFilter.propTypes = {
    * True if the location filter is applied to the search query.
    * False otherwise.
    */
-  isActive: PropTypes.bool.isRequired,
+  isActive: PropTypes.bool,
   /**
    * Toggles the isActive prop value.
    */
   toggle: PropTypes.bool.isRequired,
+};
+
+LocationFilter.defaultProps = {
+  isActive: false,
 };
 
 export default LocationFilter;

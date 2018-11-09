@@ -35,8 +35,6 @@ class Search extends React.Component {
     const {
       setEvents,
       events,
-      activeFilters,
-      toggleFilters,
       isLoading,
       startLoading,
       doneLoading,
@@ -51,8 +49,6 @@ class Search extends React.Component {
         <Filters
           hide={hideFilters}
           toggleHide={this.toggleHideFilters}
-          activeFilters={activeFilters}
-          toggleFilters={toggleFilters}
         />
         {hideFilters && (
           <React.Fragment>
@@ -62,7 +58,6 @@ class Search extends React.Component {
               doneLoading={doneLoading}
               setError={setError}
               removeError={removeError}
-              activeFilters={activeFilters}
             />
             <SearchResults
               events={events}
@@ -112,29 +107,6 @@ Search.propTypes = {
    * Sets the error tag to false.
    */
   removeError: PropTypes.func.isRequired,
-  /**
-   * Object that contains information about which
-   * filters are active or not. A disabled filter
-   * will not be added to the query, even if the 
-   * filter has a value in the state.
-   */
-  activeFilters: PropTypes.shape({
-    location: PropTypes.bool.isRequired,
-    categories: PropTypes.bool.isRequired,
-    startDate: PropTypes.bool.isRequired,
-    endDate: PropTypes.bool.isRequired,
-  }).isRequired,
-  /**
-   * Object with functions that toggle the truth
-   * value of their corresponding field in 
-   * activeFilters.
-   */
-  toggleFilters: PropTypes.shape({
-    location: PropTypes.func.isRequired,
-    categories: PropTypes.func.isRequired,
-    startDate: PropTypes.func.isRequired,
-    endDate: PropTypes.func.isRequired,
-  }).isRequired,
 };
 
 export default Search;

@@ -8,10 +8,12 @@ import PropTypes from 'prop-types';
 
 import CATEGORIES from '../../../constants/CATEGORIES';
 
-const CategoryFilter = ({ filters, add, remove, isActive, toggle }) => {
+const CategoryFilter = ({
+ filter, add, remove, isActive, toggle,
+}) => {
   /**
    * Fired whenever a category checkbox is clicked. Adds
-   * the categoryID to the category filters if checked,
+   * the categoryID to the category filter if checked,
    * and removes it otherwise.
    */
   const updateCategories = (e) => {
@@ -30,7 +32,7 @@ const CategoryFilter = ({ filters, add, remove, isActive, toggle }) => {
         onKeyPress={toggle}
         role='menuItem'
       >
-        <h1>Category Filters</h1>
+        <h1>Category Filter</h1>
       </div>
       <form>
         {Object.keys(CATEGORIES).map(categoryID => (
@@ -40,7 +42,7 @@ const CategoryFilter = ({ filters, add, remove, isActive, toggle }) => {
               name='categories'
               value={categoryID}
               onClick={updateCategories}
-              checked={filters.includes(categoryID)}
+              checked={filter.includes(categoryID)}
               disabled={!isActive}
             />
             {CATEGORIES[categoryID].title}
@@ -56,7 +58,7 @@ CategoryFilter.propTypes = {
    * An array of the category IDs that are currently in 
    * the categories filter.
    */
-  filters: PropTypes.arrayOf(PropTypes.number).isRequired,
+  filter: PropTypes.arrayOf(PropTypes.number).isRequired,
   /**
    * Adds the specified category ID to the categories filter.
    */

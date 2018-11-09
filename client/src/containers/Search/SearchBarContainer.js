@@ -9,7 +9,7 @@ import SearchBar from '../../components/Search/SearchBar';
 
 
 const SearchBarContainer = ({
-  setEvents, startLoading, doneLoading, setError, removeError, filters,
+  setEvents, startLoading, doneLoading, setError, removeError, filters, filtersAreActive,
 }) => {
   /**
    * @returns 
@@ -23,19 +23,25 @@ const SearchBarContainer = ({
       startDate,
       endDate,
     } = filters;
-    // We want all three to be defined to filter by location
-    if (location.latitude && location.longitude && location.radius) {
+    const {
+      location: locationIsActive,
+      categories: categoriesIsActive,
+      startDate: startDateIsActive,
+      endDate: endDateIsActive,
+    } = filtersAreActive;
+    // We want latitude, longitude, and radius to all be defined to filter by location
+    if (locationIsActive && location.latitude && location.longitude && location.radius) {
       queryArray.push(`lat=${location.latitude}`);
       queryArray.push(`long=${location.longitude}`);
       queryArray.push(`radius=${location.radius}`);
     }
-    if (categories) {
+    if (categoriesIsActive && categories) {
       queryArray.push(`categoryID=${categories.join(',')}`);
     }
-    if (startDate) {
+    if (startDateIsActive && startDate) {
       queryArray.push(`startDate=${startDate}`);
     }
-    if (endDate) {
+    if (endDateIsActive && endDate) {
       queryArray.push(`endDate=${endDate}`);
     }
     // Separate parameters by & and join
@@ -52,7 +58,6 @@ const SearchBarContainer = ({
     // Set the loading tag to true
     startLoading();
     // Fetch events from the API
-    console.log(`http://localhost:3000/api/events?title=${title}&${addFilterQuery()}`);
     fetchRetry(`http://localhost:3000/api/events?title=${title}&${addFilterQuery()}`)
       .then(events => setEvents(events))
       // Catch in fetch only handles 'network errors'. Handling of errors
@@ -74,6 +79,7 @@ const SearchBarContainer = ({
 
 const mapStateToProps = state => ({
   filters: state.filters,
+  filtersAreActive: state.filtersAreActive,
 });
 
 SearchBarContainer.propTypes = {
@@ -103,6 +109,18 @@ SearchBarContainer.propTypes = {
    * Sets the error tag to false.
    */
   removeError: PropTypes.func.isRequired,
+  /**
+   * Object that contains information on which
+   * filters are enabled or disabled. Filters
+   * that are disabled will not be applied to
+   * the search query.
+   */
+  filtersAreActive: PropTypes.shape({
+    location: PropTypes.bool.isRequired,
+    categories: PropTypes.bool.isRequired,
+    startDate: PropTypes.bool.isRequired,
+    endDate: PropTypes.bool.isRequired,
+  }).isRequired,
 };
 
 export default connect(mapStateToProps)(SearchBarContainer);

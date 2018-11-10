@@ -3,6 +3,8 @@
  * unnecessary precision.
  */
 
+const PRECISION = require('../constants/PRECISION');
+
 /**
  * Takes a number and returns a number that is
  * rounded to the specified precision.
@@ -13,9 +15,7 @@
  * @returns
  * The rounded number
  */
-const roundNumber = (number, precision) => {
-  return parseFloat(number.toFixed(precision));
-};
+const roundNumber = (number, precision) => parseFloat(number.toFixed(precision));
 
 /**
  * Takes a point and returns a point that has coordinates
@@ -29,7 +29,7 @@ const roundNumber = (number, precision) => {
  * @returns
  * The rounded point
  */
-const roundPoint = (point, precision) => [
+const roundPoint = (point, precision = PRECISION) => [
   roundNumber(point[0], precision), roundNumber(point[1], precision),
 ];
 

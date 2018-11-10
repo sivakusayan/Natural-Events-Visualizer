@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { GeoJSONLayer } from 'react-mapbox-gl';
 
-import CATEGORIES from '../../../constants/CATEGORIES';
+import COLOR_STOPS from '../../../constants/COLOR_STOPS';
 import MAP_LINE_CONFIG from '../../../constants/MAP_LINE_CONFIG';
-
 import Event from '../../../propTypes/Event';
 
 class LineStringLayer extends React.Component {
@@ -12,13 +11,7 @@ class LineStringLayer extends React.Component {
 
   linePaint = {
     ...MAP_LINE_CONFIG.paint,
-    // Generate stops using colors already defined in CATEGORIES object
-    'line-color': {
-      property: 'category',
-      type: 'categorical',
-      // Parse int to prevent type coercion to string
-      stops: Object.keys(CATEGORIES).map(key => [parseInt(key), CATEGORIES[key].color]),
-    },
+    'line-color': COLOR_STOPS,
   }
 
   render() {

@@ -7,6 +7,8 @@ const reverseGeocodePoint = require('../processData/reverseGeocodePoint');
 const getUpdateCandidates = require('./getUpdateCandidates');
 const getNewCoordinates = require('./getNewCoordinates');
 const isUpdated = require('./isUpdated');
+const sleep = require('util').promisify(setTimeout);
+const WAIT_TIME = require('../../constants/WAIT_TIME');
 
 (async () => {
   const loadOldEvents = Event.find()
@@ -19,13 +21,17 @@ const isUpdated = require('./isUpdated');
   const needUpdates = updateCandidates.filter(
     ([oldEvent, liveEvent]) => isUpdated(oldEvent, liveEvent)
   );
-  needUpdates.forEach(([oldEvent, liveEvent]) => {
+  needUpdates.forEach(async ([oldEvent, liveEvent]) => {
     let newCoordinates = getNewCoordinates(oldEvent, liveEvent);
     // Round the new coordinates for optimization
     newCoordinates = newCoordinates.map(point => roundPoint(point));
     const newDates = liveEvent.geometry.date;
-    // Calculate locations for new coordinates
-    console.log(`New coordinates for ${oldEvent._id}: ${newCoordinates}`);
+    const locationPromises = newCoordinates.map(async (coordinates) => {
+      await sleep(WAIT_TIME);
+      return reverseGeocodePoint(coordinates)
+    });
+    const newLocations = await Promise.all(locationPromises);
+    
     // Append data to oldEvent
   });
 })();

@@ -4,7 +4,6 @@
  */
 
 const roundPoint = require('../../utils/roundPoint');
-const PRECISION = require('../../constants/PRECISION');
 
 /**
  * Takes in a GeoJSON geometry and rounds its coordinates to make it more
@@ -19,13 +18,13 @@ const PRECISION = require('../../constants/PRECISION');
 const roundGeoJSONGeometry = (geometry) => {
   const roundedGeometry = JSON.parse(JSON.stringify(geometry));
   if (geometry.type === 'Point') {
-    roundedGeometry.coordinates = roundPoint(geometry.coordinates, PRECISION);
+    roundedGeometry.coordinates = roundPoint(geometry.coordinates);
   } else if (geometry.type === 'Polygon') {
     for (let i = 0; i < geometry.coordinates.length; i += 1) {
       // Defines the boundary of the polygon or hole inside polygon
       const boundary = geometry.coordinates[i];
-      for (let j = 0; j < boundary.length; j++) {
-        boundary[j] = roundPoint(boundary[j], PRECISION);
+      for (let j = 0; j < boundary.length; j += 1) {
+        boundary[j] = roundPoint(boundary[j]);
       }
     }
   }

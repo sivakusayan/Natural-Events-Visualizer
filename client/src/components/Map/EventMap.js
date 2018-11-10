@@ -74,9 +74,6 @@ EventMap.propTypes = {
   resetSelectedEvent: PropTypes.func.isRequired,
   updateCenter: PropTypes.func.isRequired,
   updateZoom: PropTypes.func.isRequired,
-  /**
-   * True if there is a selected event, false otherwise.
-   */
   renderPopup: PropTypes.bool.isRequired,
 };
 

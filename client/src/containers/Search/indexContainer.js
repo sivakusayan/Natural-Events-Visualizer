@@ -1,17 +1,13 @@
-/**
- * @fileoverview This file lets the Search Component keep track of whats
- * being filtered. The source of this data is from the Filters Component,
- * where it will then be sent to the SearchBarContainer for 
- * query building.
- */
-
 import React from 'react';
 
 import Search from '../../components/Search/index';
 
 export default class SearchContainer extends React.Component {
   state = {
-    // Events that are listed in search results
+    // Events that are listed in search results This is
+    // separate from the events that are rendered on the
+    // map. (Perhaps they will be synced as the dataset
+    // starts to grow large)
     events: [],
     // True if search results are loading, false otherwise
     isLoading: false,

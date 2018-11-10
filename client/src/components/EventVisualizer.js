@@ -1,6 +1,4 @@
-/**
- * @fileoverview Renders the main UI for the application.
- */
+
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 

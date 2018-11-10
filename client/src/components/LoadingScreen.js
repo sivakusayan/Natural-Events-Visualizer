@@ -1,6 +1,3 @@
-/**
- * @fileoverview Renders while application is hydrating data.
- */
 import React from 'react';
 
 const LoadingScreen = () => (

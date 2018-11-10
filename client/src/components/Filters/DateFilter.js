@@ -1,8 +1,3 @@
-/**
- * @fileoverview A controlled form that allows the user to filter
- * by date.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
@@ -80,23 +75,9 @@ DateFilter.propTypes = {
    * Input is in time stamp format (milliseconds).
    */
   setEndDate: PropTypes.func.isRequired,
-  /**
-   * True if the start date filter is applied to the search query.
-   * False otherwise.
-   */
   startDateIsActive: PropTypes.bool,
-  /**
-   * Toggles the StartDateIsActive prop value.
-   */
   toggleStartDate: PropTypes.bool.isRequired,
-  /**
-   * True if the end date filter is applied to the search query.
-   * False otherwise.
-   */
   endDateIsActive: PropTypes.bool,
-  /**
-   * Toggles the StartDateIsActive prop value.
-   */
   toggleEndDate: PropTypes.bool.isRequired,
 };
 

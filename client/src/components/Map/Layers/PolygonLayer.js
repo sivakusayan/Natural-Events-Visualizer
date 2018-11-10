@@ -1,7 +1,3 @@
-/**
- * @fileoverview Handles rendering of the map layer concerned
- * with polygon events.
- */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { GeoJSONLayer } from 'react-mapbox-gl';
@@ -14,10 +10,11 @@ import Event from '../../../propTypes/Event';
 class PolygonLayer extends React.Component {
   fillPaint = {
     ...MAP_POLYGON_CONFIG.paint,
+    // Generate stops using colors already defined in CATEGORIES object
     'fill-color': {
       property: 'category',
       type: 'categorical',
-      // Generate stops using colors already defined in CATEGORIES object
+      // Parse int to prevent type coercion to string
       stops: Object.keys(CATEGORIES).map(key => [parseInt(key), CATEGORIES[key].color]),
     },
   }
@@ -34,9 +31,6 @@ class PolygonLayer extends React.Component {
 }
 
 PolygonLayer.propTypes = {
-  /**
-   * The geoJSON data used to render this layer.
-   */
   geoJSON: PropTypes.arrayOf(Event).isRequired,
 };
 

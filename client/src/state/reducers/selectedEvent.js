@@ -1,7 +1,3 @@
-/**
- * @fileoverview The reducer for the state's selectedEvent field.
- */
-
 import { SELECT_EVENT } from '../actionTypes/selectedEventActionTypes';
 
 const selectedEventState = null;

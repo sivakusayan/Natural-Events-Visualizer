@@ -1,6 +1,3 @@
-/**
- * @fileoverview The reducer for the state's filters field. 
- */
 import moment from 'moment';
 
 import CATEGORIES from '../../constants/CATEGORIES';
@@ -24,9 +21,9 @@ const filtersDefaultState = {
   },
   // Filter for events of the following categories
   categories: Object.keys(CATEGORIES),
-  // Filter for events after this date
+  // Filter for events >= this date
   startDate: 1325463472000,
-  // Filter for events before this date
+  // Filter for events < this date
   endDate: moment().valueOf(),
 };
 

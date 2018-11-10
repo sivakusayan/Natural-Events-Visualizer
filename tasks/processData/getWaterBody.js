@@ -12,8 +12,6 @@ const inside = require('@turf/boolean-point-in-polygon').default;
 const waterBodies = require('../../geoDataSets/waters.json').features;
 
 /**
- * Takes in a point, and returns the body of water the point is in.
- * 
  * @param {[Number]} point 
  * Point to check. Point is of the form [longitude, latitude].
  * 
@@ -23,9 +21,7 @@ const waterBodies = require('../../geoDataSets/waters.json').features;
  */
 
 const getWaterBody = (point) => {
-  // Loop through water bodies in dataset
   for (let i = 0; i < waterBodies.length; i += 1) {
-    // If a match is found, return the name of the body
     if (inside(point, waterBodies[i].geometry)) {
       // Some water bodies in the dataset don't have names, such as a nation's 
       // internal waters. Use name in note as backup.
@@ -33,7 +29,6 @@ const getWaterBody = (point) => {
       return name;
     }
   }
-  // Else return null
   return null;
 };
 

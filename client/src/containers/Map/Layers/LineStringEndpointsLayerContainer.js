@@ -1,7 +1,3 @@
-/**
- * Passes data that should be rendered into the LineStringEndpoints layer.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -13,8 +9,8 @@ import LineStringEndpointsLayer from '../../../components/Map/Layers/LineStringE
  * Given a lineString EventGeoJSON object, return a GeoJSON point
  * that is at the most recent location.
  * 
- * @param {EventGeoJSON} LineStringEndpoints
- *  A LineStringEndpoints EventGeoJSON object
+ * @param {EventGeoJSON} LineString
+ *  A LineString EventGeoJSON object
  * 
  * @returns {EventGeoJSONEndpoint} 
  *  The endpoint of the line
@@ -26,7 +22,6 @@ const getEndPointGeoJSON = lineString => ({
     coordinates: lineString.geometry.coordinates[lineString.geometry.coordinates.length - 1],
   },
   properties: {
-    // Prevent coercion to string
     id: lineString._id,
     category: lineString.properties.category,
   },
@@ -35,7 +30,6 @@ const getEndPointGeoJSON = lineString => ({
 class LineStringEndpointsLayerContainer extends React.Component {
   geoJSON = {
     type: 'FeatureCollection',
-    // Concatenate line string events with their generated endpoints
     features: this.props.lineStringEvents.map(event => getEndPointGeoJSON(event)),
   }
 
@@ -51,9 +45,6 @@ const mapStateToProps = state => ({
 });
 
 LineStringEndpointsLayerContainer.propTypes = {
-  /**
-   * The list of all LineStringEndpoints events in the database.
-   */
   lineStringEvents: PropTypes.arrayOf(Event).isRequired,
 };
 

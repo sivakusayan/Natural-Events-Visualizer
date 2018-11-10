@@ -17,13 +17,10 @@
  */
 const getUpdateCandidates = (storedEvents, liveEvents) => {
   const pairs = [];
-  // Loop through list of live events
   for (let i = 0; i < liveEvents.length; i += 1) {
     const { _id } = liveEvents[i];
-    // Get stored event that matches the liveEvent id
     const match = storedEvents.filter(event => event._id === _id)[0];
     if (match) {
-      // Push pair into pairs
       pairs.push([match, liveEvents[i]]);
     }
   }

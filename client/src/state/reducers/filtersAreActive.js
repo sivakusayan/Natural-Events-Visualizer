@@ -1,7 +1,3 @@
-/**
- * Reducer for the state's filtersAreActive field.
- */
-
 import {
   TOGGLE_LOCATION,
   TOGGLE_CATEGORIES,

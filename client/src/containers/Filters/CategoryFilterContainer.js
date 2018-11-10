@@ -1,8 +1,3 @@
-/**
- * Allows the CategoryFilter to add or remove categories
- * to the state's filters field.
- */
-
 import { connect } from 'react-redux';
 
 import { addCategory, removeCategory } from '../../state/actions/filters';

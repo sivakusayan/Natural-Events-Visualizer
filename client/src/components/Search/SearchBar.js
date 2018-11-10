@@ -1,7 +1,3 @@
-/**
- * @fileoverview This component controls how our searchbar will be rendered.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -47,10 +43,6 @@ class Searchbar extends React.Component {
 }
 
 Searchbar.propTypes = {
-  /**
-   * A debounced function to search for events specifying
-   * the query and filters.
-   */
   debouncedSearch: PropTypes.func.isRequired,
 };
 

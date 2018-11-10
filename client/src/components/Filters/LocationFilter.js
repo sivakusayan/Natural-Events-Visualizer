@@ -1,8 +1,3 @@
-/**
- * @fileoverview A controlled form that allows the user to filter
- * by location.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -50,35 +45,15 @@ const LocationFilter = ({
 );
 
 LocationFilter.propTypes = {
-  /**
-   * A collection of values that describe the
-   * current filter being used.
-   */
   filter: PropTypes.shape({
     latitude: PropTypes.number,
     longitude: PropTypes.number,
     radius: PropTypes.number,
   }).isRequired,
-  /**
-   * Sets the latitude to use in the location filter.
-   */
   setLatitude: PropTypes.func.isRequired,
-  /**
-   * Sets the longitude to use in the location filter.
-   */
   setLongitude: PropTypes.func.isRequired,
-  /**
-   * Sets the radius to use in the location filter.
-   */
   setRadius: PropTypes.func.isRequired,
-  /**
-   * True if the location filter is applied to the search query.
-   * False otherwise.
-   */
   isActive: PropTypes.bool,
-  /**
-   * Toggles the isActive prop value.
-   */
   toggle: PropTypes.bool.isRequired,
 };
 

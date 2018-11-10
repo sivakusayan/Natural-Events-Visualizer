@@ -9,6 +9,7 @@ const pointMean = require('../../utils/pointMean');
 const parseLocation = require('./parseLocation');
 const getWaterBody = require('./getWaterBody');
 
+const WAIT_TIME = require('../../constants/WAIT_TIME');
 const KEY = require('../../constants/GOOGLE_API_KEY');
 const { GOOGLE_REVERSE_GEOCODE_URL } = require('../../constants/URL_STRINGS');
 
@@ -45,14 +46,14 @@ const reverseGeocodePoint = async ([longitude, latitude]) => {
  * An array of EONET GeoJSON objects. 
  * 
  * @return {Array.<Promise>}
- * An array of promises resolving to the modified EONET GeoJSON objects with a 
+ * An array of promises resolving to EventGeoJSON objects with a 
  * new location attribute in their geometry.
  */
 const reverseGeocodeEvents = async (eventArray) => {
   const reverseGeocodedEvents = [];
   for (let i = 0; i < eventArray.length; i += 1) {
     // Wait 1 second between requests to avoid 'OVER_QUERY_LIMIT'
-    await sleep(1000);
+    await sleep(WAIT_TIME);
     const event = JSON.parse(JSON.stringify(eventArray[i]));
     if (event.geometry.type === 'Point') {
       // If Point, reverse geocode the point and attach location to event
@@ -77,7 +78,7 @@ const reverseGeocodeEvents = async (eventArray) => {
       const locationArray = [];
       for (let j = 0; j < event.geometry.coordinates.length; j += 1) {
         // Wait 1 second between requests to avoid 'OVER_QUERY_LIMIT'
-        await sleep(1000);
+        await sleep(WAIT_TIME);
         locationArray.push(reverseGeocodePoint(event.geometry.coordinates[j]));
       }
       reverseGeocodedEvents.push(

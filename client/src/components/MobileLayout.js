@@ -1,6 +1,3 @@
-/**
- * Renders the mobile layout of the application.
- */
 import React from 'react';
 import { Route } from 'react-router-dom';
 

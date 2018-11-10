@@ -14,7 +14,6 @@ export default (event) => {
   if (!event) return [0, 0];
   const { geometry } = event;
   let point = null;
-  // If Point, just return that point itself
   if (geometry.type === 'Point') {
     point = geometry.coordinates;
   }
@@ -22,7 +21,6 @@ export default (event) => {
   if (geometry.type === 'LineString') {
     point = geometry.coordinates[geometry.coordinates.length - 1];
   }
-  // If Polygon, return the average of its vertices
   if (geometry.type === 'Polygon') {
     point = pointMean(geometry.coordinates[0]);
   }

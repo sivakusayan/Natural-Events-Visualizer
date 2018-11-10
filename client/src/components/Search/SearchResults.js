@@ -1,8 +1,3 @@
-/**
- * @fileoverview This component controls how a list of search results is
- * rendered.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import SearchResultContainer from '../../containers/Search/SearchResultContainer';
@@ -19,19 +14,8 @@ const SearchResults = ({ events = [], isLoading, error }) => (
 );
 
 SearchResults.propTypes = {
-  /**
-   * The list of events to render.
-   */
   events: PropTypes.arrayOf(Event),
-  /**
-   * True if the search query is being processed,
-   * false otherwise.
-   */
   isLoading: PropTypes.bool,
-  /**
-   * True if the most recent search query returned
-   * an error, false otherwise.
-   */
   error: PropTypes.bool,
 };
 

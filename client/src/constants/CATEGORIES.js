@@ -1,14 +1,4 @@
 /**
- * @fileoverview Exports an object that contains all the categories used in the EONET API.
- * The keys are the IDs of the category. 
- */
-
-/**
- * Contains all the categories that will be used in the application.
- * The keys of this object will be the category IDs. The result
- * of CATEGORIES[Key] will be an object with a title, description, and 
- * color property, each tailored to the specific category.
- * 
  * Colors that each category uses on the map are picked from 
  * https://sashat.me/2017/01/11/list-of-20-simple-distinct-colors/
  */

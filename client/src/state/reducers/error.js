@@ -1,21 +1,11 @@
-/**
- * @fileoverview The reducer for the state's error tag. 
- */
-
 import { SET_ERROR, REMOVE_ERROR } from '../actionTypes/errorActionTypes';
 
 const loadingDefaultState = false;
 
 export default (state = loadingDefaultState, action) => {
   switch (action.type) {
-    /**
-     * Set the error tag to true.
-     */
     case SET_ERROR:
       return true;
-    /**
-     * Set the error tag to false.
-     */
     case REMOVE_ERROR:
       return false;
     default:

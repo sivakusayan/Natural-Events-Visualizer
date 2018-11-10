@@ -68,38 +68,11 @@ const EventMap = ({
 );
 
 EventMap.propTypes = {
-  /**
-   * Center of the map view being shown to the user.
-   * Updated at the end of a drag event.
-   */
   center: PropTypes.arrayOf(PropTypes.number).isRequired,
-  /**
-   * Zoom level that the user is on. Updated at the
-   * end of a zoom event.
-   */
   zoom: PropTypes.number.isRequired,
-  /**
-   * Checks the nearest rendered features around
-   * the click location. If the closest one is an
-   * event on the map, set that event to be the 
-   * application's selected event.
-   */
   setSelectedEvent: PropTypes.func.isRequired,
-  /**
-   * Sets the selected event to null. This makes sure
-   * that the previous selected event is no longer
-   * active if the user tries to move away.
-   */
   resetSelectedEvent: PropTypes.func.isRequired,
-  /**
-   * Updates the center state with the current
-   * center of the map.
-   */
   updateCenter: PropTypes.func.isRequired,
-  /**
-   * Updates the center state with the current
-   * zoom of the map.
-   */
   updateZoom: PropTypes.func.isRequired,
   /**
    * True if there is a selected event, false otherwise.

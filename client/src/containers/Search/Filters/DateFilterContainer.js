@@ -1,13 +1,8 @@
-/**
- * Allows the DateFilter to change the start and end dates used
- * in the state's filters field.
- */
-
 import { connect } from 'react-redux';
 
 import { setStartDate, setEndDate } from '../../../state/actions/filters';
 import { toggleStartDate, toggleEndDate } from '../../../state/actions/filtersAreActive';
-import DateFilter from '../../../components/Search/Filters/DateFilter';
+import DateFilter from '../../../components/Filters/DateFilter';
 
 const mapStateToProps = state => ({
   startDateFilter: state.filters.startDate,

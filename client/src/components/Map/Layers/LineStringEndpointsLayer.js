@@ -40,9 +40,6 @@ class LineStringEndpointsLayer extends React.Component {
 }
 
 LineStringEndpointsLayer.propTypes = {
-  /**
-   * The geoJSON data used to render this layer.
-   */
   geoJSON: PropTypes.arrayOf(Event).isRequired,
 };
 

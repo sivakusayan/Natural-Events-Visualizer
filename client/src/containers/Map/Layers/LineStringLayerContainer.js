@@ -1,7 +1,3 @@
-/**
- * Passes data that should be rendered into the LineString layer.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -27,9 +23,6 @@ const mapStateToProps = state => ({
 });
 
 LineStringLayerContainer.propTypes = {
-  /**
-   * The list of all LineString events in the database.
-   */
   lineStringEvents: PropTypes.arrayOf(Event).isRequired,
 };
 

@@ -1,8 +1,3 @@
-/**
- * Renders the popup that is located at the selectedEvent, if one
- * exists.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Popup } from 'react-mapbox-gl';
@@ -16,14 +11,7 @@ const EventPopup = ({ selectedEvent, coordinates }) => (
 );
 
 EventPopup.propTypes = {
-  /**
-   * The event object associated with the ID of the
-   * current selected event.
-   */
   selectedEvent: Event.isRequired,
-  /**
-   * The coordinates the popup will be located at.
-   */
   coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 

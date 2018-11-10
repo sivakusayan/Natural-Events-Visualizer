@@ -1,8 +1,3 @@
-/**
- * Allows the LocationFilter to set location parameters
- * in the state's filters field.
- */
-
 import { connect } from 'react-redux';
 
 import { setLatitude, setLongitude, setRadius } from '../../state/actions/filters';

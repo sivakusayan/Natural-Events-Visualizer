@@ -1,8 +1,3 @@
-/**
- * @fileoverview A controlled form that allows the user to filter
- * by event category.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -15,11 +10,6 @@ const CategoryFilter = ({
   isActive = false,
   toggle,
 }) => {
-  /**
-   * Fired whenever a category checkbox is clicked. Adds
-   * the categoryID to the category filter if checked,
-   * and removes it otherwise.
-   */
   const updateCategories = (e) => {
     if (e.target.checked) {
       add(e.target.value);
@@ -58,27 +48,10 @@ const CategoryFilter = ({
 };
 
 CategoryFilter.propTypes = {
-  /**
-   * An array of the category IDs that are currently in 
-   * the categories filter.
-   */
   filter: PropTypes.arrayOf(PropTypes.number).isRequired,
-  /**
-   * Adds the specified category ID to the categories filter.
-   */
   add: PropTypes.func.isRequired,
-  /**
-   * Removes the specified category ID from the categories filter.
-   */
   remove: PropTypes.func.isRequired,
-  /**
-   * True if the categories filter is applied to the search query.
-   * False otherwise.
-   */
   isActive: PropTypes.bool,
-  /**
-   * Toggles the isActive prop value.
-   */
   toggle: PropTypes.bool.isRequired,
 };
 

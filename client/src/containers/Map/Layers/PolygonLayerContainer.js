@@ -1,7 +1,3 @@
-/**
- * Passes data that should be rendered into the Polygon layer.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -12,7 +8,6 @@ import PolygonLayer from '../../../components/Map/Layers/PolygonLayer';
 class PolygonLayerContainer extends React.Component {
   geoJSON = {
     type: 'FeatureCollection',
-    // Filter for Polygon events
     features: this.props.polygonEvents,
   }
 
@@ -28,9 +23,6 @@ const mapStateToProps = state => ({
 });
 
 PolygonLayerContainer.propTypes = {
-  /**
-   * The list of all polygon events in the database.
-   */
   polygonEvents: PropTypes.arrayOf(Event).isRequired,
 };
 

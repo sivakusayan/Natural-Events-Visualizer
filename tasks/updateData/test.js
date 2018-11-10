@@ -9,7 +9,7 @@ const isUpdated = require('./isUpdated');
 (async () => {
   // Load stored LineStrings
   const loadStored = Event.find()
-    .then(events => events.filter(event => event.geometry.type === 'LineString'));
+    .then(events => events.filter(event => event.geometry.type === 'LineString' || event.geometry.type === 'Point'));
   // Load live LineStrings
   const loadLive = fetchData()
     .then(events => toGeoJSONEvents(events).filter(event => event.geometry.type === 'LineString'));
@@ -18,9 +18,10 @@ const isUpdated = require('./isUpdated');
   // Check for events which are possibly updated
   const updateCandidates = getUpdateCandidates(storedEvents, liveEvents);
   // Find events which need updates
-  const needUpdates = updateCandidates.map(pair => isUpdated(pair));
+  const needUpdates = updateCandidates.filter(pair => isUpdated(pair));
   needUpdates.forEach((pair) => {
     // Get the new coordinates
+    const newCoordinates = 
 
     // Get the new dates
 

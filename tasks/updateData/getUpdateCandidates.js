@@ -1,8 +1,6 @@
 /**
  * Takes in an array of stored GeoJSON objects and an array of live GeoJSON objects,
- * comparing the two arrays. It returns an array of pairs: the first element in the
- * pair is the update candidate, and the second element is its corresponding live
- * equivalent.
+ * and returns any events that are found in both the stored and live datasets.
  * 
  * @param {Array.<EventGeoJSON>} storedEvents
  *  A list of GeoJSON to be checked for updates

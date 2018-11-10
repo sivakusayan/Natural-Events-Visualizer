@@ -1,32 +1,31 @@
 const db = require('../../db/mongoose');
 const Event = require('../../models/Event');
-
+const roundPoint = require('../../utils/roundPoint');
 const fetchData = require('../getData/fetchData');
 const toGeoJSONEvents = require('../processData/toGeoJSONEvents');
+const reverseGeocodePoint = require('../processData/reverseGeocodePoint');
 const getUpdateCandidates = require('./getUpdateCandidates');
+const getNewCoordinates = require('./getNewCoordinates');
 const isUpdated = require('./isUpdated');
 
 (async () => {
-  // Load stored LineStrings
-  const loadStored = Event.find()
+  const loadOldEvents = Event.find()
     .then(events => events.filter(event => event.geometry.type === 'LineString' || event.geometry.type === 'Point'));
-  // Load live LineStrings
-  const loadLive = fetchData()
+  const loadLiveEvents = fetchData()
     .then(events => toGeoJSONEvents(events).filter(event => event.geometry.type === 'LineString'));
-  // Wait for data to load
-  const [storedEvents, liveEvents] = await Promise.all([loadStored, loadLive]);
-  // Check for events which are possibly updated
-  const updateCandidates = getUpdateCandidates(storedEvents, liveEvents);
-  // Find events which need updates
-  const needUpdates = updateCandidates.filter(pair => isUpdated(pair));
-  needUpdates.forEach((pair) => {
-    // Get the new coordinates
-    const newCoordinates = 
+  const [oldEvents, liveEvents] = await Promise.all([loadOldEvents, loadLiveEvents]);
 
-    // Get the new dates
-
+  const updateCandidates = getUpdateCandidates(oldEvents, liveEvents);
+  const needUpdates = updateCandidates.filter(
+    ([oldEvent, liveEvent]) => isUpdated(oldEvent, liveEvent)
+  );
+  needUpdates.forEach(([oldEvent, liveEvent]) => {
+    let newCoordinates = getNewCoordinates(oldEvent, liveEvent);
+    // Round the new coordinates for optimization
+    newCoordinates = newCoordinates.map(point => roundPoint(point));
+    const newDates = liveEvent.geometry.date;
     // Calculate locations for new coordinates
-
-    // Append data to storedEvent
+    console.log(`New coordinates for ${oldEvent._id}: ${newCoordinates}`);
+    // Append data to oldEvent
   });
 })();

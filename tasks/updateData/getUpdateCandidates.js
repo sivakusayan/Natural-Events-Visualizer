@@ -1,9 +1,8 @@
 /**
- * Takes in an array of stored GeoJSON objects and an array of live GeoJSON objects,
- * and returns any events that are found in both the stored and live datasets.
+ * Filters for events that are both in the stored and live dataset.
  * 
  * @param {Array.<EventGeoJSON>} storedEvents
- *  A list of GeoJSON to be checked for updates
+ *  A list of possibly outdated GeoJSON
  * @param {Array.<EventGeoJSON>} liveEvents
  *  A list of GeoJSON containing live data
  * 

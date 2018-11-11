@@ -18,19 +18,13 @@ const Event = require('../models/Event');
  * into the database.
  */
 const insertData = async () => {
-  // Find id of Events already in Database
   const eventsInDB = await Event.find({}, '_id').then(ids => ids.map(id => `EONET_${id._id}`));
-  // Fetch events from EONET API
   const events = await fetchData();
-  // Filter for events not in the database
   const newEvents = events.filter(event => !eventsInDB.includes(event.id));
   // Round GeoJSON coordinates to optimize MapBox performance
   const roundedEvents = roundEvents(newEvents);
-  // Converts the new events into valid GeoJSON
   const geoJSONEvents = toGeoJSONEvents(roundedEvents);
-  // Attach the reverse geocoded location to each event's geometry
   const reverseGeocodedEvents = await reverseGeocodeEvents(geoJSONEvents);
-  // Insert processed events into database
   Event.insertMany(reverseGeocodedEvents);
 };
 

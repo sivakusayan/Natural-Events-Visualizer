@@ -9,6 +9,12 @@ const roundEvents = require('./processData/roundEvents');
 const toGeoJSONEvents = require('./processData/toGeoJSONEvents');
 const reverseGeocodeEvents = require('./processData/reverseGeocodeEvents');
 
+const loadOldLiveEvents = require('./updateData/loadOldLiveEvents');
+const getUpdateCandidates = require('./updateData/getUpdateCandidates');
+const isUpdated = require('./updateData/isUpdated');
+const getNewInformation = require('./updateData/getNewInformation');
+const updateEvent = require('./updateData/updateEvent');
+
 const mongoose = require('../db/mongoose');
 const Event = require('../models/Event');
 
@@ -17,7 +23,7 @@ const Event = require('../models/Event');
  * database. Once those events are found, they are processed then inserted
  * into the database.
  */
-const insertData = async () => {
+const insertNewEvents = async () => {
   const eventsInDB = await Event.find({}, '_id').then(ids => ids.map(id => `EONET_${id._id}`));
   const events = await fetchData();
   const newEvents = events.filter(event => !eventsInDB.includes(event.id));
@@ -28,6 +34,18 @@ const insertData = async () => {
   Event.insertMany(reverseGeocodedEvents);
 };
 
+const updateOldEvents = async () => {
+  const [oldEvents, liveLineStrings] = await loadOldLiveEvents();
+  const updateCandidates = getUpdateCandidates(oldEvents, liveLineStrings);
+  const needUpdates = updateCandidates.filter(
+    ([oldEvent, liveLineString]) => isUpdated(oldEvent, liveLineString)
+  );
+  needUpdates.forEach(async ([oldEvent, liveLineString]) => {
+    const newInformation = await getNewInformation(oldEvent, liveLineString);
+    updateEvent(oldEvent, newInformation);
+  });
+};
+
 /**
  * Starts the reverse geocoding machinery, and then schedules the 
  * insertData function to everyday at midnight.
@@ -35,14 +53,15 @@ const insertData = async () => {
 const scheduleUpdates = () => {
   // schedule.scheduleJob('0 0 * * *', () => {
   //   try {
-  //     // Try to update database
-  //     insertData();
+  //     insertNewEvents();
+  //     updateOldEvents();
   //   } catch (err) {
   //     // If any errors are found (API Connections, etc.)
   //     // give up and try the next day.
   //   }
   // });
-  insertData();
+  insertNewEvents();
+  updateOldEvents();
 };
 
 module.exports = scheduleUpdates;

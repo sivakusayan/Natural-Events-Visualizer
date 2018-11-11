@@ -2,7 +2,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import MobileLayout from './MobileLayout';
+import MobileLayout from './Layouts/MobileLayout';
 
 class EventVisualizer extends React.Component {
   state = {

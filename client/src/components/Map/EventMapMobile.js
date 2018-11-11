@@ -11,6 +11,7 @@ import EventMapContainer from '../../containers/Map/EventMapContainer';
 
 const EventMapMobile = () => (
   <div>
+    <Link to='/menu'>Click here for the menu</Link>
     <Link to='/search'>Click here to search</Link>
     <EventMapContainer />
   </div>

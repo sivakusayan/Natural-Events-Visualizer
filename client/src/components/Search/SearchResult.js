@@ -5,14 +5,14 @@ import PropTypes from 'prop-types';
 import Event from '../../propTypes/Event';
 
 const SearchResult = ({ event, selectEvent }) => {
-  const setSelectedEvent = () => selectEvent(event._id);
+  const onClick = () => selectEvent(event._id);
   const onKeyPress = (e) => {
-    if (e.key === 'Enter') setSelectedEvent();
+    if (e.key === 'Enter') onClick();
   };
   return (
     <div
       tabIndex={0}
-      onClick={setSelectedEvent}
+      onClick={onClick}
       onKeyPress={onKeyPress}
       role='menuItem'
     >

@@ -1,9 +1,7 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
 
-import SearchContainer from '../containers/Search/indexContainer';
-import Filters from './Filters/index';
-import EventMapMobile from './Map/EventMapMobile';
+import AppRouterMobile from '../../routes/AppRouterMobile';
+import EventMapMobile from '../Map/EventMapMobile';
 
 class MobileLayout extends React.Component {
   state = {
@@ -16,8 +14,8 @@ class MobileLayout extends React.Component {
     if (hideMap) mapClassName += 'hide';
     return (
       <React.Fragment>
-        <Route path='/search' component={SearchContainer} />
-        <Route path='/filters' component={Filters} />
+        <AppRouterMobile />
+        {/* Don't unmount map for performance purposes. Hide it instead. */}
         <EventMapMobile className={mapClassName} />
       </React.Fragment>
     );

@@ -7,11 +7,13 @@
  * https://www.mapbox.com/help/how-map-design-works/#data-driven-styles
  */
 
-import CATEGORIES from '../../../constants/CATEGORIES';
+import CATEGORIES from './CATEGORIES';
 
-export const COLOR_STOPS = {
+const COLOR_STOPS = {
   property: 'category',
   type: 'categorical',
   // Parse int to prevent type coercion to string
   stops: Object.keys(CATEGORIES).map(key => [parseInt(key), CATEGORIES[key].color]),
 };
+
+export default COLOR_STOPS;

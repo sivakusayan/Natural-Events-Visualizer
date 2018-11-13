@@ -1,9 +1,10 @@
 import React from 'react';
 
 import AppRouterMobile from '../../routes/AppRouterMobile';
-import EventMapMobile from '../Map/EventMapMobile';
 
-class MobileLayout extends React.Component {
+import HomeMobile from '../Pages/HomeMobile';
+
+class LayoutMobile extends React.Component {
   state = {
     hideMap: false,
   }
@@ -15,11 +16,11 @@ class MobileLayout extends React.Component {
     return (
       <React.Fragment>
         <AppRouterMobile />
-        {/* Don't unmount map for performance purposes. Hide it instead. */}
-        <EventMapMobile className={mapClassName} />
+        {/* Don't unmount homepage map for performance purposes. Hide it instead. */}
+        <HomeMobile className={mapClassName} />
       </React.Fragment>
     );
   }
 }
 
-export default MobileLayout;
+export default LayoutMobile;

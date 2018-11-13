@@ -2,7 +2,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import MobileLayout from './Layouts/MobileLayout';
+import LayoutMobile from './Layouts/LayoutMobile';
 
 class EventVisualizer extends React.Component {
   state = {
@@ -13,7 +13,7 @@ class EventVisualizer extends React.Component {
     const { isMobile } = this.state;
     return (
       <Router>
-        {isMobile ? <MobileLayout /> : <h1>You are on a desktop.</h1>}
+        {isMobile ? <LayoutMobile /> : <h1>You are on a desktop.</h1>}
       </Router>
     );
   }

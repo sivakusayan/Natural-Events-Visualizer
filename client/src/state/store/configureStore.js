@@ -6,6 +6,7 @@ import filtersAreActiveReducer from '../reducers/filtersAreActive';
 import loadingReducer from '../reducers/loading';
 import errorReducer from '../reducers/error';
 import selectedEventReducer from '../reducers/selectedEvent';
+import hideMainPageReducer from '../reducers/hideMainPage';
 
 export default () => {
   const store = createStore(
@@ -32,6 +33,10 @@ export default () => {
       // The map will zoom on this event, and will be
       // highlighted if it is in the search results.
       selectedEvent: selectedEventReducer,
+      // True if we want to hide the main UI of the application,
+      // false otherwise. We hide instead of unmounting the component
+      // since loading the map is expensive.
+      hideMainPage: hideMainPageReducer,
     }),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   );

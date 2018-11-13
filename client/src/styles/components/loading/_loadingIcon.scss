@@ -1,0 +1,36 @@
+.loadingIcon {
+  display: flex;
+
+  &__circle {
+    margin: 0.4rem;
+    background: black;
+    border-radius: 50%;
+    height: 1rem;
+    width: 1rem;
+    animation: loading linear .6s infinite;
+  }
+
+  &__circle--1 {
+    animation-delay: 0s;
+  }
+  
+  &__circle--2 {
+    animation-delay: .1s;
+  }
+
+  &__circle--3 {
+    animation-delay: .2s;
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1.5rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

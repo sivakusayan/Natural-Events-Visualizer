@@ -12,7 +12,7 @@ import { setError, removeError } from './state/actions/error';
 import configureStore from './state/store/configureStore';
 
 import EventVisualizer from './components/EventVisualizer';
-import LoadingScreen from './components/LoadingScreen';
+import LoadingScreen from './components/Loading/LoadingScreen';
 import './styles/styles.scss';
 
 const store = configureStore();
@@ -43,7 +43,8 @@ class App extends React.Component {
     const { isLoading } = this.props;
     return (
       <Provider store={store}>
-        {isLoading ? <LoadingScreen /> : <EventVisualizer />}
+        {/* {isLoading ? <LoadingScreen /> : <EventVisualizer />} */}
+        <LoadingScreen />
       </Provider>
     );
   }

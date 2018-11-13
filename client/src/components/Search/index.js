@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import ToggleMainPageLinkContainer from '../../containers/Links/ToggleMainPageLinkContainer';
 import SearchBarContainer from '../../containers/Search/SearchBarContainer';
 import SearchResults from './SearchResults';
 
@@ -16,7 +17,7 @@ const Search = ({
   removeError,
 }) => (
   <div>
-    <Link to='/'>Go to Map</Link>
+    <ToggleMainPageLinkContainer to='/'>Go to Map</ToggleMainPageLinkContainer>
     <Link to='/filters'>Filtering Options</Link>
     <SearchBarContainer
       setEvents={setEvents}

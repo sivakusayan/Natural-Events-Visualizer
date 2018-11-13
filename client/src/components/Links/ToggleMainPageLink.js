@@ -6,10 +6,17 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const ToggleMainPageLink = ({ toggleMainPage, children, to }) => (
   <Link onClick={toggleMainPage} to={to}>{children}</Link>
 );
+
+ToggleMainPageLink.propTypes = {
+  toggleMainPage: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+  to: PropTypes.string.isRequired,
+};
 
 export default ToggleMainPageLink;

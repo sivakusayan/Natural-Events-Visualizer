@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+import ToggleMainPageLinkContainer from '../../containers/Links/ToggleMainPageLinkContainer';
 
 const Credits = () => (
   <div>
-    <Link to='/'>Go back</Link>
+    <ToggleMainPageLinkContainer to='/'>Go back</ToggleMainPageLinkContainer>
     <h1>This is the credits page.</h1>
   </div>
 );

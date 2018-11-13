@@ -1,6 +1,6 @@
 import { TOGGLE_MAIN_PAGE } from '../actionTypes/hideMainPage';
 
-const hideMainPageDefaultState = true;
+const hideMainPageDefaultState = false;
 
 export default (state = hideMainPageDefaultState, action) => {
   switch (action.type) {

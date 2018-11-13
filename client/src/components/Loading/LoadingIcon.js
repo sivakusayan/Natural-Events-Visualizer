@@ -5,6 +5,7 @@ const LoadingIcon = () => (
     <div className='loadingIcon__circle loadingIcon__circle--1' />
     <div className='loadingIcon__circle loadingIcon__circle--2' />
     <div className='loadingIcon__circle loadingIcon__circle--3' />
+    <div className='loadingIcon__circle loadingIcon__circle--4' />
   </div>
 );
 

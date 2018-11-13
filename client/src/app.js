@@ -43,8 +43,8 @@ class App extends React.Component {
     const { isLoading } = this.props;
     return (
       <Provider store={store}>
-        {/* {isLoading ? <LoadingScreen /> : <EventVisualizer />} */}
-        <LoadingScreen />
+        {isLoading ? <LoadingScreen /> : <EventVisualizer />}
+        {/* <LoadingScreen /> */}
       </Provider>
     );
   }

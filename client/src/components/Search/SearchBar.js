@@ -6,8 +6,24 @@ class Searchbar extends React.Component {
     searchQuery: '',
   }
 
+  searchEvents = () => {
+    const { startLoading, removeError, debouncedSearch } = this.props;
+    const { searchQuery } = this.state;
+    // We load here instead of inside the debounced function, since
+    // doing that will debounce the state change as well. We could have
+    // wrapped these functions inside one method and passed that as a 
+    // child into this component, but for some reason that makes the
+    // debounced calls not be able to 'detect each other', so that we
+    // get multipled delayed calls instead of one debounced call.
+    startLoading();
+    removeError();
+    // doneLoading and setError are called inside debounced search
+    // after search results come back.
+    debouncedSearch(searchQuery);
+  }
+
   componentDidMount = () => {
-    this.props.debouncedSearch(this.state.searchQuery);
+    this.searchEvents();
   }
 
   setSearchQuery = (query) => {
@@ -18,7 +34,7 @@ class Searchbar extends React.Component {
 
   handleChange = (e) => {
     this.setSearchQuery(e.target.value);
-    this.props.debouncedSearch(this.state.searchQuery);
+    this.searchEvents();
   }
 
   handleSubmit = (e) => {
@@ -43,6 +59,18 @@ class Searchbar extends React.Component {
 }
 
 Searchbar.propTypes = {
+  /**
+   * Sets the loading status of search results to true.
+   */
+  startLoading: PropTypes.func.isRequired,
+  /**
+   * Removes any lingering errors from a previous search.
+   */
+  removeError: PropTypes.func.isRequired,
+  /**
+   * A debounced search function. This will make it so we
+   * don't flood the server with needless requests.
+   */
   debouncedSearch: PropTypes.func.isRequired,
 };
 

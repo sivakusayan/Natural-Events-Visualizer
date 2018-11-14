@@ -6,9 +6,8 @@ class Searchbar extends React.Component {
     searchQuery: '',
   }
 
-  searchEvents = () => {
+  searchEvents = (query = '') => {
     const { startLoading, removeError, debouncedSearch } = this.props;
-    const { searchQuery } = this.state;
     // We load here instead of inside the debounced function, since
     // doing that will debounce the state change as well. We could have
     // wrapped these functions inside one method and passed that as a 
@@ -19,7 +18,7 @@ class Searchbar extends React.Component {
     removeError();
     // doneLoading and setError are called inside debounced search
     // after search results come back.
-    debouncedSearch(searchQuery);
+    debouncedSearch(query);
   }
 
   componentDidMount = () => {
@@ -34,7 +33,7 @@ class Searchbar extends React.Component {
 
   handleChange = (e) => {
     this.setSearchQuery(e.target.value);
-    this.searchEvents();
+    this.searchEvents(e.target.value);
   }
 
   handleSubmit = (e) => {

@@ -1,27 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-import ToggleMainPageLinkContainer from '../../containers/Links/ToggleMainPageLinkContainer';
 import EventMapContainer from '../../containers/Map/EventMapContainer';
 
-const HomeMobile = ({ hide }) => (
+const HomeMobile = () => (
   <div
-    className={hide ? 'hide' : ''}
+    // We hide the homepage under instead of unmounting it since
+    // loading the map over and over again would be too
+    // expensive.
+    className='underlay'
   >
-    <ToggleMainPageLinkContainer to='/menu'>Open Menu</ToggleMainPageLinkContainer>
-    <ToggleMainPageLinkContainer to='/search'>Open Search</ToggleMainPageLinkContainer>
+    <Link className='mapLink mapLink--menu' to='/menu'>Open Menu</Link>
+    <Link className='mapLink mapLink--search' to='/search'>Open Search</Link>
     <EventMapContainer />
   </div>
 );
-
-HomeMobile.propTypes = {
-  /**
-   * Determines whether the homepage is hidden or not.
-   * We hide the homepage instead of unmounting it since
-   * loading the map over and over again would be too
-   * expensive.
-   */
-  hide: PropTypes.bool.isRequired,
-};
 
 export default HomeMobile;

@@ -1,10 +1,11 @@
 import React from 'react';
-
-import ToggleMainPageLinkContainer from '../../containers/Links/ToggleMainPageLinkContainer';
+import { Link } from 'react-router-dom';
 
 const About = () => (
-  <div>
-    <ToggleMainPageLinkContainer to='/'>Go back</ToggleMainPageLinkContainer>
+  <div
+    className='about'
+  >
+    <Link to='/'>Go back</Link>
     <h1>This is the about page.</h1>
   </div>
 );

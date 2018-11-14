@@ -1,1 +1,0 @@
-export const TOGGLE_MAIN_PAGE = 'TOGGLE_MAIN_PAGE';

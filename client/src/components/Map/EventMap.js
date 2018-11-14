@@ -10,7 +10,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactMapboxGl, { ZoomControl, RotationControl } from 'react-mapbox-gl';
+import ReactMapboxGl from 'react-mapbox-gl';
 
 import KEY from '../../constants/MAPBOX_API_KEY';
 import STYLE from '../../constants/MAPBOX_STYLE';
@@ -52,10 +52,6 @@ const EventMap = ({
     onDragEnd={updateCenter}
     onZoomEnd={updateZoom}
   >
-    <ZoomControl
-      zoomDiff={1}
-    />
-    <RotationControl />
 
     <PointLayerContainer />
     <LineStringLayerContainer />

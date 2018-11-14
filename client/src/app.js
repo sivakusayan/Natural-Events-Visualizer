@@ -13,7 +13,7 @@ import configureStore from './state/store/configureStore';
 
 import EventVisualizer from './components/EventVisualizer';
 import LoadingScreen from './components/Loading/LoadingScreen';
-import './styles/styles.scss';
+// import './styles/main.scss';
 
 const store = configureStore();
 

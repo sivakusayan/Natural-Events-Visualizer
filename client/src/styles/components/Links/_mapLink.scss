@@ -1,1 +1,19 @@
-.mapLink
+.mapLink {
+  position: absolute;
+  z-index: var(--top);
+  right: 5%;
+  background: white;
+  border: 2px solid black;
+  border-radius: 50%;
+  height: 3.5rem;
+  width: 3.5rem;
+  display: flex;
+
+  &--menu {
+    top: 5%;
+  }
+
+  &--search {
+    top: 20%;
+  }
+}

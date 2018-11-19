@@ -1,4 +1,4 @@
-const sleep = require('util').promisify(setTimeout);
+const sleep = require('../../utils/sleep');
 
 const reverseGeocodePoint = require('./reverseGeocodePoint');
 const pointMean = require('../../utils/pointMean');

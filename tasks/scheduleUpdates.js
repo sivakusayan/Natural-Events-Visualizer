@@ -4,6 +4,9 @@
  */
 const schedule = require('node-schedule');
 
+const sleep = require('../utils/sleep');
+const WAIT_TIME = require('../constants/WAIT_TIME');
+
 const fetchData = require('./getData/fetchData');
 const roundEvents = require('./processData/roundEvents');
 const toGeoJSONEvents = require('./processData/toGeoJSONEvents');
@@ -41,6 +44,8 @@ const updateOldEvents = async () => {
     ([oldEvent, liveLineString]) => isUpdated(oldEvent, liveLineString)
   );
   needUpdates.forEach(async ([oldEvent, liveLineString]) => {
+    // Pause function here to avoid OVER_QUERY_LIMIT
+    await sleep(WAIT_TIME);
     const newInformation = await getNewInformation(oldEvent, liveLineString);
     updateEvent(oldEvent, newInformation);
   });
@@ -60,8 +65,9 @@ const scheduleUpdates = () => {
   //     // give up and try the next day.
   //   }
   // });
-  insertNewEvents();
-  updateOldEvents();
+
+  // Chain after to make sure google API doesn't return OVER_QUERY_LIMIT
+  insertNewEvents().then(updateOldEvents);
 };
 
 module.exports = scheduleUpdates;

@@ -5,14 +5,7 @@
  */
 const fetch = require('cross-fetch');
 
-/**
- * Function that resolves a promise after the specified
- * amount of seconds. If awaited, can act as a delay.
- * 
- * @param {Number} delay 
- *  The length of time to delay for
- */
-const sleep = delay => new Promise(resolve => setTimeout(resolve, delay));
+const sleep = require('./sleep');
 
 /**
  * A modified version of fetch. Response is automatically
@@ -35,13 +28,14 @@ const sleep = delay => new Promise(resolve => setTimeout(resolve, delay));
 const fetchRetry = async (url, assert = () => true, tryCount = 3, delay = 1000) => {
   try {
     // Try fetching data
-    const promise = await fetch(url).then(response => response.json());
+    const data = await fetch(url).then(response => response.json());
     // Assert statement about fetched data
-    if (!assert(promise)) {
+    if (!assert(data)) {
       throw Error('Response does not satisfy assertions.');
     }
-    return promise;
+    return data;
   } catch (err) {
+    console.log('Something went wrong :(');
     // Throw error if all tries are used
     if (tryCount === 0) throw err;
     // Wait before trying again

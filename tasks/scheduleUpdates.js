@@ -43,12 +43,13 @@ const updateOldEvents = async () => {
   const needUpdates = updateCandidates.filter(
     ([oldEvent, liveLineString]) => isUpdated(oldEvent, liveLineString)
   );
-  needUpdates.forEach(async ([oldEvent, liveLineString]) => {
+  for (let i = 0; i < needUpdates.length; i += 1) {
+    const [oldEvent, liveLineString] = needUpdates[i];
     // Pause function here to avoid OVER_QUERY_LIMIT
     await sleep(WAIT_TIME);
     const newInformation = await getNewInformation(oldEvent, liveLineString);
     updateEvent(oldEvent, newInformation);
-  });
+  }
 };
 
 /**
@@ -67,7 +68,7 @@ const scheduleUpdates = () => {
   // });
 
   // Chain after to make sure google API doesn't return OVER_QUERY_LIMIT
-  insertNewEvents().then(updateOldEvents);
+  insertNewEvents()
 };
 
 module.exports = scheduleUpdates;

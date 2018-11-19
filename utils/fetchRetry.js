@@ -31,11 +31,11 @@ const fetchRetry = async (url, assert = () => true, tryCount = 3, delay = 1000) 
     const data = await fetch(url).then(response => response.json());
     // Assert statement about fetched data
     if (!assert(data)) {
+      console.log(data);
       throw Error('Response does not satisfy assertions.');
     }
     return data;
   } catch (err) {
-    console.log('Something went wrong :(');
     // Throw error if all tries are used
     if (tryCount === 0) throw err;
     // Wait before trying again

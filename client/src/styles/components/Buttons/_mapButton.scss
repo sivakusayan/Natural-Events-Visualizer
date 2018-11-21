@@ -2,16 +2,20 @@
   position: absolute;
   z-index: var(--top);
   top: 2%;
-  background-color: var(--color-white);
-  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-  border: 1px solid rgba(0,0,0,0.1);
-  border-radius: 50%;
-  height: 3.5rem;
-  width: 3.5rem;
+
+  // Center the SVG icons in the button
   display: flex;
-  text-align: center;
-  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
   align-items: center;
+  justify-content: center;
+
+  // Make button contrast with the map
+  border: 1px solid rgba(0,0,0,0.1);
+  background-color: var(--color-white);
+  border-radius: 50%;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  text-align: center;
 
   &--menu {
     right: 3%;
@@ -25,6 +29,7 @@
 .mapButton__icon {
   fill: var(--color-primary);
 
+  // The SVGs don't have uniform size: define sizes separately
   &--menu {
     height: 40%;
   }

@@ -1,8 +1,9 @@
 .menu {
-  background: rgba(0,0,0,0.8);
-  height: 100vh;
   display: flex;
+  height: 100vh;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  background: rgba(0,0,0,0.8);
 }

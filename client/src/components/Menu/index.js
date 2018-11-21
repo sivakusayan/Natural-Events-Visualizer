@@ -10,9 +10,9 @@ const Menu = () => (
         <use href='icons/sprite.svg#backArrow' />
       </svg>
     </Link>
-    <NavLink className='link link--big' to='/about'>Statistics</NavLink>
-    <NavLink className='link link--big' to='/about'>About</NavLink>
-    <NavLink className='link link--big' to='/credits'>Credits</NavLink>
+    <NavLink className='link link--menu' to='/about'>Statistics</NavLink>
+    <NavLink className='link link--menu' to='/about'>About</NavLink>
+    <NavLink className='link link--menu' to='/credits'>Credits</NavLink>
   </div>
 );
 

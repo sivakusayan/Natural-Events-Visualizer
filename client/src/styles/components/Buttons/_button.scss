@@ -1,21 +1,25 @@
 .button {
   position: absolute;
+
   display: flex;
-  text-align: center;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  text-align: center;
 
   &--back {
     top: 2%;
     right: 3%;
-    height: 3.5rem;
+    
     width: 3.5rem;
+    height: 3.5rem;
   }
 }
 
 .button__icon {
   fill: var(--color-white);
 
+  // The SVGs don't have uniform size: define sizes separately
   &--back {
     height: 40%;
   }

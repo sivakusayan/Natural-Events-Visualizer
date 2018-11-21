@@ -1,0 +1,10 @@
+.link {
+  text-decoration: none;
+
+  &--menu {
+    margin: 2rem;
+    
+    color: var(--color-white);
+    font-size: 2rem;
+  }
+}

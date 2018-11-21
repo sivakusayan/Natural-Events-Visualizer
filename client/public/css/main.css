@@ -126,6 +126,13 @@ table {
   .button__icon--back {
     height: 40%; }
 
+.link {
+  text-decoration: none; }
+  .link--menu {
+    color: var(--color-white);
+    margin: 2rem;
+    font-size: 2rem; }
+
 .loadingIcon {
   display: flex; }
   .loadingIcon__circle {

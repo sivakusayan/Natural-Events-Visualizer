@@ -109,6 +109,23 @@ table {
   .mapButton__icon--search {
     height: 50%; }
 
+.button {
+  position: absolute;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center; }
+  .button--back {
+    top: 2%;
+    right: 3%;
+    height: 3.5rem;
+    width: 3.5rem; }
+
+.button__icon {
+  fill: var(--color-white); }
+  .button__icon--back {
+    height: 40%; }
+
 .loadingIcon {
   display: flex; }
   .loadingIcon__circle {

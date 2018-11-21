@@ -6,7 +6,7 @@ const Menu = () => (
     className='menu'
   >
     <Link className='button button--back' to='/' title='Back to map' alt='Back to map'>
-      <svg className='button__icon'>
+      <svg className='button__icon button__icon--back'>
         <use href='icons/sprite.svg#backArrow' />
       </svg>
     </Link>

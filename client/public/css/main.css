@@ -80,16 +80,16 @@ table {
   /*------------------------------------------------------------------
     COLORS
    ------------------------------------------------------------------*/
-  --color-primary: black;
-  --color-white: #F6F6F6; }
+  --color-primary: #8DA7BE;
+  --color-white: #F9F9F9; }
 
-.mapLink {
+.mapButton {
   position: absolute;
   z-index: var(--top);
-  top: 3%;
-  background-color: var(--color-primary);
-  color: var(--color-white);
+  top: 2%;
+  background-color: var(--color-white);
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   height: 3.5rem;
   width: 3.5rem;
@@ -97,10 +97,17 @@ table {
   text-align: center;
   justify-content: center;
   align-items: center; }
-  .mapLink--menu {
+  .mapButton--menu {
     right: 3%; }
-  .mapLink--search {
+  .mapButton--search {
     left: 3%; }
+
+.mapButton__icon {
+  fill: var(--color-primary); }
+  .mapButton__icon--menu {
+    height: 40%; }
+  .mapButton__icon--search {
+    height: 50%; }
 
 .loadingIcon {
   display: flex; }
@@ -145,3 +152,11 @@ table {
   .loadingScreen__text {
     margin: 2rem;
     font-size: 2rem; }
+
+.menu {
+  background: rgba(0, 0, 0, 0.8);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }

@@ -1,3 +1,30 @@
+/* SASS variables will be used instead of CSS variables for this application. We
+do this as CSS colors conflict with inbuilt SASS color functions, along with the 
+fact that we don't need the ability to programatically change the theme or 
+reassign variables with a cascade */
+
+/*------------------------------------------------------------------
+  Z-LEVELS
+  ------------------------------------------------------------------*/
+
+$stackingLevels: (
+  bottomMost: -2,
+  bottom: -1,
+  top: 1,
+  topMost: 2,
+);
+
+/*------------------------------------------------------------------
+  COLORS
+  ------------------------------------------------------------------*/
+
+$colors: (
+  primaryDark: #16425B,
+  primary: #016FB9,
+  primaryLight: #81C3D7,
+  white: #F9F9F9,
+);
+
 :root {
   /*------------------------------------------------------------------
     Z-LEVELS
@@ -10,12 +37,18 @@
   /*------------------------------------------------------------------
     COLORS
    ------------------------------------------------------------------*/
-  --color-primary: #8DA7BE;
-  --color-white: #F9F9F9;
+    // Note that we use the RGB values of the color instead of wrapping it
+    // inside of rgb(). This is so we can use the colors interchangeably in
+    // both rgb() and rgba(). 
+
+   --color-primary-dark: 22, 66, 91;     // #16425B 
+   --color-primary: 1, 111, 185;         // #016FB9
+   --color-primary-light: 129, 195, 215; // #81C3D7
+   --color-white: 249, 249, 249;         // #F9F9F9
 
   /*------------------------------------------------------------------
     COLORS
    ------------------------------------------------------------------*/
 
-   --big-button-diameter: 3rem;
+   --bigButton-diameter: 3rem;
 }

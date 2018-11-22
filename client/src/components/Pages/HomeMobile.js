@@ -10,18 +10,16 @@ const HomeMobile = () => (
     // expensive.
     className='underlay'
   >
-    <div className='buttonContainer'>
-      <Link className='button button--mapLeft' to='/search' title='Search' alt='Search'>
-        <svg className='button__icon'>
-          <use href='icons/sprite.svg#search' />
-        </svg>
-      </Link>
-      <Link className='button button--mapRight' to='/menu' title='Open menu' alt='Open menu'>
-        <svg className='button__icon'>
-          <use href='icons/sprite.svg#menu' />
-        </svg>
-      </Link>
-    </div>
+    <Link className='bigButton bigButton--left' to='/search' title='Search' alt='Search'>
+      <svg className='bigButton__icon'>
+        <use href='icons/sprite.svg#search' />
+      </svg>
+    </Link>
+    <Link className='bigButton bigButton--right' to='/menu' title='Open menu' alt='Open menu'>
+      <svg className='bigButton__icon'>
+        <use href='icons/sprite.svg#menu' />
+      </svg>
+    </Link>
     <EventMapContainer />
   </div>
 );

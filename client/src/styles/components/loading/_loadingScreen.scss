@@ -6,11 +6,12 @@
   align-items: center;
   justify-content: center;
 
-  background: lightblue;
+  background: color(primaryDark);
 
   &__text {
     margin: 2rem;
     
+    color: color(white);
     // Use default fonts so we don't need to wait for google fonts to load
     font-family: Helvetica, Arial, sans-serif;
     font-size: 2rem;

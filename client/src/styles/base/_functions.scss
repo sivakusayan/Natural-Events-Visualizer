@@ -1,0 +1,7 @@
+@function color($color) {
+  @return map-get($colors, $color );
+}
+
+@function z($level) {
+  @return map-get($stackingLevels, $level );
+}

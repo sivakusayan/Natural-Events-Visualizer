@@ -45,6 +45,36 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+/* SASS variables will be used instead of CSS variables for this application. We
+do this as CSS colors conflict with inbuilt SASS color functions, along with the 
+fact that we don't need the ability to programatically change the theme or 
+reassign variables with a cascade */
+/*------------------------------------------------------------------
+  Z-LEVELS
+  ------------------------------------------------------------------*/
+/*------------------------------------------------------------------
+  COLORS
+  ------------------------------------------------------------------*/
+:root {
+  /*------------------------------------------------------------------
+    Z-LEVELS
+   ------------------------------------------------------------------*/
+  --bottomMost: -2;
+  --bottom: -1;
+  --top: 1;
+  --topMost: 2;
+  /*------------------------------------------------------------------
+    COLORS
+   ------------------------------------------------------------------*/
+  --color-primary-dark: 22, 66, 91;
+  --color-primary: 1, 111, 185;
+  --color-primary-light: 129, 195, 215;
+  --color-white: 249, 249, 249;
+  /*------------------------------------------------------------------
+    COLORS
+   ------------------------------------------------------------------*/
+  --bigButton-diameter: 3rem; }
+
 html {
   font-size: 62.5%; }
 
@@ -65,63 +95,43 @@ button:disabled {
 
 .underlay {
   position: absolute;
-  z-index: var(--bottomMost);
+  z-index: -2;
   top: 0;
   left: 0; }
 
-:root {
-  /*------------------------------------------------------------------
-    Z-LEVELS
-   ------------------------------------------------------------------*/
-  --bottomMost: -2;
-  --bottom: -1;
-  --top: 1;
-  --topMost: 2;
-  /*------------------------------------------------------------------
-    COLORS
-   ------------------------------------------------------------------*/
-  --color-primary: #8DA7BE;
-  --color-white: #F9F9F9;
-  /*------------------------------------------------------------------
-    COLORS
-   ------------------------------------------------------------------*/
-  --big-button-diameter: 3rem; }
-
-.button {
+.bigButton {
+  position: absolute;
+  z-index: 1;
   display: flex;
-  width: var(--big-button-diameter);
-  height: var(--big-button-diameter);
+  width: 3rem;
+  height: 3rem;
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
   text-align: center; }
-  .button--mapLeft, .button--mapRight {
-    background: rgba(0, 0, 0, 0.7); }
-  .button--mapLeft {
-    border-bottom-right-radius: 50%; }
-  .button--mapRight {
-    border-bottom-left-radius: 50%; }
-  .button--back {
-    position: absolute;
+  .bigButton--left, .bigButton--right {
     top: 0;
+    background: #16425B;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); }
+  .bigButton--left {
+    left: 0;
+    border-bottom-right-radius: 50%; }
+  .bigButton--right {
     right: 0;
-    width: var(--big-button-diameter);
-    height: var(--big-button-diameter); }
-
-.button__icon {
-  fill: var(--color-white); }
+    border-bottom-left-radius: 50%; }
+  .bigButton__icon {
+    fill: #F9F9F9; }
 
 .link {
   text-decoration: none; }
   .link--menu {
-    width: 80%;
-    padding: 2rem;
-    margin: 2rem;
-    border-right: 5px solid var(--color-white);
-    border-left: 5px solid var(--color-white);
-    border-radius: 5%;
-    color: var(--color-white);
-    font-size: 2.5rem;
+    width: 60%;
+    padding: 1.5rem;
+    margin: 3rem;
+    border: 1px solid #F9F9F9;
+    border-radius: 3px;
+    color: #016FB9;
+    font-size: 3rem;
     font-weight: 300;
     text-align: center; }
 
@@ -132,7 +142,7 @@ button:disabled {
     height: 1rem;
     margin: 0.4rem;
     animation: loading linear .9s infinite;
-    background: black;
+    background: #F9F9F9;
     border-radius: 50%; }
   .loadingIcon__circle--1 {
     animation-delay: 0s; }
@@ -164,9 +174,10 @@ button:disabled {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: lightblue; }
+  background: #16425B; }
   .loadingScreen__text {
     margin: 2rem;
+    color: #F9F9F9;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 2rem; }
 
@@ -176,14 +187,4 @@ button:disabled {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.8); }
-
-.buttonContainer {
-  position: absolute;
-  z-index: var(--top);
-  top: 0;
-  right: 0;
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between; }
+  background: rgba(249, 249, 249, 0.9); }

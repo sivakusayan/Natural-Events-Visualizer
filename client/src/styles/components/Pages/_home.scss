@@ -1,0 +1,11 @@
+.buttonContainer {
+  position: absolute;
+  z-index: var(--top);
+  top: 0;
+  right: 0;
+
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}

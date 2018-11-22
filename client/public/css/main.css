@@ -1,21 +1,3 @@
-html {
-  font-size: 62.5%; }
-
-body {
-  font-family: Helvetica, Arial, Helvetica, sans-serif; }
-
-button {
-  cursor: pointer; }
-
-button:disabled {
-  cursor: default; }
-
-.about,
-.credits,
-.search,
-.menu {
-  background: white; }
-
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -63,11 +45,29 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+html {
+  font-size: 62.5%; }
+
+body {
+  font-family: 'Lato', Helvetica, Arial, sans-serif; }
+
+button {
+  cursor: pointer; }
+
+button:disabled {
+  cursor: default; }
+
+.about,
+.credits,
+.search,
+.menu {
+  background: white; }
+
 .underlay {
   position: absolute;
+  z-index: var(--bottomMost);
   top: 0;
-  left: 0;
-  z-index: var(--bottomMost); }
+  left: 0; }
 
 :root {
   /*------------------------------------------------------------------
@@ -81,67 +81,59 @@ table {
     COLORS
    ------------------------------------------------------------------*/
   --color-primary: #8DA7BE;
-  --color-white: #F9F9F9; }
-
-.mapButton {
-  position: absolute;
-  z-index: var(--top);
-  top: 2%;
-  background-color: var(--color-white);
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
-  height: 3.5rem;
-  width: 3.5rem;
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  align-items: center; }
-  .mapButton--menu {
-    right: 3%; }
-  .mapButton--search {
-    left: 3%; }
-
-.mapButton__icon {
-  fill: var(--color-primary); }
-  .mapButton__icon--menu {
-    height: 40%; }
-  .mapButton__icon--search {
-    height: 50%; }
+  --color-white: #F9F9F9;
+  /*------------------------------------------------------------------
+    COLORS
+   ------------------------------------------------------------------*/
+  --big-button-diameter: 3rem; }
 
 .button {
-  position: absolute;
   display: flex;
-  text-align: center;
+  width: var(--big-button-diameter);
+  height: var(--big-button-diameter);
+  align-items: center;
   justify-content: center;
-  align-items: center; }
+  padding: 1.5rem;
+  text-align: center; }
+  .button--mapLeft, .button--mapRight {
+    background: rgba(0, 0, 0, 0.7); }
+  .button--mapLeft {
+    border-bottom-right-radius: 50%; }
+  .button--mapRight {
+    border-bottom-left-radius: 50%; }
   .button--back {
-    top: 2%;
-    right: 3%;
-    height: 3.5rem;
-    width: 3.5rem; }
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: var(--big-button-diameter);
+    height: var(--big-button-diameter); }
 
 .button__icon {
   fill: var(--color-white); }
-  .button__icon--back {
-    height: 40%; }
 
 .link {
   text-decoration: none; }
   .link--menu {
-    color: var(--color-white);
+    width: 80%;
+    padding: 2rem;
     margin: 2rem;
-    font-size: 2rem; }
+    border-right: 5px solid var(--color-white);
+    border-left: 5px solid var(--color-white);
+    border-radius: 5%;
+    color: var(--color-white);
+    font-size: 2.5rem;
+    font-weight: 300;
+    text-align: center; }
 
 .loadingIcon {
   display: flex; }
   .loadingIcon__circle {
-    margin: 0.4rem;
-    background: black;
-    border-radius: 50%;
-    height: 1rem;
     width: 1rem;
-    animation: loading linear .9s infinite; }
+    height: 1rem;
+    margin: 0.4rem;
+    animation: loading linear .9s infinite;
+    background: black;
+    border-radius: 50%; }
   .loadingIcon__circle--1 {
     animation-delay: 0s; }
   .loadingIcon__circle--2 {
@@ -153,34 +145,45 @@ table {
 
 @keyframes loading {
   0% {
-    transform: translateY(0) scale(1);
-    opacity: 0.5; }
+    opacity: 0.5;
+    transform: translateY(0) scale(1); }
   30% {
-    transform: translateY(-2.5rem) scale(1.3);
-    opacity: 1; }
+    opacity: 1;
+    transform: translateY(-2.5rem) scale(1.3); }
   60% {
-    transform: translateY(0) scale(1);
-    opacity: 0.5; }
+    opacity: 0.5;
+    transform: translateY(0) scale(1); }
   100% {
-    transform: translateY(0) scale(1);
-    opacity: 0.5; } }
+    opacity: 0.5;
+    transform: translateY(0) scale(1); } }
 
 .loadingScreen {
-  height: 100vh;
-  width: 100vw;
-  background: lightblue;
   display: flex;
+  width: 100vw;
+  height: 100vh;
   flex-direction: column;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  background: lightblue; }
   .loadingScreen__text {
     margin: 2rem;
+    font-family: Helvetica, Arial, sans-serif;
     font-size: 2rem; }
 
 .menu {
-  background: rgba(0, 0, 0, 0.8);
-  height: 100vh;
   display: flex;
+  height: 100vh;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: center; }
+  background: rgba(0, 0, 0, 0.8); }
+
+.buttonContainer {
+  position: absolute;
+  z-index: var(--top);
+  top: 0;
+  right: 0;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between; }

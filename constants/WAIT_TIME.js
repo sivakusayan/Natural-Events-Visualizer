@@ -4,4 +4,4 @@
  * bypassing the OVER_QUERY_LIMIT error.
  */
 
-module.exports.WAIT_TIME = 1000;
+module.exports = 1000;

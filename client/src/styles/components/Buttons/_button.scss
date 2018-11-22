@@ -1,26 +1,35 @@
 .button {
-  position: absolute;
-
   display: flex;
+  width: var(--big-button-diameter);
+  height: var(--big-button-diameter);
   align-items: center;
   justify-content: center;
+  padding: 1.5rem;
 
   text-align: center;
 
+  &--mapLeft, &--mapRight {
+    background: rgba(0,0,0,0.7);
+  }
+
+  &--mapLeft {
+    border-bottom-right-radius: 50%;
+  }
+
+  &--mapRight {
+    border-bottom-left-radius: 50%;
+  }
+
   &--back {
-    top: 2%;
-    right: 3%;
+    position: absolute;
+    top: 0;
+    right: 0;
     
-    width: 3.5rem;
-    height: 3.5rem;
+    width: var(--big-button-diameter);
+    height: var(--big-button-diameter);
   }
 }
 
 .button__icon {
   fill: var(--color-white);
-
-  // The SVGs don't have uniform size: define sizes separately
-  &--back {
-    height: 40%;
-  }
 }

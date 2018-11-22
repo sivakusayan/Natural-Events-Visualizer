@@ -1,11 +1,12 @@
-@import "base/base";
 @import "base/reset";
+
+@import "base/base";
 @import "base/utilities";
 @import "base/variables";
 
-@import "components/Buttons/mapButton";
 @import "components/Buttons/button";
 @import "components/Links/link";
 @import "components/Loading/loadingIcon";
 @import "components/Loading/loadingScreen";
 @import "components/Menu/menu";
+@import "components/Pages/home";

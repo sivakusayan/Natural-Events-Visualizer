@@ -24,17 +24,26 @@
  * ID for each event
  * @property {'Feature'} type 
  * GeoJSON feature type
- * @property {EventGeoJSONProperty} properties 
+ * @property {EventProperty} properties 
  * nonspacial properties of the event
- * @property {{ type: 'Point' | 'LineString' | 'Polygon', date: Number[], coordinates: [], location: String | String[]}} geometry
+ * @property {{ type: 'Point' | 'LineString' | 'Polygon', date: Number[], coordinates: [], location: EventLocation}} geometry
  * A GeoJSON compatible geometry of event. Can be a Point, LineString, or Polygon. 
  * If type is Point or Polygon, then the date and location are just singletons. If type 
  * is a LineString, then the date and location become arrays.
  */
 
 /**
-  * @typedef {Object} EventGeoJSONProperty
-  * An object contianing nonspacial properties of the event.
+  * @typedef {Object} EventLocation
+  * An object containing location data.
+  * @property {String} city 
+  * @property {String} province 
+  * @property {String} country 
+  * @property {String} waters 
+  */
+
+/**
+  * @typedef {Object} EventProperty
+  * An object containing nonspacial properties of the event.
   * @property {String} title 
   * Name of the event
   * @property {Number} id 

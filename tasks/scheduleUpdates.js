@@ -46,9 +46,9 @@ const updateOldEvents = async () => {
   for (let i = 0; i < needUpdates.length; i += 1) {
     const [oldEvent, liveLineString] = needUpdates[i];
     // Pause function here to avoid OVER_QUERY_LIMIT
-    await sleep(WAIT_TIME);
+    await sleep(1000);
     const newInformation = await getNewInformation(oldEvent, liveLineString);
-    updateEvent(oldEvent, newInformation);
+    // updateEvent(oldEvent, newInformation);
   }
 };
 
@@ -68,7 +68,8 @@ const scheduleUpdates = () => {
   // });
 
   // Chain after to make sure google API doesn't return OVER_QUERY_LIMIT
-  insertNewEvents()
+  // insertNewEvents().then(updateOldEvents());
+  updateOldEvents();
 };
 
 module.exports = scheduleUpdates;

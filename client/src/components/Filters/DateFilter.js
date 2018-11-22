@@ -15,7 +15,7 @@ const DateFilter = ({
   toggleEndDate,
   endDateIsActive = false,
 }) => (
-  <div>
+  <section>
     <h1>Date Filters</h1>
     <form>
       <div
@@ -51,7 +51,7 @@ const DateFilter = ({
         disabled={!endDateIsActive}
       />
     </form>
-  </div>
+  </section>
 );
 
 DateFilter.propTypes = {
@@ -75,9 +75,23 @@ DateFilter.propTypes = {
    * Input is in time stamp format (milliseconds).
    */
   setEndDate: PropTypes.func.isRequired,
+  /**
+   * True if the startDate filter is currently being applied,
+   * false otherwise.
+   */
   startDateIsActive: PropTypes.bool,
+  /**
+   * Toggles the startDateIsActive value
+   */
   toggleStartDate: PropTypes.bool.isRequired,
+  /**
+   * True if the endDate filter is currently being applied,
+   * false otherwise.
+   */
   endDateIsActive: PropTypes.bool,
+  /**
+   * Toggles the endDateIsActive filter
+   */
   toggleEndDate: PropTypes.bool.isRequired,
 };
 

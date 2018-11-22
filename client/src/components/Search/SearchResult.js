@@ -10,7 +10,7 @@ const SearchResult = ({ event, selectEvent }) => {
     if (e.key === 'Enter') onClick();
   };
   return (
-    <div
+    <li
       tabIndex={0}
       onClick={onClick}
       onKeyPress={onKeyPress}
@@ -32,7 +32,7 @@ const SearchResult = ({ event, selectEvent }) => {
         Location:
         {event.geometry.location.city}
       </div>
-    </div>
+    </li>
   );
 };
 

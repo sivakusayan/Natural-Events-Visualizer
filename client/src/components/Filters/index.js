@@ -6,12 +6,12 @@ import CategoryFilterContainer from '../../containers/Filters/CategoryFilterCont
 import DateFilterContainer from '../../containers/Filters/DateFilterContainer';
 
 const Filters = () => (
-  <div>
+  <section>
     <Link to='/search'>Back to Search</Link>
     <CategoryFilterContainer />
     <LocationFilterContainer />
     <DateFilterContainer />
-  </div>
+  </section>
 );
 
 export default Filters;

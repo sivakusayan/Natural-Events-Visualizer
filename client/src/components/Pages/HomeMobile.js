@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import EventMapContainer from '../../containers/Map/EventMapContainer';
 
 const HomeMobile = () => (
-  <div
+  <main
     // We hide the homepage under instead of unmounting it since
     // loading the map over and over again would be too
     // expensive.
@@ -21,7 +21,7 @@ const HomeMobile = () => (
       </svg>
     </Link>
     <EventMapContainer />
-  </div>
+  </main>
 );
 
 export default HomeMobile;

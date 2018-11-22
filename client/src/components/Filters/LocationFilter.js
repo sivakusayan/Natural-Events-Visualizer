@@ -9,7 +9,7 @@ const LocationFilter = ({
   isActive = false,
   toggle,
 }) => (
-  <div>
+  <section>
     <div
       tabIndex={0}
       onClick={toggle}
@@ -41,10 +41,15 @@ const LocationFilter = ({
         disabled={!isActive}
       />
     </form>
-  </div>
+  </section>
 );
 
 LocationFilter.propTypes = {
+  /**
+   * Holds the values currently being used to filter for
+   * location in the search query. All 3 values must be
+   * defined to filter by location.
+   */
   filter: PropTypes.shape({
     latitude: PropTypes.number,
     longitude: PropTypes.number,
@@ -53,7 +58,14 @@ LocationFilter.propTypes = {
   setLatitude: PropTypes.func.isRequired,
   setLongitude: PropTypes.func.isRequired,
   setRadius: PropTypes.func.isRequired,
+  /**
+   * True if this filter is currently being applied
+   * to the search query, false otherwise.
+   */
   isActive: PropTypes.bool,
+  /**
+   * Toggles the isActive state of this filter
+   */
   toggle: PropTypes.bool.isRequired,
 };
 

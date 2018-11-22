@@ -6,14 +6,14 @@ import LoadingIcon from '../Loading/LoadingIcon';
 import Event from '../../propTypes/Event';
 
 const SearchResults = ({ events = [], isLoading, error }) => (
-  <div>
+  <ul>
     {isLoading && <LoadingIcon />}
     {error && <h1>Sorry, something went wrong.</h1>}
     {(events.length === 0 && !isLoading && !error)
       && <h1>No search results have been found.</h1>}
     {(!error && !isLoading)
       && events.map(event => <SearchResultContainer key={event._id} event={event} />)}
-  </div>
+  </ul>
 );
 
 SearchResults.propTypes = {

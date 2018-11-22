@@ -19,7 +19,7 @@ const CategoryFilter = ({
   };
 
   return (
-    <div>
+    <section>
       <div
         tabIndex={0}
         onClick={toggle}
@@ -43,15 +43,30 @@ const CategoryFilter = ({
           </label>
         ))}
       </form>
-    </div>
+    </section>
   );
 };
 
 CategoryFilter.propTypes = {
+  /**
+   * An array holding all category filters to apply to the search query.
+   */
   filter: PropTypes.arrayOf(PropTypes.number).isRequired,
+  /**
+   * Adds a category to the filter
+   */
   add: PropTypes.func.isRequired,
+  /**
+   * Removes a category from the filter
+   */
   remove: PropTypes.func.isRequired,
+  /**
+   * True if the category filter is currently being applied, false otherwise
+   */
   isActive: PropTypes.bool,
+  /**
+   * Toggle the isActive state for this filter
+   */
   toggle: PropTypes.bool.isRequired,
 };
 

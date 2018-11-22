@@ -15,7 +15,7 @@ const Search = ({
   setError,
   removeError,
 }) => (
-  <div
+  <section
     className='search'
   >
     <Link to='/'>Go to Map</Link>
@@ -32,7 +32,7 @@ const Search = ({
       isLoading={isLoading}
       error={error}
     />
-  </div>
+  </section>
 );
 
 Search.propTypes = {

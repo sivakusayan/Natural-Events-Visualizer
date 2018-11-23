@@ -25,13 +25,14 @@ export default () => {
       // not be applied (although their data is still saved).
       filtersAreActive: filtersAreActiveReducer,
       // The loading state of the application. Set to true 
-      // while data is hydrating.
+      // while data is hydrating and map is generating.
       isLoading: loadingReducer,
       // Error status of hydration.
       error: errorReducer,
       // The event that is currently selected by the user.
-      // The map will zoom on this event, and will be
-      // highlighted if it is in the search results.
+      // The map will fly the user to this event, as well 
+      // as render a popup at the events location. The event
+      // will be highlighted in search results if it is there.
       selectedEvent: selectedEventReducer,
     }),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),

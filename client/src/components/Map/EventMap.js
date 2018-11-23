@@ -36,7 +36,14 @@ const Map = ReactMapboxGl({
 });
 
 const EventMap = ({
-  setSelectedEvent, resetSelectedEvent, updateCenter, updateZoom, renderPopup, center, zoom,
+  setSelectedEvent,
+  resetSelectedEvent,
+  hasSelectedEvent,
+  doneLoading,
+  center,
+  zoom,
+  updateCenter,
+  updateZoom,
 }) => (
   <Map
     style={STYLE}
@@ -46,6 +53,7 @@ const EventMap = ({
     }}
     zoom={zoom}
     center={center}
+    onStyleLoad={doneLoading}
     onClick={setSelectedEvent}
     onMouseDown={resetSelectedEvent}
     onTouchStart={resetSelectedEvent}
@@ -58,18 +66,28 @@ const EventMap = ({
     <LineStringEndpointsLayerContainer />
     <PolygonLayerContainer />
 
-    {renderPopup && <EventPopup />}
+    {hasSelectedEvent && <EventPopup />}
   </Map>
 );
 
 EventMap.propTypes = {
-  center: PropTypes.arrayOf(PropTypes.number).isRequired,
-  zoom: PropTypes.number.isRequired,
+  /**
+   * See the redux store inside of the 'state' folder for more
+   * information on the selected event state.
+   */
   setSelectedEvent: PropTypes.func.isRequired,
   resetSelectedEvent: PropTypes.func.isRequired,
+  hasSelectedEvent: PropTypes.bool.isRequired,
+  /**
+   * Finishes one of the requirements for the loading screen to
+   * stop. Once event data is hydrated as well, the application
+   * will be shown.
+   */
+  doneLoading: PropTypes.func.isRequired,
+  center: PropTypes.arrayOf(PropTypes.number).isRequired,
+  zoom: PropTypes.number.isRequired,
   updateCenter: PropTypes.func.isRequired,
   updateZoom: PropTypes.func.isRequired,
-  renderPopup: PropTypes.bool.isRequired,
 };
 
 export default EventMap;

@@ -3,10 +3,15 @@ import { Link } from 'react-router-dom';
 
 const Credits = () => (
   <article
-    className='credits'
+    className='article'
   >
-    <Link to='/'>Go back</Link>
-    <h1>This is the credits page.</h1>
+    <Link className='bigButton bigButton--right' to='/' title='Back to map' alt='Back to map'>
+      <svg className='bigButton__icon'>
+        <use href='icons/sprite.svg#backArrow' />
+      </svg>
+    </Link>
+    <h1 className='article__heading'>Credits</h1>
+    <p className='article__copy'>This is the credit page copy.</p>
   </article>
 );
 

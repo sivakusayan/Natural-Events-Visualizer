@@ -6,6 +6,7 @@ import getFlyToPoint from '../../utils/getFlyToPoint';
 import getBoundingBox from '../../utils/getBoundingBox';
 import Event from '../../propTypes/Event';
 import { selectEvent } from '../../state/actions/selectedEvent';
+import { doneLoadingMap } from '../../state/actions/loading';
 import EventMap from '../../components/Map/EventMap';
 
 class EventMapContainer extends React.Component {
@@ -64,14 +65,16 @@ class EventMapContainer extends React.Component {
       selectedEvent,
       setSelectedEvent,
       resetSelectedEvent,
+      doneLoading,
     } = this.props;
     return (
       <EventMap
         center={center}
         zoom={[zoom]}
+        doneLoading={doneLoading}
         setSelectedEvent={setSelectedEvent}
         resetSelectedEvent={resetSelectedEvent}
-        renderPopup={!!selectedEvent}
+        hasSelectedEvent={!!selectedEvent}
         updateCenter={this.updateCenter}
         updateZoom={this.updateZoom}
       />
@@ -104,12 +107,14 @@ const mapDispatchToProps = dispatch => ({
     }
   },
   resetSelectedEvent: () => dispatch(selectEvent(null)),
+  doneLoading: () => dispatch(doneLoadingMap()),
 });
 
 EventMapContainer.propTypes = {
   selectedEvent: Event.isRequired,
   setSelectedEvent: PropTypes.func.isRequired,
   resetSelectedEvent: PropTypes.func.isRequired,
+  doneLoading: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventMapContainer);

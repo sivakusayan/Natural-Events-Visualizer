@@ -5,3 +5,11 @@
   top: 0;
   left: 0;
 }
+
+// Places the component at the top of the stacking hierarchy
+.overlay {
+  position: absolute;
+  z-index: z(topMost);
+  top: 0;
+  left: 0;
+}

@@ -24,31 +24,3 @@ $colors: (
   primaryLight: #81C3D7,
   white: #F9F9F9,
 );
-
-:root {
-  /*------------------------------------------------------------------
-    Z-LEVELS
-   ------------------------------------------------------------------*/
-  --bottomMost: -2;
-  --bottom: -1;
-  --top: 1;
-  --topMost: 2;
-
-  /*------------------------------------------------------------------
-    COLORS
-   ------------------------------------------------------------------*/
-    // Note that we use the RGB values of the color instead of wrapping it
-    // inside of rgb(). This is so we can use the colors interchangeably in
-    // both rgb() and rgba(). 
-
-   --color-primary-dark: 22, 66, 91;     // #16425B 
-   --color-primary: 1, 111, 185;         // #016FB9
-   --color-primary-light: 129, 195, 215; // #81C3D7
-   --color-white: 249, 249, 249;         // #F9F9F9
-
-  /*------------------------------------------------------------------
-    COLORS
-   ------------------------------------------------------------------*/
-
-   --bigButton-diameter: 3rem;
-}

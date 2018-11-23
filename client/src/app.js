@@ -7,7 +7,7 @@ import { LOCAL_API_URL } from './constants/URL_STRINGS';
 import fetchRetry from '../../utils/fetchRetry';
 
 import { setEvents } from './state/actions/events';
-import { startLoading, doneLoading } from './state/actions/loading';
+import { doneLoadingData } from './state/actions/loading';
 import { setError, removeError } from './state/actions/error';
 import configureStore from './state/store/configureStore';
 
@@ -18,20 +18,12 @@ import LoadingScreen from './components/Loading/LoadingScreen';
 const store = configureStore();
 
 class App extends React.Component {
-  /**
-   * Initializes the data of the application.
-   * Events and event categories will be hydrated in 
-   * this step.
-   */
   hydrateData = () => {
-    const { initEvents, loadStart, loadEnd } = this.props;
-    loadStart();
+    const { initEvents, dataLoadEnd } = this.props;
     fetchRetry(LOCAL_API_URL)
       .then((data) => {
-        // Update state with events
         initEvents(data);
-        // Update state with categories
-        loadEnd();
+        dataLoadEnd();
       });
   }
 
@@ -43,21 +35,22 @@ class App extends React.Component {
     const { isLoading } = this.props;
     return (
       <Provider store={store}>
-        {isLoading ? <LoadingScreen /> : <EventVisualizer />}
-        {/* <LoadingScreen /> */}
+        <>
+          {isLoading && <LoadingScreen />}
+          <EventVisualizer />
+        </>
       </Provider>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  isLoading: state.isLoading,
+  isLoading: state.isLoading.dataIsLoading || state.isLoading.mapIsLoading,
 });
 
 const mapDispatchToProps = dispatch => ({
   initEvents: events => dispatch(setEvents(events)),
-  loadStart: () => dispatch(startLoading()),
-  loadEnd: () => dispatch(doneLoading()),
+  dataLoadEnd: () => dispatch(doneLoadingData()),
 });
 
 App.propTypes = {
@@ -66,21 +59,19 @@ App.propTypes = {
    */
   initEvents: PropTypes.func.isRequired,
   /**
-   * True if the application is hydrating data, false otherwise.
+   * True while data is hydrating and the map is rendering, false otherwise.
    */
   isLoading: PropTypes.bool.isRequired,
   /**
-   * Sets the application's loading tag to true.
+   * Finishes one of the requirements for the loading screen to
+   * stop. Once the map is loaded as well, the application
+   * will be shown.
    */
-  loadStart: PropTypes.func.isRequired,
-  /**
-   * Sets the application's loading tag to be false.
-   */
-  loadEnd: PropTypes.func.isRequired,
+  dataLoadEnd: PropTypes.func.isRequired,
 };
 
 const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
 
-// Pass store to bypass unnecessary middle component to determine what
-// component to render while loading.
+// Pass store to have loading check happen in highest level component
+// possible.
 ReactDOM.render(<AppContainer store={store} />, document.getElementById('app'));

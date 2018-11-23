@@ -4,6 +4,8 @@
 
 const moment = require('moment');
 
+const extractTitle = require('./extractTitle');
+
 /**
  * Converts the data given by the EONET API into a GeoJSON-compliant Feature.
  * @param {Array.<{ date: String, type: String, coordinates: []}>} geometries 
@@ -49,7 +51,7 @@ const toGeoJSONEvents = eventArray => eventArray.map(event => ({
   properties: {
     // Copy ID into properties to be able to retrieve ID on mapbox click
     id: parseInt(event.id.split('_')[1]),
-    title: event.title,
+    title: extractTitle(event.title),
     description: event.description,
     sources: event.sources,
     // EONET API rarely uses more than one category.

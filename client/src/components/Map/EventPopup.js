@@ -10,7 +10,7 @@ const EventPopup = ({ selectedEvent, coordinates }) => (
   <Popup coordinates={coordinates}>
     <div className='popup'>
       <h1>{selectedEvent.properties.title}</h1>
-      <p>{CATEGORIES[selectedEvent.properties.category]}</p>
+      <p>{CATEGORIES[selectedEvent.properties.category].title}</p>
     </div>
   </Popup>
 );

@@ -55,7 +55,13 @@ reassign variables with a cascade */
 /*------------------------------------------------------------------
   COLORS
   ------------------------------------------------------------------*/
+*,
+*::before,
+*::after {
+  box-sizing: inherit; }
+
 html {
+  box-sizing: border-box;
   font-size: 62.5%; }
 
 body {
@@ -89,8 +95,8 @@ button:disabled {
   position: absolute;
   z-index: 1;
   display: flex;
-  width: 3rem;
-  height: 3rem;
+  width: 6.5rem;
+  height: 6.5rem;
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
@@ -114,8 +120,8 @@ button:disabled {
     width: 60%;
     padding: 1.5rem;
     margin: 3rem;
-    border: 1px solid #F9F9F9;
-    border-radius: 3px;
+    border: 1px solid #016FB9;
+    border-radius: 5px;
     color: #016FB9;
     font-size: 3rem;
     font-weight: 300;
@@ -178,3 +184,17 @@ button:disabled {
   align-items: center;
   justify-content: center;
   background: rgba(249, 249, 249, 0.9); }
+
+.article {
+  width: 100vw;
+  height: 100vh;
+  padding: 2rem 3rem;
+  background-color: #F9F9F9;
+  color: #016FB9; }
+  .article__copy {
+    font-size: 1.5rem;
+    line-height: 2.5rem; }
+
+.article__heading {
+  margin-bottom: 4rem;
+  font-size: 4rem; }

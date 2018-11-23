@@ -4,9 +4,14 @@ import { Popup } from 'react-mapbox-gl';
 
 import Event from '../../propTypes/Event';
 
+import CATEGORIES from '../../constants/CATEGORIES';
+
 const EventPopup = ({ selectedEvent, coordinates }) => (
   <Popup coordinates={coordinates}>
-    <h1>This is a popup! {!!selectedEvent && selectedEvent._id}</h1>
+    <div className='popup'>
+      <h1>{selectedEvent.properties.title}</h1>
+      <p>{CATEGORIES[selectedEvent.properties.category]}</p>
+    </div>
   </Popup>
 );
 

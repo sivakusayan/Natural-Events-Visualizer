@@ -1,0 +1,19 @@
+.article {
+  width: 100vw;
+  height: 100vh;
+  padding: 2rem 3rem;
+
+  background-color: color(white);
+  color: color(primary);
+
+  &__copy {
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+  }
+}
+
+.article__heading {
+  margin-bottom: 4rem;
+
+  font-size: 4rem;
+}

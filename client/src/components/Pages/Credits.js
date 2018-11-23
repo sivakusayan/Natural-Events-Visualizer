@@ -1,5 +1,9 @@
+// Surpress to allow links inside body copy without needing to line break.
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+import ArticleLink from './ArticleLink';
 
 const Credits = () => (
   <article
@@ -11,7 +15,10 @@ const Credits = () => (
       </svg>
     </Link>
     <h1 className='article__heading'>Credits</h1>
-    <p className='article__copy'>This is the credit page copy.</p>
+    <p className='article__copy'>
+      Every icon used in this application was taken from <ArticleLink href='https://thenounproject.com/'>The Noun Project</ArticleLink>, 
+      a website with "Over a million curated icons, created by a global community".
+    </p>
   </article>
 );
 

@@ -7,6 +7,7 @@
   justify-content: center;
 
   background: color(primaryDark);
+  transition: opacity 0.3s;
 
   &__text {
     margin: 2rem;
@@ -16,4 +17,9 @@
     font-family: Helvetica, Arial, sans-serif;
     font-size: 2rem;
   }
+}
+
+// Partially reveal application to the user while application is almost done loading
+.almostDoneLoading {
+  opacity: 0.7;
 }

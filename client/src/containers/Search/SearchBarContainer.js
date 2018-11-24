@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import fetchRetry from '../../../../utils/fetchRetry';
 import SearchBar from '../../components/Search/SearchBar';
+import { isValidLatitude, isValidLongitude, isValidRadius } from '../../utils/isValid';
 
 
 const SearchBarContainer = ({
@@ -24,8 +25,12 @@ const SearchBarContainer = ({
       startDate: startDateIsActive,
       endDate: endDateIsActive,
     } = filtersAreActive;
-    // We want latitude, longitude, and radius to all be defined to filter by location
-    if (locationIsActive && location.latitude && location.longitude && location.radius) {
+    // Note that we first check if the filter is active before adding the
+    // filter to the search query.
+    if (locationIsActive
+        && isValidLatitude(location.latitude)
+        && isValidLongitude(location.longitude)
+        && isValidRadius(location.radius)) {
       queryArray.push(`lat=${location.latitude}`);
       queryArray.push(`long=${location.longitude}`);
       queryArray.push(`radius=${location.radius}`);

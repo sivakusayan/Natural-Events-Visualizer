@@ -69,7 +69,7 @@ const scheduleUpdates = () => {
 
   // Chain after to make sure google API doesn't return OVER_QUERY_LIMIT
   // insertNewEvents().then(updateOldEvents());
-  updateOldEvents();
+  insertNewEvents().then(updateOldEvents);
 };
 
 module.exports = scheduleUpdates;

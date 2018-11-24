@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 
 const LocationFilter = ({
   filter,
-  setLatitude,
-  setLongitude,
-  setRadius,
+  isValid,
+  onChange,
   isActive = false,
   toggle,
 }) => (
@@ -22,22 +21,25 @@ const LocationFilter = ({
       <input
         type='text'
         name='latitude'
+        className={isValid.latitude ? '' : 'invalid'}
         value={filter.latitude}
-        onChange={e => setLatitude(e.target.value)}
+        onChange={onChange.latitude}
         disabled={!isActive}
       />
       <input
         type='text'
         name='longitude'
+        className={isValid.longitude ? '' : 'invalid'}
         value={filter.longitude}
-        onChange={e => setLongitude(e.target.value)}
+        onChange={onChange.longitude}
         disabled={!isActive}
       />
       <input
         type='text'
         name='radius'
+        className={isValid.radius ? '' : 'invalid'}
         value={filter.radius}
-        onChange={e => setRadius(e.target.value)}
+        onChange={onChange.radius}
         disabled={!isActive}
       />
     </form>
@@ -55,9 +57,16 @@ LocationFilter.propTypes = {
     longitude: PropTypes.number,
     radius: PropTypes.number,
   }).isRequired,
-  setLatitude: PropTypes.func.isRequired,
-  setLongitude: PropTypes.func.isRequired,
-  setRadius: PropTypes.func.isRequired,
+  isValid: PropTypes.shape({
+    latitude: PropTypes.bool.isRequired,
+    longitude: PropTypes.bool.isRequired,
+    radius: PropTypes.bool.isRequired,
+  }).isRequired,
+  onChange: PropTypes.shape({
+    latitude: PropTypes.func.isRequired,
+    longitude: PropTypes.func.isRequired,
+    radius: PropTypes.func.isRequired,
+  }).isRequired,
   /**
    * True if this filter is currently being applied
    * to the search query, false otherwise.

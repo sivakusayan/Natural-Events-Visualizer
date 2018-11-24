@@ -6,7 +6,7 @@ import CategoryFilterContainer from '../../containers/Filters/CategoryFilterCont
 import DateFilterContainer from '../../containers/Filters/DateFilterContainer';
 
 const Filters = () => (
-  <section>
+  <section className='filters'>
     <Link to='/search'>Back to Search</Link>
     <CategoryFilterContainer />
     <LocationFilterContainer />

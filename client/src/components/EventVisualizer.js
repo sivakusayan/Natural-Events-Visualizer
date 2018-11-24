@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import LayoutMobile from './Layouts/LayoutMobile';
 
@@ -12,9 +12,9 @@ class EventVisualizer extends React.Component {
   render() {
     const { isMobile } = this.state;
     return (
-      <Router>
+      <BrowserRouter>
         {isMobile ? <LayoutMobile /> : <h1>You are on a desktop.</h1>}
-      </Router>
+      </BrowserRouter>
     );
   }
 }

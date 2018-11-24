@@ -33,7 +33,7 @@ export default (state = filtersDefaultState, action) => {
       return {
         ...state,
         location: {
-          ...state,
+          ...state.location,
           latitude: action.latitude,
         },
       };
@@ -41,7 +41,7 @@ export default (state = filtersDefaultState, action) => {
       return {
         ...state,
         location: {
-          ...state,
+          ...state.locaiton,
           longitude: action.longitude,
         },
       };
@@ -49,28 +49,28 @@ export default (state = filtersDefaultState, action) => {
       return {
         ...state,
         location: {
-          ...state,
+          ...state.location,
           radius: action.radius,
         },
       };
     case ADD_CATEGORY:
       return {
-        ...state,
+        ...state.location,
         categories: state.categories.concat(action.categoryID),
       };
     case REMOVE_CATEGORY:
       return {
-        ...state,
+        ...state.location,
         categories: state.categories.filter(id => id !== action.categoryID),
       };
     case SET_START_DATE:
       return {
-        ...state,
+        ...state.location,
         startDate: action.startDate,
       };
     case SET_END_DATE:
       return {
-        ...state,
+        ...state.location,
         endDate: action.endDate,
       };
     default:

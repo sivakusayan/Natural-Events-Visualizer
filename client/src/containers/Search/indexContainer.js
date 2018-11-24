@@ -4,7 +4,7 @@ import Search from '../../components/Search/index';
 
 export default class SearchContainer extends React.Component {
   state = {
-    // Events that are listed in search results This is
+    // Events that are listed in search results. This is
     // separate from the events that are rendered on the
     // map. (Perhaps they will be synced as the dataset
     // starts to grow large)
@@ -53,12 +53,10 @@ export default class SearchContainer extends React.Component {
     } = this.state;
     return (
       <Search
+        {...this.state}
         setEvents={this.setEvents}
-        events={events}
-        isLoading={isLoading}
         startLoading={this.startLoading}
         doneLoading={this.doneLoading}
-        error={error}
         setError={this.setError}
         removeError={this.removeError}
       />

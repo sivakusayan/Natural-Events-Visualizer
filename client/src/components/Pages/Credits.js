@@ -19,6 +19,9 @@ const Credits = () => (
       Every icon used in this application was taken from <ArticleLink href='https://thenounproject.com/'>The Noun Project</ArticleLink>, 
       a website with "Over a million curated icons, created by a global community".
     </p>
+    <ul className='article__credits'>
+      <li></li>
+    </ul>
   </article>
 );
 

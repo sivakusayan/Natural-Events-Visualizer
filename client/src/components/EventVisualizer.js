@@ -1,22 +1,15 @@
 
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
 
-import LayoutMobile from './Layouts/LayoutMobile';
+import AppRouter from '../routes/AppRouter';
+import Home from './Pages/Home';
 
-class EventVisualizer extends React.Component {
-  state = {
-    isMobile: true,
-  }
-
-  render() {
-    const { isMobile } = this.state;
-    return (
-      <BrowserRouter>
-        {isMobile ? <LayoutMobile /> : <h1>You are on a desktop.</h1>}
-      </BrowserRouter>
-    );
-  }
-}
+const EventVisualizer = () => (
+  <>
+    <AppRouter />
+    {/* Don't unmount homepage map for performance purposes. Hide it instead. */}
+    <Home />
+  </>
+);
 
 export default EventVisualizer;

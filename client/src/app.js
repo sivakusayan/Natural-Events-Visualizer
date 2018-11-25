@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider, connect } from 'react-redux';
 
 import { LOCAL_API_URL } from './constants/URL_STRINGS';
@@ -35,10 +36,12 @@ class App extends React.Component {
     const { isLoading } = this.props;
     return (
       <Provider store={store}>
-        <>
-          {isLoading && <LoadingScreenContainer />}
-          <EventVisualizer />
-        </>
+        <BrowserRouter>
+          <>
+            {isLoading && <LoadingScreenContainer />}
+            <EventVisualizer />
+          </>
+        </BrowserRouter>
       </Provider>
     );
   }

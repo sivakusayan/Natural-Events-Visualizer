@@ -16,8 +16,7 @@ const About = () => (
     </Link>
     <h1 className='article__heading'>About</h1>
     <p className='article__copy'>
-      This application was made using 
-      <ArticleLink href='https://eonet.sci.gsfc.nasa.gov/eonet-project'>EONET</ArticleLink>, 
+      This application was made using <ArticleLink href='https://eonet.sci.gsfc.nasa.gov/eonet-project'>EONET</ArticleLink>, 
       an API which gathers information on recent natural events. Data is pulled from the API, processed, 
       and then stored in a database, making it so the application has access to both old and new data.
     </p>

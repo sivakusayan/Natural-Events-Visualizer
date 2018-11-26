@@ -7,7 +7,8 @@ import Home from './Pages/Home';
 const EventVisualizer = () => (
   <>
     <AppRouter />
-    {/* Don't unmount homepage map for performance purposes. Hide it instead. */}
+    {/* Don't unmount homepage map for performance purposes. 
+        Hide it instead with stacking context. */}
     <Home />
   </>
 );

@@ -4,12 +4,7 @@ import { Link } from 'react-router-dom';
 import EventMapContainer from '../../containers/Map/EventMapContainer';
 
 const Home = () => (
-  <main
-    // We hide the homepage under instead of unmounting it since
-    // loading the map over and over again would be too
-    // expensive.
-    className='underlay'
-  >
+  <main>
     <Link className='bigButton bigButton--left' to='/search' title='Search' alt='Search'>
       <svg className='bigButton__icon'>
         <use href='icons/sprite.svg#search' />

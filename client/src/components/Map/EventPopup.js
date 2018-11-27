@@ -11,10 +11,15 @@ const EventPopup = ({ selectedEvent, coordinates }) => {
   return (
     <Popup coordinates={coordinates}>
       <div className='popup'>
-        <h1>{selectedEvent.properties.title}</h1>
-        <svg>
-          <use href={`icons/sprite.svg#${eventIconName}`} />
-        </svg>
+        <div className='popup__primary'>
+          <h2 className='popup__title'>{selectedEvent.properties.title}</h1>
+          <svg className='popup__icon'>
+            <use href={`icons/sprite.svg#${eventIconName}`} />
+          </svg>
+        </div>
+        <div className='popup__secondary'>
+    
+        </div>
       </div>
     </Popup>
   );

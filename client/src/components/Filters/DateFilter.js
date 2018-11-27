@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -27,11 +27,11 @@ const DateFilter = ({
         <h1>Start Date</h1>
       </div>
       <DatePicker
-        selected={moment(startDateFilter)}
+        selected={dayjs(startDateFilter)}
         selectsStart
-        startDate={moment(startDateFilter)}
-        endDate={moment(endDateFilter)}
-        onChange={date => setStartDate(moment(date).valueOf())}
+        startDate={dayjs(startDateFilter)}
+        endDate={dayjs(endDateFilter)}
+        onChange={date => setStartDate(dayjs(date).valueOf())}
         disabled={!startDateIsActive}
       />
       <div
@@ -43,11 +43,11 @@ const DateFilter = ({
         <h1>Start Date</h1>
       </div>
       <DatePicker
-        selected={moment(endDateFilter)}
+        selected={dayjs(endDateFilter)}
         selectsEnd
-        startDate={moment(startDateFilter)}
-        endDate={moment(endDateFilter)}
-        onChange={date => setEndDate(moment(date).valueOf())}
+        startDate={dayjs(startDateFilter)}
+        endDate={dayjs(endDateFilter)}
+        onChange={date => setEndDate(dayjs(date).valueOf())}
         disabled={!endDateIsActive}
       />
     </form>

@@ -1,4 +1,4 @@
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 import CATEGORIES from '../../constants/CATEGORIES';
 import {
@@ -24,7 +24,7 @@ const filtersDefaultState = {
   // Filter for events >= this date
   startDate: 1325463472000,
   // Filter for events < this date
-  endDate: moment().valueOf(),
+  endDate: dayjs().valueOf(),
 };
 
 export default (state = filtersDefaultState, action) => {

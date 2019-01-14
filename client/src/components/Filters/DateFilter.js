@@ -4,30 +4,27 @@ import dayjs from 'dayjs';
 import Picker from 'react-month-picker';
 import 'react-month-picker/css/month-picker.css';
 
-const pickerLang = {
-  months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  from: 'From', to: 'To',
-}
+import DATE_LANG from '../../constants/DATE_LANG';
 
 class DateFilter extends React.Component {
   state = {
-    isShown: true,
+    isShown: false,
   }
 
   onChange = (year, month, id) => {
     const { setStartDate, setEndDate } = this.props;
     // ID is 0 if startDate was changed, and 1 if endDate was changed
-    if (id === 0) return setStartDate(year, month);
-    setEndDate(year, month);
+    if (id === 0) setStartDate(year, month);
+    if (id === 1) setEndDate(year, month);
   }
 
   onClick = (e) => {
     e.preventDefault();
-    this.setState({ isShown: true})
+    this.setState({ isShown: true });
   }
 
-  onDismiss = () => this.setState({ isShown: false})
-  
+  onDismiss = () => this.setState({ isShown: false })
+
   render() {
     const {
       startDate,
@@ -36,31 +33,27 @@ class DateFilter extends React.Component {
       isActive,
     } = this.props;
     const { isShown } = this.state;
-    
+
     const range = {
       from: startDate,
       to: endDate,
     };
-    const formattedStartDate = `${pickerLang.months[startDate.month - 1]}, ${startDate.year}`;
-    const formattedEndDate = `${pickerLang.months[endDate.month - 1]}, ${endDate.year}`;
-    const rangeString = `${formattedStartDate} through ${formattedEndDate}`; 
+    const formattedStartDate = `${DATE_LANG.months[startDate.month - 1]}, ${startDate.year}`;
+    const formattedEndDate = `${DATE_LANG.months[endDate.month - 1]}, ${endDate.year}`;
+    const rangeString = `${formattedStartDate} through ${formattedEndDate}`;
     return (
       <section>
+        <div>
+          <h1>Date Filters</h1>
+          <button type='button' onClick={toggleDate}>Toggle</button>
+        </div>
         <form>
-          <div
-            tabIndex={0}
-            onClick={toggleDate}
-            onKeyPress={toggleDate}
-            role='menuItem'
-          >
-            <h1>Date Filters</h1>
-          </div>
           <p>{rangeString}</p>
-          <button onClick={this.onClick} disabled={!isActive}>
+          <button type='button' onClick={this.onClick} disabled={!isActive}>
             Edit Date
           </button>
-          <Picker 
-            lang={pickerLang}
+          <Picker
+            lang={DATE_LANG}
             years={{ min: 2012, max: dayjs().year() }}
             range={range}
             onChange={this.onChange}
@@ -69,7 +62,7 @@ class DateFilter extends React.Component {
           />
         </form>
       </section>
-    )
+    );
   }
 }
 
@@ -98,7 +91,7 @@ DateFilter.propTypes = {
    * True if the date filters are currently being applied,
    * false otherwise.
    */
-  IsActive: PropTypes.bool,
+  isActive: PropTypes.bool,
   /**
    * Toggles the startDateIsActive and endDateIsActive values
    */
@@ -106,8 +99,7 @@ DateFilter.propTypes = {
 };
 
 DateFilter.defaultProps = {
-  startDateIsActive: false,
-  endDateIsActive: false,
+  isActive: false,
 };
 
 export default DateFilter;

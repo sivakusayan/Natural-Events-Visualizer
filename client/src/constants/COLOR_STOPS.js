@@ -1,5 +1,5 @@
 /**
- * An object that describes what colors to use for each GeoJSON
+ * @fileoverview An object that describes what colors to use for each GeoJSON
  * data on the map. Events with different categories will use
  * different colors.
  * 

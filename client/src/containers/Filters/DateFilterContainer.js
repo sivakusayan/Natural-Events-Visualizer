@@ -18,8 +18,6 @@ const mapStateToProps = state => ({
   isActive: state.filtersAreActive.startDate && state.filtersAreActive.endDate,
 });
 
-console.log(dayjs().month());
-
 const mapDispatchToProps = dispatch => ({
   setStartDate: (year, month) => {
     // Javascript Date months indexed by 0-11, subtract 1 to compensate. This 

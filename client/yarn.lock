@@ -5515,6 +5515,13 @@ react-mapbox-gl@^3.9.2:
     deep-equal "1.0.1"
     supercluster "3.0.2"
 
+react-month-picker@^1.3.8:
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/react-month-picker/-/react-month-picker-1.3.8.tgz#349e978b68655c7930de273d8f77fb11c03e6793"
+  integrity sha512-lVwJ5pq8EK7laqRo8BZ6h5oVH3FFHILG3OpxTmFS7Jiy0amTxjKnxhC2UB/ALrRdZxr+5oCHM3zCt1nmfH6mrQ==
+  dependencies:
+    react-tapper "^0.1.16"
+
 react-onclickoutside@^6.7.1:
   version "6.7.1"
   resolved "https://registry.yarnpkg.com/react-onclickoutside/-/react-onclickoutside-6.7.1.tgz#6a5b5b8b4eae6b776259712c89c8a2b36b17be93"
@@ -5586,6 +5593,11 @@ react-router@^4.3.1:
     path-to-regexp "^1.7.0"
     prop-types "^15.6.1"
     warning "^4.0.1"
+
+react-tapper@^0.1.16:
+  version "0.1.16"
+  resolved "https://registry.yarnpkg.com/react-tapper/-/react-tapper-0.1.16.tgz#d5fb60e250aa9dc43c07d1120e6b399cbdc65bd3"
+  integrity sha512-5+UQaBeTiywbhIUZgPtxYT2CEB4QRbi0wjuSiXeeP/Z/SMa9Luz86hGGaWstqLFcUJfITk4Fh39q25weSq+2SA==
 
 react@^16.5.0:
   version "16.5.0"

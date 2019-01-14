@@ -7,15 +7,22 @@ import DateFilter from '../../components/Filters/DateFilter';
 const mapStateToProps = state => ({
   startDateFilter: state.filters.startDate,
   endDateFilter: state.filters.endDate,
-  startDateIsActive: state.filtersAreActive.startDate,
-  endDateIsActive: state.filtersAreActive.endDate,
+  isActive: state.filtersAreActive.startDate && state.filtersAreActive.endDate,
 });
 
 const mapDispatchToProps = dispatch => ({
-  setStartDate: date => dispatch(setStartDate(date)),
-  setEndDate: date => dispatch(setEndDate(date)),
-  toggleStartDate: () => dispatch(toggleStartDate()),
-  toggleEndDate: () => dispatch(toggleEndDate()),
+  setStartDate: (year, month) => {
+    console.log(year);
+    console.log(month);
+  },
+  setEndDate: (year, month) => {
+    console.log(year);
+    console.log(month);
+  },
+  toggleDate: () => {
+    dispatch(toggleStartDate());
+    dispatch(toggleEndDate());
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DateFilter);

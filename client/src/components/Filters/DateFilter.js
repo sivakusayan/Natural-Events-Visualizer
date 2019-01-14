@@ -1,42 +1,63 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
+import Picker from 'react-month-picker';
+import 'react-month-picker/css/month-picker.css';
 
-import 'react-datepicker/dist/react-datepicker.css';
+const mrange = {
+  from: {year: 2014, month: 8}, 
+  to: {year: 2015, month: 5}
+};
 
-const DateFilter = ({
-  startDateFilter,
-  endDateFilter,
-  setStartDate,
-  setEndDate,
-  toggleStartDate,
-  startDateIsActive = false,
-  toggleEndDate,
-  endDateIsActive = false,
-}) => (
-  <section>
-    <h1>Date Filters</h1>
-    <form>
-      <div
-        tabIndex={0}
-        onClick={toggleStartDate}
-        onKeyPress={toggleStartDate}
-        role='menuItem'
-      >
-        <h1>Start Date</h1>
-        {console.log(dayjs(startDateFilter))}
-      </div>
-      <div
-        tabIndex={0}
-        onClick={toggleEndDate}
-        onKeyPress={toggleEndDate}
-        role='menuItem'
-      >
-        <h1>Start Date</h1>
-      </div>
-    </form>
-  </section>
-);
+const pickerLang = {
+  months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  from: 'From', to: 'To',
+}
+
+class DateFilter extends React.Component {
+  state = {
+    isShown: true,
+  }
+
+  onChange = (year, month, id) => {
+    const { setStartDate, setEndDate } = this.props;
+    // ID is 0 if startDate was changed, and 1 if endDate was changed
+    if (id === 0) return setStartDate(year, month);
+    setEndDate(year, month);
+  }
+  
+  render() {
+    const {
+      startDateFilter,
+      endDateFilter,
+      toggleDate,
+      isActive,
+    } = this.props;
+    const { isShown } = this.state;
+    return (
+      <section>
+        <h1>Date Filters</h1>
+        <form>
+          <div
+            tabIndex={0}
+            onClick={toggleDate}
+            onKeyPress={toggleDate}
+            role='menuItem'
+          >
+            <h1>Date</h1>
+          </div>
+          <Picker 
+            lang={pickerLang}
+            years={({min: 2010, max: 2018})}
+            range={mrange}
+            onChange={this.onChange}
+            show={isShown}
+          />
+        </form>
+      </section>
+    )
+  }
+}
 
 DateFilter.propTypes = {
   /**
@@ -60,23 +81,14 @@ DateFilter.propTypes = {
    */
   setEndDate: PropTypes.func.isRequired,
   /**
-   * True if the startDate filter is currently being applied,
+   * True if the date filters are currently being applied,
    * false otherwise.
    */
-  startDateIsActive: PropTypes.bool,
+  IsActive: PropTypes.bool,
   /**
-   * Toggles the startDateIsActive value
+   * Toggles the startDateIsActive and endDateIsActive values
    */
-  toggleStartDate: PropTypes.bool.isRequired,
-  /**
-   * True if the endDate filter is currently being applied,
-   * false otherwise.
-   */
-  endDateIsActive: PropTypes.bool,
-  /**
-   * Toggles the endDateIsActive filter
-   */
-  toggleEndDate: PropTypes.bool.isRequired,
+  toggleDate: PropTypes.bool.isRequired,
 };
 
 DateFilter.defaultProps = {

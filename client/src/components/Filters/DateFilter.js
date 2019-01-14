@@ -4,11 +4,6 @@ import dayjs from 'dayjs';
 import Picker from 'react-month-picker';
 import 'react-month-picker/css/month-picker.css';
 
-const mrange = {
-  from: {year: 2014, month: 8}, 
-  to: {year: 2015, month: 5}
-};
-
 const pickerLang = {
   months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   from: 'From', to: 'To',
@@ -25,18 +20,32 @@ class DateFilter extends React.Component {
     if (id === 0) return setStartDate(year, month);
     setEndDate(year, month);
   }
+
+  onClick = (e) => {
+    e.preventDefault();
+    this.setState({ isShown: true})
+  }
+
+  onDismiss = () => this.setState({ isShown: false})
   
   render() {
     const {
-      startDateFilter,
-      endDateFilter,
+      startDate,
+      endDate,
       toggleDate,
       isActive,
     } = this.props;
     const { isShown } = this.state;
+    
+    const range = {
+      from: startDate,
+      to: endDate,
+    };
+    const formattedStartDate = `${pickerLang.months[startDate.month - 1]}, ${startDate.year}`;
+    const formattedEndDate = `${pickerLang.months[endDate.month - 1]}, ${endDate.year}`;
+    const rangeString = `${formattedStartDate} through ${formattedEndDate}`; 
     return (
       <section>
-        <h1>Date Filters</h1>
         <form>
           <div
             tabIndex={0}
@@ -44,13 +53,18 @@ class DateFilter extends React.Component {
             onKeyPress={toggleDate}
             role='menuItem'
           >
-            <h1>Date</h1>
+            <h1>Date Filters</h1>
           </div>
+          <p>{rangeString}</p>
+          <button onClick={this.onClick} disabled={!isActive}>
+            Edit Date
+          </button>
           <Picker 
             lang={pickerLang}
-            years={({min: 2010, max: 2018})}
-            range={mrange}
+            years={{ min: 2012, max: dayjs().year() }}
+            range={range}
             onChange={this.onChange}
+            onDismiss={this.onDismiss}
             show={isShown}
           />
         </form>
@@ -64,12 +78,12 @@ DateFilter.propTypes = {
    * The unix time stamp date in milliseconds used
    * for the start date filter.
    */
-  startDateFilter: PropTypes.number.isRequired,
+  startDate: PropTypes.number.isRequired,
   /**
    * The unix time stamp date in milliseconds used
-   * for the start end filter.
+   * for the end date filter.
    */
-  endDateFilter: PropTypes.number.isRequired,
+  endDate: PropTypes.number.isRequired,
   /**
    * Sets the date to use in the start date filter.
    * Input is in time stamp format (milliseconds).

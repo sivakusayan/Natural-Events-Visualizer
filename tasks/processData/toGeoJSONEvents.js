@@ -2,7 +2,7 @@
  * @fileoverview Handles conversion of API data into usable GeoJSON.
  */
 
-const moment = require('moment');
+const dayjs = require('dayjs');
 
 const extractTitle = require('./extractTitle');
 
@@ -30,7 +30,7 @@ const toGeoJSONGeometry = (geometries) => {
   // Else event type is LineString
   return {
     type: 'LineString',
-    date: geometries.map(geometry => moment(geometry.date).valueOf()),
+    date: geometries.map(geometry => dayjs(geometry.date).valueOf()),
     coordinates: geometries.map(geometry => geometry.coordinates),
     location: {},
   };

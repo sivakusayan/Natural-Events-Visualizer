@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import ArticleLink from './ArticleLink';
 
 const About = () => (
-  <article
+  <section
     className='article'
   >
     <Link className='bigButton bigButton--right' to='/' title='Back to map' alt='Back to map'>
@@ -20,7 +20,7 @@ const About = () => (
       an API which gathers information on recent natural events. Data is pulled from the API, processed, 
       and then stored in a database, making it so the application has access to both old and new data.
     </p>
-  </article>
+  </section>
 );
 
 export default About;

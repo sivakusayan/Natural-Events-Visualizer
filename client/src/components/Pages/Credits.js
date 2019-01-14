@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import ArticleLink from './ArticleLink';
 
 const Credits = () => (
-  <article
+  <section
     className='article'
   >
     <Link className='bigButton bigButton--right' to='/' title='Back to map' alt='Back to map'>
@@ -38,7 +38,7 @@ const Credits = () => (
       <li className='article__credit'>"menu" by Three Six Five</li>
       <li className='article__credit'>"Flood" by Yang LIU</li>
     </ul>
-  </article>
+  </section>
 );
 
 export default Credits;

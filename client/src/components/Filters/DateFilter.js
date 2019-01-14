@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DatePicker from 'react-datepicker';
 import dayjs from 'dayjs';
 
 import 'react-datepicker/dist/react-datepicker.css';
@@ -25,15 +24,8 @@ const DateFilter = ({
         role='menuItem'
       >
         <h1>Start Date</h1>
+        {console.log(dayjs(startDateFilter))}
       </div>
-      <DatePicker
-        selected={dayjs(startDateFilter)}
-        selectsStart
-        startDate={dayjs(startDateFilter)}
-        endDate={dayjs(endDateFilter)}
-        onChange={date => setStartDate(dayjs(date).valueOf())}
-        disabled={!startDateIsActive}
-      />
       <div
         tabIndex={0}
         onClick={toggleEndDate}
@@ -42,14 +34,6 @@ const DateFilter = ({
       >
         <h1>Start Date</h1>
       </div>
-      <DatePicker
-        selected={dayjs(endDateFilter)}
-        selectsEnd
-        startDate={dayjs(startDateFilter)}
-        endDate={dayjs(endDateFilter)}
-        onChange={date => setEndDate(dayjs(date).valueOf())}
-        disabled={!endDateIsActive}
-      />
     </form>
   </section>
 );

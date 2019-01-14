@@ -55,22 +55,22 @@ export default (state = filtersDefaultState, action) => {
       };
     case ADD_CATEGORY:
       return {
-        ...state.location,
+        ...state,
         categories: state.categories.concat(action.categoryID),
       };
     case REMOVE_CATEGORY:
       return {
-        ...state.location,
+        ...state,
         categories: state.categories.filter(id => id !== action.categoryID),
       };
     case SET_START_DATE:
       return {
-        ...state.location,
+        ...state,
         startDate: action.startDate,
       };
     case SET_END_DATE:
       return {
-        ...state.location,
+        ...state,
         endDate: action.endDate,
       };
     default:

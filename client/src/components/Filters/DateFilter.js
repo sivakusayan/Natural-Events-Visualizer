@@ -44,7 +44,7 @@ class DateFilter extends React.Component {
     return (
       <section>
         <div>
-          <h1>Date Filters</h1>
+          <p>Date Filters</p>
           <button type='button' onClick={toggleDate}>Toggle</button>
         </div>
         <form>

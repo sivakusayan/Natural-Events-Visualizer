@@ -9,13 +9,9 @@ const LocationFilter = ({
   toggle,
 }) => (
   <section>
-    <div
-      tabIndex={0}
-      onClick={toggle}
-      onKeyPress={toggle}
-      role='menuItem'
-    >
-      <h1>Location Filter</h1>
+    <div>
+      <p>Location Filter</p>
+      <button onClick={toggle} type='button'>Toggle</button>
     </div>
     <form>
       <input

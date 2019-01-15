@@ -20,13 +20,9 @@ const CategoryFilter = ({
 
   return (
     <section>
-      <div
-        tabIndex={0}
-        onClick={toggle}
-        onKeyPress={toggle}
-        role='menuItem'
-      >
-        <h1>Category Filter</h1>
+      <div>
+        <p>Category Filter</p>
+        <button onClick={toggle} type='button'>Toggle</button>
       </div>
       <form>
         {Object.keys(CATEGORIES).map(categoryID => (

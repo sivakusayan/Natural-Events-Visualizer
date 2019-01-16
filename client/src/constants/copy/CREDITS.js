@@ -59,10 +59,10 @@ const CREDITS = [{
 }];
 
 const alphabeticalCompare = (string1, string2) => {
-  if (string1.name.toLowerCase() < string2.name.toLowerCase()) {
+  if (string1.toLowerCase() < string2.toLowerCase()) {
     return -1;
   }
-  if (string1.name.toLowerCase() > string2.name.toLowerCase()) {
+  if (string1.toLowerCase() > string2.toLowerCase()) {
     return 1;
   }
   return 0;
@@ -73,7 +73,7 @@ CREDITS.sort((author1, author2) => alphabeticalCompare(author1.name, author2.nam
 
 // For each author, sort icons by title
 CREDITS.forEach((author) => {
-  author.icons.sort((icon1, icon2) => alphabeticalCompare(icon1.name, icon2.name));
+  author.icons.sort((icon1, icon2) => alphabeticalCompare(icon1.title, icon2.title));
 });
 
 export default CREDITS;

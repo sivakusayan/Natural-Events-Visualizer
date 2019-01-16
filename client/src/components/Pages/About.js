@@ -9,18 +9,21 @@ const About = () => (
   <section
     className='article'
   >
-    <Link className='bigButton bigButton--right' to='/' title='Back to map' alt='Back to map'>
+    <Link className='bigButton bigButton--right' to='/menu' title='Back to menu' alt='Back to menu'>
       <svg className='bigButton__icon'>
         <use href='icons/sprite.svg#backArrow' />
       </svg>
     </Link>
     <h2 className='article__heading'>About</h2>
     <p className='article__copy'>
-      This application was made using <ArticleLink href='https://eonet.sci.gsfc.nasa.gov/eonet-project'>EONET</ArticleLink>, 
-      an API which gathers information on recent natural events. Data is pulled from the API, processed, 
-      and then stored in a database, making it so the application has access to both old and new data.
+      EONEV (Earth Observatory Natural Event Visualizer) is an application that provides a visual interface for displaying natural disasters on the world map. The data is gathered from <ArticleLink href='https://eonet.sci.gsfc.nasa.gov/eonet-project'>EONET</ArticleLink>, an API formed by NASA that lists recent natural events. Feel free to manually explore the map, or search through the database for a specific event if you like!
     </p>
-    <h2 className='article__heading'>Technologies Used</h2>
+    <p className='article__copy'>
+      Note that the collected spatial and temporal data are only approximations. As noted on the EONET project website:
+    </p>
+    <blockquote className='article__quote'>
+      All EONET metadata and services are intended to be used for visualization and general information purposes only and should not be construed as “official” with regards to spatial or temporal extent. Spatial and temporal extents of natural events represented in EONET are based on multiple sources and often these representations are approximations at best.
+    </blockquote>
   </section>
 );
 

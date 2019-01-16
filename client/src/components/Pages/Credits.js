@@ -10,7 +10,7 @@ const Credits = () => (
   <section
     className='article'
   >
-    <Link className='bigButton bigButton--right' to='/' title='Back to map' alt='Back to map'>
+    <Link className='bigButton bigButton--right' to='/menu' title='Back to menu' alt='Back to menu'>
       <svg className='bigButton__icon'>
         <use href='icons/sprite.svg#backArrow' />
       </svg>

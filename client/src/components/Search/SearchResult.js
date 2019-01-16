@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Event from '../../propTypes/Event';
-import CATEGORIES from '../../constants/CATEGORIES';
+import CATEGORIES from '../../constants/copy/CATEGORIES';
 import toCamelCase from '../../utils/toCamelCase';
 import parseLocation from '../../utils/parseLocation';
 

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { GeoJSONLayer } from 'react-mapbox-gl';
 
-import COLOR_STOPS from '../../../constants/COLOR_STOPS';
-import MAP_POLYGON_CONFIG from '../../../constants/MAP_POLYGON_CONFIG';
+import COLOR_STOPS from '../../../constants/map/COLOR_STOPS';
+import MAP_POLYGON_CONFIG from '../../../constants/map/MAP_POLYGON_CONFIG';
 
 import Event from '../../../propTypes/Event';
 

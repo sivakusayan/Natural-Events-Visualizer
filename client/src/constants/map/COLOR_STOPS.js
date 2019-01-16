@@ -7,7 +7,7 @@
  * https://www.mapbox.com/help/how-map-design-works/#data-driven-styles
  */
 
-import CATEGORIES from './CATEGORIES';
+import CATEGORIES from '../copy/CATEGORIES';
 
 const COLOR_STOPS = {
   property: 'category',

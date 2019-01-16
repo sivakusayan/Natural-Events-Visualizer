@@ -50,7 +50,6 @@ const SearchBarContainer = ({
   const search = (title) => {
     // Start loading outside of debounced function, else startLoading and removeError
     // will be debounced as well
-    console.log(`http://localhost:3000/api/events?title=${title}&${buildFilterQuery()}`);
     fetchRetry(`http://localhost:3000/api/events?title=${title}&${buildFilterQuery()}`)
       .then(events => setEvents(events))
       .catch(setError)
@@ -66,7 +65,7 @@ const SearchBarContainer = ({
     <SearchBar
       startLoading={startLoading}
       removeError={removeError}
-      debouncedSearch={debouncedSearch} 
+      debouncedSearch={debouncedSearch}
     />
   );
 };

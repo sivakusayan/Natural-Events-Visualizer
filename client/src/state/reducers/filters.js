@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 
-import CATEGORIES from '../../constants/CATEGORIES';
+import CATEGORIES from '../../constants/copy/CATEGORIES';
 import {
   SET_LATITUDE,
   SET_LONGITUDE,

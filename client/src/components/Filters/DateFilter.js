@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import Picker from 'react-month-picker';
 import 'react-month-picker/css/month-picker.css';
 
-import DATE_LANG from '../../constants/DATE_LANG';
+import DATE_LANG from '../../constants/copy/CATEGORIES';
 
 class DateFilter extends React.Component {
   state = {

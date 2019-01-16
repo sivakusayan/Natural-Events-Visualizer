@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider, connect } from 'react-redux';
 
-import { LOCAL_API_URL } from './constants/URL_STRINGS';
+import { LOCAL_API_URL } from './constants/misc/URL_STRINGS';
 import fetchRetry from '../../utils/fetchRetry';
 
 import { setEvents } from './state/actions/events';

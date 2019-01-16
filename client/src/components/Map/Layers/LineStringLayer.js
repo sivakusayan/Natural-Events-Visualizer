@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { GeoJSONLayer } from 'react-mapbox-gl';
 
-import COLOR_STOPS from '../../../constants/COLOR_STOPS';
-import MAP_LINE_CONFIG from '../../../constants/MAP_LINE_CONFIG';
+import COLOR_STOPS from '../../../constants/map/COLOR_STOPS';
+import MAP_LINE_CONFIG from '../../../constants/map/MAP_LINE_CONFIG';
 import Event from '../../../propTypes/Event';
 
 class LineStringLayer extends React.Component {

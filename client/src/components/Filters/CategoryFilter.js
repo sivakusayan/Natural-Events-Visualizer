@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CATEGORIES from '../../constants/CATEGORIES';
+import CATEGORIES from '../../constants/copy/CATEGORIES';
 
 const CategoryFilter = ({
   filter,

@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 import Event from '../../propTypes/Event';
 import toCamelCase from '../../utils/toCamelCase';
 import parseLocation from '../../utils/parseLocation';
-import CATEGORIES from '../../constants/CATEGORIES';
+import CATEGORIES from '../../constants/copy/CATEGORIES';
 
 const EventPopup = ({ selectedEvent, coordinates }) => {
   const { properties, geometry } = selectedEvent;

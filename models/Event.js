@@ -7,10 +7,10 @@ const { Schema } = mongoose;
 
 const EventLocation = new Schema({
   // The first three properties are used if event is on land.
-  city: {
+  admin2: {
     type: String,
   },
-  province: {
+  admin1: {
     type: String,
   },
   country: {

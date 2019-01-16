@@ -35,7 +35,7 @@ const SearchBarContainer = ({
       queryArray.push(`long=${location.longitude}`);
       queryArray.push(`radius=${location.radius}`);
     }
-    if (categoriesIsActive && categories) {
+    if (categoriesIsActive && categories.length > 0) {
       queryArray.push(`categories=${categories.join(',')}`);
     }
     if (startDateIsActive && startDate) {
@@ -50,6 +50,7 @@ const SearchBarContainer = ({
   const search = (title) => {
     // Start loading outside of debounced function, else startLoading and removeError
     // will be debounced as well
+    console.log(`http://localhost:3000/api/events?title=${title}&${buildFilterQuery()}`);
     fetchRetry(`http://localhost:3000/api/events?title=${title}&${buildFilterQuery()}`)
       .then(events => setEvents(events))
       .catch(setError)

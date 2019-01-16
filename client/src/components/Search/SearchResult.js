@@ -3,6 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Event from '../../propTypes/Event';
+import CATEGORIES from '../../constants/CATEGORIES';
+import toCamelCase from '../../utils/toCamelCase';
+import parseLocation from '../../utils/parseLocation';
 
 const SearchResult = ({ event, selectEvent }) => {
   const onClick = () => selectEvent(event._id);
@@ -15,22 +18,18 @@ const SearchResult = ({ event, selectEvent }) => {
       onClick={onClick}
       onKeyPress={onKeyPress}
       role='menuItem'
+      className='result'
     >
-      <div className='id'>
-        Event ID:
-        {event._id}
-      </div>
-      <div className='title'>
-        Title:
+      <div className='result__title'>
         {event.properties.title}
       </div>
-      <div className='category'>
-        Category:
-        {event.properties.categories}
+      <div className='result__location'>
+        {parseLocation(event.geometry.location[event.geometry.location.length - 1])}
       </div>
-      <div className='location'>
-        Location:
-        {event.geometry.location.city}
+      <div className='result__category'>
+        <svg className='result__icon'>
+          <use href={`icons/sprite.svg#${toCamelCase(CATEGORIES[event.properties.category].title)}`} />
+        </svg>
       </div>
     </li>
   );

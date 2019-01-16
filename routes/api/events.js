@@ -27,7 +27,6 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
   const query = {};
-
   // Build query object
   if (req.query.title) query['properties.title'] = new RegExp(req.query.title, 'i');
   if (req.query.long && req.query.lat) {
@@ -41,7 +40,7 @@ router.get('/', (req, res) => {
       },
     };
   }
-  if (req.query.categoryID) query['properties.category'] = { $in: req.query.categories };
+  if (req.query.categories) query['properties.category'] = { $in: req.query.categories.split(',') };
   if (req.query.startDate) {
     query['geometry.date'] = { $elemMatch: { $gte: req.query.startDate } };
   }

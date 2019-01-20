@@ -54,7 +54,7 @@ const EventPopup = ({ selectedEvent, coordinates }) => {
           </div>
           <div className='popup__search'>
             <a
-              className='popup__link'
+              className='link'
               rel='noopener noreferrer'
               target='_blank'
               href={query}
@@ -67,7 +67,7 @@ const EventPopup = ({ selectedEvent, coordinates }) => {
               <h4>Additional Sources</h4>
               {sources.map(source => (
                 <a
-                  className='popup__link'
+                  className='link'
                   rel='noopener noreferrer'
                   target='_blank'
                   href={source.url}

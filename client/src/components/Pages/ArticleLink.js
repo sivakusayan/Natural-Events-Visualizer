@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const ArticleLink = ({ href, children }) => (
   <a
-    className='article__link'
+    className='link'
     target='_blank'
     // We add this line in order to account for possible security risks. See:
     // https://mathiasbynens.github.io/rel-noopener/#hax

@@ -2,17 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import getFlyToPoint from '../../utils/getFlyToPoint';
+import getLocation from '../../utils/getLocation';
 import getBoundingBox from '../../utils/getBoundingBox';
+import getLatitudeShift from '../../utils/getLatitudeShift';
 import Event from '../../propTypes/Event';
 import { selectEvent } from '../../state/actions/selectedEvent';
 import { doneLoadingMap } from '../../state/actions/loading';
 import EventMap from '../../components/Map/EventMap';
 
 class EventMapContainer extends React.Component {
+  // The smallest zoom we will go when clicking on 
+  // a marker in a map layer.
+  baseZoom = 4
+
   state = {
     center: [0, 5],
-    zoom: 2,
+    currentZoom: 2,
   }
 
   componentDidUpdate = (prevProps) => {
@@ -27,19 +32,26 @@ class EventMapContainer extends React.Component {
   }
 
   zoomIn = () => {
-    const { zoom } = this.state;
-    if (zoom < 4) {
+    const { currentZoom } = this.state;
+    if (currentZoom < this.baseZoom) {
       this.setState({
-        zoom: 4,
+        currentZoom: this.baseZoom,
       });
     }
   }
 
   goToEvent = () => {
     const { selectedEvent } = this.props;
+    const { currentZoom } = this.state;
     if (selectedEvent) {
+      const { lng, lat } = getLocation(selectedEvent);
       this.setState({
-        center: getFlyToPoint(selectedEvent),
+        center: {
+          lng,
+          // Shift center up a little bit so we have
+          // more room for the popup. 
+          lat: lat + getLatitudeShift(this.baseZoom, currentZoom),
+        },
       });
     }
   }
@@ -52,14 +64,14 @@ class EventMapContainer extends React.Component {
 
   updateZoom = (map) => {
     this.setState({
-      zoom: map.getZoom(),
+      currentZoom: map.getZoom(),
     });
   }
 
   render() {
     const {
       center,
-      zoom,
+      currentZoom,
     } = this.state;
     const {
       selectedEvent,
@@ -70,7 +82,10 @@ class EventMapContainer extends React.Component {
     return (
       <EventMap
         center={center}
-        zoom={[zoom]}
+        // Remember that mapbox zoom property is wrapped
+        // inside an array.
+        // https://github.com/alex3165/react-mapbox-gl/issues/57
+        zoom={[currentZoom]}
         doneLoading={doneLoading}
         setSelectedEvent={setSelectedEvent}
         resetSelectedEvent={resetSelectedEvent}

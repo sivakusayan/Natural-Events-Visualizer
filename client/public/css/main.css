@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -112,7 +113,7 @@ button:disabled {
   left: 0; }
 
 .bigButton {
-  position: absolute;
+  position: fixed;
   z-index: 10;
   display: flex;
   width: 7rem;
@@ -207,16 +208,36 @@ button:disabled {
 
 .article {
   width: 100%;
-  height: 100%;
-  padding: 2.2rem 3.3rem;
+  padding: 3.3rem 2.75rem;
   background-color: #F9F9F9;
   color: #333333; }
+  .article::after {
+    display: block;
+    width: 1rem;
+    height: 6rem;
+    content: ''; }
   .article__heading {
-    margin-bottom: 3.85rem;
+    margin-bottom: 2.75rem;
     font-size: 4rem; }
-  .article__copy {
+    .article__heading::after {
+      display: block;
+      margin-top: 0.5rem;
+      width: 60%;
+      height: 3px;
+      background-color: #333333;
+      content: ''; }
+  .article__copy, .article__quote {
+    margin-bottom: 2rem;
     font-size: 1.5rem;
     line-height: 2.5rem; }
+  .article__quote {
+    padding: 2.2rem;
+    background-color: #ececec;
+    quotes: '“' '”' '‘' '’'; }
+    .article__quote::before {
+      content: open-quote; }
+    .article__quote::after {
+      content: close-quote; }
   .article__credits {
     margin-top: 2.2rem;
     font-size: 1.5rem; }

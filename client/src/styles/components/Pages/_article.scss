@@ -1,19 +1,49 @@
 .article {
   width: 100%;
-  height: 100%;
-  padding: padding(M) padding(XL);
+  padding: padding(XL) padding(L);
 
   background-color: color(white);
   color: color(black);
 
-  &__heading {
-    margin-bottom: margin(XXL);
-    font-size: 4rem;
+  // Gives us space at the bottom of every page for the 
+  // back button without needing to create a new padding
+  // variable that is much bigger than the others.
+  &::after {
+    display: block;
+    width: 1rem;
+    height: 6rem;
+    content: '';
   }
 
-  &__copy {
+  &__heading {
+    margin-bottom: margin(L);
+    font-size: 4rem;
+
+    &::after {
+      display: block;
+      margin-top: 0.5rem;
+      width: 60%;
+      height: 3px;
+
+      background-color: color(black);
+      content: '';
+    }
+  }
+
+  &__copy,
+  &__quote {
+    margin-bottom: 2rem;
     font-size: 1.5rem;
     line-height: 2.5rem;
+  }
+
+  &__quote {
+    padding: padding(M);
+    background-color: darken(color(white), 5%);
+    quotes: '“' '”' '‘' '’';
+
+    &::before { content: open-quote; }
+    &::after { content: close-quote; }
   }
 
   &__credits {

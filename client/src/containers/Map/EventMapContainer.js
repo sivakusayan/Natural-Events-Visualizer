@@ -50,7 +50,7 @@ class EventMapContainer extends React.Component {
           lng,
           // Shift center up a little bit so we have
           // more room for the popup. 
-          lat: lat + getLatitudeShift(this.baseZoom, currentZoom),
+          lat: lat + getLatitudeShift(this.baseZoom, currentZoom, lat),
         },
       });
     }

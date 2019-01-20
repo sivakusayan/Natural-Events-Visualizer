@@ -56,6 +56,9 @@ const CREDITS = [{
 }, {
   name: 'Yang LIU',
   icons: [{ title: 'Flood', link: 'https://thenounproject.com/term/flood/1034482/' }],
+}, {
+  name: 'Roselin Christina.S',
+  icons: [{ title: 'Location', link: 'https://thenounproject.com/search/?q=location%20icon&i=582861' }],
 }];
 
 const alphabeticalCompare = (string1, string2) => {

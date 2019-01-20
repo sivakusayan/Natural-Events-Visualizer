@@ -7,7 +7,7 @@ const Menu = () => (
   >
     <Link className='bigButton bigButton--left' to='/' title='Back to map' alt='Back to map'>
       <svg className='bigButton__icon'>
-        <use href='icons/sprite.svg#backArrow' />
+        <use href='icons/spritesheet.svg#backArrow' />
       </svg>
     </Link>
     <NavLink className='menu__link' to='/about'>About</NavLink>

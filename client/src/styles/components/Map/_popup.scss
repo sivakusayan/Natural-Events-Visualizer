@@ -1,25 +1,76 @@
+.mapboxgl-popup-content {
+  padding: 0;
+}
+
 .popup {
   width: 25rem;
-  height: 30rem;
+  height: auto;
+  background-color: color(white);
+
+  &__primary {
+    padding: padding(XS);
+  }
 
   &__primary {
     display: flex;
     height: 40%;
     align-items: center;
     justify-content: space-around;
-    border-bottom: 1px solid color(black);
   }
 
   &__title {
     width: 40%;
-    font-size: 1.5rem;
-    line-height: 2.5rem;
+    font-size: 1.7rem;
+    font-weight: 500;
+    line-height: 2.7rem;
 
     text-align: center;
   }
 
-  &__icon {
+  &__event-icon {
     width: 60%;
-    height: 60%;
+    height: 10rem;
+  }
+
+  &__secondary,
+  &__tertiary {
+    padding: padding(XXS);
+    border-top: 2px solid darken(color(white), 5%);
+  }
+
+  &__date,
+  &__location,
+  &__search {
+    display: flex;
+    align-items: center;
+    margin: margin(XS);
+    font-size: 1.2rem;
+  }
+
+  &__date-icon,
+  &__location-icon,
+  &__search-icon {
+    width: 2rem;
+    height: 2rem;
+    margin-right: margin(S);
+  }
+
+  &__sub-heading,
+  &__sources {
+    margin-left: margin(XS);
+  }
+
+  &__sub-heading {
+    font-size: 1.5rem;
+    margin-bottom: margin(XS);
+  }
+
+  &__sources {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__source:not(:last-child) {
+    margin-right: 1rem;
   }
 }

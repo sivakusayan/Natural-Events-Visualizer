@@ -34,25 +34,37 @@ const EventPopup = ({ selectedEvent, coordinates }) => {
     // Else, the event name should be descriptive enough for a search
     query = `https://www.google.com/search?q=${properties.title}`;
   }
+  const style = {
+    borderTop: `4px solid ${CATEGORIES[properties.category].color}`,
+  };
   return (
     <Popup coordinates={coordinates}>
-      <div className='popup'>
+      <div style={style} className='popup'>
         <div className='popup__primary'>
           <h2 className='popup__title'>{selectedEvent.properties.title}</h2>
-          <svg className='popup__icon'>
-            <use href={`icons/sprite.svg#${eventIconName}`} />
+          <svg className='popup__event-icon'>
+            <use href={`icons/spritesheet.svg#${eventIconName}`} />
           </svg>
         </div>
         <div className='popup__secondary'>
           {/*  We show the latest date and location for an event for now. 
             TODO: Time evolution for LineStrings? */}
           <div className='popup__date'>
-            {dateString}
+            <svg className='popup__date-icon'>
+              <use href='icons/spritesheet.svg#clock' />
+            </svg>
+            <span>{dateString}</span>
           </div>
           <div className='popup__location'>
-            {locationString}
+            <svg className='popup__date-icon'>
+              <use href='icons/spritesheet.svg#location' />
+            </svg>
+            <span>{locationString}</span>
           </div>
           <div className='popup__search'>
+            <svg className='popup__search-icon'>
+              <use href='icons/spritesheet.svg#google' />
+            </svg>
             <a
               className='link'
               rel='noopener noreferrer'
@@ -62,10 +74,13 @@ const EventPopup = ({ selectedEvent, coordinates }) => {
                 Google it!
             </a>
           </div>
-          {sources.length > 0 && (
-            <div className='popup__sources'>
-              <h4>Additional Sources</h4>
-              {sources.map(source => (
+        </div>
+        {sources.length > 0 && (
+        <div className='popup__tertiary'>
+          <h4 className='popup__sub-heading'>Additional Sources</h4>
+          <ul className='popup__sources'>
+            {sources.map(source => (
+              <li className='popup__source'>
                 <a
                   className='link'
                   rel='noopener noreferrer'
@@ -74,10 +89,11 @@ const EventPopup = ({ selectedEvent, coordinates }) => {
                 >
                   {source.id}
                 </a>
-              ))}
-            </div>
-          )}
+              </li>
+            ))}
+          </ul>
         </div>
+        )}
       </div>
     </Popup>
   );

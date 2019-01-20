@@ -28,7 +28,7 @@ const SearchResult = ({ event, selectEvent }) => {
       </div>
       <div className='result__category'>
         <svg className='result__icon'>
-          <use href={`icons/sprite.svg#${toCamelCase(CATEGORIES[event.properties.category].title)}`} />
+          <use href={`icons/spritesheet.svg#${toCamelCase(CATEGORIES[event.properties.category].title)}`} />
         </svg>
       </div>
     </li>

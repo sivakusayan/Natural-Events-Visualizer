@@ -10,7 +10,16 @@ html {
 }
 
 body {
-  font-family: 'Lato', Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Sarabun', Helvetica, Arial, sans-serif;
 }
 
 // Can't seem to move attribution box in react-mapbox-gl at the moment.

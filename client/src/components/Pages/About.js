@@ -11,7 +11,7 @@ const About = () => (
   >
     <Link className='bigButton bigButton--left' to='/menu' title='Back to menu' alt='Back to menu'>
       <svg className='bigButton__icon'>
-        <use href='icons/sprite.svg#backArrow' />
+        <use href='icons/spritesheet.svg#backArrow' />
       </svg>
     </Link>
     <h2 className='article__heading'>About</h2>

@@ -13,7 +13,8 @@
     margin: margin(M);
     
     background: color(black);
-    border-radius: $borderRadius;
+    border-radius: radius(small);
+    box-shadow: shadow(small);
     color: color(white);
     font-size: 3rem;
     font-weight: 300;

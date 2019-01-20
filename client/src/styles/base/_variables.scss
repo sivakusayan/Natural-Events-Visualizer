@@ -57,4 +57,16 @@ $colors: (
   black: #333333,
 );
 
+$shadows: (
+  small: 0 2px 5px rgba(0,0,0,0.2),
+  big: 0 2px 5px rgba(0,0,0,0.4),
+);
+
+// For border-radius
+$radii: (
+  small: 5px,
+  big: 50%,
+);
+
 $borderRadius: 5px;
+

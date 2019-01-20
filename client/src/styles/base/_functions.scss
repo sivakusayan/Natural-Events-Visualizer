@@ -29,3 +29,11 @@
 @function color($color) {
   @return map-get($colors, $color );
 }
+
+@function shadow($shadow) {
+  @return map-get($shadows, $shadow );
+}
+
+@function radius($radius) {
+  @return map-get($radii, $radius );
+}

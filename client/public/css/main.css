@@ -198,6 +198,7 @@ button:disabled {
     margin: 2.2rem;
     background: #333333;
     border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     color: #F9F9F9;
     font-size: 3rem;
     font-weight: 300;

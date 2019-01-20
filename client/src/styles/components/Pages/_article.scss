@@ -31,11 +31,13 @@
   }
 
   &__copy,
-  &__quote {
-    margin-bottom: 2rem;
+  &__quote,
+  &__credit, {
     font-size: 1.5rem;
     line-height: 2.5rem;
   }
+
+  &__copy { margin-bottom: margin(L); }
 
   &__quote {
     padding: padding(M);
@@ -47,11 +49,19 @@
   }
 
   &__credits {
+    // Compensate for outside bullet by pushing
+    // the list items inward from the left
+    padding-left: padding(S);
     margin-top: margin(M);
-    font-size: 1.5rem;
+    list-style: disc outside;
   }
 
   &__credit {
-    margin: margin(S);
+    margin-bottom: margin(S);
+  }
+
+  &__link {
+    color: color(accent);
+    text-decoration: none;
   }
 }

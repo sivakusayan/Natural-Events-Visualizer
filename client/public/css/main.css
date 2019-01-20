@@ -75,6 +75,9 @@ html {
 body {
   font-family: 'Lato', Helvetica, Arial, sans-serif; }
 
+.mapboxgl-ctrl-bottom-right {
+  top: 10px; }
+
 div.overlay {
   width: 100%;
   height: 100%; }
@@ -112,37 +115,25 @@ button:disabled {
   position: absolute;
   z-index: 10;
   display: flex;
-  width: 6.5rem;
-  height: 6.5rem;
+  width: 7rem;
+  height: 7rem;
   align-items: center;
   justify-content: center;
   padding: 1.65rem;
   text-align: center; }
   .bigButton--left, .bigButton--right {
-    top: 0;
-    background: #16425B;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); }
+    bottom: 0;
+    margin: 1.65rem;
+    background: #333333;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); }
   .bigButton--left {
-    left: 0;
-    border-bottom-right-radius: 50%; }
+    left: 0; }
   .bigButton--right {
-    right: 0;
-    border-bottom-left-radius: 50%; }
+    right: 0; }
   .bigButton__icon {
+    height: 85%;
     fill: #F9F9F9; }
-
-.link {
-  text-decoration: none; }
-  .link--menu {
-    width: 60%;
-    padding: 1.65rem;
-    margin: 3rem;
-    border: 1px solid #016FB9;
-    border-radius: 5px;
-    color: #016FB9;
-    font-size: 3rem;
-    font-weight: 300;
-    text-align: center; }
 
 .loadingIcon {
   display: flex; }
@@ -183,7 +174,7 @@ button:disabled {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #16425B;
+  background: #333333;
   transition: opacity 0.3s; }
   .loadingScreen__text {
     margin: 2rem;
@@ -201,13 +192,24 @@ button:disabled {
   align-items: center;
   justify-content: center;
   background: rgba(249, 249, 249, 0.9); }
+  .menu__link {
+    width: 60%;
+    padding: 1.65rem;
+    margin: 2.2rem;
+    background: #333333;
+    border-radius: 5px;
+    color: #F9F9F9;
+    font-size: 3rem;
+    font-weight: 300;
+    text-align: center;
+    text-decoration: none; }
 
 .article {
   width: 100%;
   height: 100%;
   padding: 2.2rem 3.3rem;
   background-color: #F9F9F9;
-  color: #016FB9; }
+  color: #333333; }
   .article__heading {
     margin-bottom: 3.85rem;
     font-size: 4rem; }

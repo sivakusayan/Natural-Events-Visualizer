@@ -3,8 +3,8 @@
   z-index: z(top);
 
   display: flex;
-  width: 6.5rem;
-  height: 6.5rem;
+  width: 7rem;
+  height: 7rem;
   align-items: center;
   justify-content: center;
   padding: padding(S);
@@ -12,23 +12,24 @@
   text-align: center;
 
   &--left, &--right {
-    top: 0;
+    bottom: 0;
+    margin: margin(S);
 
-    background: color(primaryDark);
-    box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+    background: color(black);
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
   }
 
   &--left {
     left: 0;
-
-    border-bottom-right-radius: 50%;
   }
 
   &--right {
     right: 0;
-
-    border-bottom-left-radius: 50%;
   }
 
-  &__icon { fill: color(white); }
+  &__icon { 
+    height: 85%; 
+    fill: color(white);
+  }
 }

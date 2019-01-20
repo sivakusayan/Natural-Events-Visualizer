@@ -13,6 +13,12 @@ body {
   font-family: 'Lato', Helvetica, Arial, sans-serif;
 }
 
+// Can't seem to move attribution box in react-mapbox-gl at the moment.
+// Manually move with CSS for now.
+.mapboxgl-ctrl-bottom-right {
+  top: 10px;
+}
+
 // Want div wrapper to be on top while a component is rendered by
 // react router ...
 div.overlay {

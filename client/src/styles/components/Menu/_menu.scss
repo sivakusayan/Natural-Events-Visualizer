@@ -6,4 +6,18 @@
   justify-content: center;
 
   background: rgba(color(white), 0.9);
+
+  &__link {
+    width: 60%;
+    padding: padding(S);
+    margin: margin(M);
+    
+    background: color(black);
+    border-radius: $borderRadius;
+    color: color(white);
+    font-size: 3rem;
+    font-weight: 300;
+    text-align: center;
+    text-decoration: none;
+  }
 }

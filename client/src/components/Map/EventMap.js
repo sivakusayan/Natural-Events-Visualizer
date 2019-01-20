@@ -33,6 +33,7 @@ const Map = ReactMapboxGl({
   accessToken: KEY,
   minZoom: 2,
   maxZoom: 12,
+  logoPosition: 'top-left',
 });
 
 const EventMap = ({

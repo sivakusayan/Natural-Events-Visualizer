@@ -7,11 +7,12 @@ import Event from '../../propTypes/Event';
 import toCamelCase from '../../utils/toCamelCase';
 import parseLocation from '../../utils/parseLocation';
 import CATEGORIES from '../../constants/copy/CATEGORIES';
+import SOURCES from '../../constants/copy/SOURCES';
 
 const EventPopup = ({ selectedEvent, coordinates }) => {
   const { properties, geometry } = selectedEvent;
   // Filter out sources which seem to link to inaccessible government websites or not useful for general audience
-  const sources = properties.sources.filter(source => !source.id.match(/^(PDC|JTWC|BYU_ICE|NATICE|GDACS)$/));
+  const sources = properties.sources.filter(source => !source.id.match(/^(PDC|JTWC|GDACS)$/));
   const eventName = CATEGORIES[properties.category].title;
   const eventIconName = toCamelCase(eventName);
   const locationString = parseLocation(geometry.location[geometry.location.length - 1]);
@@ -87,7 +88,9 @@ const EventPopup = ({ selectedEvent, coordinates }) => {
                   target='_blank'
                   href={source.url}
                 >
-                  {source.id}
+                  {/* Some sources seem to link CSV files with event data.
+                  Make it clear to the user just in case. */}
+                  {SOURCES[source.id] + (source.url.match(/.csv$/) ? ' (CSV File)' : '')}
                 </a>
               </li>
             ))}

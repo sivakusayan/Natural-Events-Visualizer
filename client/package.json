@@ -8,7 +8,7 @@
   "scripts": {
     "watch:sass": "node-sass src/styles/main.scss public/css/main.css -w",
     "serve:sass": "live-server public",
-    "start": "npm-run-all --parallel serve:sass watch:sass",
+    "start": "npm-run-all --parallel serve watch:sass",
     "serve": "webpack-dev-server",
     "build": "webpack"
   },
@@ -27,7 +27,7 @@
     "react-redux": "^5.1.0",
     "react-responsive": "^5.0.0",
     "react-router-dom": "^4.3.1",
-    "react-router-transitions": "^2.4.0",
+    "react-router-transition": "^1.2.1",
     "redux": "^4.0.1",
     "throttle-debounce": "^2.0.1"
   },

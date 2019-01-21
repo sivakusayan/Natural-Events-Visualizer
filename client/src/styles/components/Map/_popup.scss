@@ -1,5 +1,10 @@
 .mapboxgl-popup-content {
-  padding: 0;
+  // We use this !important since MapBox seems to write in styles after
+  // our stylesheet, so the MapBox styles would override whatever 
+  // we put in here. Passing in this style in the component was
+  // considered, but it ends up being uglier in my opinion, especially
+  // since we have to reach through children nodes to apply this.
+  padding: 0 !important;
 }
 
 .popup {
@@ -61,8 +66,8 @@
   }
 
   &__sub-heading {
-    font-size: 1.5rem;
     margin-bottom: margin(XS);
+    font-size: 1.5rem;
   }
 
   &__sources {

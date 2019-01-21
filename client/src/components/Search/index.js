@@ -18,8 +18,16 @@ const Search = ({
   <section
     className='search'
   >
-    <Link to='/'>Go to Map</Link>
-    <Link to='/filters'>Filtering Options</Link>
+    <Link className='bigButton bigButton--left' to='/' title='Back to map' alt='Back to map'>
+      <svg className='bigButton__icon'>
+        <use href='icons/spritesheet.svg#backArrow' />
+      </svg>
+    </Link>
+    <Link className='bigButton bigButton--right' to='/filters' title='Search Filters' alt='Search Filters'>
+      <svg className='bigButton__icon'>
+        <use href='icons/spritesheet.svg#filter' />
+      </svg>
+    </Link>
     <SearchBarContainer
       setEvents={setEvents}
       startLoading={startLoading}

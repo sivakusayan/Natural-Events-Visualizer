@@ -31,14 +31,7 @@ h6 {
 // Want div wrapper to be on top while a component is rendered by
 // react router ...
 div.overlay {
-  width: 100%;
-  height: 100%;
-}
-
-// ... but hidden while on home page so user can navigate map
-div.overlay:empty {
-  width: 0;
-  height: 0;
+  z-index: z(topMost);
 }
 
 button {
@@ -55,4 +48,14 @@ button:disabled {
 .filters,
 .menu {
   background: white;
+}
+
+.switch-wrapper {
+  position: absolute;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+ 
+.switch-wrapper > div {
+  position: absolute;
 }

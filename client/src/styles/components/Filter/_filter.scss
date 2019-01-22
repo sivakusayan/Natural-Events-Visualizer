@@ -1,0 +1,8 @@
+.filters {
+  width: 100vw;
+  height: 100vh;
+  background-color: color(white);
+  // We add this scroll here in order to not have any jumpy transitions during
+  // the transition from react-router-transition
+  overflow-x: scroll;
+}

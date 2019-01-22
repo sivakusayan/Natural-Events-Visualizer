@@ -1,5 +1,30 @@
 .search {
-  min-width: 100vw;
-  min-height: 100vh;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
   background-color: color(white);
+  // We add this scroll here in order to not have any jumpy transitions during
+  // the transition from react-router-transition
+  overflow-x: scroll;
+
+  .bigButton-container {
+    bottom: 7rem;
+  }
+
+  &__form {
+    position: fixed;
+    bottom: 3rem;
+    right: 50%;
+    transform: translateX(50%);
+    width: 90%;
+    height: 4rem;
+  }
+
+  &__input {
+    width: 100%;
+    height: 100%;
+    box-shadow: shadow(big);
+    border: none;
+    border-radius: $borderRadius
+  }
 }

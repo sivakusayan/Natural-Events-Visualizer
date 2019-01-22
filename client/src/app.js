@@ -14,7 +14,7 @@ import configureStore from './state/store/configureStore';
 
 import EventVisualizer from './components/EventVisualizer';
 import LoadingScreenContainer from './containers/Loading/LoadingScreenContainer';
-import './styles/main.scss';
+// import './styles/main.scss';
 
 const store = configureStore();
 

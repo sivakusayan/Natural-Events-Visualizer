@@ -1,32 +1,26 @@
-.bigButton {
+.bigButton-container {
   position: fixed;
   z-index: z(top);
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
 
+.bigButton {
   display: flex;
   width: 7rem;
   height: 7rem;
   align-items: center;
   justify-content: center;
   padding: padding(S);
+  margin: margin(S);
 
+  background: color(black);
+  border-radius: radius(big);
+  box-shadow: shadow(big);
   text-align: center;
-
-  &--left, &--right {
-    bottom: 0;
-    margin: margin(S);
-
-    background: color(black);
-    border-radius: radius(big);
-    box-shadow: shadow(big);
-  }
-
-  &--left {
-    left: 0;
-  }
-
-  &--right {
-    right: 0;
-  }
 
   &__icon { 
     height: 85%; 

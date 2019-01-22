@@ -45,12 +45,14 @@ class Searchbar extends React.Component {
     return (
       <form
         onSubmit={this.handleSubmit}
+        className='search__form'
       >
         <input
           type='search'
           placeholder='Search here'
           onChange={this.handleChange}
           value={searchQuery}
+          className='search__input'
         />
       </form>
     );

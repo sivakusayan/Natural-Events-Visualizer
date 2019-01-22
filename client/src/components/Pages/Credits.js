@@ -10,11 +10,13 @@ const Credits = () => (
   <section
     className='article'
   >
-    <Link className='bigButton bigButton--left' to='/menu' title='Back to menu' alt='Back to menu'>
-      <svg className='bigButton__icon'>
-        <use href='icons/spritesheet.svg#backArrow' />
-      </svg>
-    </Link>
+    <div className='bigButton-container'>
+      <Link className='bigButton' to='/menu' title='Back to menu' alt='Back to menu'>
+        <svg className='bigButton__icon'>
+          <use href='icons/spritesheet.svg#backArrow' />
+        </svg>
+      </Link>
+    </div>
     <h1 className='article__heading'>Credits</h1>
     <p className='article__copy'>
       Nearly every icon used in this application is taken from <ArticleLink href='https://thenounproject.com/'>The Noun Project</ArticleLink> under

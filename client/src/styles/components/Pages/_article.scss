@@ -1,10 +1,13 @@
 .article {
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   padding: padding(XL) padding(L);
 
   background-color: color(white);
   color: color(black);
-
+  // We add this scroll here in order to not have any jumpy transitions during
+  // the transition from react-router-transition
+  overflow-x: scroll;
   // Gives us space at the bottom of every page for the 
   // back button without needing to create a new padding
   // variable that is much bigger than the others.

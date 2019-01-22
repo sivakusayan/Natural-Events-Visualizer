@@ -5,11 +5,13 @@ const Menu = () => (
   <nav
     className='menu'
   >
-    <Link className='bigButton bigButton--left' to='/' title='Back to map' alt='Back to map'>
-      <svg className='bigButton__icon'>
-        <use href='icons/spritesheet.svg#backArrow' />
-      </svg>
-    </Link>
+    <div className='bigButton-container'>
+      <Link className='bigButton' to='/' title='Back to map' alt='Back to map'>
+        <svg className='bigButton__icon'>
+          <use href='icons/spritesheet.svg#backArrow' />
+        </svg>
+      </Link>
+    </div>
     <NavLink className='menu__link' to='/about'>About</NavLink>
     <NavLink className='menu__link' to='/credits'>Credits</NavLink>
     <a

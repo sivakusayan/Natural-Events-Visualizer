@@ -118,7 +118,8 @@ button:disabled {
   bottom: 0;
   display: flex;
   width: 100%;
-  justify-content: space-between; }
+  justify-content: space-between;
+  pointer-events: none; }
 
 .btn {
   display: flex;
@@ -128,6 +129,7 @@ button:disabled {
   padding: 0.55rem 1.1rem;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  pointer-events: all;
   text-align: center; }
 
 .btn--big {
@@ -155,7 +157,7 @@ button:disabled {
   color: #333333;
   font-size: 1.3rem; }
 
-.field__input--text {
+.field--text .field__input {
   height: 3.5rem;
   padding: 0.55rem 1.1rem;
   border: 1px solid black;

@@ -7,6 +7,7 @@
 
   width: 100%;
   justify-content: space-between;
+  pointer-events: none;
 }
 
 .btn {
@@ -18,6 +19,9 @@
   
   border-radius: radius(small);
   box-shadow: shadow(medium);
+  // Manually enable pointer events since parent has pointer-events
+  // disabled.
+  pointer-events: all;
   text-align: center;
 }
 

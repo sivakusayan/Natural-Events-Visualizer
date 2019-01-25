@@ -41,10 +41,17 @@ router.get('/', (req, res) => {
     };
   }
   if (req.query.categories) query['properties.category'] = { $in: req.query.categories.split(',') };
-  if (req.query.startDate) {
+  if (req.query.startDate && req.query.endDate) {
+    query['geometry.date'] = {
+      $elemMatch: {
+        $gte: req.query.startDate,
+        $lt: req.query.endDate,
+      },
+    };
+    console.log(query);
+  } else if (req.query.startDate) {
     query['geometry.date'] = { $elemMatch: { $gte: req.query.startDate } };
-  }
-  if (req.query.endDate) {
+  } else if (req.query.endDate) {
     query['geometry.date'] = { $elemMatch: { $lt: req.query.endDate } };
   }
 

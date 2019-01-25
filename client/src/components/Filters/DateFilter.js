@@ -4,6 +4,7 @@ import dayjs from 'dayjs';
 import Picker from 'react-month-picker';
 import 'react-month-picker/css/month-picker.css';
 
+import FilterHeader from './FilterHeader';
 import DATE_LANG from '../../constants/misc/DATE_LANG';
 
 class DateFilter extends React.Component {
@@ -29,7 +30,7 @@ class DateFilter extends React.Component {
     const {
       startDate,
       endDate,
-      toggleDate,
+      toggle,
       isActive,
     } = this.props;
     const { isShown } = this.state;
@@ -42,11 +43,12 @@ class DateFilter extends React.Component {
     const formattedEndDate = `${DATE_LANG.months[endDate.month - 1]}, ${endDate.year}`;
     const rangeString = `${formattedStartDate} through ${formattedEndDate}`;
     return (
-      <section>
-        <div>
-          <p>Date Filters</p>
-          <button type='button' onClick={toggleDate}>Toggle</button>
-        </div>
+      <section className='filter'>
+        <FilterHeader
+          name='Dates'
+          isActive={isActive}
+          toggle={toggle}
+        />
         <form>
           <p>{rangeString}</p>
           <button type='button' onClick={this.onClick} disabled={!isActive}>
@@ -95,7 +97,7 @@ DateFilter.propTypes = {
   /**
    * Toggles the startDateIsActive and endDateIsActive values
    */
-  toggleDate: PropTypes.bool.isRequired,
+  toggle: PropTypes.func.isRequired,
 };
 
 DateFilter.defaultProps = {

@@ -54,7 +54,7 @@ const EventPopup = ({ selectedEvent, coordinates }) => {
             <svg className='popup__date-icon'>
               <use href='icons/spritesheet.svg#clock' />
             </svg>
-            <span>{dateString}</span>
+            <time>{dateString}</time>
           </div>
           <div className='popup__location'>
             <svg className='popup__date-icon'>

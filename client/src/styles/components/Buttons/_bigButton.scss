@@ -1,26 +1,31 @@
-.bigButton-container {
+.btn-constainer {
   position: fixed;
   z-index: z(top);
   right: 0;
   bottom: 0;
   display: flex;
-  justify-content: space-between;
+
   width: 100%;
+  justify-content: space-between;
 }
 
-.bigButton {
+.btn {
   display: flex;
-  width: 7rem;
-  height: 7rem;
   align-items: center;
   justify-content: center;
+  
+  box-shadow: shadow(small);
+  text-align: center;
+}
+
+.btn--big {
+  width: 7rem;
+  height: 7rem;
   padding: padding(S);
   margin: margin(S);
 
   background: color(black);
   border-radius: radius(big);
-  box-shadow: shadow(big);
-  text-align: center;
 
   &__icon { 
     height: 85%; 

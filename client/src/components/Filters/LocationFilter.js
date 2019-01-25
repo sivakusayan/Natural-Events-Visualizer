@@ -1,18 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import FilterHeader from './FilterHeader';
+
 const LocationFilter = ({
   filter,
   isValid,
   onChange,
-  isActive = false,
+  isActive,
   toggle,
 }) => (
   <section>
-    <div>
-      <p>Location Filter</p>
-      <button onClick={toggle} type='button'>Toggle</button>
-    </div>
+    <FilterHeader
+      name='Location'
+      isActive={isActive}
+      toggle={toggle}
+    />
     <form>
       <input
         type='text'

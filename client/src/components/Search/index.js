@@ -18,14 +18,14 @@ const Search = ({
   <section
     className='search'
   >
-    <div className='bigButton-container'>
-      <Link className='bigButton' to='/' title='Back to map' alt='Back to map'>
-        <svg className='bigButton__icon'>
+    <div className='btn-constainer'>
+      <Link className='btn--big' to='/' title='Back to map' alt='Back to map'>
+        <svg className='btn--big__icon'>
           <use href='icons/spritesheet.svg#backArrow' />
         </svg>
       </Link>
-      <Link className='bigButton' to='/filters' title='Search Filters' alt='Search Filters'>
-        <svg className='bigButton__icon'>
+      <Link className='btn--big' to='/filters' title='Search Filters' alt='Search Filters'>
+        <svg className='btn--big__icon'>
           <use href='icons/spritesheet.svg#filter' />
         </svg>
       </Link>

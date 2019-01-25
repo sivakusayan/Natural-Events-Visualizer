@@ -1,5 +1,6 @@
 .loadingIcon {
   display: flex;
+  color: color(white);
 
   &__circle {
     width: 1rem;
@@ -7,7 +8,7 @@
     margin: margin(XXS);
 
     animation: loading linear .9s infinite;
-    background: color(white);
+    background: currentColor;
     border-radius: 50%;
   }
 

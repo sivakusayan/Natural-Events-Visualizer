@@ -10,9 +10,9 @@ const Credits = () => (
   <section
     className='article'
   >
-    <div className='bigButton-container'>
-      <Link className='bigButton' to='/menu' title='Back to menu' alt='Back to menu'>
-        <svg className='bigButton__icon'>
+    <div className='btn-constainer'>
+      <Link className='btn--big' to='/menu' title='Back to menu' alt='Back to menu'>
+        <svg className='btn--big__icon'>
           <use href='icons/spritesheet.svg#backArrow' />
         </svg>
       </Link>

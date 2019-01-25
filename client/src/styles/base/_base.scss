@@ -13,12 +13,7 @@ body {
   font-family: 'Roboto', Helvetica, Arial, sans-serif;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+*[class$='title'] {
   font-family: 'Sarabun', Helvetica, Arial, sans-serif;
 }
 
@@ -40,14 +35,6 @@ button {
 
 button:disabled {
   cursor: default;
-}
-
-.about,
-.credits,
-.search,
-.filters,
-.menu {
-  background: white;
 }
 
 .switch-wrapper {

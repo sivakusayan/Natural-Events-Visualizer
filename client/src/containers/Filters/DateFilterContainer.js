@@ -30,7 +30,7 @@ const mapDispatchToProps = dispatch => ({
     const endDate = dayjs(new Date(year, month - 1)).endOf('month').valueOf();
     dispatch(setEndDate(endDate));
   },
-  toggleDate: () => {
+  toggle: () => {
     dispatch(toggleStartDate());
     dispatch(toggleEndDate());
   },

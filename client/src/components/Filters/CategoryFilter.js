@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import FilterHeader from './FilterHeader';
 import CATEGORIES from '../../constants/copy/CATEGORIES';
 
 const CategoryFilter = ({
   filter,
   add,
   remove,
-  isActive = false,
+  isActive,
   toggle,
 }) => {
   const updateCategories = (e) => {
@@ -19,24 +20,32 @@ const CategoryFilter = ({
   };
 
   return (
-    <section>
-      <div>
-        <p>Category Filter</p>
-        <button onClick={toggle} type='button'>Toggle</button>
-      </div>
-      <form>
+    <section className='filter'>
+      <FilterHeader
+        name='Categories'
+        isActive={isActive}
+        toggle={toggle}
+      />
+      <form className='filter__form'>
         {Object.keys(CATEGORIES).map(categoryID => (
-          <label htmlFor={categoryID}>
+          <>
+            <label 
+              className='filter__label filter__label--checkbox'
+              htmlFor={categoryID}
+            >
+              {CATEGORIES[categoryID].title}
+            </label>
             <input
               type='checkbox'
+              className='filter__input filter__input--checkbox'
               name='categories'
+              id={categoryID}
               value={categoryID}
               onClick={updateCategories}
               checked={filter.includes(categoryID)}
               disabled={!isActive}
             />
-            {CATEGORIES[categoryID].title}
-          </label>
+          </>
         ))}
       </form>
     </section>

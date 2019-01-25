@@ -18,18 +18,20 @@ const SearchResult = ({ event, selectEvent }) => {
       onClick={onClick}
       onKeyPress={onKeyPress}
       role='menuItem'
-      className='result'
+      className='search-result'
     >
-      <div className='result__title'>
-        {event.properties.title}
-      </div>
-      <div className='result__location'>
-        {parseLocation(event.geometry.location[event.geometry.location.length - 1])}
-      </div>
-      <div className='result__category'>
-        <svg className='result__icon'>
+      <div className='search-result__category'>
+        <svg className='search-result__icon'>
           <use href={`icons/spritesheet.svg#${toCamelCase(CATEGORIES[event.properties.category].title)}`} />
         </svg>
+      </div>
+      <div className='search-result__info'>
+        <p className='search-result__title'>
+          {event.properties.title}
+        </p>
+        <p className='search-result__location'>
+          {parseLocation(event.geometry.location[event.geometry.location.length - 1])}
+        </p>
       </div>
     </li>
   );

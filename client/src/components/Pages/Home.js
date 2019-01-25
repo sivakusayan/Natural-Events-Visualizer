@@ -5,13 +5,13 @@ import EventMapContainer from '../../containers/Map/EventMapContainer';
 
 const Home = () => (
   <main>
-    <div className='btn-constainer'>
-      <Link className='btn--big' to='/menu' title='Open menu' alt='Open menu'>
+    <div className='btn-container'>
+      <Link className='btn btn--big' to='/menu' title='Open menu' alt='Open menu'>
         <svg className='btn--big__icon'>
           <use href='icons/spritesheet.svg#menu' />
         </svg>
       </Link>
-      <Link className='btn--big' to='/search' title='Search' alt='Search'>
+      <Link className='btn btn--big' to='/search' title='Search' alt='Search'>
         <svg className='btn--big__icon'>
           <use href='icons/spritesheet.svg#search' />
         </svg>

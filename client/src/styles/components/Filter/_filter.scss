@@ -5,4 +5,98 @@
   // We add this scroll here in order to not have any jumpy transitions during
   // the transition from react-router-transition
   overflow-x: scroll;
+
+  // Gives us space at the bottom of every page for the 
+  // back button without needing to create a new padding
+  // variable that is much bigger than the others.
+  &::after {
+    display: block;
+    width: 1rem;
+    height: 10rem;
+    content: '';
+  }
+}
+
+.filter {
+  margin: margin(S);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: padding(XS) padding(S);
+
+    background: color(black);
+    border-radius: radius(small);
+    color: color(white);
+    font-size: 1.5rem;
+  }
+
+  &__title {
+    font-size: 1.9rem;
+  }
+
+  &__form {
+    overflow: hidden;
+    height: 0rem;
+    
+    transition: height 0.3s, margin 0.3s;
+  }
+
+  &__form.isActive {
+    margin-top: margin(XS);
+    margin-bottom: margin(L);
+  }
+}
+
+.filter--categories {
+  .filter__form.isActive {
+    height: 15rem;
+  }
+
+  .filter__form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .label__name {
+    
+  }
+}
+
+.filter--location {
+  .filter__form.isActive {
+    height: 8rem;
+  }
+
+  .label__name {
+    margin-bottom: margin(XXS);
+    color: color(black);
+    font-size: 1.3rem;
+  }
+
+  .filter__form {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .input {
+    width: 7rem;
+  }
+}
+
+.filter--dates {
+  .filter__form.isActive {
+    height: 4rem;
+  }
+}
+
+.input {
+  height: 3rem;
+  border-radius: radius(small);
+  border: 1px solid black;
+  box-shadow: shadow(small);
 }

@@ -5,8 +5,8 @@ const Menu = () => (
   <nav
     className='menu'
   >
-    <div className='btn-constainer'>
-      <Link className='btn--big' to='/' title='Back to map' alt='Back to map'>
+    <div className='btn-container'>
+      <Link className='btn btn--big' to='/' title='Back to map' alt='Back to map'>
         <svg className='btn--big__icon'>
           <use href='icons/spritesheet.svg#backArrow' />
         </svg>

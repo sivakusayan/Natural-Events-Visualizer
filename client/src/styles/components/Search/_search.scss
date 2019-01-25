@@ -7,7 +7,7 @@
   // the transition from react-router-transition
   overflow-x: scroll;
 
-  .btn-constainer {
+  .btn-container {
     bottom: 7rem;
   }
 
@@ -28,7 +28,17 @@
 
     border: 2px solid color(black);
     border-radius: radius(small);
-    box-shadow: shadow(small);
+    box-shadow: shadow(medium);
+  }
+
+  // Gives us space at the bottom of every page for the 
+  // back button without needing to create a new padding
+  // variable that is much bigger than the others.
+  &::after {
+    display: block;
+    width: 1rem;
+    height: 15rem;
+    content: '';
   }
 }
 
@@ -50,7 +60,7 @@
   justify-content: space-around;
   margin: margin(S) 0;
   border-radius: radius(small);
-  box-shadow: shadow(small);
+  box-shadow: shadow(medium);
 
   &__info {
     display: flex;

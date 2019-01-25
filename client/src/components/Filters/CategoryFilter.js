@@ -20,31 +20,29 @@ const CategoryFilter = ({
   };
 
   return (
-    <section className='filter'>
+    <section className='filter filter--categories'>
       <FilterHeader
         name='Categories'
         isActive={isActive}
         toggle={toggle}
       />
-      <form className='filter__form'>
+      <form className={`filter__form ${isActive ? 'isActive' : ''}`}>
         {Object.keys(CATEGORIES).map(categoryID => (
           <>
-            <label 
-              className='filter__label filter__label--checkbox'
-              htmlFor={categoryID}
-            >
-              {CATEGORIES[categoryID].title}
+            <label htmlFor={categoryID} className='label'>
+              <p className='label__name label__name--checkbox'>
+                {CATEGORIES[categoryID].title}
+              </p>
+              <input
+                type='checkbox'
+                className='input input--checkbox'
+                id={categoryID}
+                value={categoryID}
+                onClick={updateCategories}
+                checked={filter.includes(categoryID)}
+                disabled={!isActive}
+              />
             </label>
-            <input
-              type='checkbox'
-              className='filter__input filter__input--checkbox'
-              name='categories'
-              id={categoryID}
-              value={categoryID}
-              onClick={updateCategories}
-              checked={filter.includes(categoryID)}
-              disabled={!isActive}
-            />
           </>
         ))}
       </form>

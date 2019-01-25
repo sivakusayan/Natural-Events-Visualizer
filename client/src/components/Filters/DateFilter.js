@@ -19,8 +19,7 @@ class DateFilter extends React.Component {
     if (id === 1) setEndDate(year, month);
   }
 
-  onClick = (e) => {
-    e.preventDefault();
+  onFocus = () => {
     this.setState({ isShown: true });
   }
 
@@ -43,17 +42,26 @@ class DateFilter extends React.Component {
     const formattedEndDate = `${DATE_LANG.months[endDate.month - 1]}, ${endDate.year}`;
     const rangeString = `${formattedStartDate} through ${formattedEndDate}`;
     return (
-      <section className='filter'>
+      <section className='filter filter--dates'>
         <FilterHeader
           name='Dates'
           isActive={isActive}
           toggle={toggle}
         />
-        <form>
-          <p>{rangeString}</p>
-          <button type='button' onClick={this.onClick} disabled={!isActive}>
-            Edit Date
-          </button>
+        <form className={`filter__form ${isActive ? 'isActive' : ''}`}>
+          <label htmlFor='dates' className='label'>
+            <p className='label__name label__name--text'>
+              Dates
+            </p>
+            <input
+              type='text'
+              className='input input--text'
+              id='dates'
+              onFocus={this.onFocus}
+              value={rangeString}
+              disabled={!isActive}
+            />
+          </label>
           <Picker
             lang={DATE_LANG}
             years={{ min: 2012, max: dayjs().year() }}

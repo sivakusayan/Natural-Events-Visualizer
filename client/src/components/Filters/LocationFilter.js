@@ -10,37 +10,55 @@ const LocationFilter = ({
   isActive,
   toggle,
 }) => (
-  <section>
+  <section className='filter filter--location'>
     <FilterHeader
       name='Location'
       isActive={isActive}
       toggle={toggle}
     />
-    <form>
-      <input
-        type='text'
-        name='latitude'
-        className={isValid.latitude ? '' : 'invalid'}
-        value={filter.latitude}
-        onChange={onChange.latitude}
-        disabled={!isActive}
-      />
-      <input
-        type='text'
-        name='longitude'
-        className={isValid.longitude ? '' : 'invalid'}
-        value={filter.longitude}
-        onChange={onChange.longitude}
-        disabled={!isActive}
-      />
-      <input
-        type='text'
-        name='radius'
-        className={isValid.radius ? '' : 'invalid'}
-        value={filter.radius}
-        onChange={onChange.radius}
-        disabled={!isActive}
-      />
+    <form className={`filter__form ${isActive ? 'isActive' : ''}`}>
+      <label className='label' htmlFor='latitude'>
+        <p className='label__name label__name--text'>
+          Latitude
+        </p>
+        <input
+          type='text'
+          name='latitude'
+          id='latitude'
+          className={`input input--text ${isValid.latitude ? '' : 'invalid'}`}
+          value={filter.latitude}
+          onChange={onChange.latitude}
+          disabled={!isActive}
+        />
+      </label>
+      <label htmlFor='longitude' className='label'>
+        <p className='label__name label__name--text'>
+          Longitude
+        </p>
+        <input
+          type='text'
+          name='longitude'
+          id='longitude'
+          className={`input input--text ${isValid.longitude ? '' : 'invalid'}`}
+          value={filter.longitude}
+          onChange={onChange.longitude}
+          disabled={!isActive}
+        />
+      </label>
+      <label htmlFor='radius' className='label'>
+        <p className='label__name label__name--text'>
+          Radius
+        </p>
+        <input
+          type='text'
+          name='radius'
+          id='radius'
+          className={`input input--text ${isValid.radius ? '' : 'invalid'}`}
+          value={filter.radius}
+          onChange={onChange.radius}
+          disabled={!isActive}
+        />
+      </label>
     </form>
   </section>
 );

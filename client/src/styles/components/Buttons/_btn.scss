@@ -1,4 +1,4 @@
-.btn-constainer {
+.btn-container {
   position: fixed;
   z-index: z(top);
   right: 0;
@@ -11,10 +11,13 @@
 
 .btn {
   display: flex;
+  width: 7rem;
   align-items: center;
   justify-content: center;
+  padding: padding(XXS) padding(XS);
   
-  box-shadow: shadow(small);
+  border-radius: radius(small);
+  box-shadow: shadow(medium);
   text-align: center;
 }
 
@@ -29,6 +32,7 @@
 
   &__icon { 
     height: 85%; 
+    width: 100%;
     fill: color(white);
   }
 }

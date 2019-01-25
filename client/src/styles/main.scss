@@ -1,16 +1,19 @@
-@import "base/reset";
-@import "base/variables";
-@import "base/functions";
+@import "abstracts/variables";
+@import "abstracts/functions";
 
+@import "base/reset";
 @import "base/base";
 @import "base/utilities";
 
-@import "components/Buttons/btn";
-@import "components/Loading/loadingIcon";
-@import "components/Loading/loadingScreen";
-@import "components/Menu/menu";
-@import "components/Pages/article";
-@import "components/Search/search";
-@import "components/Links/link";
-@import "components/Map/popup";
-@import "components/Filter/filter"
+@import "components/btn";
+@import "components/form";
+@import "components/link";
+@import "components/loadingIcon";
+@import "components/popup";
+@import "components/searchResult";
+
+@import "layout/article";
+@import "layout/filter";
+@import "layout/loadingScreen";
+@import "layout/menu";
+@import "layout/search";

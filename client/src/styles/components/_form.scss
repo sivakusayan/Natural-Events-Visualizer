@@ -1,0 +1,28 @@
+.form {
+  overflow: hidden;
+  height: 0rem;
+  
+  transition: height 0.3s, margin 0.3s;
+
+  &.isActive {
+    margin-top: margin(XS);
+    margin-bottom: margin(L);
+  }
+}
+
+.field__name {
+  height: 2rem;
+  color: color(black);
+  font-size: 1.3rem;
+}
+
+.field--text {
+  .field__input {
+    height: 3.5rem;
+    padding: padding(XXS) padding(XS);
+    
+    border: 1px solid black;
+    border-radius: radius(small);
+    box-shadow: shadow(small);
+  }
+}

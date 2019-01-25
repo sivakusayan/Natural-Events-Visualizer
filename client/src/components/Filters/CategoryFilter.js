@@ -26,16 +26,16 @@ const CategoryFilter = ({
         isActive={isActive}
         toggle={toggle}
       />
-      <form className={`filter__form ${isActive ? 'isActive' : ''}`}>
+      <form className={`form ${isActive ? 'isActive' : ''}`}>
         {Object.keys(CATEGORIES).map(categoryID => (
           <>
-            <label htmlFor={categoryID} className='label'>
-              <p className='label__name label__name--checkbox'>
+            <label htmlFor={categoryID} className='field field--checkbox'>
+              <p className='field__name'>
                 {CATEGORIES[categoryID].title}
               </p>
               <input
                 type='checkbox'
-                className='input input--checkbox'
+                className='field__input'
                 id={categoryID}
                 value={categoryID}
                 onClick={updateCategories}

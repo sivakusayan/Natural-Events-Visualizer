@@ -16,44 +16,44 @@ const LocationFilter = ({
       isActive={isActive}
       toggle={toggle}
     />
-    <form className={`filter__form ${isActive ? 'isActive' : ''}`}>
-      <label className='label' htmlFor='latitude'>
-        <p className='label__name label__name--text'>
+    <form className={`form ${isActive ? 'isActive' : ''}`}>
+      <label htmlFor='latitude' className='field field--text'>
+        <p className='field__name'>
           Latitude
         </p>
         <input
           type='text'
           name='latitude'
           id='latitude'
-          className={`input input--text ${isValid.latitude ? '' : 'invalid'}`}
+          className={`field__input ${isValid.latitude ? '' : 'invalid'}`}
           value={filter.latitude}
           onChange={onChange.latitude}
           disabled={!isActive}
         />
       </label>
-      <label htmlFor='longitude' className='label'>
-        <p className='label__name label__name--text'>
+      <label htmlFor='longitude' className='field field--text'>
+        <p className='field__name'>
           Longitude
         </p>
         <input
           type='text'
           name='longitude'
           id='longitude'
-          className={`input input--text ${isValid.longitude ? '' : 'invalid'}`}
+          className={`field__input ${isValid.longitude ? '' : 'invalid'}`}
           value={filter.longitude}
           onChange={onChange.longitude}
           disabled={!isActive}
         />
       </label>
-      <label htmlFor='radius' className='label'>
-        <p className='label__name label__name--text'>
+      <label htmlFor='radius' className='field field--text'>
+        <p className='field__name'>
           Radius
         </p>
         <input
           type='text'
           name='radius'
           id='radius'
-          className={`input input--text ${isValid.radius ? '' : 'invalid'}`}
+          className={`field__input ${isValid.radius ? '' : 'invalid'}`}
           value={filter.radius}
           onChange={onChange.radius}
           disabled={!isActive}

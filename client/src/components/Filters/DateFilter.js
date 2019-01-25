@@ -48,14 +48,14 @@ class DateFilter extends React.Component {
           isActive={isActive}
           toggle={toggle}
         />
-        <form className={`filter__form ${isActive ? 'isActive' : ''}`}>
-          <label htmlFor='dates' className='label'>
-            <p className='label__name label__name--text'>
+        <form className={`form ${isActive ? 'isActive' : ''}`}>
+          <label htmlFor='dates' className='field field--text'>
+            <p className='field__name'>
               Dates
             </p>
             <input
               type='text'
-              className='input input--text'
+              className='field__input'
               id='dates'
               onFocus={this.onFocus}
               value={rangeString}

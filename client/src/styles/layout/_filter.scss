@@ -33,7 +33,6 @@
     background: color(black);
     border-radius: radius(small);
     color: color(white);
-    font-size: 1.5rem;
   }
 
   &__title {
@@ -54,14 +53,23 @@
   }
 
   .form.isActive {
-    height: 25rem;
+    height: 31rem;
   }
 
   .field {
-    display: flex;
-    width: 33%;
-    align-items: center;
-    justify-content: space-around;
+    width: 50%;
+    padding: padding(XXS) padding(XS);
+    margin-bottom: margin(S);
+
+    &__name {
+      display: flex;
+      width: 80%;
+      align-items: center;
+      margin-left: margin(XXS);
+
+      font-size: 1.4rem;
+      line-height: 1.8rem;
+    }
   }
 }
 

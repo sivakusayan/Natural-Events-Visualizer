@@ -26,3 +26,36 @@
     box-shadow: shadow(small);
   }
 }
+
+.field--checkbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+
+  .field__input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  .field__checkbox {
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    margin-right: margin(XXS);
+
+    border: 1px solid black;
+    background-color: currentColor;
+    border-radius: radius(big);
+    color: color(white);
+    font-size: 1.5rem;
+    transition: all 0.3s;
+  }
+
+  .field__input:checked + .field__checkbox {
+    background-color: color(black);
+  }
+}

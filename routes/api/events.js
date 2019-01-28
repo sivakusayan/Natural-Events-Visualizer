@@ -48,7 +48,6 @@ router.get('/', (req, res) => {
         $lt: req.query.endDate,
       },
     };
-    console.log(query);
   } else if (req.query.startDate) {
     query['geometry.date'] = { $elemMatch: { $gte: req.query.startDate } };
   } else if (req.query.endDate) {

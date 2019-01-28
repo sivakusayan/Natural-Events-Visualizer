@@ -12,6 +12,9 @@ const SearchResult = ({ event, selectEvent }) => {
   const onKeyPress = (e) => {
     if (e.key === 'Enter') onClick();
   };
+  const style = {
+    borderLeft: `4px solid ${CATEGORIES[event.properties.category].color}`,
+  };
   return (
     <li
       tabIndex={0}
@@ -19,6 +22,7 @@ const SearchResult = ({ event, selectEvent }) => {
       onKeyPress={onKeyPress}
       role='menuItem'
       className='search-result'
+      style={style}
     >
       <div className='search-result__category'>
         <svg className='search-result__icon'>

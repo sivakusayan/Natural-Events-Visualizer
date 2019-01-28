@@ -123,14 +123,19 @@ button:disabled {
 
 .btn {
   display: flex;
-  width: 7rem;
+  width: 9rem;
   align-items: center;
   justify-content: center;
-  padding: 0.55rem 1.1rem;
+  padding: 0.55rem 2.2rem;
+  border: none;
+  background-color: #F9F9F9;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  color: #333333;
+  font-size: 1.5rem;
   pointer-events: all;
-  text-align: center; }
+  text-align: center;
+  transition: all 0.3s; }
 
 .btn--big {
   width: 7rem;
@@ -140,8 +145,8 @@ button:disabled {
   background: #333333;
   border-radius: 50%; }
   .btn--big__icon {
-    height: 85%;
     width: 100%;
+    height: 85%;
     fill: #F9F9F9; }
 
 .form {
@@ -163,6 +168,31 @@ button:disabled {
   border: 1px solid black;
   border-radius: 5px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); }
+
+.field--checkbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: start; }
+  .field--checkbox .field__input {
+    width: 0;
+    height: 0;
+    opacity: 0; }
+  .field--checkbox .field__checkbox {
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.55rem;
+    border: 1px solid black;
+    background-color: currentColor;
+    border-radius: 50%;
+    color: #F9F9F9;
+    font-size: 1.5rem;
+    transition: all 0.3s; }
+  .field--checkbox .field__input:checked + .field__checkbox {
+    background-color: #333333; }
 
 .link {
   color: #00C896;
@@ -351,8 +381,7 @@ button:disabled {
     padding: 1.1rem 1.65rem;
     background: #333333;
     border-radius: 5px;
-    color: #F9F9F9;
-    font-size: 1.5rem; }
+    color: #F9F9F9; }
   .filter__title {
     font-size: 1.9rem; }
 
@@ -366,13 +395,19 @@ button:disabled {
   justify-content: start; }
 
 .filter--categories .form.isActive {
-  height: 25rem; }
+  height: 31rem; }
 
 .filter--categories .field {
-  display: flex;
-  width: 33%;
-  align-items: center;
-  justify-content: space-around; }
+  width: 50%;
+  padding: 0.55rem 1.1rem;
+  margin-bottom: 1.65rem; }
+  .filter--categories .field__name {
+    display: flex;
+    width: 80%;
+    align-items: center;
+    margin-left: 0.55rem;
+    font-size: 1.4rem;
+    line-height: 1.8rem; }
 
 .filter--location .form {
   display: flex;

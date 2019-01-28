@@ -30,9 +30,6 @@ const CategoryFilter = ({
         {Object.keys(CATEGORIES).map(categoryID => (
           <>
             <label htmlFor={categoryID} className='field field--checkbox'>
-              <p className='field__name'>
-                {CATEGORIES[categoryID].title}
-              </p>
               <input
                 type='checkbox'
                 className='field__input'
@@ -42,6 +39,10 @@ const CategoryFilter = ({
                 checked={filter.includes(categoryID)}
                 disabled={!isActive}
               />
+              <div className='field__checkbox'>&#10004;</div>
+              <p className='field__name'>
+                {CATEGORIES[categoryID].title}
+              </p>
             </label>
           </>
         ))}

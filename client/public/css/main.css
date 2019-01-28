@@ -9,6 +9,9 @@
   DECORATIONS
   ------------------------------------------------------------------*/
 /*------------------------------------------------------------------
+  BREAKPOINTS
+  ------------------------------------------------------------------*/
+/*------------------------------------------------------------------
   POSITION
   ------------------------------------------------------------------*/
 /*------------------------------------------------------------------
@@ -16,6 +19,12 @@
   ------------------------------------------------------------------*/
 /*------------------------------------------------------------------
   DECORATIONS
+  ------------------------------------------------------------------*/
+/*------------------------------------------------------------------
+  BREAKPOINTS
+  ------------------------------------------------------------------*/
+/*------------------------------------------------------------------
+  UTILS
   ------------------------------------------------------------------*/
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -72,6 +81,15 @@ table {
 html {
   box-sizing: border-box;
   font-size: 62.5%; }
+  @media only screen and (min-width: 25em) {
+    html {
+      font-size: 70%; } }
+  @media only screen and (min-width: 37.5em) {
+    html {
+      font-size: 75%; } }
+  @media only screen and (min-width: 46.875em) {
+    html {
+      font-size: 80%; } }
 
 body {
   font-family: 'Roboto', Helvetica, Arial, sans-serif; }
@@ -238,6 +256,9 @@ button:disabled {
   width: 25rem;
   height: auto;
   background-color: #F9F9F9; }
+  @media only screen and (min-width: 25em) {
+    .popup {
+      width: 33rem; } }
   .popup__primary {
     padding: 1.1rem; }
   .popup__primary {
@@ -251,6 +272,10 @@ button:disabled {
     font-weight: 500;
     line-height: 2.7rem;
     text-align: center; }
+    @media only screen and (min-width: 25em) {
+      .popup__title {
+        font-size: 2.1rem;
+        line-height: 3rem; } }
   .popup__event-icon {
     width: 60%;
     height: 10rem; }
@@ -262,15 +287,30 @@ button:disabled {
     align-items: center;
     margin: 1.1rem;
     font-size: 1.2rem; }
+    @media only screen and (min-width: 25em) {
+      .popup__date, .popup__location, .popup__search {
+        font-size: 1.5rem; } }
   .popup__date-icon, .popup__location-icon, .popup__search-icon {
     width: 2rem;
     height: 2rem;
     margin-right: 1.65rem; }
-  .popup__sub-heading, .popup__sources {
+    @media only screen and (min-width: 25em) {
+      .popup__date-icon, .popup__location-icon, .popup__search-icon {
+        width: 3rem;
+        height: 3rem; } }
+  .popup__sub-title, .popup__sources {
     margin-left: 1.1rem; }
-  .popup__sub-heading {
+  .popup__sub-title {
     margin-bottom: 1.1rem;
     font-size: 1.5rem; }
+    @media only screen and (min-width: 25em) {
+      .popup__sub-title {
+        font-size: 1.8rem; } }
+  .popup__source {
+    font-size: 1rem; }
+    @media only screen and (min-width: 25em) {
+      .popup__source {
+        font-size: 1.3rem; } }
   .popup__sources {
     display: flex;
     flex-wrap: wrap; }
@@ -284,13 +324,17 @@ button:disabled {
   margin: 1.65rem 0;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }
+  @media only screen and (min-width: 46.875em) {
+    .search-result {
+      width: 45%;
+      height: 12rem; } }
   .search-result__info {
     display: flex;
     width: 50%;
-    padding: 1.1rem;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around; }
+    justify-content: space-around;
+    padding: 1.1rem; }
   .search-result__title {
     font-size: 1.7rem;
     font-weight: 500;
@@ -322,7 +366,7 @@ button:disabled {
   padding: 3.3rem 2.75rem;
   background-color: #F9F9F9;
   color: #333333;
-  overflow-x: scroll; }
+  overflow-y: scroll; }
   .article::after {
     display: block;
     width: 1rem;
@@ -362,7 +406,7 @@ button:disabled {
   width: 100vw;
   height: 100vh;
   background-color: #F9F9F9;
-  overflow-x: scroll; }
+  overflow-x: hidden; }
   .filters::after {
     display: block;
     width: 1rem;
@@ -470,9 +514,12 @@ button:disabled {
   width: 100vw;
   height: 100vh;
   background-color: #F9F9F9;
-  overflow-x: scroll; }
+  overflow-x: hidden; }
   .search .btn-container {
     bottom: 7rem; }
+    @media only screen and (min-width: 37.5em) {
+      .search .btn-container {
+        bottom: 0; } }
   .search__form {
     position: fixed;
     right: 50%;
@@ -480,13 +527,19 @@ button:disabled {
     width: 90%;
     height: 5rem;
     transform: translateX(50%); }
+    @media only screen and (min-width: 37.5em) {
+      .search__form {
+        bottom: 2.5rem;
+        width: 60%; } }
   .search__input {
     width: 100%;
     height: 100%;
     padding: 1.65rem 2.2rem;
     border: 2px solid #333333;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    color: #333333;
+    font-size: 2rem; }
   .search::after {
     display: block;
     width: 1rem;
@@ -499,5 +552,10 @@ button:disabled {
   flex-direction: column;
   align-items: center;
   justify-content: center; }
+  @media only screen and (min-width: 46.875em) {
+    .search-results {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around; } }
   .search-results .loadingIcon {
     color: #333333; }

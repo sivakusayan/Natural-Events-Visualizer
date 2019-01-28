@@ -5,10 +5,16 @@
   background-color: color(white);
   // We add this scroll here in order to not have any jumpy transitions during
   // the transition from react-router-transition
-  overflow-x: scroll;
+  overflow-x: hidden;
 
   .btn-container {
+    // Make room for searchbar on bottom
     bottom: 7rem;
+
+    // Searchbar has enough space, bring back to bottom
+    @include bp(XS) {
+      bottom: 0;
+    }
   }
 
   &__form {
@@ -19,6 +25,13 @@
     width: 90%;
     height: 5rem;
     transform: translateX(50%);
+
+    @include bp(XS) {
+      // align center with buttons
+      bottom: 2.5rem;
+      // Shorten so buttons have room
+      width: 60%;
+    }
   }
 
   &__input {
@@ -29,6 +42,8 @@
     border: 2px solid color(black);
     border-radius: radius(small);
     box-shadow: shadow(medium);
+    color: color(black);
+    font-size: 2rem;
   }
 
   // Gives us space at the bottom of every page for the 
@@ -48,6 +63,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  // Temporarily wrap elements for screens that 
+  // are wider than mobile but not wide enough
+  // for desktop layout
+  @include bp(S) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
 
   .loadingIcon {
     color: color(black);

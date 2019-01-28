@@ -37,3 +37,19 @@
 @function radius($radius) {
   @return map-get($radii, $radius );
 }
+
+/*------------------------------------------------------------------
+  BREAKPOINTS
+  ------------------------------------------------------------------*/
+
+@function breakpoint($breakpoint) {
+  @return map-get($breakpoints, $breakpoint);
+}
+
+/*------------------------------------------------------------------
+  UTILS
+  ------------------------------------------------------------------*/
+@function em($pixels) {
+  @return $pixels/16px * 1em;
+}
+  

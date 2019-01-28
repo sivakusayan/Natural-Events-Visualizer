@@ -12,6 +12,8 @@
   height: auto;
   background-color: color(white);
 
+  @include bp(XXS) { width: 33rem; }
+
   &__primary {
     padding: padding(XS);
   }
@@ -30,6 +32,11 @@
     line-height: 2.7rem;
 
     text-align: center;
+
+    @include bp(XXS) {
+      font-size: 2.1rem;
+      line-height: 3rem;
+    }
   }
 
   &__event-icon {
@@ -50,6 +57,8 @@
     align-items: center;
     margin: margin(XS);
     font-size: 1.2rem;
+    
+    @include bp(XXS) { font-size: 1.5rem; }
   }
 
   &__date-icon,
@@ -58,16 +67,31 @@
     width: 2rem;
     height: 2rem;
     margin-right: margin(S);
+
+    @include bp(XXS) {
+      width: 3rem;
+      height: 3rem;
+    }
   }
 
-  &__sub-heading,
+  &__sub-title,
   &__sources {
     margin-left: margin(XS);
   }
 
-  &__sub-heading {
+  &__sub-title {
     margin-bottom: margin(XS);
     font-size: 1.5rem;
+
+    @include bp(XXS) {
+      font-size: 1.8rem;
+    }
+  }
+
+  &__source {
+    font-size: 1rem;
+
+    @include bp(XXS) { font-size: 1.3rem; }
   }
 
   &__sources {

@@ -4,7 +4,7 @@
   background-color: color(white);
   // We add this scroll here in order to not have any jumpy transitions during
   // the transition from react-router-transition
-  overflow-x: scroll;
+  overflow-x: hidden;
 
   // Gives us space at the bottom of every page for the 
   // back button without needing to create a new padding

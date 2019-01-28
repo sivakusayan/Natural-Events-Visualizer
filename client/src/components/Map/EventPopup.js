@@ -78,7 +78,7 @@ const EventPopup = ({ selectedEvent, coordinates }) => {
         </div>
         {sources.length > 0 && (
         <div className='popup__tertiary'>
-          <h4 className='popup__sub-heading'>Additional Sources</h4>
+          <h4 className='popup__sub-title'>Additional Sources</h4>
           <ul className='popup__sources'>
             {sources.map(source => (
               <li className='popup__source'>

@@ -7,6 +7,10 @@
   // the transition from react-router-transition
   overflow-x: hidden;
 
+  @include bp(M) {
+    width: 100%;
+  }
+
   .btn-container {
     // Make room for searchbar on bottom
     bottom: 7rem;
@@ -32,6 +36,16 @@
       // Shorten so buttons have room
       width: 60%;
     }
+
+    // Move searchbar from bottom to top since we don't
+    // need to account for thumbs on mobile devices
+    @include bp(M) {
+      position: sticky;
+      top: 0;
+      right: 0;
+      width: 100%;
+      transform: none;
+    }
   }
 
   &__input {
@@ -44,6 +58,12 @@
     box-shadow: shadow(medium);
     color: color(black);
     font-size: 2rem;
+
+    @include bp(M) {
+      border: none;
+      border-bottom: 2px solid color(black);
+      border-radius: 0;
+    }
   }
 
   // Gives us space at the bottom of every page for the 
@@ -71,6 +91,12 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+  }
+
+  // Expand back for desktop layout
+  @include bp(M) {
+    flex-direction: column;
+    flex-wrap: nowrap;
   }
 
   .loadingIcon {

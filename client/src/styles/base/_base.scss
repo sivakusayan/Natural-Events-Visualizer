@@ -27,8 +27,6 @@ body {
   top: 10px;
 }
 
-// Want div wrapper to be on top while a component is rendered by
-// react router ...
 div.overlay {
   z-index: z(topMost);
 }
@@ -41,12 +39,36 @@ button:disabled {
   cursor: default;
 }
 
+#app {
+  display: flex;
+}
+
+main {
+  height: 100vh;
+  width: 100vw;
+
+  @include bp(M) {
+    width: 70%;
+  }
+}
+
+.side-bar {
+  width: 30%;
+}
+
 .switch-wrapper {
   position: absolute;
-  min-width: 100vw;
-  min-height: 100vh;
+  width: 100%;
+  height: 100%;
+
+  // Switch is now in sidebar rather than overlay
+  @include bp(M) { position: relative; }
 }
  
 .switch-wrapper > div {
   position: absolute;
+
+  @include bp(M) {
+    width: 100%;
+  }
 }

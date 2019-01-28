@@ -8,6 +8,9 @@
   width: 100%;
   justify-content: space-between;
   pointer-events: none;
+
+  // Don't need button container on desktop layout
+  @include bp(M) { display: none; }
 }
 
 .btn {

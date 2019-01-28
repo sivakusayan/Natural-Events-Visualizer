@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import { AnimatedSwitch } from 'react-router-transition';
 
 import Menu from '../components/Menu/index';
@@ -8,7 +8,7 @@ import Filters from '../components/Filters/index';
 import About from '../components/Pages/About';
 import Credits from '../components/Pages/Credits';
 
-const AppRouter = ({ location }) => (
+const MobileRouter = ({ location }) => (
   <AnimatedSwitch
     atEnter={{ opacity: 0 }}
     atLeave={{ opacity: 0 }}
@@ -26,4 +26,4 @@ const AppRouter = ({ location }) => (
   </AnimatedSwitch>
 );
 
-export default withRouter(AppRouter);
+export default withRouter(MobileRouter);

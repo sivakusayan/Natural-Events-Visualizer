@@ -15,6 +15,11 @@
     height: 12rem;
   }
 
+  // Expand back for desktop layout
+  @include bp(M) {
+    width: 90%;
+  }
+
   &__info {
     display: flex;
     width: 50%;

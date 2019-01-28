@@ -1,15 +1,27 @@
 
 import React from 'react';
+import MediaQuery from 'react-responsive';
 
-import AppRouter from '../routes/AppRouter';
+import MobileRouter from '../routes/MobileRouter';
+import DesktopRouter from '../routes/DesktopRouter';
 import Home from './Pages/Home';
 
 const EventVisualizer = () => (
   <>
-    <AppRouter />
-    {/* Don't unmount homepage map for performance purposes. 
+    <MediaQuery query='(min-device-width: 56.25em)'>
+      <div className='side-bar'>
+        <DesktopRouter />
+      </div>
+      {/* Don't unmount homepage map for performance purposes. 
         Hide it instead with stacking context. */}
-    <Home />
+      <Home />
+    </MediaQuery>
+    <MediaQuery query='(max-device-width: 56.24em)'>
+      <MobileRouter />
+      {/* Don't unmount homepage map for performance purposes. 
+        Hide it instead with stacking context. */}
+      <Home />
+    </MediaQuery>
   </>
 );
 

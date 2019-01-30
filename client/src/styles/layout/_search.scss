@@ -5,10 +5,11 @@
   background-color: color(white);
   // We add this scroll here in order to not have any jumpy transitions during
   // the transition from react-router-transition
-  overflow-x: hidden;
+  overflow: hidden;
 
   @include bp(M) {
     width: 100%;
+    height: 95vh;
   }
 
   .btn-container {
@@ -79,10 +80,10 @@
 
 .search-results {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  overflow-y: scroll;
 
   // Temporarily wrap elements for screens that 
   // are wider than mobile but not wide enough
@@ -97,9 +98,11 @@
   @include bp(M) {
     flex-direction: column;
     flex-wrap: nowrap;
+    justify-content: start;
   }
 
   .loadingIcon {
     color: color(black);
   }
+
 }

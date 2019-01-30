@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import { AnimatedSwitch } from 'react-router-transition';
 
-import Menu from '../components/Menu/index';
+import Menu from '../components/Menu/Menu';
 import SearchContainer from '../containers/Search/indexContainer';
 import Filters from '../components/Filters/index';
 import About from '../components/Pages/About';

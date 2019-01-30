@@ -1,6 +1,8 @@
 .search-result {
   display: flex;
   width: 90%;
+  // We don't want events getting crushed
+  flex-shrink: 0;
   justify-content: space-around;
   margin: margin(S) 0;
   border-radius: radius(small);
@@ -18,6 +20,11 @@
   // Expand back for desktop layout
   @include bp(M) {
     width: 90%;
+    margin: margin(XS) 0;
+  }
+
+  @include bp(L) {
+    height: 10rem;
   }
 
   &__info {
@@ -35,6 +42,11 @@
     line-height: 2.4rem;
 
     text-align: center;
+
+    @include bp(M) {
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+    }
   }
 
   &__location {
@@ -42,6 +54,11 @@
     font-size: 1.3rem;
     line-height: 1.8rem;
     text-align: center;
+
+    @include bp(M) {
+      font-size: 1rem;
+      line-height: 1.4rem;
+    }
   }
 
   &__category {

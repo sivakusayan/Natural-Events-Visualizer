@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Link } from 'react-router-dom';
+
 class Searchbar extends React.Component {
   state = {
     searchQuery: '',
@@ -43,18 +45,25 @@ class Searchbar extends React.Component {
   render() {
     const { searchQuery } = this.state;
     return (
-      <form
-        onSubmit={this.handleSubmit}
-        className='search__form'
-      >
-        <input
-          type='search'
-          placeholder='Search here'
-          onChange={this.handleChange}
-          value={searchQuery}
-          className='search__input'
-        />
-      </form>
+      <>
+        <Link className='search__button' to='/filters' title='Search Filters' alt='Search Filters'>
+          <svg className='search__icon'>
+            <use href='icons/spritesheet.svg#filter' />
+          </svg>
+        </Link>
+        <form
+          onSubmit={this.handleSubmit}
+          className='search__form'
+        >
+          <input
+            type='search'
+            placeholder='Search here'
+            onChange={this.handleChange}
+            value={searchQuery}
+            className='search__input'
+          />
+        </form>
+      </>
     );
   }
 }

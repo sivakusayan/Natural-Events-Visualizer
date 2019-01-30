@@ -5,10 +5,12 @@ import MediaQuery from 'react-responsive';
 import MobileRouter from '../routes/MobileRouter';
 import DesktopRouter from '../routes/DesktopRouter';
 import Home from './Pages/Home';
+import Menu from './Menu/Menu';
 
 const EventVisualizer = () => (
   <>
     <MediaQuery query='(min-device-width: 56.25em)'>
+      <Menu />
       <div className='side-bar'>
         <DesktopRouter />
       </div>

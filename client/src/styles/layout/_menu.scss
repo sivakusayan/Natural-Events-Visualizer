@@ -8,10 +8,15 @@
 
   background: rgba(color(white), 0.9);
 
+  @include bp(M) {
+    min-height: 5vh;
+    flex-direction: row;
+  }
+
   &__link {
     width: 60%;
-    padding: padding(S);
-    margin: margin(M);
+    padding: padding(XS);
+    margin: margin(XS);
     
     background: color(black);
     border-radius: radius(small);
@@ -21,5 +26,10 @@
     font-weight: 300;
     text-align: center;
     text-decoration: none;
+
+    @include bp(M) {
+      width: 10%;
+      font-size: 1.5rem;
+    }
   }
 }

@@ -14,9 +14,9 @@ const DesktopRouter = () => (
     // loading the map over and over again would be too
     // expensive.
     className='switch-wrapper'
-  >
-    <Route path='/' component={SearchContainer} />
+  > 
     <Route path='/filters' component={Filters} />
+    <Route path='/' component={SearchContainer} />
   </AnimatedSwitch>
 );
 

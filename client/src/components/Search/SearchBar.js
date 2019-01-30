@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import MediaQuery from 'react-responsive';
 
 import { Link } from 'react-router-dom';
 
@@ -46,11 +47,14 @@ class Searchbar extends React.Component {
     const { searchQuery } = this.state;
     return (
       <>
-        <Link className='search__button' to='/filters' title='Search Filters' alt='Search Filters'>
-          <svg className='search__icon'>
-            <use href='icons/spritesheet.svg#filter' />
-          </svg>
-        </Link>
+        {/* If smaller than this device width, we have the btn-container to navigate */}
+        <MediaQuery query='(min-device-width: 56.25em)'>
+          <Link className='btn btn--small' to='/filters' title='Search Filters' alt='Search Filters'>
+            <svg className='search__icon'>
+              <use href='icons/spritesheet.svg#filter' />
+            </svg>
+          </Link>
+        </MediaQuery>
         <form
           onSubmit={this.handleSubmit}
           className='search__form'

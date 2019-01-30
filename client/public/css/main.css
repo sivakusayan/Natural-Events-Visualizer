@@ -240,6 +240,11 @@ main {
     color: #F9F9F9;
     font-size: 1.5rem;
     transition: all 0.3s; }
+    @media only screen and (min-width: 56.25em) {
+      .field--checkbox .field__checkbox {
+        width: 1.2rem;
+        height: 1.2rem;
+        font-size: 1rem; } }
   .field--checkbox .field__input:checked + .field__checkbox {
     background-color: #333333; }
 
@@ -463,7 +468,7 @@ main {
     margin-bottom: 1.65rem; }
 
 .filters {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background-color: #F9F9F9;
   overflow-x: hidden; }

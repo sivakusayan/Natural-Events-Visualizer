@@ -2,12 +2,7 @@
   overflow: hidden;
   height: 0rem;
   
-  transition: height 0.3s, margin 0.3s;
-
-  &.isActive {
-    margin-top: margin(XS);
-    margin-bottom: margin(L);
-  }
+  transition: all 0.3s;
 }
 
 .field__name {
@@ -24,6 +19,10 @@
     border: 1px solid black;
     border-radius: radius(small);
     box-shadow: shadow(small);
+
+    &.invalid {
+      border: 1px solid red;
+    }
   }
 }
 

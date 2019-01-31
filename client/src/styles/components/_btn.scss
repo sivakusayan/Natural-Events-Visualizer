@@ -2,7 +2,7 @@
   position: fixed;
   z-index: z(top);
   right: 0;
-  bottom: 0;
+  bottom: 1rem;
   display: flex;
 
   width: 100%;
@@ -15,22 +15,26 @@
 
 .btn {
   display: flex;
-  width: 9rem;
   align-items: center;
   justify-content: center;
-  padding: padding(XXS) padding(M);
-  
+
   border: none;
-  background-color: color(white);
-  border-radius: radius(small);
-  box-shadow: shadow(medium);
-  color: color(black);
-  font-size: 1.5rem;
-  // Manually enable pointer events since parent has pointer-events
+  // Manually enable pointer events since .btn-container has pointer-events
   // disabled.
   pointer-events: all;
   text-align: center;
   transition: all 0.3s;
+}
+
+.btn--filter {
+  width: 9rem;
+  padding: padding(XS) padding(M);
+  
+  background-color: color(black);
+  border-radius: radius(small);
+  box-shadow: shadow(medium);
+  color: color(white);
+  font-size: 1.5rem;
 }
 
 .btn--big {

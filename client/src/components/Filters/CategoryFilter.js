@@ -20,13 +20,13 @@ const CategoryFilter = ({
   };
 
   return (
-    <section className='filter filter--categories'>
+    <section className={`filter filter--categories ${isActive ? 'isActive' : ''}`}>
       <FilterHeader
-        name='Categories'
+        name='Categories Filter'
         isActive={isActive}
         toggle={toggle}
       />
-      <form className={`form ${isActive ? 'isActive' : ''}`}>
+      <form className='form'>
         {Object.keys(CATEGORIES).map(categoryID => (
           <>
             <label htmlFor={categoryID} className='field field--checkbox'>

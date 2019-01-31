@@ -5,7 +5,7 @@ const FilterHeader = ({ name, isActive, toggle }) => (
   <div className='filter__header'>
     <p className='filter__title'>{name}</p>
     <button
-      className={`btn ${isActive ? 'btn--disable' : 'btn--enable'}`}
+      className='btn btn--filter'
       onClick={toggle}
       type='button'
     >

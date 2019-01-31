@@ -10,13 +10,13 @@ const LocationFilter = ({
   isActive,
   toggle,
 }) => (
-  <section className='filter filter--location'>
+  <section className={`filter filter--location ${isActive ? 'isActive' : ''}`}>
     <FilterHeader
-      name='Location'
+      name='Location Filter'
       isActive={isActive}
       toggle={toggle}
     />
-    <form className={`form ${isActive ? 'isActive' : ''}`}>
+    <form className='form'>
       <label htmlFor='latitude' className='field field--text'>
         <p className='field__name'>
           Latitude

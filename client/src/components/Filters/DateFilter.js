@@ -42,13 +42,13 @@ class DateFilter extends React.Component {
     const formattedEndDate = `${DATE_LANG.months[endDate.month - 1]}, ${endDate.year}`;
     const rangeString = `${formattedStartDate} through ${formattedEndDate}`;
     return (
-      <section className='filter filter--dates'>
+      <section className={`filter filter--dates ${isActive ? 'isActive' : ''}`}>
         <FilterHeader
-          name='Dates'
+          name='Dates Filter'
           isActive={isActive}
           toggle={toggle}
         />
-        <form className={`form ${isActive ? 'isActive' : ''}`}>
+        <form className='form'>
           <label htmlFor='dates' className='field field--text'>
             <p className='field__name'>
               Dates

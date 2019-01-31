@@ -23,6 +23,11 @@
 
 .filter {
   margin: margin(S);
+  transition: all 0.3s;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid black;
+  }
 
   &__header {
     display: flex;
@@ -30,13 +35,36 @@
     justify-content: space-between;
     padding: padding(XS) padding(S);
 
-    background: color(black);
+    background-color: color(white);
     border-radius: radius(small);
-    color: color(white);
+    color: color(black);
   }
 
   &__title {
+    width: 60%;
+    height: 100%;
     font-size: 1.9rem;
+    transition: all 0.3s;
+  }
+}
+
+.filter.isActive {
+
+  .filter__header { 
+    background-color: color(black);
+    color: color(white);
+  }
+  // Want filters to be bunched up at first, but create whitespace around
+  // the filters that are activated to make sure input fields don't get
+  // physically closer to another filter.
+  .form {
+    margin-top: margin(XS);
+    margin-bottom: margin(L);
+  }
+
+  .btn--filter {
+    background-color: color(white);
+    color: color(black);
   }
 }
 
@@ -50,10 +78,6 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: start;
-  }
-
-  .form.isActive {
-    height: 31rem;
   }
 
   .field {
@@ -73,6 +97,10 @@
   }
 }
 
+.filter--categories.isActive {
+  .form { height: 31rem; }
+}
+
 .filter--location {
   .form {
     display: flex;
@@ -80,21 +108,21 @@
     justify-content: space-around;
   }
 
-  .form.isActive {
-    height: 8rem;
-  }
-
   .field__input {
     width: 8rem;
   }
 }
 
-.filter--dates {
-  .form.isActive {
-    height: 6rem;
-  }
+.filter--location.isActive {
+  .form { height: 8rem; }
+}
 
+.filter--dates {
   .field__input {
     width: 20rem;
   }
+}
+
+.filter--dates.isActive {
+  .form { height: 6rem; }
 }

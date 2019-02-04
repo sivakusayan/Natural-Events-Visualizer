@@ -245,8 +245,8 @@ main {
     transition: all 0.3s; }
     @media only screen and (min-width: 56.25em) {
       .field--checkbox .field__checkbox {
-        width: 1.2rem;
-        height: 1.2rem;
+        width: 2rem;
+        height: 2rem;
         font-size: 1rem; } }
   .field--checkbox .field__input:checked + .field__checkbox {
     background-color: #333333; }
@@ -489,12 +489,14 @@ main {
     width: 1rem;
     height: 10rem;
     content: ''; }
+  .filters .btn--small {
+    margin: 1.65rem; }
 
 /*------------------------------------------------------------------
   GENERAL FILTERS
   ------------------------------------------------------------------*/
 .filter {
-  margin: 1.65rem;
+  margin: 1.1rem;
   transition: all 0.3s; }
   .filter:not(:last-child) {
     border-bottom: 1px solid black; }
@@ -506,11 +508,27 @@ main {
     background-color: #F9F9F9;
     border-radius: 5px;
     color: #333333; }
+    @media only screen and (min-width: 56.25em) {
+      .filter__header {
+        flex-direction: column;
+        align-items: flex-start; } }
+    @media only screen and (min-width: 81.25em) {
+      .filter__header {
+        flex-direction: row;
+        align-items: space-around; } }
   .filter__title {
     width: 60%;
     height: 100%;
     font-size: 1.9rem;
     transition: all 0.3s; }
+    @media only screen and (min-width: 56.25em) {
+      .filter__title {
+        width: 100%;
+        margin-bottom: 1.1rem; } }
+    @media only screen and (min-width: 81.25em) {
+      .filter__title {
+        width: 60%;
+        margin-bottom: 0; } }
 
 .filter.isActive .filter__header {
   background-color: #333333;
@@ -532,11 +550,18 @@ main {
   flex-wrap: wrap;
   align-items: center;
   justify-content: start; }
+  @media only screen and (min-width: 56.25em) {
+    .filter--categories .form {
+      flex-direction: column;
+      flex-wrap: nowrap; } }
 
 .filter--categories .field {
   width: 50%;
   padding: 0.55rem 1.1rem;
   margin-bottom: 1.65rem; }
+  @media only screen and (min-width: 56.25em) {
+    .filter--categories .field {
+      width: 100%; } }
   .filter--categories .field__name {
     display: flex;
     width: 80%;
@@ -547,23 +572,49 @@ main {
 
 .filter--categories.isActive .form {
   height: 31rem; }
+  @media only screen and (min-width: 56.25em) {
+    .filter--categories.isActive .form {
+      height: 50rem; } }
 
 .filter--location .form {
   display: flex;
   align-items: center;
   justify-content: space-around; }
+  @media only screen and (min-width: 56.25em) {
+    .filter--location .form {
+      flex-direction: column; } }
 
 .filter--location .field__input {
   width: 8rem; }
+  @media only screen and (min-width: 56.25em) {
+    .filter--location .field__input {
+      width: 14rem; } }
 
 .filter--location.isActive .form {
   height: 8rem; }
+  @media only screen and (min-width: 56.25em) {
+    .filter--location.isActive .form {
+      height: 20rem; } }
+
+@media only screen and (min-width: 56.25em) {
+  .filter--dates .form {
+    flex-direction: column;
+    align-items: center; } }
 
 .filter--dates .field__input {
   width: 20rem; }
+  @media only screen and (min-width: 56.25em) {
+    .filter--dates .field__input {
+      width: 100%; } }
+  @media only screen and (min-width: 75em) {
+    .filter--dates .field__input {
+      width: 20rem; } }
 
 .filter--dates.isActive .form {
-  height: 6rem; }
+  height: 30rem; }
+
+.month-picker {
+  position: absolute; }
 
 .loadingScreen {
   display: flex;

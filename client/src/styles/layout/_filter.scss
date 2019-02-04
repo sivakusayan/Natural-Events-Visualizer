@@ -15,6 +15,10 @@
     height: 10rem;
     content: '';
   }
+
+  .btn--small {
+    margin: margin(S);
+  }
 }
 
 /*------------------------------------------------------------------
@@ -22,7 +26,7 @@
   ------------------------------------------------------------------*/
 
 .filter {
-  margin: margin(S);
+  margin: margin(XS);
   transition: all 0.3s;
 
   &:not(:last-child) {
@@ -38,6 +42,16 @@
     background-color: color(white);
     border-radius: radius(small);
     color: color(black);
+
+    @include bp(M) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    @include bp(XL) {
+      flex-direction: row;
+      align-items: space-around;
+    }
   }
 
   &__title {
@@ -45,6 +59,16 @@
     height: 100%;
     font-size: 1.9rem;
     transition: all 0.3s;
+
+    @include bp(M) {
+      width: 100%;
+      margin-bottom: margin(XS);
+    }
+
+    @include bp(XL) {
+      width: 60%;
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -78,12 +102,21 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: start;
+
+    @include bp(M) {
+      flex-direction: column;
+      flex-wrap: nowrap;
+    }
   }
 
   .field {
     width: 50%;
     padding: padding(XXS) padding(XS);
     margin-bottom: margin(S);
+
+    @include bp(M) {
+      width: 100%;
+    }
 
     &__name {
       display: flex;
@@ -98,7 +131,13 @@
 }
 
 .filter--categories.isActive {
-  .form { height: 31rem; }
+  .form { 
+    height: 31rem; 
+
+    @include bp(M) {
+      height: 50rem;
+    }
+  }
 }
 
 .filter--location {
@@ -106,23 +145,56 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+
+    @include bp(M) {
+      flex-direction: column;
+    }
   }
 
   .field__input {
     width: 8rem;
+
+    @include bp(M) {
+      width: 14rem;
+    }
   }
 }
 
 .filter--location.isActive {
-  .form { height: 8rem; }
+  .form { 
+    height: 8rem; 
+
+    @include bp(M) {
+      height: 20rem;
+    }
+  }
 }
 
 .filter--dates {
+  .form {
+    @include bp(M) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
   .field__input {
     width: 20rem;
+
+    @include bp(M) {
+      width: 100%;
+    }
+
+    @include bp(L) {
+      width: 20rem;
+    }
   }
 }
 
 .filter--dates.isActive {
-  .form { height: 6rem; }
+  .form { height: 30rem; }
+}
+
+.month-picker {
+  // Make it so month picker isn't cut off
+  position: absolute;
 }

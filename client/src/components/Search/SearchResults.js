@@ -2,17 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import SearchResultContainer from '../../containers/Search/SearchResultContainer';
-import LoadingIcon from '../Loading/LoadingIcon';
 import Event from '../../propTypes/Event';
 
-const SearchResults = ({ events = [], isLoading, error }) => (
+const SearchResults = ({ events }) => (
   <ul className='search-results'>
-    {isLoading && <LoadingIcon className='search__loading-icon'/>}
-    {error && <h1 className='search__error'>Sorry, something went wrong.</h1>}
-    {(events.length === 0 && !isLoading && !error)
-      && <h1 className='search__error'>No search results have been found.</h1>}
-    {(!error && !isLoading)
-      && events.map(event => <SearchResultContainer key={event._id} event={event} />)}
+    {events.map(event => <SearchResultContainer key={event._id} event={event} />)}
   </ul>
 );
 

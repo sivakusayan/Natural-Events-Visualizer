@@ -3,9 +3,6 @@
   width: 100vw;
   height: 100vh;
   background-color: color(white);
-  // We add this scroll here in order to not have any jumpy transitions during
-  // the transition from react-router-transition
-  overflow: hidden;
 
   @include bp(M) {
     width: 100%;
@@ -28,7 +25,7 @@
     bottom: 3rem;
 
     width: 90%;
-    height: 5rem;
+    height: 5%;
     transform: translateX(50%);
 
     @include bp(XS) {
@@ -53,6 +50,19 @@
       box-shadow: shadow(medium);
     }
   }
+
+  &__message {
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+
+    .loadingIcon {
+      color: color(black);
+    }
+  }
+
 
   &__input {
     width: 100%;
@@ -81,13 +91,19 @@
     height: 15rem;
     content: '';
   }
+
+  @include bp(M) {
+    &::after {
+      height: 0;
+    }
+  }
 }
 
 .search-results {
   display: flex;
-  height: 100vh;
   flex-direction: column;
   align-items: center;
+  height: 95%;
   justify-content: center;
   overflow-y: scroll;
 
@@ -106,9 +122,4 @@
     flex-wrap: nowrap;
     justify-content: start;
   }
-
-  .loadingIcon {
-    color: color(black);
-  }
-
 }

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import SearchBarContainer from '../../containers/Search/SearchBarContainer';
 import SearchResults from './SearchResults';
+import LoadingIcon from '../Loading/LoadingIcon';
 
 const Search = ({
   setEvents,
@@ -37,11 +38,15 @@ const Search = ({
       setError={setError}
       removeError={removeError}
     />
-    <SearchResults
-      events={events}
-      isLoading={isLoading}
-      error={error}
-    />
+    {(!isLoading && !error && events.length > 0) ? <SearchResults events={events} />
+      : (
+        <div className='search__message'>
+          {isLoading && <LoadingIcon className='search__loading-icon' />}
+          {error && <h1 className='search__error'>Sorry, something went wrong.</h1>}
+          {(events.length === 0 && !isLoading && !error)
+            && <h1 className='search__error'>No search results have been found.</h1>}
+        </div>
+    )}
   </section>
 );
 

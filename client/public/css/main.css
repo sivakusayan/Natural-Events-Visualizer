@@ -118,18 +118,10 @@ main {
   height: 100vh; }
   @media only screen and (min-width: 56.25em) {
     main {
-      width: 70%;
-      height: 95vh; } }
+      width: 70%; } }
   @media only screen and (min-width: 75em) {
     main {
       width: 75%; } }
-
-.side-bar {
-  width: 30%;
-  height: 95vh; }
-  @media only screen and (min-width: 75em) {
-    .side-bar {
-      width: 25%; } }
 
 .switch-wrapper {
   position: absolute;
@@ -178,6 +170,9 @@ main {
   pointer-events: all;
   text-align: center;
   transition: all 0.3s; }
+  .btn__icon {
+    width: 100%;
+    height: 85%; }
 
 .btn--filter {
   width: 9rem;
@@ -195,9 +190,16 @@ main {
   margin: 1.65rem;
   background: #333333;
   border-radius: 50%; }
-  .btn--big__icon {
-    width: 100%;
-    height: 85%;
+  .btn--big .btn__icon {
+    fill: #F9F9F9; }
+
+.btn--small {
+  width: 4rem;
+  height: 4rem;
+  padding: 1.1rem;
+  background-color: #333333;
+  border-radius: 50%; }
+  .btn--small .btn__icon {
     fill: #F9F9F9; }
 
 .form {
@@ -426,6 +428,15 @@ main {
 .search-result:nth-child(odd) {
   background-color: #F9F9F9; }
 
+.side-bar {
+  z-index: 10;
+  width: 30%;
+  height: 100vh;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); }
+  @media only screen and (min-width: 75em) {
+    .side-bar {
+      width: 25%; } }
+
 .article {
   width: 100vw;
   height: 100vh;
@@ -583,7 +594,8 @@ main {
   @media only screen and (min-width: 56.25em) {
     .menu {
       min-height: 5vh;
-      flex-direction: row; } }
+      flex-direction: row;
+      display: none; } }
   .menu__link {
     width: 40%;
     padding: 1.65rem;
@@ -610,7 +622,7 @@ main {
   @media only screen and (min-width: 56.25em) {
     .search {
       width: 100%;
-      height: 95vh; } }
+      height: 100vh; } }
   .search .btn-container {
     bottom: 8rem; }
     @media only screen and (min-width: 37.5em) {
@@ -629,11 +641,16 @@ main {
         width: 60%; } }
     @media only screen and (min-width: 56.25em) {
       .search__form {
-        position: sticky;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
         top: 0;
         right: 0;
         width: 100%;
-        transform: none; } }
+        transform: none;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); } }
   .search__input {
     width: 100%;
     height: 100%;
@@ -645,9 +662,9 @@ main {
     font-size: 2rem; }
     @media only screen and (min-width: 56.25em) {
       .search__input {
+        width: 80%;
         border: none;
-        border-bottom: 2px solid #333333;
-        border-radius: 0; } }
+        box-shadow: none; } }
   .search::after {
     display: block;
     width: 1rem;

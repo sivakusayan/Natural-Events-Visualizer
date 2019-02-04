@@ -11,6 +11,7 @@
   @include bp(M) {
     min-height: 5vh;
     flex-direction: row;
+    display: none;
   }
 
   &__link {

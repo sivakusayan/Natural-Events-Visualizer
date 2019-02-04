@@ -39,24 +39,11 @@ class Searchbar extends React.Component {
     this.searchEvents(e.target.value);
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-  }
-
   render() {
     const { searchQuery } = this.state;
     return (
       <>
-        {/* If smaller than this device width, we have the btn-container to navigate */}
-        <MediaQuery query='(min-device-width: 56.25em)'>
-          <Link className='btn btn--small' to='/filters' title='Search Filters' alt='Search Filters'>
-            <svg className='search__icon'>
-              <use href='icons/spritesheet.svg#filter' />
-            </svg>
-          </Link>
-        </MediaQuery>
         <form
-          onSubmit={this.handleSubmit}
           className='search__form'
         >
           <input
@@ -66,6 +53,14 @@ class Searchbar extends React.Component {
             value={searchQuery}
             className='search__input'
           />
+          {/* If smaller than this device width, we have the btn-container to navigate */}
+          <MediaQuery query='(min-device-width: 56.25em)'>
+            <Link className='btn btn--small' to='/filters' title='Search Filters' alt='Search Filters'>
+              <svg className='btn__icon'>
+                <use href='icons/spritesheet.svg#filter' />
+              </svg>
+            </Link>
+          </MediaQuery>
         </form>
       </>
     );

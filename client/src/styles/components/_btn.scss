@@ -24,6 +24,11 @@
   pointer-events: all;
   text-align: center;
   transition: all 0.3s;
+
+  &__icon { 
+    width: 100%;
+    height: 85%; 
+  }
 }
 
 .btn--filter {
@@ -46,13 +51,15 @@
   background: color(black);
   border-radius: radius(big);
 
-  &__icon { 
-    width: 100%;
-    height: 85%; 
-    fill: color(white);
-  }
+  .btn__icon { fill: color(white); }
 }
 
 .btn--small {
-  
+  width: 4rem;
+  height: 4rem;
+  padding: padding(XS);
+  background-color: color(black);
+  border-radius: radius(big);
+
+  .btn__icon { fill: color(white); }
 }

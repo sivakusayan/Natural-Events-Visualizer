@@ -20,12 +20,12 @@ const Search = ({
   >
     <div className='btn-container'>
       <Link className='btn btn--big' to='/' title='Back to map' alt='Back to map'>
-        <svg className='btn--big__icon'>
+        <svg className='btn__icon'>
           <use href='icons/spritesheet.svg#backArrow' />
         </svg>
       </Link>
       <Link className='btn btn--big' to='/filters' title='Search Filters' alt='Search Filters'>
-        <svg className='btn--big__icon'>
+        <svg className='btn__icon'>
           <use href='icons/spritesheet.svg#filter' />
         </svg>
       </Link>

@@ -1,0 +1,8 @@
+.side-bar {
+  z-index: z(top);
+  width: 30%;
+  height: 100vh;
+  box-shadow: shadow(medium-right);
+
+  @include bp(L) { width: 25%; }
+}

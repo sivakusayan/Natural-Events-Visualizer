@@ -50,17 +50,9 @@ main {
 
   @include bp(M) { 
     width: 70%; 
-    height: 95vh;
   }
 
   @include bp(L) { width: 75%; }
-}
-
-.side-bar {
-  width: 30%;
-  height: 95vh;
-
-  @include bp(L) { width: 25%; }
 }
 
 .switch-wrapper {

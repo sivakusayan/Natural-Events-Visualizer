@@ -11,7 +11,7 @@ const About = () => (
   >
     <div className='btn-container'>
       <Link className='btn btn--big' to='/menu' title='Back to menu' alt='Back to menu'>
-        <svg className='btn--big__icon'>
+        <svg className='btn__icon'>
           <use href='icons/spritesheet.svg#backArrow' />
         </svg>
       </Link>

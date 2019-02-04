@@ -44,14 +44,14 @@ class Searchbar extends React.Component {
     return (
       <>
         <form
-          className='search__form'
+          className='searchbar-container'
         >
           <input
             type='search'
             placeholder='Search here'
             onChange={this.handleChange}
             value={searchQuery}
-            className='search__input'
+            className='searchbar'
           />
           {/* If smaller than this device width, we have the btn-container to navigate */}
           <MediaQuery query='(min-device-width: 56.25em)'>

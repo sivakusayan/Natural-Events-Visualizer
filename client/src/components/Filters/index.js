@@ -18,7 +18,7 @@ const Filters = () => (
       </Link>
     </MediaQuery>
     <ButtonContainer
-      secondBtn={{ icon: 'back', title: 'Back to Search', to: '/search' }}
+      firstBtn={{ icon: 'back', title: 'Back to Search', to: '/search' }}
     />
     <CategoryFilterContainer />
     <LocationFilterContainer />

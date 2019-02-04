@@ -1,0 +1,16 @@
+.map-container {
+  width: 100vw;
+  height: 100vh;
+
+  @include bp(M) { 
+    width: 70%; 
+  }
+
+  @include bp(L) { width: 75%; }
+}
+
+// Can't seem to move attribution box in react-mapbox-gl at the moment.
+// Manually move with CSS for now.
+.mapboxgl-ctrl-bottom-right {
+  top: 10px;
+}

@@ -45,17 +45,6 @@ button:disabled {
   flex-wrap: wrap;
 }
 
-main {
-  width: 100vw;
-  height: 100vh;
-
-  @include bp(M) { 
-    width: 70%; 
-  }
-
-  @include bp(L) { width: 75%; }
-}
-
 .switch-wrapper {
   position: absolute;
   width: 100%;

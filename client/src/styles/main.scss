@@ -6,17 +6,26 @@
 @import "base/base";
 @import "base/utilities";
 
-@import "components/btn";
-@import "components/form";
-@import "components/link";
-@import "components/loadingIcon";
-@import "components/popup";
-@import "components/scrollbar";
-@import "components/searchResult";
-@import "components/sidebar";
+@import "components/article/article";
 
-@import "layout/article";
-@import "layout/filter";
-@import "layout/loadingScreen";
-@import "layout/menu";
-@import "layout/search";
+@import "components/filters/filter";
+@import "components/filters/filters";
+@import "components/filters/form";
+
+@import "components/loading/loadingIcon";
+@import "components/loading/loadingScreen";
+
+@import "components/map/map";
+@import "components/map/popup";
+
+@import "components/menu/menu";
+
+@import "components/search/search";
+@import "components/search/searchbar";
+@import "components/search/searchResult";
+@import "components/search/searchResults";
+
+@import "components/utils/btn";
+@import "components/utils/link";
+@import "components/utils/scrollbar";
+@import "components/utils/sidebar";

@@ -5,7 +5,7 @@ import EventMapContainer from '../../containers/Map/EventMapContainer';
 import ButtonContainer from '../utils/ButtonContainer';
 
 const Home = () => (
-  <main>
+  <main className='map-container'>
     <ButtonContainer
       firstBtn={{ icon: 'menu', title: 'Open Menu', to: '/menu' }}
       secondBtn={{ icon: 'search', title: 'Search', to: '/search' }}

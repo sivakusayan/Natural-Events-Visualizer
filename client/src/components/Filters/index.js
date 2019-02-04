@@ -12,14 +12,14 @@ const Filters = () => (
     <MediaQuery query='(min-device-width: 56.25em)'>
       <Link className='btn btn--small' to='/' title='Back to Search' alt='Back to Search'>
         <svg className='btn__icon'>
-          <use href='icons/spritesheet.svg#backArrow' />
+          <use href='icons/spritesheet.svg#back' />
         </svg>
       </Link>
     </MediaQuery>
     <div className='btn-container'>
       <Link className='btn btn--big' to='/search'>
         <svg className='btn__icon'>
-          <use href='icons/spritesheet.svg#backArrow' />
+          <use href='icons/spritesheet.svg#back' />
         </svg>
       </Link>
     </div>

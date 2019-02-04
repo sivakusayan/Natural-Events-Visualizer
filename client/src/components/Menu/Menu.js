@@ -8,7 +8,7 @@ const Menu = () => (
     <div className='btn-container'>
       <Link className='btn btn--big' to='/' title='Back to map' alt='Back to map'>
         <svg className='btn__icon'>
-          <use href='icons/spritesheet.svg#backArrow' />
+          <use href='icons/spritesheet.svg#back' />
         </svg>
       </Link>
     </div>

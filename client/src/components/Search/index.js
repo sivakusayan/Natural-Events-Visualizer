@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import SearchBarContainer from '../../containers/Search/SearchBarContainer';
 import SearchResults from './SearchResults';
-import LoadingIcon from '../Loading/LoadingIcon';
+import SearchMessage from './SearchMessage';
 
 const Search = ({
   setEvents,
@@ -15,40 +15,38 @@ const Search = ({
   error,
   setError,
   removeError,
-}) => (
-  <section
-    className='search'
-  >
-    <div className='btn-container'>
-      <Link className='btn btn--big' to='/' title='Back to map' alt='Back to map'>
-        <svg className='btn__icon'>
-          <use href='icons/spritesheet.svg#backArrow' />
-        </svg>
-      </Link>
-      <Link className='btn btn--big' to='/filters' title='Search Filters' alt='Search Filters'>
-        <svg className='btn__icon'>
-          <use href='icons/spritesheet.svg#filter' />
-        </svg>
-      </Link>
-    </div>
-    <SearchBarContainer
-      setEvents={setEvents}
-      startLoading={startLoading}
-      doneLoading={doneLoading}
-      setError={setError}
-      removeError={removeError}
-    />
-    {(!isLoading && !error && events.length > 0) ? <SearchResults events={events} />
-      : (
-        <div className='search__message'>
-          {isLoading && <LoadingIcon className='search__loading-icon' />}
-          {error && <h1 className='search__error'>Sorry, something went wrong.</h1>}
-          {(events.length === 0 && !isLoading && !error)
-            && <h1 className='search__error'>No search results have been found.</h1>}
-        </div>
-    )}
-  </section>
-);
+}) => {
+  const shouldShowResults = !isLoading && !error && events.length > 0;
+  return (
+    <section
+      className='search'
+    >
+      <div className='btn-container'>
+        <Link className='btn btn--big' to='/' title='Back to map' alt='Back to map'>
+          <svg className='btn__icon'>
+            <use href='icons/spritesheet.svg#back' />
+          </svg>
+        </Link>
+        <Link className='btn btn--big' to='/filters' title='Search Filters' alt='Search Filters'>
+          <svg className='btn__icon'>
+            <use href='icons/spritesheet.svg#filter' />
+          </svg>
+        </Link>
+      </div>
+      <SearchBarContainer
+        setEvents={setEvents}
+        startLoading={startLoading}
+        doneLoading={doneLoading}
+        setError={setError}
+        removeError={removeError}
+      />
+      {shouldShowResults
+        ? <SearchResults events={events} />
+        : <SearchMessage results={events} error={error} isLoading={isLoading} />
+      }
+    </section>
+  );
+};
 
 Search.propTypes = {
   setEvents: PropTypes.func.isRequired,

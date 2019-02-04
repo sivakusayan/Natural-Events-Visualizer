@@ -3,6 +3,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import ButtonContainer from '../utils/ButtonContainer';
 import ArticleLink from './ArticleLink';
 import CREDITS from '../../constants/copy/CREDITS';
 
@@ -10,13 +11,9 @@ const Credits = () => (
   <section
     className='article'
   >
-    <div className='btn-container'>
-      <Link className='btn btn--big' to='/menu' title='Back to menu' alt='Back to menu'>
-        <svg className='btn__icon'>
-          <use href='icons/spritesheet.svg#back' />
-        </svg>
-      </Link>
-    </div>
+    <ButtonContainer
+      firstBtn={{ icon: 'back', title: 'Back to map', to: '/' }}
+    />
     <h1 className='article__heading'>Credits</h1>
     <p className='article__copy'>
       Nearly every icon used in this application is taken from <ArticleLink href='https://thenounproject.com/'>The Noun Project</ArticleLink> under

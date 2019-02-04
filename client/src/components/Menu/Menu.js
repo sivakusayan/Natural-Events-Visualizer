@@ -1,17 +1,15 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
+import ButtonContainer from '../utils/ButtonContainer';
+
 const Menu = () => (
   <nav
     className='menu'
   >
-    <div className='btn-container'>
-      <Link className='btn btn--big' to='/' title='Back to map' alt='Back to map'>
-        <svg className='btn__icon'>
-          <use href='icons/spritesheet.svg#back' />
-        </svg>
-      </Link>
-    </div>
+    <ButtonContainer
+      firstBtn={{ icon: 'back', title: 'Back to map', to: '/map' }}
+    />
     <NavLink className='menu__link' to='/about'>About</NavLink>
     <NavLink className='menu__link' to='/credits'>Credits</NavLink>
     <a

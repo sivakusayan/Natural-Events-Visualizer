@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import SearchBarContainer from '../../containers/Search/SearchBarContainer';
 import SearchResults from './SearchResults';
 import SearchMessage from './SearchMessage';
+import ButtonContainer from '../utils/ButtonContainer';
 
 const Search = ({
   setEvents,
@@ -21,18 +22,10 @@ const Search = ({
     <section
       className='search'
     >
-      <div className='btn-container'>
-        <Link className='btn btn--big' to='/' title='Back to map' alt='Back to map'>
-          <svg className='btn__icon'>
-            <use href='icons/spritesheet.svg#back' />
-          </svg>
-        </Link>
-        <Link className='btn btn--big' to='/filters' title='Search Filters' alt='Search Filters'>
-          <svg className='btn__icon'>
-            <use href='icons/spritesheet.svg#filter' />
-          </svg>
-        </Link>
-      </div>
+      <ButtonContainer
+        firstBtn={{ icon: 'back', title: 'Back to map', to: '/' }}
+        secondBtn={{ icon: 'filter', title: 'Search Filters', to: '/filters' }}
+      />
       <SearchBarContainer
         setEvents={setEvents}
         startLoading={startLoading}

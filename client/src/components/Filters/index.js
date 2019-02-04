@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
 
+import ButtonContainer from '../utils/ButtonContainer';
 import LocationFilterContainer from '../../containers/Filters/LocationFilterContainer';
 import CategoryFilterContainer from '../../containers/Filters/CategoryFilterContainer';
 import DateFilterContainer from '../../containers/Filters/DateFilterContainer';
@@ -16,13 +17,9 @@ const Filters = () => (
         </svg>
       </Link>
     </MediaQuery>
-    <div className='btn-container'>
-      <Link className='btn btn--big' to='/search'>
-        <svg className='btn__icon'>
-          <use href='icons/spritesheet.svg#back' />
-        </svg>
-      </Link>
-    </div>
+    <ButtonContainer
+      secondBtn={{ icon: 'back', title: 'Back to Search', to: '/search' }}
+    />
     <CategoryFilterContainer />
     <LocationFilterContainer />
     <DateFilterContainer />

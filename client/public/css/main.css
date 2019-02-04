@@ -187,8 +187,6 @@ button:disabled {
 .filter {
   margin: 1.1rem;
   transition: all 0.3s; }
-  .filter:not(:last-child) {
-    border-bottom: 1px solid black; }
   .filter__header {
     display: flex;
     align-items: center;
@@ -234,6 +232,26 @@ button:disabled {
 /*------------------------------------------------------------------
   SPECIFIC FILTERS
   ------------------------------------------------------------------*/
+@media only screen and (min-width: 56.25em) {
+  .filter--dates .form {
+    flex-direction: column;
+    align-items: center; } }
+
+.filter--dates .field__input {
+  width: 20rem; }
+  @media only screen and (min-width: 56.25em) {
+    .filter--dates .field__input {
+      width: 100%; } }
+  @media only screen and (min-width: 75em) {
+    .filter--dates .field__input {
+      width: 20rem; } }
+
+.filter--dates.isActive .form {
+  height: 30rem; }
+
+.month-picker {
+  position: absolute; }
+
 .filter--categories .form {
   display: flex;
   flex-wrap: wrap;
@@ -265,6 +283,34 @@ button:disabled {
     .filter--categories.isActive .form {
       height: 50rem; } }
 
+.filter--dates {
+  position: relative; }
+  @media only screen and (min-width: 56.25em) {
+    .filter--dates .form {
+      flex-direction: column;
+      align-items: center; } }
+  .filter--dates .field__input {
+    width: 20rem; }
+    @media only screen and (min-width: 56.25em) {
+      .filter--dates .field__input {
+        width: 100%; } }
+    @media only screen and (min-width: 75em) {
+      .filter--dates .field__input {
+        width: 20rem; } }
+
+.filter--dates.isActive .form {
+  height: 6rem; }
+  @media only screen and (min-width: 56.25em) {
+    .filter--dates.isActive .form {
+      height: 35rem; } }
+
+.rmp-popup {
+  display: flex;
+  width: 20rem !important;
+  flex-direction: column; }
+  .rmp-popup .rmp-pad:last-child {
+    margin-top: 0.6rem; }
+
 .filter--location .form {
   display: flex;
   align-items: center;
@@ -284,26 +330,6 @@ button:disabled {
   @media only screen and (min-width: 56.25em) {
     .filter--location.isActive .form {
       height: 20rem; } }
-
-@media only screen and (min-width: 56.25em) {
-  .filter--dates .form {
-    flex-direction: column;
-    align-items: center; } }
-
-.filter--dates .field__input {
-  width: 20rem; }
-  @media only screen and (min-width: 56.25em) {
-    .filter--dates .field__input {
-      width: 100%; } }
-  @media only screen and (min-width: 75em) {
-    .filter--dates .field__input {
-      width: 20rem; } }
-
-.filter--dates.isActive .form {
-  height: 30rem; }
-
-.month-picker {
-  position: absolute; }
 
 .filters {
   width: 100%;
@@ -747,7 +773,7 @@ button:disabled {
   z-index: 10;
   width: 30%;
   height: 100vh;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); }
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3); }
   @media only screen and (min-width: 75em) {
     .side-bar {
       width: 25%; } }

@@ -9,15 +9,16 @@ import Menu from './Menu/Menu';
 
 const EventVisualizer = () => (
   <>
+    {/* MOBILE LAYOUT */}
     <MediaQuery query='(min-device-width: 56.25em)'>
-      <Menu />
       <div className='side-bar'>
+        <Menu />
         <DesktopRouter />
       </div>
-      {/* Don't unmount homepage map for performance purposes. 
-        Hide it instead with stacking context. */}
       <Home />
     </MediaQuery>
+
+    {/* DESKTOP LAYOUT */}
     <MediaQuery query='(max-device-width: 56.24em)'>
       <MobileRouter />
       {/* Don't unmount homepage map for performance purposes. 

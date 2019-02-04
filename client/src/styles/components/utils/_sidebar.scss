@@ -2,7 +2,7 @@
   z-index: z(top);
   width: 30%;
   height: 100vh;
-  box-shadow: shadow(medium-right);
+  box-shadow: shadow(big-right);
 
   @include bp(L) { width: 25%; }
 }

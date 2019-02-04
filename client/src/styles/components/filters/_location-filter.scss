@@ -1,0 +1,29 @@
+.filter--location {
+  .form {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    @include bp(M) {
+      flex-direction: column;
+    }
+  }
+
+  .field__input {
+    width: 8rem;
+
+    @include bp(M) {
+      width: 14rem;
+    }
+  }
+}
+
+.filter--location.isActive {
+  .form { 
+    height: 8rem; 
+
+    @include bp(M) {
+      height: 20rem;
+    }
+  }
+}

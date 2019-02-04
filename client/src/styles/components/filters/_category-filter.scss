@@ -1,0 +1,44 @@
+
+.filter--categories {
+  .form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: start;
+
+    @include bp(M) {
+      flex-direction: column;
+      flex-wrap: nowrap;
+    }
+  }
+
+  .field {
+    width: 50%;
+    padding: padding(XXS) padding(XS);
+    margin-bottom: margin(S);
+
+    @include bp(M) {
+      width: 100%;
+    }
+
+    &__name {
+      display: flex;
+      width: 80%;
+      align-items: center;
+      margin-left: margin(XXS);
+
+      font-size: 1.4rem;
+      line-height: 1.8rem;
+    }
+  }
+}
+
+.filter--categories.isActive {
+  .form { 
+    height: 31rem; 
+
+    @include bp(M) {
+      height: 50rem;
+    }
+  }
+}

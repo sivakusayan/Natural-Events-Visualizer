@@ -1,0 +1,46 @@
+.filter--dates {
+  // Needed to position date-picker properly
+  position: relative;
+
+  .form {
+    @include bp(M) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  .field__input {
+    width: 20rem;
+
+    @include bp(M) {
+      width: 100%;
+    }
+
+    @include bp(L) {
+      width: 20rem;
+    }
+  }
+}
+
+.filter--dates.isActive {
+  .form { 
+    height: 6rem;
+
+    @include bp(M) {
+      height: 35rem;
+    }
+  }
+}
+
+// Styling month-picker library
+
+.rmp-popup {
+  display: flex;
+   // Match width of .rmp-pad
+  width: 20rem !important;
+  flex-direction: column;
+
+  .rmp-pad:last-child {
+    // Match padding of .rmp-popup to create uniform gaps
+    margin-top: 0.6rem;
+  }
+}

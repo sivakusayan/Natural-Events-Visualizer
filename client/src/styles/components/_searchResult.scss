@@ -24,7 +24,7 @@
   }
 
   @include bp(L) {
-    height: 10rem;
+    height: 15rem;
   }
 
   &__info {
@@ -42,11 +42,6 @@
     line-height: 2.4rem;
 
     text-align: center;
-
-    @include bp(M) {
-      font-size: 1.2rem;
-      line-height: 1.6rem;
-    }
   }
 
   &__location {
@@ -54,11 +49,6 @@
     font-size: 1.3rem;
     line-height: 1.8rem;
     text-align: center;
-
-    @include bp(M) {
-      font-size: 1rem;
-      line-height: 1.4rem;
-    }
   }
 
   &__category {

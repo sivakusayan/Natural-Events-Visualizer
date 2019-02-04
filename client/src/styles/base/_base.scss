@@ -11,6 +11,7 @@ html {
   @include bp(XXS) { font-size: 70%; }
   @include bp(XS) { font-size: 75%; }
   @include bp(S) { font-size: 80%; }
+  @include bp(M) { font-size: 62.5%; }
 }
 
 body {

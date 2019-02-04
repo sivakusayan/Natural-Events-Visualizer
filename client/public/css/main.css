@@ -90,6 +90,9 @@ html {
   @media only screen and (min-width: 46.875em) {
     html {
       font-size: 80%; } }
+  @media only screen and (min-width: 56.25em) {
+    html {
+      font-size: 62.5%; } }
 
 body {
   font-family: 'Roboto', Helvetica, Arial, sans-serif; }
@@ -387,7 +390,7 @@ main {
       margin: 1.1rem 0; } }
   @media only screen and (min-width: 75em) {
     .search-result {
-      height: 10rem; } }
+      height: 15rem; } }
   .search-result__info {
     display: flex;
     width: 50%;
@@ -400,19 +403,11 @@ main {
     font-weight: 500;
     line-height: 2.4rem;
     text-align: center; }
-    @media only screen and (min-width: 56.25em) {
-      .search-result__title {
-        font-size: 1.2rem;
-        line-height: 1.6rem; } }
   .search-result__location {
     color: #4d4d4d;
     font-size: 1.3rem;
     line-height: 1.8rem;
     text-align: center; }
-    @media only screen and (min-width: 56.25em) {
-      .search-result__location {
-        font-size: 1rem;
-        line-height: 1.4rem; } }
   .search-result__category {
     display: flex;
     width: 50%;

@@ -1,8 +1,8 @@
 // Surpress to allow links inside body copy without needing to line break.
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
-import { Link } from 'react-router-dom';
 
+import ButtonContainer from '../utils/ButtonContainer';
 import ArticleLink from './ArticleLink';
 
 const About = () => (

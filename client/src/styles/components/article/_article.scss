@@ -18,6 +18,13 @@
     content: '';
   }
 
+  @include bp(M) {
+    &::after {
+      width: 0;
+      height: 0;
+    }
+  }
+
   &__heading {
     margin-bottom: margin(L);
     font-size: 4rem;
@@ -61,5 +68,16 @@
 
   &__credit {
     margin-bottom: margin(S);
+  }
+
+  @include bp(M) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: shadow(medium);
+    border-radius: radius(small);
+    width: auto;
+    height: auto;
   }
 }

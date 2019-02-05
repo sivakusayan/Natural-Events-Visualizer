@@ -1,7 +1,9 @@
 .menu {
   display: flex;
-  min-width: 100vw;
-  min-height: 100vh;
+  // Use viewport sizes instead of % since transition container
+  // doesn't take full height/width
+  width: 100vw;
+  height: 100vh;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -9,9 +11,9 @@
   background: rgba(color(white), 0.9);
 
   @include bp(M) {
-    min-height: 5vh;
+    width: 100%;
+    height: 10%;
     flex-direction: row;
-    display: none;
   }
 
   &__link {
@@ -29,7 +31,7 @@
     text-decoration: none;
 
     @include bp(M) {
-      width: 10%;
+      width: 30%;
       font-size: 1.5rem;
     }
   }

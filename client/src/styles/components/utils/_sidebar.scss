@@ -1,7 +1,8 @@
 .side-bar {
   z-index: z(top);
   width: 30%;
-  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
   box-shadow: shadow(big-right);
 
   @include bp(L) { width: 25%; }

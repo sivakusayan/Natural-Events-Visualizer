@@ -8,7 +8,7 @@ import Filters from '../components/Filters/index';
 import About from '../components/Pages/About';
 import Credits from '../components/Pages/Credits';
 
-const MobileRouter = ({ location }) => (
+const MobileRoutes = ({ location }) => (
   <AnimatedSwitch
     atEnter={{ opacity: 0 }}
     atLeave={{ opacity: 0 }}
@@ -16,7 +16,7 @@ const MobileRouter = ({ location }) => (
     // We hide the homepage under instead of unmounting it since
     // loading the map over and over again would be too
     // expensive.
-    className={`switch-wrapper ${location.pathname !== '/' ? 'overlay' : ''}`}
+    className={`switch-wrapper switch-wrapper--mobile ${location.pathname !== '/' ? 'overlay' : ''}`}
   >
     <Route path='/menu' component={Menu} />
     <Route path='/search' component={SearchContainer} />
@@ -26,4 +26,4 @@ const MobileRouter = ({ location }) => (
   </AnimatedSwitch>
 );
 
-export default withRouter(MobileRouter);
+export default withRouter(MobileRoutes);

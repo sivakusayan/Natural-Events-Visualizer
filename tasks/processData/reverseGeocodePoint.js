@@ -1,8 +1,13 @@
 const fetchRetry = require('../../utils/fetchRetry');
 const parseLocation = require('./parseLocation');
 const getWaterBody = require('./getWaterBody');
-const KEY = require('../../constants/GOOGLE_API_KEY');
 const { GOOGLE_REVERSE_GEOCODE_URL } = require('../../constants/URL_STRINGS');
+let KEY;
+if (process.env.NODE_ENV === 'production') {
+  KEY = process.env.DB_KEY;
+} else {
+  KEY = require('../../constants/GOOGLE_API_KEY');
+}
 
 /**
  * Takes a single point and returns the reverse geocoded location. If the

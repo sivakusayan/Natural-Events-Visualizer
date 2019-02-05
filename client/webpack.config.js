@@ -1,11 +1,21 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   entry: ['@babel/polyfill', './src/app.js'],
   output: {
     path: path.join(__dirname, 'public'),
+    publicPath: '/',
     filename: 'bundle.js',
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      filename: './index.html',
+    }),
+    new webpack.EnvironmentPlugin({ ...process.env }),
+  ],
   module: {
     rules: [
       {
@@ -23,5 +33,10 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'public'),
     historyApiFallback: true,
+    proxy: {
+      '/api/*': {
+        target: 'http://localhost:3000',
+      },
+    },
   },
 };

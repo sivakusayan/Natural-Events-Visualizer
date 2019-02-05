@@ -11,9 +11,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactMapboxGl from 'react-mapbox-gl';
-import { Marker } from "react-mapbox-gl";
 
-import KEY from '../../constants/map/MAPBOX_API_KEY';
 import STYLE from '../../constants/map/MAPBOX_STYLE';
 
 import PointLayerContainer from '../../containers/Map/Layers/PointLayerContainer';
@@ -21,6 +19,13 @@ import LineStringLayerContainer from '../../containers/Map/Layers/LineStringLaye
 import LineStringEndpointsLayerContainer from '../../containers/Map/Layers/LineStringEndpointsLayerContainer';
 import PolygonLayerContainer from '../../containers/Map/Layers/PolygonLayerContainer';
 import EventPopup from '../../containers/Map/EventPopupContainer';
+
+let MAPBOX_API_KEY;
+if (process.env.NODE_ENV === 'production') {
+  MAPBOX_API_KEY = process.env.MAPBOX_API_KEY;
+} else {
+  MAPBOX_API_KEY = require('../../constants/map/MAPBOX_API_KEY');
+}
 
 /**
  * Limiting the maxZoom of the map increases performance,although
@@ -31,7 +36,7 @@ import EventPopup from '../../containers/Map/EventPopupContainer';
  * https://www.mapbox.com/help/working-with-large-geojson-data/
  */
 const Map = ReactMapboxGl({
-  accessToken: KEY,
+  accessToken: MAPBOX_API_KEY,
   minZoom: 2,
   maxZoom: 12,
   logoPosition: 'top-left',

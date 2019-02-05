@@ -3,7 +3,12 @@
  */
 const mongoose = require('mongoose');
 
-const key = require('../constants/DB_KEY');
+let key;
+if (process.env.NODE_ENV === 'production') {
+  key = process.env.DB_KEY;
+} else {
+  key = require('../constants/DB_KEY');
+}
 
 mongoose.Promise = global.Promise;
 mongoose.set('useCreateIndex', true);

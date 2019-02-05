@@ -7,6 +7,7 @@ import SearchRoutes from '../routes/SearchRoutes';
 import PageRoutes from '../routes/PageRoutes';
 import Home from './Pages/Home';
 import Menu from './Menu/Menu';
+import '../styles/main.scss';
 
 const EventVisualizer = () => (
   <>

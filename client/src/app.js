@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider, connect } from 'react-redux';
 
-import { LOCAL_API_URL } from './constants/misc/URL_STRINGS';
 import fetchRetry from '../../utils/fetchRetry';
 
 import { setEvents } from './state/actions/events';
@@ -21,7 +20,7 @@ const store = configureStore();
 class App extends React.Component {
   hydrateData = () => {
     const { initEvents, dataLoadEnd } = this.props;
-    fetchRetry(LOCAL_API_URL)
+    fetchRetry('/api/events')
       .then((data) => {
         initEvents(data);
         dataLoadEnd();

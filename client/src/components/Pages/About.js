@@ -1,6 +1,8 @@
 // Surpress to allow links inside body copy without needing to line break.
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
+import MediaQuery from 'react-responsive';
+import { Link } from 'react-router-dom';
 
 import ButtonContainer from '../utils/ButtonContainer';
 import ArticleLink from './ArticleLink';
@@ -9,6 +11,14 @@ const About = () => (
   <section
     className='article'
   >
+    {/* If smaller than this device width, we have the btn-container to navigate */}
+    <MediaQuery query='(min-device-width: 56.25em)'>
+      <Link className='btn btn--small' to='/' title='Back to Map' alt='Back to Map'>
+        <svg className='btn__icon'>
+          <use href='icons/spritesheet.svg#back' />
+        </svg>
+      </Link>
+    </MediaQuery>
     <ButtonContainer
       firstBtn={{ icon: 'back', title: 'Back to map', to: '/' }}
     />

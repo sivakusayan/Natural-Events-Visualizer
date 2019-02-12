@@ -207,6 +207,9 @@ button:disabled {
       border-radius: 5px;
       width: auto;
       height: auto; } }
+  .article .btn--small {
+    position: absolute;
+    right: 5%; }
 
 .filter {
   margin: 1.1rem;

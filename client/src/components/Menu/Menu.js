@@ -8,7 +8,7 @@ const Menu = () => (
     className='menu'
   >
     <ButtonContainer
-      firstBtn={{ icon: 'back', title: 'Back to map', to: '/map' }}
+      firstBtn={{ icon: 'back', title: 'Back to map', to: '/' }}
     />
     <NavLink className='menu__link' to='/about'>About</NavLink>
     <NavLink className='menu__link' to='/credits'>Credits</NavLink>

@@ -25,7 +25,10 @@ class PointLayer extends React.Component {
 }
 
 PointLayer.propTypes = {
-  geoJSON: PropTypes.arrayOf(Event).isRequired,
+  geoJSON: PropTypes.shape({
+    type: 'FeatureCollection',
+    features: PropTypes.arrayOf(Event),
+  }).isRequired,
 };
 
 export default PointLayer;

@@ -12,14 +12,10 @@ const SearchResults = ({ events }) => (
 
 SearchResults.propTypes = {
   events: PropTypes.arrayOf(Event),
-  isLoading: PropTypes.bool,
-  error: PropTypes.bool,
 };
 
 SearchResults.defaultProps = {
   events: [],
-  isLoading: false,
-  error: false,
 };
 
 export default SearchResults;

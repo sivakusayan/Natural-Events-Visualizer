@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import SearchBarContainer from '../../containers/Search/SearchBarContainer';
 import SearchResults from './SearchResults';
 import SearchMessage from './SearchMessage';
 import ButtonContainer from '../utils/ButtonContainer';
+
+import Event from '../../propTypes/Event';
 
 const Search = ({
   setEvents,

@@ -16,6 +16,7 @@ module.exports = {
     }),
     new webpack.EnvironmentPlugin({ ...process.env }),
   ],
+  mode: 'development',
   module: {
     rules: [
       {

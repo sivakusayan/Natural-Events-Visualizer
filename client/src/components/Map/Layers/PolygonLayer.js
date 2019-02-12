@@ -25,7 +25,10 @@ class PolygonLayer extends React.Component {
 }
 
 PolygonLayer.propTypes = {
-  geoJSON: PropTypes.arrayOf(Event).isRequired,
+  geoJSON: PropTypes.shape({
+    type: 'FeatureCollection',
+    features: PropTypes.arrayOf(Event),
+  }).isRequired,
 };
 
 export default PolygonLayer;

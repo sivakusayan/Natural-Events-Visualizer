@@ -27,7 +27,10 @@ class LineStringLayer extends React.Component {
 }
 
 LineStringLayer.propTypes = {
-  geoJSON: PropTypes.arrayOf(Event).isRequired,
+  geoJSON: PropTypes.shape({
+    type: 'FeatureCollection',
+    features: PropTypes.arrayOf(Event),
+  }).isRequired,
 };
 
 export default LineStringLayer;

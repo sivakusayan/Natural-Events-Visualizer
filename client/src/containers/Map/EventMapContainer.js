@@ -85,7 +85,7 @@ class EventMapContainer extends React.Component {
         // Remember that mapbox zoom property is wrapped
         // inside an array.
         // https://github.com/alex3165/react-mapbox-gl/issues/57
-        zoom={[currentZoom]}
+        zoom={currentZoom}
         doneLoading={doneLoading}
         setSelectedEvent={setSelectedEvent}
         resetSelectedEvent={resetSelectedEvent}
@@ -126,10 +126,14 @@ const mapDispatchToProps = dispatch => ({
 });
 
 EventMapContainer.propTypes = {
-  selectedEvent: Event.isRequired,
+  selectedEvent: Event,
   setSelectedEvent: PropTypes.func.isRequired,
   resetSelectedEvent: PropTypes.func.isRequired,
   doneLoading: PropTypes.func.isRequired,
 };
+
+EventMapContainer.defaultProps = {
+  selectedEvent: null,
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventMapContainer);

@@ -15,8 +15,8 @@ const filtersDefaultState = {
   // Filter for events within the circle specified
   // by these values
   location: {
-    latitude: '',
-    longitude: '',
+    latitude: 0,
+    longitude: 0,
     radius: 1000000,
   },
   // Filter for events of the following categories

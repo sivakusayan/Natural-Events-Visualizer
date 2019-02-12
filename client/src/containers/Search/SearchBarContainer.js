@@ -93,7 +93,7 @@ SearchBarContainer.propTypes = {
       longitude: PropTypes.number.isRequired,
       radius: PropTypes.number.isRequired,
     }).isRequired,
-    categories: PropTypes.arrayOf(PropTypes.number).isRequired,
+    categories: PropTypes.arrayOf(PropTypes.string).isRequired,
     startDate: PropTypes.number.isRequired,
     endDate: PropTypes.number.isRequired,
   }).isRequired,

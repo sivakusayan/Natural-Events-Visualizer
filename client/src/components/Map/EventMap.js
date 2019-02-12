@@ -24,7 +24,9 @@ let MAPBOX_API_KEY;
 if (process.env.NODE_ENV === 'production') {
   MAPBOX_API_KEY = process.env.MAPBOX_API_KEY;
 } else {
-  MAPBOX_API_KEY = require('../../constants/map/MAPBOX_API_KEY');
+  // We require here instead of import since import isn't valid
+  // inside else clause.
+  MAPBOX_API_KEY = require('../../constants/map/MAPBOX_API_KEY').default;
 }
 
 /**
@@ -58,7 +60,10 @@ const EventMap = ({
       height: '100%',
       width: '100%',
     }}
-    zoom={zoom}
+    // Remember that mapbox zoom property is wrapped
+    // inside an array.
+    // https://github.com/alex3165/react-mapbox-gl/issues/57
+    zoom={[zoom]}
     center={center}
     onStyleLoad={doneLoading}
     onClick={setSelectedEvent}

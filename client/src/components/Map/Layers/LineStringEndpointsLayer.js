@@ -33,7 +33,10 @@ class LineStringEndpointsLayer extends React.Component {
 }
 
 LineStringEndpointsLayer.propTypes = {
-  geoJSON: PropTypes.arrayOf(Event).isRequired,
+  geoJSON: PropTypes.shape({
+    type: 'FeatureCollection',
+    features: PropTypes.arrayOf(Event),
+  }).isRequired,
 };
 
 export default LineStringEndpointsLayer;

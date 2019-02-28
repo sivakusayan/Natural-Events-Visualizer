@@ -11,7 +11,7 @@ import pointMean from '../../../utils/pointMean';
    *  A suitable flyTo point
    */
 export default (event) => {
-  if (!event) return [0, 0];
+  if (!event) return { lng: 0, lat: 0 };
   const { geometry } = event;
   let point = null;
   if (geometry.type === 'Point') {

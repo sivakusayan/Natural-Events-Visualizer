@@ -81,7 +81,7 @@ const EventPopup = ({ selectedEvent, coordinates }) => {
           <h4 className='popup__sub-title'>Additional Sources</h4>
           <ul className='popup__sources'>
             {sources.map(source => (
-              <li className='popup__source'>
+              <li className='popup__source' key={source.id}>
                 <a
                   className='link'
                   rel='noopener noreferrer'
@@ -104,7 +104,10 @@ const EventPopup = ({ selectedEvent, coordinates }) => {
 
 EventPopup.propTypes = {
   selectedEvent: Event.isRequired,
-  coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
+  coordinates: PropTypes.shape({
+    lng: PropTypes.number,
+    lat: PropTypes.number,
+  }).isRequired,
 };
 
 export default EventPopup;

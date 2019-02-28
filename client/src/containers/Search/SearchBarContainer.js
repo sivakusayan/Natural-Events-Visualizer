@@ -7,7 +7,6 @@ import fetchRetry from '../../../../utils/fetchRetry';
 import SearchBar from '../../components/Search/SearchBar';
 import { isValidLatitude, isValidLongitude, isValidRadius } from '../../utils/isValid';
 
-
 const SearchBarContainer = ({
   setEvents, startLoading, doneLoading, setError, removeError, filters, filtersAreActive,
 }) => {
@@ -52,8 +51,14 @@ const SearchBarContainer = ({
     // will be debounced as well
     fetchRetry(`/api/events?title=${title}&${buildFilterQuery()}`)
       .then(events => setEvents(events))
-      .catch(setError)
-      .finally(doneLoading);
+      // We would normally use .finally to call doneLoading here, but it
+      // doesn't seem supported in IE11 and Edge, and @babel/polyfill doesn't
+      // seem to be polyfilling it properly. Look into this later.
+      .then(doneLoading)
+      .catch(() => {
+        setError();
+        doneLoading();
+      });
   };
 
   // startLoading and removeError here won't work. I'm guessing that calling the debounced 

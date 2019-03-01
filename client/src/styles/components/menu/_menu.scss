@@ -14,11 +14,17 @@
     width: 100%;
     height: 10%;
     flex-direction: row;
+    justify-content: space-around;
   }
 
   &__link {
+    // Center text in link button
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     width: 40%;
-    padding: padding(S) ;
+    padding: padding(S);
     margin: margin(M);
     
     background: color(black);
@@ -31,7 +37,10 @@
     text-decoration: none;
 
     @include bp(M) {
-      width: 30%;
+      width: 25%;
+      height: 60%;
+      padding: padding(XXS) padding(S);
+      margin: 0;
       font-size: 1.5rem;
     }
   }

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider, connect } from 'react-redux';
 
-import fetchRetry from '../../utils/fetchRetry';
+import fetchRetry from './utils/fetchRetry';
 
 import { setEvents } from './state/actions/events';
 import { doneLoadingData } from './state/actions/loading';
@@ -13,7 +13,7 @@ import configureStore from './state/store/configureStore';
 
 import EventVisualizer from './components/EventVisualizer';
 import LoadingScreenContainer from './containers/Loading/LoadingScreenContainer';
-// import './styles/main.scss';
+import 'svgxuse';
 
 const store = configureStore();
 

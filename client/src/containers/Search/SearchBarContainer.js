@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { debounce } from 'throttle-debounce';
 import { connect } from 'react-redux';
 
-import fetchRetry from '../../../../utils/fetchRetry';
+import fetchRetry from '../../utils/fetchRetry';
 import SearchBar from '../../components/Search/SearchBar';
 import { isValidLatitude, isValidLongitude, isValidRadius } from '../../utils/isValid';
 

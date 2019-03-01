@@ -1,4 +1,4 @@
-import pointMean from '../../../utils/pointMean';
+import pointMean from './pointMean';
 
 /**
    * Takes in an event, and returns a suitable point

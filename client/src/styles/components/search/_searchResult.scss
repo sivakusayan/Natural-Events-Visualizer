@@ -37,6 +37,8 @@
   }
 
   &__title {
+    // Need to define width to wrap properly in IE11
+    width: 100%;
     font-size: 1.5rem;
     font-weight: 500;
     line-height: 2.3rem;
@@ -45,6 +47,8 @@
   }
 
   &__location {
+    // Need to define width to wrap properly in IE11
+    width: 100%;
     color: lighten(color(black), 10%);
     font-size: 1.1rem;
     line-height: 1.6rem;

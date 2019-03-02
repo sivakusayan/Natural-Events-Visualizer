@@ -31,6 +31,7 @@
   display: flex;
   align-items: center;
   justify-content: start;
+  cursor: pointer;
 
   .field__input {
     width: 0;
@@ -63,5 +64,11 @@
 
   .field__input:checked + .field__checkbox {
     background-color: color(black);
+  }
+}
+
+.field--checkbox:hover {
+  .field__checkbox {
+    margin-left: margin(XXS);
   }
 }

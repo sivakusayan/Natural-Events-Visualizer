@@ -627,6 +627,7 @@ button:disabled {
 
 .searchbar-container {
   position: fixed;
+  z-index: 10;
   right: 50%;
   bottom: 3rem;
   width: 90%;
@@ -723,8 +724,8 @@ button:disabled {
   background-color: #F9F9F9; }
 
 .search-result:hover {
-  transform: translateY(-3%);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); }
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3%); }
 
 .search-results {
   display: flex;

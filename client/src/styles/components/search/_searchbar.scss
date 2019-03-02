@@ -1,5 +1,6 @@
 .searchbar-container {
   position: fixed;
+  z-index: z(top);
   right: 50%;
   bottom: 3rem;
 

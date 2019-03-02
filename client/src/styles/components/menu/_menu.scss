@@ -12,9 +12,10 @@
 
   @include bp(M) {
     width: 100%;
-    height: 10%;
+    height: 7%;
     flex-direction: row;
     justify-content: space-around;
+    border-bottom: 2px solid color(black);
   }
 
   &__link {

@@ -8,6 +8,9 @@
   border-radius: radius(small);
   box-shadow: shadow(medium);
 
+  cursor: pointer;
+  transition: all 0.2s;
+
   // Temporarily wrap elements for screens that 
   // are wider than mobile but not wide enough
   // for desktop layout. See layout/_search for 
@@ -21,10 +24,6 @@
   @include bp(M) {
     width: 90%;
     margin: margin(XS) 0;
-  }
-
-  @include bp(L) {
-    height: 15rem;
   }
 
   &__info {
@@ -74,4 +73,9 @@
 
 .search-result:nth-child(odd) {
   background-color: color(white);
+}
+
+.search-result:hover {
+  transform: translateY(-3%);
+  box-shadow: shadow(big);
 }

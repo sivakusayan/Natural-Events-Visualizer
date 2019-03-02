@@ -691,14 +691,14 @@ button:disabled {
     justify-content: space-around;
     padding: 1.1rem; }
   .search-result__title {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     font-weight: 500;
-    line-height: 2.4rem;
+    line-height: 2.3rem;
     text-align: center; }
   .search-result__location {
     color: #4d4d4d;
-    font-size: 1.3rem;
-    line-height: 1.8rem;
+    font-size: 1.1rem;
+    line-height: 1.6rem;
     text-align: center; }
   .search-result__category {
     display: flex;

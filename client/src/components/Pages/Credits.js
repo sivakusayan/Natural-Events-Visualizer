@@ -33,7 +33,7 @@ const Credits = () => (
         <ArticleLink href='https://thenounproject.com/term/radioactive/573656/'>Radioactive</ArticleLink> by Alexander Skowalsky
       </li> */}
       {CREDITS.map(author => (
-        <li className='article__credit'>
+        <li className='article__credit' key={author.name}>
           {author.icons.map(
             icon => <ArticleLink href={icon.link}>{icon.title}</ArticleLink>
             // Emulates a join function with jsx. Here, we join with ', '

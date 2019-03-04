@@ -96,7 +96,10 @@ EventMap.propTypes = {
    * will be shown.
    */
   doneLoading: PropTypes.func.isRequired,
-  center: PropTypes.arrayOf(PropTypes.number).isRequired,
+  center: PropTypes.shape({
+    lng: PropTypes.number,
+    lat: PropTypes.number,
+  }).isRequired,
   zoom: PropTypes.number.isRequired,
   updateCenter: PropTypes.func.isRequired,
   updateZoom: PropTypes.func.isRequired,

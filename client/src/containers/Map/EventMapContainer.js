@@ -16,7 +16,10 @@ class EventMapContainer extends React.Component {
   baseZoom = 4
 
   state = {
-    center: [0, 5],
+    center: {
+      lng: 0,
+      lat: 5,
+    },
     currentZoom: 2,
   }
 

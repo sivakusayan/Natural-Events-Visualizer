@@ -1,4 +1,11 @@
 .link {
   color: color(accent);
   text-decoration: none;
+  transition: all 0.2s;
+}
+
+@include if-hover() {
+  .link:hover {
+    border-bottom: 2px solid color(accent);
+  }
 }

@@ -816,7 +816,12 @@ button:disabled {
 
 .link {
   color: #00C896;
-  text-decoration: none; }
+  text-decoration: none;
+  transition: all 0.2s; }
+
+@media (hover: hover), (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .link:hover {
+    border-bottom: 2px solid #00C896; } }
 
 /* width */
 ::-webkit-scrollbar {

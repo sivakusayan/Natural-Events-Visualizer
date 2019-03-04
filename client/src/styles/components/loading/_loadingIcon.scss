@@ -29,7 +29,10 @@
   }
   30% {
     opacity: 1;
-    transform: translateY(-2.5rem) scale(1.3);
+    // Note that we must use px instead of relative
+    // units here due to issues with animations in Edge.
+    // https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/16910913/
+    transform: translateY(-30px) scale(1.3);
   }
   60% {
     opacity: 0.5;

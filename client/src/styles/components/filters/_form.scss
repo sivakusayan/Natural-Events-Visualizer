@@ -67,8 +67,10 @@
   }
 }
 
-.field--checkbox:hover {
-  .field__checkbox {
-    margin-left: margin(XXS);
+@include if-hover() {
+  .field--checkbox:hover {
+    .field__checkbox {
+      margin-left: margin(XXS);
+    }
   }
 }

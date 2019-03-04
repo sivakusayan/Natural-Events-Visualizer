@@ -1,3 +1,8 @@
 @mixin bp($breakpoint) {
   @media only screen and (min-width: em(breakpoint($breakpoint))) {@content}
 }
+
+@mixin if-hover() {
+  // IE11 doesn't recognize (hover: hover), so check that case too
+  @media (hover: hover), (-ms-high-contrast: active), (-ms-high-contrast: none) {@content}
+}

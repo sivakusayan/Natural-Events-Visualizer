@@ -57,19 +57,19 @@ const updateOldEvents = async () => {
  * insertData function to everyday at midnight.
  */
 const scheduleUpdates = () => {
-  // schedule.scheduleJob('0 0 * * *', () => {
-  //   try {
-  //     insertNewEvents();
-  //     updateOldEvents();
-  //   } catch (err) {
-  //     // If any errors are found (API Connections, etc.)
-  //     // give up and try the next day.
-  //   }
-  // });
+  schedule.scheduleJob('0 0 * * *', () => {
+    try {
+      // Chain after to make sure google API doesn't return OVER_QUERY_LIMIT
+      // insertNewEvents().then(updateOldEvents());
+      insertNewEvents().then(updateOldEvents);
+    } catch (err) {
+      // If any errors are found (API Connections, etc.)
+      // give up and try the next day.
+      console.log(err);
+    }
+  });
 
-  // Chain after to make sure google API doesn't return OVER_QUERY_LIMIT
-  // insertNewEvents().then(updateOldEvents());
-  insertNewEvents().then(updateOldEvents);
+  // insertNewEvents().then(updateOldEvents);
 };
 
 module.exports = scheduleUpdates;

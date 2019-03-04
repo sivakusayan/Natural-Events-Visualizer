@@ -17,6 +17,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: shadow(small);
 
   border: none;
   // Manually enable pointer events since .btn-container has pointer-events
@@ -28,6 +29,13 @@
   &__icon { 
     width: 100%;
     height: 85%; 
+  }
+}
+
+@include if-hover() {
+  .btn:hover {
+    box-shadow: shadow(medium);
+    transform: translateY(-5%);
   }
 }
 

@@ -30,12 +30,13 @@
     
     background: color(black);
     border-radius: radius(small);
-    box-shadow: shadow(medium);
+    box-shadow: shadow(small);
     color: color(white);
     font-size: 3rem;
     font-weight: 300;
     text-align: center;
     text-decoration: none;
+    transition: all 0.2s;
 
     @include bp(M) {
       width: 25%;
@@ -43,6 +44,13 @@
       padding: padding(XXS) padding(S);
       margin: 0;
       font-size: 1.5rem;
+    }
+  }
+
+  @include if-hover() {
+    &__link:hover {
+      box-shadow: shadow(medium);
+      transform: translateY(-5%);
     }
   }
 }
